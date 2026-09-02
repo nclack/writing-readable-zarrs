@@ -1,0 +1,100 @@
+[array]
+axes = ["T", "C", "Z", "Y", "X"]
+shape = [4, 4, 64, 2048, 2048]
+bytes_per_element = 2
+
+[search]
+minimum_chunk_bytes = 65536
+maximum_chunk_bytes = 4194304
+minimum_encoding_throughput_bytes_per_second = 1000000000
+chunk_budget_factor = 2.0
+shard_budget_factor = 2.0
+neighbor_steps = 1
+compression_tolerance = 0.10
+maximum_enumerated_chunks_per_sample = 100000
+
+[estimates]
+encoded_fraction = 0.35
+encoding_throughput_bytes_per_second = 1500000000
+
+[storage]
+maximum_shards = 512
+minimum_efficient_object_bytes = 8388608
+maximum_shard_bytes = 268435456
+range_reads = true
+index_cache = "warm"
+index_bytes_per_chunk = 16
+checksum_bytes_per_shard = 4
+
+[writer]
+name = "acquire-zarr"
+maximum_memory_bytes = 1073741824
+fixed_memory_bytes = 268435456
+unfinished_chunks = 64
+active_write_shards = 8
+fixed_bytes_per_active_shard = 1048576
+retained_shard_payload_fraction = 0.0
+memory_provenance = "modeled"
+
+[[workloads]]
+name = "xy_viewport"
+selection_shape = [1, 1, 1, 512, 512]
+sample_count = 128
+selections_per_sample = 1
+seed = 11
+maximum_p95_decode_amplification = 3.2
+maximum_p95_requests = 16
+maximum_p95_transfer_amplification = 4.0
+
+[[workloads]]
+name = "model_patch"
+selection_shape = [1, 1, 4, 256, 256]
+sample_count = 96
+selections_per_sample = 1
+seed = 23
+maximum_p95_decode_amplification = 4.0
+maximum_p95_requests = 48
+maximum_p95_transfer_amplification = 5.0
+
+[[workloads]]
+name = "dispersed_batch"
+selection_shape = [1, 1, 1, 128, 128]
+sample_count = 48
+selections_per_sample = 8
+seed = 47
+maximum_p95_decode_amplification = 8.0
+maximum_p95_requests = 96
+maximum_p95_transfer_amplification = 10.0
+minimum_p05_distinct_shards = 4
+
+[[chunk_profiles]]
+name = "xy_viewport"
+base_shape = [1, 1, 1, 512, 512]
+growth_weights = [0, 0, 0, 1, 1]
+
+[[chunk_profiles]]
+name = "model_patch"
+base_shape = [1, 1, 4, 256, 256]
+growth_weights = [0, 0, 1, 1, 1]
+
+[[chunk_profiles]]
+name = "balanced_spatial"
+base_shape = [1, 1, 1, 1, 1]
+growth_weights = [0, 0, 1, 1, 1]
+
+[[shard_profiles]]
+name = "balanced_spatial"
+base_shape = [1, 1, 1, 1, 1]
+growth_weights = [0, 0, 1, 1, 1]
+
+[[shard_profiles]]
+name = "stream_along_z"
+base_shape = [1, 1, 1, 1, 1]
+growth_weights = [0, 0, 4, 1, 1]
+
+# Optional measured overrides for exact chunk shapes.
+[[chunk_measurements]]
+shape = [1, 1, 1, 256, 256]
+encoded_fraction = 0.33
+encoding_throughput_bytes_per_second = 1600000000
+note = "Illustrative placeholder; replace with a measured result."
