@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "dataset": "bbbc022-mito",
+  "input_shape": [
+    16,
+    520,
+    696
+  ],
+  "input_dtype": "uint16",
+  "input_sha256": "1eff677d3f7d6785bdc8e65079613d6ba2c801a19f33503517a12b8df54affc7",
+  "replay": "16 source planes repeated cyclically from plane 0; chunk edge padding is zero",
+  "shared_layouts": {
+    "frames": 32768,
+    "shard_shape": [
+      2048,
+      512,
+      512
+    ],
+    "chunk_shapes": [
+      [
+        1,
+        64,
+        128
+      ],
+      [
+        1,
+        128,
+        128
+      ],
+      [
+        1,
+        128,
+        256
+      ],
+      [
+        1,
+        256,
+        256
+      ],
+      [
+        1,
+        256,
+        512
+      ],
+      [
+        1,
+        512,
+        512
+      ]
+    ],
+    "codec": "blosc-zstd",
+    "level_hint": 3,
+    "shuffle": "bit",
+    "blosc_block_bytes": 16384,
+    "writer_backend": "gpu",
+    "repetitions": 3,
+    "measurement_policy": "fixed-volume-after-discard-warmup-through-close-v1",
+    "required_coverage": {
+      "complete_batches": 4,
+      "generation_transitions": 2,
+      "minimum_append_s": 0.25,
+      "maximum_final_drain_fraction": 0.1
+    },
+    "retention": "one valid output per layout after metadata and full-plane spot checks; small preflight checks every value",
+    "output_filesystem": "shared NFS"
+  },
+  "shard_count": {
+    "fast": {
+      "codec": "blosc-lz4",
+      "chunk_bytes": 65536,
+      "chunk_depth": 4,
+      "blosc_block_bytes": 16384,
+      "shuffle": "bit",
+      "level_hint": 3,
+      "targets": [
+        4,
+        12,
+        16,
+        48
+      ],
+      "expected_actual_counts": [
+        4,
+        9,
+        15,
+        30
+      ],
+      "conditional_max_target": 54
+    },
+    "slow_control": {
+      "codec": "blosc-zstd",
+      "chunk_bytes": 262144,
+      "chunk_depth": 4,
+      "blosc_block_bytes": 262144,
+      "shuffle": "bit",
+      "level_hint": 3,
+      "targets": [
+        4,
+        16
+      ],
+      "expected_actual_counts": [
+        4,
+        15
+      ]
+    },
+    "geometry_frames": 65536,
+    "repetitions": 6,
+    "warmup_s": 2.0,
+    "duration_s": 3.0,
+    "minimum_logical_bytes": 34359738368,
+    "max_attempts": 1,
+    "measurement_policy": "coverage-qualified-through-final-close-v2",
+    "pairing": "each round interleaves the fast settings and the two control settings; target16 reference before and after",
+    "conditional_extension": "include achievable max54 only if the 30-vs15 gain exceeds5% after3 paired rounds, within remaining budget"
+  },
+  "writer_resources": {
+    "output_buffers": 4,
+    "io_workers": 32,
+    "cpu_workers": 4,
+    "batch_target_bytes": 67108864,
+    "per_file_write_limit": 4
+  },
+  "readers": {
+    "backends": [
+      "damacy-cpu",
+      "tensorstore-cpu"
+    ],
+    "damacy_read_mode": "persistent-default",
+    "decode_workers": 32,
+    "io_workers": 16,
+    "output_dtype": "float32",
+    "output_placement": "host",
+    "decoded_cache_bytes": 0,
+    "minimum_active_s": 10.0,
+    "minimum_useful_bytes": 1073741824,
+    "repetitions": 3,
+    "workloads": [
+      "translated-256",
+      "aligned-512",
+      "translated-512",
+      "full-scan"
+    ],
+    "cache_policy": "file-scoped client eviction verified with mincore; metadata and shard indexes warmed; server cache uncontrolled"
+  },
+  "resources": {
+    "cpu": {
+      "max_cpus": 48,
+      "memory_gib": 64,
+      "allocated_wall_budget_s": 7200
+    },
+    "l40": {
+      "gpus": 1,
+      "cpus": 8,
+      "memory_gib": 64,
+      "allocated_wall_budget_s": 7200
+    }
+  },
+  "runtime_guards": "Slurm limits, case process timeouts and cumulative allocation accounting; failures retained; no unrecorded retries",
+  "seed": 20260925
+}

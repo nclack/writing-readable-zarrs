@@ -1,0 +1,14 @@
+--- a/src/zarr/zarr_metadata.c
++++ b/src/zarr/zarr_metadata.c
+@@ -206,7 +206,10 @@
+   jw_array_end(&jw);  // codecs
+ 
+   jw_key(&jw, "fill_value");
+-  jw_float(&jw, fill_value);
++  if (fill_value == 0 && data_type >= dtype_u8 && data_type <= dtype_i64)
++    jw_int(&jw, 0);
++  else
++    jw_float(&jw, fill_value);
+ 
+   jw_key(&jw, "storage_transformers");
+   jw_array_begin(&jw);

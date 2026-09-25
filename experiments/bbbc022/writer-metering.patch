@@ -1,0 +1,11 @@
+--- a/bench/sink_metering.h
++++ b/bench/sink_metering.h
+@@ -6,7 +6,7 @@
+ 
+ #include <stddef.h>
+ 
+-#define METER_MAX_WRITERS 32
++#define METER_MAX_WRITERS 64
+ 
+ struct metering_writer
+ {

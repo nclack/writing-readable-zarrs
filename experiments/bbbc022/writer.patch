@@ -1,0 +1,228 @@
+--- a/bench/bench_util.h
++++ b/bench/bench_util.h
+@@ -62,6 +62,9 @@
+   int max_threads;             // 0 = OpenMP default (omp_get_max_threads)
+   int full_memcpy_timing;
+   uint64_t frames; // minimum measured frames; input is always unbounded
++  int fixed_volume;
++  const uint64_t* shard_shape;
++  double separate_warmup_s;
+   double warmup_s;
+   double duration_s;
+   unsigned max_attempts; // 0 = default (5); inadequate final drain retries
+--- a/bench/bench_report.h
++++ b/bench/bench_report.h
+@@ -31,6 +31,8 @@
+ struct bench_measurement
+ {
+   int boundary_timing;
++  int fixed_volume;
++  double separate_warmup_s;
+   int64_t start_ns; // private clock origin, omitted from reports
+   double prep_s, warmup_s, warmup_drain_s, append_s, elapsed_s, drain_s;
+   double requested_warmup_s, requested_duration_s;
+--- a/bench/bench_util.c
++++ b/bench/bench_util.c
+@@ -148,6 +148,22 @@
+     if (!batches || batches > UINT32_MAX)
+       return 1;
+     *out_epb = (uint32_t)batches;
++    if (cfg->shard_shape) {
++      uint64_t shard_bytes = bytes_per_element;
++      if (cfg->rank != 3)
++        return 1;
++      for (uint8_t d = 0; d < cfg->rank; ++d) {
++        const uint64_t size = cfg->shard_shape[d];
++        if (!size || size % cfg->dims[d].chunk_size ||
++            shard_bytes > UINT64_MAX / size)
++          return 1;
++        shard_bytes *= size;
++        cfg->dims[d].chunks_per_shard = size / cfg->dims[d].chunk_size;
++      }
++      if (cfg->max_shard_bytes && shard_bytes > cfg->max_shard_bytes)
++        return 1;
++      return 0;
++    }
+     if (cfg->max_shard_bytes) {
+       uint64_t max_chunks_per_shard = cfg->max_shard_bytes / chunk_bytes;
+       return dims_set_shard_geometry_limited(cfg->dims,
+@@ -426,9 +442,15 @@
+   memcpy(next, run->boundary_bytes, sizeof(next));
+   const int64_t start = platform_monotonic_ns();
+   int64_t measure_start = start;
+-  int measuring = 0;
++  int measuring = cfg->fixed_volume;
++  run->start_ns = start;
+   while (1) {
+     size_t offer = run->append_bytes;
++    if (cfg->fixed_volume) {
++      const uint64_t remaining = minimum_input - accepted;
++      if (offer > remaining)
++        offer = remaining;
++    }
+     // Image windows end on complete frames, even for small or oversized offers.
+     if (cfg->input) {
+       const size_t remaining = frame_bytes - accepted % frame_bytes;
+@@ -478,6 +500,12 @@
+       }
+     }
+     accepted = end;
++    if (cfg->fixed_volume && accepted == minimum_input) {
++      run->append_s = (platform_monotonic_ns() - start) * 1e-9;
++      bench_measurement_count(run, accepted);
++      *total_bytes = accepted;
++      return 0;
++    }
+     // Keep image checkpoints on complete frames. Resetting `checked` inside
+     // a frame can make every later 4 MiB checkpoint miss the stop boundary.
+     if (measuring && cfg->input && accepted % frame_bytes)
+@@ -516,7 +544,8 @@
+       run->start_ns = measure_start;
+       run->append_s = (now - measure_start) * 1e-9;
+       bench_measurement_count(run, accepted);
+-      if (run->input_bytes >= minimum_input && bench_measurement_ready(run) &&
++      if (!cfg->fixed_volume && run->input_bytes >= minimum_input &&
++          bench_measurement_ready(run) &&
+           (!cfg->input || accepted % frame_bytes == 0)) {
+         *total_bytes = accepted;
+         return 0;
+@@ -548,6 +577,8 @@
+   const size_t bpe = dtype_bpe(dtype);
+   struct bench_measurement measurement = {
+     .boundary_timing = !cfg->no_boundary_timing,
++    .fixed_volume = cfg->fixed_volume,
++    .separate_warmup_s = cfg->separate_warmup_s,
+     .reference_frames = dims[0].size,
+     .source_bytes = 64u << 20,
+     .append_bytes =
+@@ -880,7 +911,8 @@
+ 
+   if (!measurement.coverage_sufficient) {
+     const double next = bench_measurement_retry_duration(&measurement);
+-    if (attempt < max_attempts && next > target_duration_s) {
++    if (!cfg->fixed_volume && attempt < max_attempts &&
++        next > target_duration_s) {
+       print_report("  Attempt %u: drain %.3f s / %.3f s (%.1f%%)",
+                    attempt,
+                    measurement.drain_s,
+@@ -986,6 +1018,8 @@
+   uint64_t memory_budget;
+   uint64_t frames;
+   uint64_t geometry_frames;
++  uint64_t shard_shape[3];
++  int fixed_volume;
+   uint64_t chunk_depth;
+   uint64_t concurrent_shards;
+   int frames_set, duration_set, warmup_set;
+@@ -1118,16 +1152,24 @@
+         return 1;
+       }
+       ++i;
++    } else if (strcmp(av[i], "--shard-shape") == 0 && i + 3 < ac) {
++      for (int d = 0; d < 3; ++d) {
++        if (!read_count("--shard-shape", av[++i], &out->shard_shape[d]) ||
++            !out->shard_shape[d])
++          return 1;
++      }
+     } else if ((strcmp(av[i], "--frames") == 0 ||
++                strcmp(av[i], "--fixed-frames") == 0 ||
+                 strcmp(av[i], "--geometry-frames") == 0) &&
+                i + 1 < ac) {
+       const int geometry = strcmp(av[i], "--geometry-frames") == 0;
++      const int fixed_volume = strcmp(av[i], "--fixed-frames") == 0;
+       const char* value = av[++i];
+       char* end;
+       errno = 0;
+       const uint64_t frames = strtoull(value, &end, 10);
+       if (end == value || *end || *value == '-' || errno ||
+-          (geometry && frames == 0)) {
++          ((geometry || fixed_volume) && frames == 0)) {
+         fprintf(stderr, "Invalid frame count: %s\n", value);
+         return 1;
+       }
+@@ -1136,6 +1178,7 @@
+       else {
+         out->frames = frames;
+         out->frames_set = 1;
++        out->fixed_volume = fixed_volume;
+       }
+     } else if (strcmp(av[i], "--append-elements") == 0 && i + 1 < ac) {
+       char* end;
+@@ -1264,6 +1307,14 @@
+   if (parse_bench_cli_args(ac, av, &a))
+     return 1;
+ 
++  if ((a.fixed_volume || a.shard_shape[0]) && !spec.image_input) {
++    fprintf(stderr, "Fixed volume and explicit shards require image input\n");
++    return 1;
++  }
++  if (a.fixed_volume && (a.s3_bucket || !a.output_path)) {
++    fprintf(stderr, "Fixed-volume measurements require filesystem output\n");
++    return 1;
++  }
+   if (spec.image_input && codec_is_blosc(a.codec.id) &&
+       !a.codec.blosc_block_bytes) {
+     const uint64_t block_bytes =
+@@ -1426,12 +1477,29 @@
+     .max_threads = a.max_threads,
+     .full_memcpy_timing = a.full_memcpy_timing,
+     .frames = a.frames,
++    .fixed_volume = a.fixed_volume,
++    .shard_shape = a.shard_shape[0] ? a.shard_shape : NULL,
+     .warmup_s = a.warmup_s,
+     .duration_s = a.duration_s,
+     .no_boundary_timing = a.no_boundary_timing,
+     .max_attempts = a.max_attempts,
+   };
+-  int ecode = run_bench(&cfg);
++  int ecode = 0;
++  if (cfg.fixed_volume) {
++    struct bench_config warmup = cfg;
++    warmup.fixed_volume = 0;
++    warmup.frames = 0;
++    warmup.output_path = NULL;
++    warmup.json_output = 0;
++    warmup.max_attempts = 3;
++    warmup.duration_s = 0.5;
++    const int64_t begin = platform_monotonic_ns();
++    ecode = run_bench(&warmup);
++    cfg.separate_warmup_s = (platform_monotonic_ns() - begin) * 1e-9;
++    cfg.max_attempts = 1;
++  }
++  if (!ecode)
++    ecode = run_bench(&cfg);
+ 
+   if (a.backend == BENCH_GPU)
+     bench_gpu_context_destroy();
+--- a/bench/bench_measurement.c
++++ b/bench/bench_measurement.c
+@@ -38,8 +38,10 @@
+ int
+ bench_measurement_covered(const struct bench_measurement* run)
+ {
+-  return bench_warmup_ready(run, run->warmup_bytes, run->warmup_s) &&
+-         bench_measurement_ready(run) && run->drain_s >= 0 &&
++  const int warm = run->fixed_volume
++                     ? run->separate_warmup_s > 0
++                     : bench_warmup_ready(run, run->warmup_bytes, run->warmup_s);
++  return warm && bench_measurement_ready(run) && run->drain_s >= 0 &&
+          run->drain_s <= 0.1 * run->elapsed_s;
+ }
+ 
+--- a/bench/bench_report.c
++++ b/bench/bench_report.c
+@@ -770,7 +770,13 @@
+   jw_key(jw, "measurement");
+   jw_object_begin(jw);
+   jw_key(jw, "policy");
+-  jw_string(jw, bench_measurement_policy);
++  jw_string(jw, run->fixed_volume
++                  ? "fixed-volume-after-discard-warmup-through-close-v1"
++                  : bench_measurement_policy);
++  jw_key(jw, "fixed_volume");
++  jw_bool(jw, run->fixed_volume);
++  jw_key(jw, "separate_warmup_s");
++  jw_float(jw, run->separate_warmup_s);
+   jw_key(jw, "input_mode");
+   jw_string(jw, "direct");
+   jw_key(jw, "output_scope");

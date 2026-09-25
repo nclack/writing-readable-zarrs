@@ -4,6 +4,13 @@ These collect evidence for [the current article](article-outline.md). Send the
 shared context once, then prompt 1. Use its inventory to direct prompts 2–5;
 each analysis should also report missing evidence and contradictory results.
 
+The first collection is in [readable-zarrs-evidence](../readable-zarrs-evidence/README.md).
+The [follow-up plan](follow-up-experiments.md) records the revised priorities:
+use drain capacity for writer comparisons, reason through conversion memory
+and final-size accounting, and use BBBC022 for new read/write layout and
+streaming shard-count experiments. These collection prompts do
+not authorize launching experiments or make every missing measurement a prerequisite.
+
 ## Shared context
 
 ```text
@@ -16,7 +23,8 @@ preserving the source records.
 The article starts with read workloads, then proceeds to writing. The two
 write workloads are streaming (acquisition or TIFF-to-Zarr conversion) and
 rechunking (Zarr-to-Zarr transformation, including v2-to-v3 conversion).
-Acquisition prioritizes sustained throughput. Memory use is important for both
+Use measured maximum drain rate to compare acquisition layouts and explain
+that sustained acquisition rates will be lower. Memory use is important for both
 TIFF conversion and rechunking, alongside their throughput. Random subvolume
 writes are outside scope. Do not treat a streaming replay benchmark as evidence
 of complete conversion performance or memory use.
@@ -160,11 +168,14 @@ within 10% of the smallest measured output. Report counterexamples as well as
 support. Keep acquisition traces, streaming replay, and complete TIFF conversion
 separate. Rechunking belongs in the conversion analysis, not this frontier.
 
-The acquisition question is whether a layout sustains the source rate. Recover
-the source-rate requirement if recorded, plus run length, queue growth or stalls,
-shard turnover, and final drain. Do not call a finite replay proof of sustained
-acquisition at a specified rate without that evidence. Identify which read-side
-candidate layouts also appear in these write experiments.
+Use the writer's capacity to process continuously available input as the main
+layout comparison: maximum drain rate under the measured conditions. Preserve
+the actual append/finalization interval and summarize repetitions, rather than
+selecting a single fastest run. Recover source-rate requirements if recorded,
+plus run length, queue growth or stalls, shard turnover, and final drain.
+Explain that sustained acquisition rates will be lower; no universal headroom
+factor or separate sustained-rate experiment is required for this article.
+Identify which read-side candidate layouts also appear in these write experiments.
 
 Export write-runs.csv with one row per recorded attempt. Include, when available:
 source locator, study/config/run IDs, date/time and execution order, tool/build,
@@ -199,6 +210,10 @@ Within each comparable group:
   output bytes to a common logical input volume with matching padding/fill
   semantics. Explain the normalization; do not compare raw file totals from
   different input volumes or silently substitute payload size for stored size.
+  When only shard-write bytes are measured, preserve that label and reason
+  through the relation to final size from the writer's accounting. Include
+  metadata, rewrites, preallocation and padding without adding already counted
+  index bytes again. No separate final-size experiment is required.
 - Select the greatest median throughput among S <= 1.10 * min(S). The minimum
   is within that comparison group. Preserve exact ties and show close rivals
   whose observed variation makes their ordering uncertain.
@@ -219,7 +234,8 @@ In the findings, separate repeated patterns across datasets/systems from
 exceptions and unstable rankings on the busy filesystem. Use existing paired
 or interleaved runs to assess drift where available; otherwise state the limit.
 Include sufficient run duration and finalization context to assess whether
-each quoted throughput represents sustained writing.
+each quoted rate measures completed writer work over the stated interval.
+Keep drain capacity distinct from a demonstrated sustained acquisition rate.
 ```
 
 ## 4. Check shard concurrency, NFS context, and variability
@@ -324,8 +340,10 @@ Produce conversion-summary.csv, plot-ready memory/throughput data, and
 conversion-findings.md. State which settings meet any recorded memory budget,
 what throughput they achieve, and whether lower memory increases rereads or
 intermediate I/O. Report missing evidence without blocking other exports.
-End with the smallest focused follow-up needed for an unresolved memory claim;
-propose it only, do not run it during this aggregation.
+End with an analytical treatment of unresolved memory questions: identify
+buffers live at the same time, traversal, source/destination overlap, and
+queue/cache bounds. Label estimates and assumptions separately from measurements.
+Conversion-memory experiments are not required for this article.
 ```
 
 ## Local source leads checked while preparing these prompts

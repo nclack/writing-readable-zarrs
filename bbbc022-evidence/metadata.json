@@ -1,0 +1,1640 @@
+{
+  "external_arrays": [
+    {
+      "chunk_shape": [
+        1,
+        64,
+        128
+      ],
+      "id": "c16",
+      "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c16/images",
+      "writer_record": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/004-c16-r1-sample/result.json"
+    },
+    {
+      "chunk_shape": [
+        1,
+        128,
+        128
+      ],
+      "id": "c32",
+      "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c32/images",
+      "writer_record": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/005-c32-r1-sample/result.json"
+    },
+    {
+      "chunk_shape": [
+        1,
+        128,
+        256
+      ],
+      "id": "c64",
+      "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c64/images",
+      "writer_record": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/006-c64-r1-sample/result.json"
+    },
+    {
+      "chunk_shape": [
+        1,
+        256,
+        256
+      ],
+      "id": "c128",
+      "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c128/images",
+      "writer_record": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/002-c128-r1-sample/result.json"
+    },
+    {
+      "chunk_shape": [
+        1,
+        256,
+        512
+      ],
+      "id": "c256",
+      "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c256/images",
+      "writer_record": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/003-c256-r1-sample/result.json"
+    },
+    {
+      "chunk_shape": [
+        1,
+        512,
+        512
+      ],
+      "id": "c512",
+      "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c512/images",
+      "writer_record": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/001-c512-r1-sample/result.json"
+    }
+  ],
+  "input_source": {
+    "dataset": {
+      "assets": [
+        {
+          "dtype": "uint16",
+          "id": "bbbc022-mito",
+          "name": "BBBC022 MitoTracker",
+          "path": "data/bbbc022-v1/bbbc022-mito.raw",
+          "preview": {
+            "intensity_range": [
+              246.0,
+              1018.4049999999697
+            ],
+            "percentiles": [
+              1,
+              99.5
+            ],
+            "plane": 0,
+            "resize": "area average to 128x96, centered on a black 128x128 canvas"
+          },
+          "provenance": {
+            "files": [
+              {
+                "bytes": 726352,
+                "image_number": 118,
+                "member": "BBBC022_v1_images_20585w5/IXMtest_A14_s1_w55CDEE132-D6E4-45CD-86A7-171CAC606739.tif",
+                "plane": 0,
+                "sha256": "8df2d6c3ddd6684aff99b52731944640ff4be4237b0342dd3a23006c264f8e90",
+                "site": 1,
+                "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+                "well": "A14"
+              },
+              {
+                "bytes": 726352,
+                "image_number": 334,
+                "member": "BBBC022_v1_images_20585w5/IXMtest_B14_s1_w5617AB146-5C1F-4189-888C-433D6A3274D5.tif",
+                "plane": 1,
+                "sha256": "f66fcac99827021615ab9da9bb79a79f2c4f79b4ca081fe73ebfee46c839df19",
+                "site": 1,
+                "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+                "well": "B14"
+              },
+              {
+                "bytes": 726352,
+                "image_number": 532,
+                "member": "BBBC022_v1_images_20585w5/IXMtest_C12_s1_w5D9C58A15-A24B-492D-84C0-AF21B7A6D6C6.tif",
+                "plane": 2,
+                "sha256": "e6353fe2967ba20a01eeebe2e46751d809390d96575144a9a9cc7b5bb08826a8",
+                "site": 1,
+                "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+                "well": "C12"
+              },
+              {
+                "bytes": 726352,
+                "image_number": 748,
+                "member": "BBBC022_v1_images_20585w5/IXMtest_D12_s1_w53AE122D0-8E5A-4BF5-82BA-54A49BAAD3CD.tif",
+                "plane": 3,
+                "sha256": "0a6fa42d6643f41be1c46b01e22847a021a3765aee3327bb093aee0925faac53",
+                "site": 1,
+                "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+                "well": "D12"
+              },
+              {
+                "bytes": 726352,
+                "image_number": 1018,
+                "member": "BBBC022_v1_images_20585w5/IXMtest_E18_s1_w58A0FFD87-E3A1-431F-AEEC-580BE2E58932.tif",
+                "plane": 4,
+                "sha256": "a9352cb3c5f8d08cd5b9b14dcae601cbab87bccad818bb481faf60af939946df",
+                "site": 1,
+                "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+                "well": "E18"
+              },
+              {
+                "bytes": 726352,
+                "image_number": 1090,
+                "member": "BBBC022_v1_images_20585w5/IXMtest_F02_s1_w5501D90F1-C267-4BEF-9C93-613BAEE41AF7.tif",
+                "plane": 5,
+                "sha256": "8f8d0b17e8f9d1112b126edc0704c19a8ff528350790ff5d05f13bd33eedfc27",
+                "site": 1,
+                "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+                "well": "F02"
+              },
+              {
+                "bytes": 726352,
+                "image_number": 1324,
+                "member": "BBBC022_v1_images_20585w5/IXMtest_G04_s1_w5F837D0C3-022A-4734-95A3-B43BA5BEE73E.tif",
+                "plane": 6,
+                "sha256": "22ad7e5947a56a25234119292ba49ea8e3471264fb8be2908da16300dbc2a8c4",
+                "site": 1,
+                "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+                "well": "G04"
+              },
+              {
+                "bytes": 726352,
+                "image_number": 1540,
+                "member": "BBBC022_v1_images_20585w5/IXMtest_H04_s1_w56997761E-0D27-42AC-AE51-3AF990D6929A.tif",
+                "plane": 7,
+                "sha256": "2eea004bc138079416e87cc2f537b1b1ade4c52039fe013b50d5935abf68eddc",
+                "site": 1,
+                "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+                "well": "H04"
+              },
+              {
+                "bytes": 726352,
+                "image_number": 1774,
+                "member": "BBBC022_v1_images_20585w5/IXMtest_I06_s1_w53131FEAD-CF92-4F59-883A-374268DA3D20.tif",
+                "plane": 8,
+                "sha256": "5b8076b3f0c10e0586c1f2254515391ecd638b26fef83c167ea2430a859534ad",
+                "site": 1,
+                "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+                "well": "I06"
+              },
+              {
+                "bytes": 726352,
+                "image_number": 1981,
+                "member": "BBBC022_v1_images_20585w5/IXMtest_J05_s1_w502E64050-920A-49DA-BF8A-348D50254AFD.tif",
+                "plane": 9,
+                "sha256": "4954249a9110faa0c8787eefc424d6ae3d146d5129962724b8c25179d309fb74",
+                "site": 1,
+                "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+                "well": "J05"
+              },
+              {
+                "bytes": 726352,
+                "image_number": 2359,
+                "member": "BBBC022_v1_images_20585w5/IXMtest_K23_s1_w50FA98FAA-F690-4844-8C25-12592AC4C119.tif",
+                "plane": 10,
+                "sha256": "42242f94c53c54b619f1612ddf14dc575ea3f1b7fe668de019466c1a8adb8e9b",
+                "site": 1,
+                "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+                "well": "K23"
+              },
+              {
+                "bytes": 726352,
+                "image_number": 2440,
+                "member": "BBBC022_v1_images_20585w5/IXMtest_L08_s1_w51A38043A-2B2C-4299-94E0-36584E2D4521.tif",
+                "plane": 11,
+                "sha256": "ab0576fc33de45f67860a44059734ca7c4956c9963ba0d020388a8c610c5520c",
+                "site": 1,
+                "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+                "well": "L08"
+              },
+              {
+                "bytes": 726352,
+                "image_number": 2701,
+                "member": "BBBC022_v1_images_20585w5/IXMtest_M13_s1_w5F857F7F9-73F9-4661-B498-338B28095E15.tif",
+                "plane": 12,
+                "sha256": "170f2ec95e3549d00ddd7cc15f78df02ccf64991b0064b633bb3b26e65c44486",
+                "site": 1,
+                "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+                "well": "M13"
+              },
+              {
+                "bytes": 726352,
+                "image_number": 2881,
+                "member": "BBBC022_v1_images_20585w5/IXMtest_N09_s1_w5287A9955-0F7E-42E6-B7D9-E402699F9D1A.tif",
+                "plane": 13,
+                "sha256": "838c6289598d1d55e50ad0fbfd1fe40f5ec6c498cae63350544c7fdb7f9680f6",
+                "site": 1,
+                "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+                "well": "N09"
+              },
+              {
+                "bytes": 726352,
+                "image_number": 3124,
+                "member": "BBBC022_v1_images_20585w5/IXMtest_O12_s1_w55137C1B4-8E93-4881-8D7D-7725EA50794C.tif",
+                "plane": 14,
+                "sha256": "2d38cd4f5946e9c930c6cf4ef696a7454ba552278cd236ea1d533eb118e1475d",
+                "site": 1,
+                "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+                "well": "O12"
+              },
+              {
+                "bytes": 726352,
+                "image_number": 3331,
+                "member": "BBBC022_v1_images_20585w5/IXMtest_P11_s1_w59A8F7EF2-331C-4FA0-ACCC-AA9EB46E1E3D.tif",
+                "plane": 15,
+                "sha256": "92f1004cd8da7c0bb245327fc5f7ff6068a89d624314f5b6ffdbbec39461e7f7",
+                "site": 1,
+                "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+                "well": "P11"
+              }
+            ]
+          },
+          "selection": {
+            "axes": [
+              "field",
+              "y",
+              "x"
+            ],
+            "channel": "w5",
+            "method": "Visit plate rows A-P in order. For each row, sort its mock-control well IDs and choose one with a single Python random.Random(13) instance. Select site 1 and store fields in plate-row order. No selection depends on pixel values or measured compression results.",
+            "plate": "20585",
+            "seed": 13,
+            "sites": [
+              1
+            ],
+            "well_role": "mock",
+            "wells": [
+              "A14",
+              "B14",
+              "C12",
+              "D12",
+              "E18",
+              "F02",
+              "G04",
+              "H04",
+              "I06",
+              "J05",
+              "K23",
+              "L08",
+              "M13",
+              "N09",
+              "O12",
+              "P11"
+            ]
+          },
+          "sha256": "1eff677d3f7d6785bdc8e65079613d6ba2c801a19f33503517a12b8df54affc7",
+          "shape": [
+            16,
+            520,
+            696
+          ],
+          "thumbnail": "thumbnails/bbbc022-mito.png"
+        }
+      ],
+      "id": "bbbc022-mito",
+      "modality": "fluorescence",
+      "name": "BBBC022 MitoTracker compression sample",
+      "reference_images": "No matched higher-SNR images or repeated exposures were identified for this sample.",
+      "source": {
+        "accessed": "2026-09-13",
+        "acquisition": {
+          "background_subtraction": false,
+          "binning_yx": [
+            2,
+            2
+          ],
+          "camera_gain": "Gain 2 (4x)",
+          "camera_manufacturer": "Photometrics",
+          "channel": "MitoTracker Deep Red (Cy5)",
+          "excitation_emission_nm": [
+            628,
+            692
+          ],
+          "exposure_ms": 300,
+          "first_image_datetime": "2010:03:02 09:57:12",
+          "frames_averaged": 1,
+          "last_image_datetime": "2010:03:02 14:06:31",
+          "methods_url": "https://doi.org/10.1371/journal.pone.0080999",
+          "microscope": "Molecular Devices ImageXpress Micro",
+          "modality": "widefield epifluorescence",
+          "objective_magnification": 20,
+          "pixel_size_um_yx": [
+            0.656,
+            0.656
+          ],
+          "shading_correction": false,
+          "source_tiff_compression": "none"
+        },
+        "attribution": "Sigrun M. Gustafsdottir and colleagues, Multiplex Cytological Profiling Assay to Measure Diverse Cellular States, PLOS ONE 8(12): e80999 (2013), https://doi.org/10.1371/journal.pone.0080999; Broad Bioimage Benchmark Collection, Ljosa and colleagues, Nature Methods (2012).",
+        "changes": "Selected 16 mock-control wells from plate 20585, one per plate row A-P, site 1, MitoTracker Deep Red channel w5. Repacked complete decoded TIFF fields as headerless little-endian uint16 without rescaling, cropping, filtering, averaging, or denoising. Each output plane is a separate field, not a Z slice or timepoint.",
+        "collection": "Broad Bioimage Benchmark Collection: BBBC022v1",
+        "license": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "metadata": {
+          "bytes": 37119471,
+          "sha256": "2666ae70ab8c076f34cc81d22ddd67a92969a097c058dd19d6be345f14ad5cda",
+          "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_image.csv"
+        },
+        "url": "https://bbbc.broadinstitute.org/BBBC022"
+      },
+      "version": 1
+    },
+    "format": {
+      "axes": [
+        "plane",
+        "y",
+        "x"
+      ],
+      "byte_order": "little",
+      "encoding": "raw",
+      "name": "chucky-image-corpus",
+      "order": "C",
+      "version": 2
+    },
+    "json_pointer": "#/datasets/5",
+    "manifest_sha256": "8acabd8ba3f3d090aef4cd78c2c34bd5a35a04e6c5febdbb863fea395b7e7aff",
+    "manifest_source": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/bench/data/microscopy/manifest.json"
+  },
+  "nfs_causality": "No causal nconnect attribution or universal shard/chunk optimum.",
+  "plan": {
+    "dataset": "bbbc022-mito",
+    "input_dtype": "uint16",
+    "input_sha256": "1eff677d3f7d6785bdc8e65079613d6ba2c801a19f33503517a12b8df54affc7",
+    "input_shape": [
+      16,
+      520,
+      696
+    ],
+    "readers": {
+      "backends": [
+        "damacy-cpu",
+        "tensorstore-cpu"
+      ],
+      "cache_policy": "file-scoped client eviction verified with mincore; metadata and shard indexes warmed; server cache uncontrolled",
+      "damacy_read_mode": "persistent-default",
+      "decode_workers": 32,
+      "decoded_cache_bytes": 0,
+      "io_workers": 16,
+      "minimum_active_s": 10.0,
+      "minimum_useful_bytes": 1073741824,
+      "output_dtype": "float32",
+      "output_placement": "host",
+      "repetitions": 3,
+      "workloads": [
+        "translated-256",
+        "aligned-512",
+        "translated-512",
+        "full-scan"
+      ]
+    },
+    "replay": "16 source planes repeated cyclically from plane 0; chunk edge padding is zero",
+    "resources": {
+      "cpu": {
+        "allocated_wall_budget_s": 7200,
+        "max_cpus": 48,
+        "memory_gib": 64
+      },
+      "l40": {
+        "allocated_wall_budget_s": 7200,
+        "cpus": 8,
+        "gpus": 1,
+        "memory_gib": 64
+      }
+    },
+    "runtime_guards": "Slurm limits, case process timeouts and cumulative allocation accounting; failures retained; no unrecorded retries",
+    "schema_version": 1,
+    "seed": 20260925,
+    "shard_count": {
+      "conditional_extension": "include achievable max54 only if the 30-vs15 gain exceeds5% after3 paired rounds, within remaining budget",
+      "duration_s": 3.0,
+      "fast": {
+        "blosc_block_bytes": 16384,
+        "chunk_bytes": 65536,
+        "chunk_depth": 4,
+        "codec": "blosc-lz4",
+        "conditional_max_target": 54,
+        "expected_actual_counts": [
+          4,
+          9,
+          15,
+          30
+        ],
+        "level_hint": 3,
+        "shuffle": "bit",
+        "targets": [
+          4,
+          12,
+          16,
+          48
+        ]
+      },
+      "geometry_frames": 65536,
+      "max_attempts": 1,
+      "measurement_policy": "coverage-qualified-through-final-close-v2",
+      "minimum_logical_bytes": 34359738368,
+      "pairing": "each round interleaves the fast settings and the two control settings; target16 reference before and after",
+      "repetitions": 6,
+      "slow_control": {
+        "blosc_block_bytes": 262144,
+        "chunk_bytes": 262144,
+        "chunk_depth": 4,
+        "codec": "blosc-zstd",
+        "expected_actual_counts": [
+          4,
+          15
+        ],
+        "level_hint": 3,
+        "shuffle": "bit",
+        "targets": [
+          4,
+          16
+        ]
+      },
+      "warmup_s": 2.0
+    },
+    "shared_layouts": {
+      "blosc_block_bytes": 16384,
+      "chunk_shapes": [
+        [
+          1,
+          64,
+          128
+        ],
+        [
+          1,
+          128,
+          128
+        ],
+        [
+          1,
+          128,
+          256
+        ],
+        [
+          1,
+          256,
+          256
+        ],
+        [
+          1,
+          256,
+          512
+        ],
+        [
+          1,
+          512,
+          512
+        ]
+      ],
+      "codec": "blosc-zstd",
+      "frames": 32768,
+      "level_hint": 3,
+      "measurement_policy": "fixed-volume-after-discard-warmup-through-close-v1",
+      "output_filesystem": "shared NFS",
+      "repetitions": 3,
+      "required_coverage": {
+        "complete_batches": 4,
+        "generation_transitions": 2,
+        "maximum_final_drain_fraction": 0.1,
+        "minimum_append_s": 0.25
+      },
+      "retention": "one valid output per layout after metadata and full-plane spot checks; small preflight checks every value",
+      "shard_shape": [
+        2048,
+        512,
+        512
+      ],
+      "shuffle": "bit",
+      "writer_backend": "gpu"
+    },
+    "writer_resources": {
+      "batch_target_bytes": 67108864,
+      "cpu_workers": 4,
+      "io_workers": 32,
+      "output_buffers": 4,
+      "per_file_write_limit": 4
+    }
+  },
+  "plots_generated": true,
+  "post_primary_shard_extension": {
+    "audit": {
+      "accepted_references": 6,
+      "accepted_samples": 6,
+      "attempt": "jobs/gpu-extension-3837212",
+      "complete": true,
+      "completion_document": {
+        "elapsed_seconds": 277.322694003582,
+        "family": "shard-count-extension",
+        "median_54_over_30": 0.8660810202061123,
+        "minimum_logical_bytes": 103079215104,
+        "observations": 12,
+        "pairs": [
+          {
+            "logical_gibs_30": 5.099806798453769,
+            "logical_gibs_54": 4.4168458748589075,
+            "ratio_54_over_30": 0.8660810202061123,
+            "round": 1
+          },
+          {
+            "logical_gibs_30": 5.257892722024267,
+            "logical_gibs_54": 4.67788836026466,
+            "ratio_54_over_30": 0.8896888178547113,
+            "round": 2
+          },
+          {
+            "logical_gibs_30": 5.691233490229062,
+            "logical_gibs_54": 4.820932124504797,
+            "ratio_54_over_30": 0.8470803618901889,
+            "round": 3
+          }
+        ],
+        "planned_observations": 12,
+        "primary_artifacts_unchanged": true,
+        "protocol_sha256": "07d5e822e8d2526c5a07ee2f653c2c145ee77bba7abf82046d6548af2b7b5caa",
+        "rounds": 3,
+        "slurm_job_id": "3837212",
+        "status": "pass"
+      },
+      "duplicate_conditions": [],
+      "expected_references": 6,
+      "expected_rows": 12,
+      "expected_samples": 6,
+      "marker_present": true,
+      "minimum_logical_bytes": 103079215104,
+      "missing_conditions": [],
+      "paired_54_over_30_rounds": 3,
+      "phase": "shard-count-extension",
+      "primary_extension_decision": {
+        "include_actual54": false,
+        "median_ratio": 0.9955277398456148,
+        "paired_30_over_15_ratios": [
+          0.9955277398456148,
+          1.224116736444527,
+          0.8588602548555773
+        ],
+        "remaining_s": 2703.4827121477574,
+        "rule": "median gain above5% and more than1200s remaining after round3"
+      },
+      "primary_pooling": false,
+      "protocol_sha256": "07d5e822e8d2526c5a07ee2f653c2c145ee77bba7abf82046d6548af2b7b5caa",
+      "reference_pairs": 3,
+      "rows": 12,
+      "status_counts": {
+        "pass": 12
+      },
+      "unexpected_conditions": []
+    },
+    "included_in_primary": false,
+    "protocol": {
+      "amendment_reason": "The predeclared first-three-round rule did not select 54 shards. The completed six-round median gain of 30 over 15 exceeds 5%; a separate follow-up asks whether gains continue beyond 30. It does not change the primary selection or combine the new 96 GiB series with the primary 32 GiB series.",
+      "automatic_retries": 0,
+      "cases": {
+        "16": {
+          "actual_layer_shards": 15,
+          "blosc_block_bytes": 16384,
+          "chunk_bytes": 65536,
+          "chunk_depth": 4,
+          "chunk_shape": [
+            4,
+            64,
+            128
+          ],
+          "chunks_per_shard": [
+            4096,
+            2,
+            2
+          ],
+          "codec": "blosc-lz4",
+          "experiment": "shard-count",
+          "id": "fast-target16",
+          "level": 3,
+          "raw_shard_bytes": 1073741824,
+          "series": "fast",
+          "shard_shape": [
+            16384,
+            128,
+            256
+          ],
+          "shuffle": "bit",
+          "target_shards": 16
+        },
+        "48": {
+          "actual_layer_shards": 30,
+          "blosc_block_bytes": 16384,
+          "chunk_bytes": 65536,
+          "chunk_depth": 4,
+          "chunk_shape": [
+            4,
+            64,
+            128
+          ],
+          "chunks_per_shard": [
+            8192,
+            2,
+            1
+          ],
+          "codec": "blosc-lz4",
+          "experiment": "shard-count",
+          "id": "fast-target48",
+          "level": 3,
+          "raw_shard_bytes": 1073741824,
+          "series": "fast",
+          "shard_shape": [
+            32768,
+            128,
+            128
+          ],
+          "shuffle": "bit",
+          "target_shards": 48
+        },
+        "54": {
+          "actual_layer_shards": 54,
+          "blosc_block_bytes": 16384,
+          "chunk_bytes": 65536,
+          "chunk_depth": 4,
+          "chunk_shape": [
+            4,
+            64,
+            128
+          ],
+          "chunks_per_shard": [
+            16384,
+            1,
+            1
+          ],
+          "codec": "blosc-lz4",
+          "experiment": "shard-count",
+          "id": "fast-target54",
+          "level": 3,
+          "raw_shard_bytes": 1073741824,
+          "series": "fast",
+          "shard_shape": [
+            65536,
+            64,
+            128
+          ],
+          "shuffle": "bit",
+          "target_shards": 54
+        }
+      },
+      "completed_reads": {
+        "job_finished_utc": "2026-09-25T20:11:02Z",
+        "measurements": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/reads-3836384/measurements",
+        "summary": {
+          "complete": true,
+          "elapsed_seconds": 2211.777312738821,
+          "finished_utc": "2026-09-25T20:10:52.201638+00:00",
+          "phase": "measurement",
+          "planned_observations": 144,
+          "status_counts": {
+            "accepted": 144
+          }
+        },
+        "summary_sha256": "b5b36a737ee7c78f3f7efd1dce4c9ba52c80b4541dda0802ddb66f2f93de4f7d"
+      },
+      "deadline_seconds": 1000.0,
+      "duration_s": 3.0,
+      "environment": {
+        "cpu_affinity": [
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "cuda_visible_devices": "0",
+        "filesystem": {
+          "fstype": "nfs",
+          "options": "rw,noatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,noacl,forcerdirplus,proto=tcp,nconnect=16,timeo=600,retrans=2,sec=sys,mountaddr=172.31.226.124,mountvers=3,mountport=20048,mountproto=udp,lookupcache=pos,local_lock=none,remoteports=172.31.226.1-172.31.226.255,addr=172.31.226.228",
+          "source": "172.31.226.124:/k8s/pvc-431261f2-0ea3-4150-9fbd-80092f1f6106",
+          "target": "/mnt/main0"
+        },
+        "gpu": "NVIDIA L40, GPU-df79a5e9-c910-4bbd-f607-bb6808d519c9",
+        "harness_sha256": {
+          "extend_shards.py": "3416174f975a362957e6b2cf1e2414aa677a0331d836d1c094771a5785e2b0db",
+          "run_gpu_extension.sh": "107eeefda3ae1d3ec339e19b7362c16c53b6b1a72bb86f816e5330a4a57ac365",
+          "write_benchmark.py": "644b15ce6d62999bb27d04764f89a96e72c92abe8d9ffc8b76f27da61703a59b"
+        },
+        "memory_mib": 65536,
+        "node": "cw-us-e4a2-l40-202-211",
+        "numpy": "2.3.3",
+        "page_alignment": 4096,
+        "physical_cpu_count": 8,
+        "python": "3.11.15 (main, Jun  2 2026, 22:26:03) [Clang 22.1.3 ]",
+        "slurm_job_gpus": "3",
+        "slurm_job_id": "3837212",
+        "tensorstore": "0.1.85",
+        "writer": {
+          "metering_limit_fix": {
+            "after_sha256": "140df2d3624db8b7376f2519ea569352bebd22022b22cad8adbca087650a4c8d",
+            "before_sha256": "3fe30f2377bdf8ce602a931570c5c52a6ee542c5bbd75486353228a8a79b84c1",
+            "build_jobs": 8,
+            "build_targets": [
+              "bench_stream_microscopy",
+              "test_bench_coverage",
+              "test_bench_report",
+              "test_bench_reset",
+              "test_json_writer",
+              "test_zarr_array"
+            ],
+            "direct_metering_tests": [],
+            "gpu_tests_run": false,
+            "new_capacity": 64,
+            "old_capacity": 32,
+            "original_failure_job": "3836189",
+            "original_failure_record": "046-fast-target54-r4-sample",
+            "patch_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/writer-metering.patch",
+            "patch_sha256": "2fa9e8fab52092d9b6323db2403682eae36280a5abb2565e4f5d33871e2143ab",
+            "previous_binary_sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+            "scope": "Study benchmark metering wrapper capacity only",
+            "source_file": "writer/bench/sink_metering.h"
+          },
+          "page_alignment": 4096,
+          "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+          "previous_identity": {
+            "page_alignment": 4096,
+            "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+            "sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+            "slurm_build_job": "3836168",
+            "zero_integer_fill_fix": {
+              "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+              "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+              "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+              "original_failure_job": "3836086",
+              "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+              "source_file": "writer/src/zarr/zarr_metadata.c",
+              "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+              "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it"
+            }
+          },
+          "previous_identity_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/meter-fix-3836369/writer-identity.before.json",
+          "previous_identity_sha256": "d68d1c774954934dbfe6f1e4f0c55d8164169433d59bb2564fdf89e199eb29bb",
+          "sha256": "9702c7bb6089c69449553fa4a42e9ff96af7c4a5461acbb86bccbf8a32288ed9",
+          "slurm_build_job": "3836369",
+          "source_hashes_sha256": "6637762998108c5749365e7f7a3372ce8d50241c633bc84a830e5a6ee07dd3da",
+          "zero_integer_fill_fix": {
+            "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+            "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+            "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+            "original_failure_job": "3836086",
+            "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+            "source_file": "writer/src/zarr/zarr_metadata.c",
+            "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+            "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it"
+          }
+        }
+      },
+      "family": "shard-count-extension",
+      "geometry_frames": 65536,
+      "harness_sha256": {
+        "extend_shards.py": "3416174f975a362957e6b2cf1e2414aa677a0331d836d1c094771a5785e2b0db",
+        "write_benchmark.py": "644b15ce6d62999bb27d04764f89a96e72c92abe8d9ffc8b76f27da61703a59b"
+      },
+      "local_plan_override": {
+        "shard_count.minimum_logical_bytes": {
+          "after": 103079215104,
+          "before": 34359738368
+        }
+      },
+      "measurement_policy": "coverage-qualified-through-final-close-v2",
+      "minimum_frame_rounded_logical_bytes": 103079882880,
+      "minimum_logical_bytes": 103079215104,
+      "minimum_requested_frames": 142407,
+      "native_case_timeout_seconds": 420,
+      "order_policy": "Seeded starting order for 30/54, reversed on the next round; 15-shard references before and after every pair",
+      "phase": "post-primary-supplementary",
+      "planned_observations": 12,
+      "primary": {
+        "attempt": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836375",
+        "completion": {
+          "max54_extension": false,
+          "observations": 66,
+          "retained_layouts": 6,
+          "status": "pass"
+        },
+        "first_three_decision": {
+          "include_actual54": false,
+          "median_ratio": 0.9955277398456148,
+          "paired_30_over_15_ratios": [
+            0.9955277398456148,
+            1.224116736444527,
+            0.8588602548555773
+          ],
+          "remaining_s": 2703.4827121477574,
+          "rule": "median gain above5% and more than1200s remaining after round3"
+        },
+        "first_three_decision_sha256": "38685de29252608abe308b5b6e9823c98b52cf2aa592ead7e9aad7d374395b39",
+        "job_id": "3836375",
+        "observations_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836375/measurements/observations.jsonl",
+        "observations_sha256": "0314aadeefd5347e76585aa8a270e689ff1f5de9789aff95d08a6a97c8420f83",
+        "six_round_median_ratio": 1.1014457508885038,
+        "six_round_pairs": [
+          {
+            "logical_gibs_15": 5.721187018510967,
+            "logical_gibs_30": 5.695600381772294,
+            "ratio_30_over_15": 0.9955277398456148,
+            "record_15": "020-fast-target16-r1-sample",
+            "record_30": "022-fast-target48-r1-sample",
+            "references": {
+              "reference-after": {
+                "logical_gibs": 5.114226974924817,
+                "record_id": "026-fast-target16-r1-reference-after"
+              },
+              "reference-before": {
+                "logical_gibs": 5.405417642308503,
+                "record_id": "019-fast-target16-r1-reference-before"
+              }
+            },
+            "round": 1
+          },
+          {
+            "logical_gibs_15": 5.242813095778262,
+            "logical_gibs_30": 6.4178152565927125,
+            "ratio_30_over_15": 1.224116736444527,
+            "record_15": "031-fast-target16-r2-sample",
+            "record_30": "030-fast-target48-r2-sample",
+            "references": {
+              "reference-after": {
+                "logical_gibs": 2.897756036291972,
+                "record_id": "034-fast-target16-r2-reference-after"
+              },
+              "reference-before": {
+                "logical_gibs": 5.621374816560345,
+                "record_id": "027-fast-target16-r2-reference-before"
+              }
+            },
+            "round": 2
+          },
+          {
+            "logical_gibs_15": 6.005006579395065,
+            "logical_gibs_30": 5.157461481188664,
+            "ratio_30_over_15": 0.8588602548555773,
+            "record_15": "041-fast-target16-r3-sample",
+            "record_30": "037-fast-target48-r3-sample",
+            "references": {
+              "reference-after": {
+                "logical_gibs": 4.967493246788047,
+                "record_id": "042-fast-target16-r3-reference-after"
+              },
+              "reference-before": {
+                "logical_gibs": 3.846117191034766,
+                "record_id": "035-fast-target16-r3-reference-before"
+              }
+            },
+            "round": 3
+          },
+          {
+            "logical_gibs_15": 5.042199670913506,
+            "logical_gibs_30": 6.028619733349165,
+            "ratio_30_over_15": 1.1956328838236878,
+            "record_15": "045-fast-target16-r4-sample",
+            "record_30": "049-fast-target48-r4-sample",
+            "references": {
+              "reference-after": {
+                "logical_gibs": 4.888559328633736,
+                "record_id": "050-fast-target16-r4-reference-after"
+              },
+              "reference-before": {
+                "logical_gibs": 5.915005444079639,
+                "record_id": "043-fast-target16-r4-reference-before"
+              }
+            },
+            "round": 4
+          },
+          {
+            "logical_gibs_15": 5.51067148577921,
+            "logical_gibs_30": 6.637386789344012,
+            "ratio_30_over_15": 1.2044606190865113,
+            "record_15": "057-fast-target16-r5-sample",
+            "record_30": "056-fast-target48-r5-sample",
+            "references": {
+              "reference-after": {
+                "logical_gibs": 5.746971085431878,
+                "record_id": "058-fast-target16-r5-reference-after"
+              },
+              "reference-before": {
+                "logical_gibs": 4.569439584789029,
+                "record_id": "051-fast-target16-r5-reference-before"
+              }
+            },
+            "round": 5
+          },
+          {
+            "logical_gibs_15": 6.165746066878571,
+            "logical_gibs_30": 6.210500861975227,
+            "ratio_30_over_15": 1.0072586179533198,
+            "record_15": "060-fast-target16-r6-sample",
+            "record_30": "064-fast-target48-r6-sample",
+            "references": {
+              "reference-after": {
+                "logical_gibs": 5.584802391133275,
+                "record_id": "066-fast-target16-r6-reference-after"
+              },
+              "reference-before": {
+                "logical_gibs": 5.567320371297469,
+                "record_id": "059-fast-target16-r6-reference-before"
+              }
+            },
+            "round": 6
+          }
+        ],
+        "supplementary_decision": {
+          "eligible": true,
+          "threshold": 1.05,
+          "uses_all_six_completed_rounds": true
+        },
+        "writer_identity": {
+          "metering_limit_fix": {
+            "after_sha256": "140df2d3624db8b7376f2519ea569352bebd22022b22cad8adbca087650a4c8d",
+            "before_sha256": "3fe30f2377bdf8ce602a931570c5c52a6ee542c5bbd75486353228a8a79b84c1",
+            "build_jobs": 8,
+            "build_targets": [
+              "bench_stream_microscopy",
+              "test_bench_coverage",
+              "test_bench_report",
+              "test_bench_reset",
+              "test_json_writer",
+              "test_zarr_array"
+            ],
+            "direct_metering_tests": [],
+            "gpu_tests_run": false,
+            "new_capacity": 64,
+            "old_capacity": 32,
+            "original_failure_job": "3836189",
+            "original_failure_record": "046-fast-target54-r4-sample",
+            "patch_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/writer-metering.patch",
+            "patch_sha256": "2fa9e8fab52092d9b6323db2403682eae36280a5abb2565e4f5d33871e2143ab",
+            "previous_binary_sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+            "scope": "Study benchmark metering wrapper capacity only",
+            "source_file": "writer/bench/sink_metering.h"
+          },
+          "page_alignment": 4096,
+          "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+          "previous_identity": {
+            "page_alignment": 4096,
+            "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+            "sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+            "slurm_build_job": "3836168",
+            "zero_integer_fill_fix": {
+              "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+              "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+              "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+              "original_failure_job": "3836086",
+              "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+              "source_file": "writer/src/zarr/zarr_metadata.c",
+              "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+              "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it"
+            }
+          },
+          "previous_identity_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/meter-fix-3836369/writer-identity.before.json",
+          "previous_identity_sha256": "d68d1c774954934dbfe6f1e4f0c55d8164169433d59bb2564fdf89e199eb29bb",
+          "sha256": "9702c7bb6089c69449553fa4a42e9ff96af7c4a5461acbb86bccbf8a32288ed9",
+          "slurm_build_job": "3836369",
+          "source_hashes_sha256": "6637762998108c5749365e7f7a3372ce8d50241c633bc84a830e5a6ee07dd3da",
+          "zero_integer_fill_fix": {
+            "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+            "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+            "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+            "original_failure_job": "3836086",
+            "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+            "source_file": "writer/src/zarr/zarr_metadata.c",
+            "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+            "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it"
+          }
+        }
+      },
+      "protected_file_hashes": {
+        "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c128/images/zarr.json": "edfc8fe2774311dd8a2dd50e5d20e1c292ab3a15af12990143f193e438cb4725",
+        "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c16/images/zarr.json": "007af913ba8c2044cb8b151a2b2731577d175598a4aa67ec548e18f3fa94356b",
+        "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c256/images/zarr.json": "f77cc4e6044baf283bb7042a30377577f17ee1b7d32604c7c0bef31b58096038",
+        "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c32/images/zarr.json": "82233b4e1d5b16eeda97f2d4fd915cafb7ea0f52ecf39f48486cfb66ecec40ef",
+        "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c512/images/zarr.json": "125e8cbe9395c2f2fb4754619f5e19432d0ec6ebfa6261cac9ae3f2fdd768470",
+        "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c64/images/zarr.json": "a6bf80ef828976c1b242a3cb87b267d36bf7e1f63a397678404d5841a85b2eb4",
+        "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836375/measurements/complete.json": "dab9f74278a3d2e4485f96f6de85a5df8a27c9ee01d4c105bdd29a6b91ee7069",
+        "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836375/measurements/extension-decision.json": "38685de29252608abe308b5b6e9823c98b52cf2aa592ead7e9aad7d374395b39",
+        "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836375/measurements/observations.jsonl": "0314aadeefd5347e76585aa8a270e689ff1f5de9789aff95d08a6a97c8420f83",
+        "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/reads-3836384/measurements/summary.json": "b5b36a737ee7c78f3f7efd1dce4c9ba52c80b4541dda0802ddb66f2f93de4f7d",
+        "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/plan.json": "efaeec001eaee3225b5b894f25aa3b4a64dc75bce8d2c79d25793de3609e7702",
+        "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/read-manifest.json": "5cfd667555c348f39b16e4a8ad2e57206f65c8fb97ea911c5d0ec2405e60d012",
+        "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/reads-complete.txt": "352543706d2883ef0f2422e67b00f2bec2566ba52f48efd9e389d9a583ea4238",
+        "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/source-hashes.json": "6637762998108c5749365e7f7a3372ce8d50241c633bc84a830e5a6ee07dd3da",
+        "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/source-phases.json": "2bd136ab408aea1ec51e451356c2f306e55cced0ec0fea7ab6f515c894ee3f2f",
+        "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/writer-identity.json": "cbee1ca932cb18691fb5151d8fd22fb99c90bf1968a2f2bac45ce65b5074bb8c",
+        "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/writer-run-hashes.json": "0b709cf5e5444059dc588cbd4c6c8fa958c79f8871f51f28f79f7fab80912c88",
+        "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/writes-complete.txt": "3d6f59732b542efceee6c0e8317d5040674a6f2e2e9959fc7a39f6f4cbe719a2"
+      },
+      "protocol_hash_scope": "canonical JSON excluding protocol_sha256",
+      "protocol_sha256": "07d5e822e8d2526c5a07ee2f653c2c145ee77bba7abf82046d6548af2b7b5caa",
+      "retention": "Native records and logs retained; successful temporary extension stores removed by the existing Study runner; failed stores retained; primary retained arrays untouched",
+      "rounds": 3,
+      "schedule": [
+        {
+          "actual_layer_shards": 15,
+          "order": 1,
+          "role": "reference-before",
+          "round": 1,
+          "target_shards": 16
+        },
+        {
+          "actual_layer_shards": 30,
+          "order": 2,
+          "role": "sample",
+          "round": 1,
+          "target_shards": 48
+        },
+        {
+          "actual_layer_shards": 54,
+          "order": 3,
+          "role": "sample",
+          "round": 1,
+          "target_shards": 54
+        },
+        {
+          "actual_layer_shards": 15,
+          "order": 4,
+          "role": "reference-after",
+          "round": 1,
+          "target_shards": 16
+        },
+        {
+          "actual_layer_shards": 15,
+          "order": 5,
+          "role": "reference-before",
+          "round": 2,
+          "target_shards": 16
+        },
+        {
+          "actual_layer_shards": 54,
+          "order": 6,
+          "role": "sample",
+          "round": 2,
+          "target_shards": 54
+        },
+        {
+          "actual_layer_shards": 30,
+          "order": 7,
+          "role": "sample",
+          "round": 2,
+          "target_shards": 48
+        },
+        {
+          "actual_layer_shards": 15,
+          "order": 8,
+          "role": "reference-after",
+          "round": 2,
+          "target_shards": 16
+        },
+        {
+          "actual_layer_shards": 15,
+          "order": 9,
+          "role": "reference-before",
+          "round": 3,
+          "target_shards": 16
+        },
+        {
+          "actual_layer_shards": 30,
+          "order": 10,
+          "role": "sample",
+          "round": 3,
+          "target_shards": 48
+        },
+        {
+          "actual_layer_shards": 54,
+          "order": 11,
+          "role": "sample",
+          "round": 3,
+          "target_shards": 54
+        },
+        {
+          "actual_layer_shards": 15,
+          "order": 12,
+          "role": "reference-after",
+          "round": 3,
+          "target_shards": 16
+        }
+      ],
+      "schema_version": 1,
+      "seed": 20260925,
+      "source_sha256": "1eff677d3f7d6785bdc8e65079613d6ba2c801a19f33503517a12b8df54affc7",
+      "warmup_s": 2.0,
+      "writer_binary_sha256": "9702c7bb6089c69449553fa4a42e9ff96af7c4a5461acbb86bccbf8a32288ed9",
+      "writer_resources": {
+        "batch_target_bytes": 67108864,
+        "cpu_workers": 4,
+        "io_workers": 32,
+        "output_buffers": 4,
+        "per_file_write_limit": 4
+      }
+    },
+    "protocol_source": "raw/provenance.tar.gz!root/jobs/gpu-extension-3837212/protocol.json",
+    "records_source": "raw/provenance.tar.gz!root/jobs/gpu-extension-3837212/measurements/observations.jsonl"
+  },
+  "provenance": {
+    "authorization": "User approved BBBC022 experiment execution with do it; initial CPU and L40 budgets approximately 2 hours each.",
+    "cpu_allocation_wall_budget_s": 7200,
+    "created_utc": "2026-09-25T18:21:23.847537+00:00",
+    "input_path": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/bench/data/microscopy/data/bbbc022-v1/bbbc022-mito.raw",
+    "input_sha256": "1eff677d3f7d6785bdc8e65079613d6ba2c801a19f33503517a12b8df54affc7",
+    "l40_allocation_wall_budget_s": 7200,
+    "reader_frozen_source": "/mnt/main0/home/nclack/tmp/2026-09-25-damacy-nfs-spot",
+    "reader_revision": "8d0931e7d131fd5d4c565458736ab586012c78c1",
+    "writer_revision": "e3cd3af6c669c99d2b15bbebf9e95a6132319f09",
+    "writer_source": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree"
+  },
+  "read_acceptance": "One matching result and successful case_finished, returncode zero, matching identity.",
+  "reader_output": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/reads-3836384/measurements",
+  "reader_run": {
+    "accepted_observation": "A worker result is usable only when its case_finished record has status=accepted and the process exited successfully",
+    "argv": [
+      "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/sources/read_benchmark.py",
+      "--manifest",
+      "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/read-manifest.json",
+      "--source",
+      "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/bench/data/microscopy/data/bbbc022-v1/bbbc022-mito.raw",
+      "--output",
+      "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/reads-3836384/measurements",
+      "--deadline-seconds",
+      "5000"
+    ],
+    "deadline_seconds": 5000.0,
+    "decoded_cache": "None; fresh process per observation and fresh TensorStore pools per pass",
+    "helper_sha256": {
+      "cold_read_config.py": "d331e172fcab460b0433585824bb2b786625f48a3f0204e6c2e80af42c456aa9",
+      "cpu_pareto.py": "c7f856d4ff3d2fec367dd79d48fb0fbe7570e8718c6ec70ea8aadfd0dca3f268",
+      "cpu_storage_reads.py": "78fc9e1ad8c0e4f2e543fa6a1bbcf210a42212555b33b7e73a065129fff88471",
+      "shard_grid_readers.py": "5f0f890bd8e23be0905fb542be37aa5819c6f1608799880b9352e8c192f967bf",
+      "storage_reads.py": "5f1baa5f612a465ebf2f5a98c7867426381750ed4b3726194528caed9aa78c77"
+    },
+    "machine": {
+      "cpu_affinity": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63
+      ],
+      "environment": {
+        "DAMACY_BENCH_READ_MODE": null,
+        "DAMACY_NFS_MOUNT": "/mnt/main0",
+        "DAMACY_STORAGE_TIER": null,
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "PYTHONPATH": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/reader/python:/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/sources",
+        "SLURM_CPUS_PER_TASK": "48",
+        "SLURM_JOB_ID": "3836384",
+        "SLURM_JOB_NODELIST": "cw-us-e4a1-h100-221-159"
+      },
+      "hostname": "cw-us-e4a1-h100-221-159",
+      "platform": "Linux-6.5.13-65-650-4141-22041-coreweave-amd64-85c45edc-x86_64-with-glibc2.35",
+      "python": "3.11.15 (main, Jun  2 2026, 22:26:03) [Clang 22.1.3 ]",
+      "python_executable": "/mnt/main0/home/nclack/tmp/2026-09-25-damacy-l40-nfs/environment/bin/python"
+    },
+    "manifest": {
+      "helpers_dir": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/sources",
+      "layouts": [
+        {
+          "chunk_shape": [
+            1,
+            64,
+            128
+          ],
+          "id": "c16",
+          "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c16/images",
+          "writer_record": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/004-c16-r1-sample/result.json"
+        },
+        {
+          "chunk_shape": [
+            1,
+            128,
+            128
+          ],
+          "id": "c32",
+          "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c32/images",
+          "writer_record": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/005-c32-r1-sample/result.json"
+        },
+        {
+          "chunk_shape": [
+            1,
+            128,
+            256
+          ],
+          "id": "c64",
+          "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c64/images",
+          "writer_record": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/006-c64-r1-sample/result.json"
+        },
+        {
+          "chunk_shape": [
+            1,
+            256,
+            256
+          ],
+          "id": "c128",
+          "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c128/images",
+          "writer_record": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/002-c128-r1-sample/result.json"
+        },
+        {
+          "chunk_shape": [
+            1,
+            256,
+            512
+          ],
+          "id": "c256",
+          "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c256/images",
+          "writer_record": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/003-c256-r1-sample/result.json"
+        },
+        {
+          "chunk_shape": [
+            1,
+            512,
+            512
+          ],
+          "id": "c512",
+          "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c512/images",
+          "writer_record": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/001-c512-r1-sample/result.json"
+        }
+      ],
+      "nfs_mount": "/mnt/main0",
+      "phase": "measurement",
+      "policy_id": "4635ae43d5402f62f178e4e3015dde9198bccf4931704696e6e68f1f0a436a61",
+      "schema_version": 1,
+      "settings": {
+        "case_timeout_seconds": 180.0,
+        "crop_samples": 4096,
+        "decode_workers": 32,
+        "io_workers": 16,
+        "metadata_cache_bytes": 268435456,
+        "min_active_seconds": 10.0,
+        "min_useful_bytes": 1073741824,
+        "repeats": 3,
+        "samples_per_batch": 128,
+        "seed": 20260925
+      },
+      "shape": [
+        32768,
+        520,
+        696
+      ],
+      "shard_shape": [
+        2048,
+        512,
+        512
+      ],
+      "source": {
+        "dtype": "uint16",
+        "replay": "cyclic",
+        "sha256": "1eff677d3f7d6785bdc8e65079613d6ba2c801a19f33503517a12b8df54affc7",
+        "shape": [
+          16,
+          520,
+          696
+        ],
+        "start_plane": 0
+      }
+    },
+    "manifest_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/read-manifest.json",
+    "original_manifest": {
+      "case_timeout_seconds": 180,
+      "helpers_dir": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/sources",
+      "layouts": [
+        {
+          "chunk_shape": [
+            1,
+            64,
+            128
+          ],
+          "id": "c16",
+          "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c16/images",
+          "writer_record": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/004-c16-r1-sample/result.json"
+        },
+        {
+          "chunk_shape": [
+            1,
+            128,
+            128
+          ],
+          "id": "c32",
+          "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c32/images",
+          "writer_record": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/005-c32-r1-sample/result.json"
+        },
+        {
+          "chunk_shape": [
+            1,
+            128,
+            256
+          ],
+          "id": "c64",
+          "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c64/images",
+          "writer_record": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/006-c64-r1-sample/result.json"
+        },
+        {
+          "chunk_shape": [
+            1,
+            256,
+            256
+          ],
+          "id": "c128",
+          "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c128/images",
+          "writer_record": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/002-c128-r1-sample/result.json"
+        },
+        {
+          "chunk_shape": [
+            1,
+            256,
+            512
+          ],
+          "id": "c256",
+          "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c256/images",
+          "writer_record": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/003-c256-r1-sample/result.json"
+        },
+        {
+          "chunk_shape": [
+            1,
+            512,
+            512
+          ],
+          "id": "c512",
+          "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c512/images",
+          "writer_record": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/001-c512-r1-sample/result.json"
+        }
+      ],
+      "min_active_seconds": 10,
+      "min_useful_bytes": 1073741824,
+      "schema_version": 1,
+      "seed": 20260925,
+      "shape": [
+        32768,
+        520,
+        696
+      ],
+      "shard_shape": [
+        2048,
+        512,
+        512
+      ],
+      "source": {
+        "dtype": "uint16",
+        "replay": "cyclic",
+        "sha256": "1eff677d3f7d6785bdc8e65079613d6ba2c801a19f33503517a12b8df54affc7",
+        "shape": [
+          16,
+          520,
+          696
+        ],
+        "start_plane": 0
+      }
+    },
+    "schedule_policy": "Three shuffled rounds, adjacent backend pairs with alternating order; incomplete and failed cases remain in the schedule",
+    "schema_version": 1,
+    "script_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/sources/read_benchmark.py",
+    "script_sha256": "5ab18574addbda57ad670166bb3215faba9f394768a91e5425ae5837a93d51c7",
+    "source_path": "/mnt/main0/home/nclack/src/chucky/.git/worktrees/worktree/modules/microscopy/annex/objects/74/px/SHA256-s11581440--1eff677d3f7d6785bdc8e65079613d6ba2c801a19f33503517a12b8df54affc7/SHA256-s11581440--1eff677d3f7d6785bdc8e65079613d6ba2c801a19f33503517a12b8df54affc7",
+    "started_utc": "2026-09-25T19:34:00.552926+00:00",
+    "timing": "Active reads and host output assembly only; source loading, validation, planning of Python selections, index warming and client eviction excluded",
+    "trace_sha256": "4995f5ec77ed84c2ef39cf2d7bbf6c6c459bef6cd855c8bdeaf06dd64a31b33c",
+    "units": "Useful bytes are uint16 logical selections; contiguous host float32 output has twice as many bytes; GiB=2^30"
+  },
+  "schema_version": 1,
+  "shard_restart": {
+    "failed_id": "046-fast-target54-r4-sample",
+    "geometry_worker_and_codec_settings": "unchanged",
+    "new_shard_rounds": 6,
+    "old_attempt": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189",
+    "old_writer_identity": {
+      "page_alignment": 4096,
+      "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+      "sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+      "slurm_build_job": "3836168",
+      "zero_integer_fill_fix": {
+        "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+        "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+        "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+        "original_failure_job": "3836086",
+        "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+        "source_file": "writer/src/zarr/zarr_metadata.c",
+        "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+        "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it"
+      }
+    },
+    "reason": "The benchmark metering wrapper had 32 slots and rejected the 54-shard startup. Raise its capacity to 64 and restart the entire shard experiment with one binary, preserving the completed shared-layout experiment.",
+    "schema_version": 1,
+    "selection": "All 18 successful shared-layout observations remain primary; all old shard observations remain supplementary. This decision uses the wrapper failure, not measured rate."
+  },
+  "size_ratios": "Bytes divided by the observation's logical uint16 input bytes; source integers retained.",
+  "source_phases": {
+    "restart": {
+      "failed_id": "046-fast-target54-r4-sample",
+      "geometry_worker_and_codec_settings": "unchanged",
+      "new_shard_rounds": 6,
+      "old_attempt": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189",
+      "old_writer_identity": {
+        "page_alignment": 4096,
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+        "sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+        "slurm_build_job": "3836168",
+        "zero_integer_fill_fix": {
+          "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+          "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+          "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+          "original_failure_job": "3836086",
+          "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+          "source_file": "writer/src/zarr/zarr_metadata.c",
+          "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+          "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it"
+        }
+      },
+      "reason": "The benchmark metering wrapper had 32 slots and rejected the 54-shard startup. Raise its capacity to 64 and restart the entire shard experiment with one binary, preserving the completed shared-layout experiment.",
+      "schema_version": 1,
+      "selection": "All 18 successful shared-layout observations remain primary; all old shard observations remain supplementary. This decision uses the wrapper failure, not measured rate."
+    },
+    "shard_count": {
+      "attempt": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836375",
+      "job_id": "3836375",
+      "selection": "Entire shard sweep restarted after raising the benchmark metering capacity",
+      "writer_identity": {
+        "metering_limit_fix": {
+          "after_sha256": "140df2d3624db8b7376f2519ea569352bebd22022b22cad8adbca087650a4c8d",
+          "before_sha256": "3fe30f2377bdf8ce602a931570c5c52a6ee542c5bbd75486353228a8a79b84c1",
+          "build_jobs": 8,
+          "build_targets": [
+            "bench_stream_microscopy",
+            "test_bench_coverage",
+            "test_bench_report",
+            "test_bench_reset",
+            "test_json_writer",
+            "test_zarr_array"
+          ],
+          "direct_metering_tests": [],
+          "gpu_tests_run": false,
+          "new_capacity": 64,
+          "old_capacity": 32,
+          "original_failure_job": "3836189",
+          "original_failure_record": "046-fast-target54-r4-sample",
+          "patch_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/writer-metering.patch",
+          "patch_sha256": "2fa9e8fab52092d9b6323db2403682eae36280a5abb2565e4f5d33871e2143ab",
+          "previous_binary_sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+          "scope": "Study benchmark metering wrapper capacity only",
+          "source_file": "writer/bench/sink_metering.h"
+        },
+        "page_alignment": 4096,
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+        "previous_identity": {
+          "page_alignment": 4096,
+          "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+          "sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+          "slurm_build_job": "3836168",
+          "zero_integer_fill_fix": {
+            "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+            "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+            "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+            "original_failure_job": "3836086",
+            "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+            "source_file": "writer/src/zarr/zarr_metadata.c",
+            "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+            "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it"
+          }
+        },
+        "previous_identity_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/meter-fix-3836369/writer-identity.before.json",
+        "previous_identity_sha256": "d68d1c774954934dbfe6f1e4f0c55d8164169433d59bb2564fdf89e199eb29bb",
+        "sha256": "9702c7bb6089c69449553fa4a42e9ff96af7c4a5461acbb86bccbf8a32288ed9",
+        "slurm_build_job": "3836369",
+        "source_hashes_sha256": "6637762998108c5749365e7f7a3372ce8d50241c633bc84a830e5a6ee07dd3da",
+        "zero_integer_fill_fix": {
+          "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+          "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+          "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+          "original_failure_job": "3836086",
+          "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+          "source_file": "writer/src/zarr/zarr_metadata.c",
+          "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+          "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it"
+        }
+      }
+    },
+    "shared_layouts": {
+      "attempt": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189",
+      "job_id": "3836189",
+      "selection": "All 18 completed shared-layout samples carried unchanged",
+      "writer_identity": {
+        "page_alignment": 4096,
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+        "sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+        "slurm_build_job": "3836168",
+        "zero_integer_fill_fix": {
+          "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+          "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+          "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+          "original_failure_job": "3836086",
+          "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+          "source_file": "writer/src/zarr/zarr_metadata.c",
+          "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+          "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it"
+        }
+      }
+    }
+  },
+  "source_root": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write",
+  "summary_definition": "Median, minimum and maximum of individual qualified observations, with n per metric.",
+  "writer_attempt": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836375",
+  "writer_identity": {
+    "metering_limit_fix": {
+      "after_sha256": "140df2d3624db8b7376f2519ea569352bebd22022b22cad8adbca087650a4c8d",
+      "before_sha256": "3fe30f2377bdf8ce602a931570c5c52a6ee542c5bbd75486353228a8a79b84c1",
+      "build_jobs": 8,
+      "build_targets": [
+        "bench_stream_microscopy",
+        "test_bench_coverage",
+        "test_bench_report",
+        "test_bench_reset",
+        "test_json_writer",
+        "test_zarr_array"
+      ],
+      "direct_metering_tests": [],
+      "gpu_tests_run": false,
+      "new_capacity": 64,
+      "old_capacity": 32,
+      "original_failure_job": "3836189",
+      "original_failure_record": "046-fast-target54-r4-sample",
+      "patch_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/writer-metering.patch",
+      "patch_sha256": "2fa9e8fab52092d9b6323db2403682eae36280a5abb2565e4f5d33871e2143ab",
+      "previous_binary_sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+      "scope": "Study benchmark metering wrapper capacity only",
+      "source_file": "writer/bench/sink_metering.h"
+    },
+    "page_alignment": 4096,
+    "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+    "previous_identity": {
+      "page_alignment": 4096,
+      "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+      "sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+      "slurm_build_job": "3836168",
+      "zero_integer_fill_fix": {
+        "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+        "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+        "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+        "original_failure_job": "3836086",
+        "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+        "source_file": "writer/src/zarr/zarr_metadata.c",
+        "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+        "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it"
+      }
+    },
+    "previous_identity_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/meter-fix-3836369/writer-identity.before.json",
+    "previous_identity_sha256": "d68d1c774954934dbfe6f1e4f0c55d8164169433d59bb2564fdf89e199eb29bb",
+    "sha256": "9702c7bb6089c69449553fa4a42e9ff96af7c4a5461acbb86bccbf8a32288ed9",
+    "slurm_build_job": "3836369",
+    "source_hashes_sha256": "6637762998108c5749365e7f7a3372ce8d50241c633bc84a830e5a6ee07dd3da",
+    "zero_integer_fill_fix": {
+      "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+      "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+      "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+      "original_failure_job": "3836086",
+      "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+      "source_file": "writer/src/zarr/zarr_metadata.c",
+      "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+      "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it"
+    }
+  },
+  "writer_policy_scope": "New fixed-volume and dynamic coverage-qualified phases remain separate."
+}

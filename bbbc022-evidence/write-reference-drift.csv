@@ -1,0 +1,7 @@
+case_id,round,policy,job_id,before_id,after_id,before_logical_gibs,after_logical_gibs,after_over_before
+fast-target16,1,coverage-qualified-through-final-close-v2,3836375,019-fast-target16-r1-reference-before,026-fast-target16-r1-reference-after,5.405417642308503,5.114226974924817,0.9461298484867254
+fast-target16,2,coverage-qualified-through-final-close-v2,3836375,027-fast-target16-r2-reference-before,034-fast-target16-r2-reference-after,5.621374816560345,2.897756036291972,0.5154888494101654
+fast-target16,3,coverage-qualified-through-final-close-v2,3836375,035-fast-target16-r3-reference-before,042-fast-target16-r3-reference-after,3.846117191034766,4.967493246788047,1.2915605531644199
+fast-target16,4,coverage-qualified-through-final-close-v2,3836375,043-fast-target16-r4-reference-before,050-fast-target16-r4-reference-after,5.915005444079639,4.888559328633736,0.8264674267589596
+fast-target16,5,coverage-qualified-through-final-close-v2,3836375,051-fast-target16-r5-reference-before,058-fast-target16-r5-reference-after,4.569439584789029,5.746971085431878,1.2576971374263646
+fast-target16,6,coverage-qualified-through-final-close-v2,3836375,059-fast-target16-r6-reference-before,066-fast-target16-r6-reference-after,5.567320371297469,5.584802391133275,1.0031401138554799

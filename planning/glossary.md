@@ -57,6 +57,15 @@ batch, or complete-dataset scope of each count.
   input versus output bytes and whether source I/O, decoding, drain, final
   close, and device transfers are timed. Closing a file alone does not prove
   durable storage.
+- **Maximum drain rate / drain capacity:** logical input bytes processed per
+  second with input continuously available under the measured conditions.
+  Here the writer interval includes append plus final drain and close. Report
+  repetition medians and ranges; this is not the single fastest repetition
+  or a rate measured only during shutdown. Sustained acquisition rates will
+  be lower and need headroom for storage/network variability and finite buffers.
+- **Final drain:** completion of pending writer work after the last input is
+  submitted. This time is included in the measured writer interval and is
+  distinct from drain capacity over the whole run.
 - **Pareto frontier:** tested configurations for which no eligible alternative
   is at least as good on every objective and strictly better on one. State
   the objectives, eligibility rules, and comparison group.
@@ -68,8 +77,9 @@ batch, or complete-dataset scope of each count.
 ## Writing and memory
 
 - **Streaming:** producing Zarr from images arriving during acquisition or
-  while converting TIFFs. Acquisition emphasizes sustained throughput;
-  TIFF conversion emphasizes memory use. State the input order and buffering.
+  while converting TIFFs. Compare acquisition layouts using drain capacity,
+  with the limit on sustained rates stated; TIFF conversion emphasizes memory
+  use. State the input order and buffering.
 - **Rechunking:** the Zarr-to-Zarr transformation considered here, including
   v2-to-v3 conversion. Record source and destination layouts, formats, codecs,
   and traversal. A format-version change need not change chunk shape.

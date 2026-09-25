@@ -1,0 +1,5310 @@
+{
+  "schema_version": 1,
+  "root": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write",
+  "created_utc": "2026-09-25T19:32:32.325512+00:00",
+  "hostname": "cw-us-e4a1-h100-221-159",
+  "slurm_job_id": "3836384",
+  "method": {
+    "scope": "retained fixed-volume stores after successful close and drain",
+    "payload_reads": false,
+    "file_size": "st_size for every regular file under the retained array's parent store",
+    "allocated_bytes": "st_blocks * 512; separate from file length",
+    "alignment_source": "identity_source JSON pointer plus /page_alignment",
+    "metered_identity": "output_bytes = sum(ceil(shard_st_size / page_alignment) * page_alignment)",
+    "final_padding": "sum((-shard_st_size) % page_alignment)",
+    "final_size_identity": "final_file_bytes = output_bytes - final_padding_bytes + metadata_file_bytes",
+    "index_bytes_per_shard": "16 * product(chunks_per_shard) + 4, including CRC",
+    "internal_padding": "retained inside shard files; not subtracted",
+    "metadata": "final zarr.json files; replacement traffic is not metered",
+    "dynamic_runs": "not applicable without adding warmup_output_bytes to metered output"
+  },
+  "manifest": {
+    "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/read-manifest.json",
+    "sha256": "5cfd667555c348f39b16e4a8ad2e57206f65c8fb97ea911c5d0ec2405e60d012"
+  },
+  "identity_source": {
+    "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/source-phases.json",
+    "sha256": "2bd136ab408aea1ec51e451356c2f306e55cced0ec0fea7ab6f515c894ee3f2f",
+    "json_pointer": "#/shared_layouts/writer_identity"
+  },
+  "writer_identity": {
+    "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+    "sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+    "slurm_build_job": "3836168",
+    "zero_integer_fill_fix": {
+      "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it",
+      "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+      "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+      "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+      "source_file": "writer/src/zarr/zarr_metadata.c",
+      "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+      "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+      "original_failure_job": "3836086"
+    },
+    "page_alignment": 4096
+  },
+  "layouts": [
+    {
+      "id": "c16",
+      "manifest_locator": "#/layouts/0",
+      "writer_record": {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/004-c16-r1-sample/result.json",
+        "sha256": "0fb88db520c386114e99084d3289894797a4c7d6e9d871db8fdd0b4a297fa531",
+        "id": "004-c16-r1-sample",
+        "slurm_job_id": "3836189",
+        "status": "pass",
+        "returncode": 0,
+        "scope": "measurement",
+        "round": 1,
+        "role": "sample"
+      },
+      "writer_metrics": {
+        "logical_bytes": 23718789120,
+        "submitted_bytes": 28991029248,
+        "metered_output_bytes": 12616605696,
+        "elapsed_s": 9.427758586000001,
+        "logical_gibs": 2.343064212823915,
+        "drain_s": 0.11272569800000001,
+        "drain_fraction": 0.011956786649946151
+      },
+      "native_measurement": {
+        "policy": "fixed-volume-after-discard-warmup-through-close-v1",
+        "fixed_volume": true,
+        "separate_warmup_s": 2.712416498,
+        "input_mode": "direct",
+        "output_scope": "physical_sink_writes",
+        "coverage_status": "sufficient",
+        "attempt": 1,
+        "max_attempts": 1,
+        "target_duration_s": 0.25,
+        "discarded_attempts_s": 0.0,
+        "warmup_complete_batches": 0,
+        "complete_batches": 431,
+        "batch_reuses_lower_bound": 429,
+        "generation_transitions": 15,
+        "requested_frames": 32768,
+        "requested_warmup_s": 0.25,
+        "requested_duration_s": 0.25,
+        "warmup_input_bytes": 0,
+        "warmup_output_bytes": 0,
+        "warmup_drain_s": 0.0,
+        "append_s": 9.315032888000001,
+        "geometry": {
+          "epoch_bytes": 884736,
+          "epochs_per_batch": 76,
+          "staging_bytes": 134217728,
+          "memory_budget_bytes": 17179869184,
+          "target_batch_bytes": 67108864,
+          "dimensions": [
+            {
+              "name": "t",
+              "reference_size": 65536,
+              "chunk_size": 1,
+              "chunks_per_shard": 2048,
+              "downsample": false,
+              "storage_position": 0
+            },
+            {
+              "name": "y",
+              "reference_size": 520,
+              "chunk_size": 64,
+              "chunks_per_shard": 8,
+              "downsample": false,
+              "storage_position": 1
+            },
+            {
+              "name": "x",
+              "reference_size": 696,
+              "chunk_size": 128,
+              "chunks_per_shard": 4,
+              "downsample": false,
+              "storage_position": 2
+            }
+          ]
+        },
+        "boundary_timing": true,
+        "reference_frames": 65536,
+        "source_bytes": 14155776,
+        "append_bytes": 884736,
+        "prep_s": 0.008796485925115585,
+        "warmup_s": 0.0,
+        "elapsed_s": 9.427758586000001,
+        "drain_s": 0.11272569800000001,
+        "drain_fraction": 0.011956786649946151,
+        "submitted_bytes": 28991029248,
+        "logical_input_bytes": 23718789120,
+        "input_bytes": 28991029248,
+        "output_bytes": 12616605696,
+        "throughput_in_gibs": 2.8638832606611673,
+        "throughput_out_gibs": 1.246333324355133,
+        "boundaries": {
+          "batch": {
+            "bytes": 67239936,
+            "crossing": {
+              "calls": 431,
+              "over_100ms": 3,
+              "total_ms": 8617.674422999999,
+              "max_ms": 265.228752
+            },
+            "following": {
+              "calls": 6892,
+              "over_100ms": 0,
+              "total_ms": 162.24808099999998,
+              "max_ms": 0.677261
+            }
+          },
+          "generation": {
+            "bytes": 1811939328,
+            "crossing": {
+              "calls": 16,
+              "over_100ms": 0,
+              "total_ms": 0.34738199999999997,
+              "max_ms": 0.040421
+            },
+            "following": {
+              "calls": 240,
+              "over_100ms": 0,
+              "total_ms": 92.60172500000006,
+              "max_ms": 26.039787999999998
+            }
+          },
+          "staging_grid": {
+            "bytes": 131072,
+            "crossing": {
+              "calls": 32768,
+              "over_100ms": 3,
+              "total_ms": 9313.240941999975,
+              "max_ms": 265.228752
+            },
+            "following": {
+              "calls": 32767,
+              "over_100ms": 3,
+              "total_ms": 9313.186201999975,
+              "max_ms": 265.228752
+            }
+          }
+        }
+      },
+      "native_output_bytes": 12616605696,
+      "writer_store_check": {
+        "final_file_bytes": 12616482465,
+        "allocated_file_bytes": 12616499712,
+        "file_count": 66,
+        "shard_file_count": 64,
+        "index_bytes_per_shard": 1048580,
+        "shape": [
+          32768,
+          520,
+          696
+        ]
+      },
+      "array_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c16/images",
+      "store_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c16",
+      "shape": [
+        32768,
+        520,
+        696
+      ],
+      "chunk_shape": [
+        1,
+        64,
+        128
+      ],
+      "shard_shape": [
+        2048,
+        512,
+        512
+      ],
+      "chunks_per_shard": [
+        2048,
+        8,
+        4
+      ],
+      "page_alignment": 4096,
+      "files": [
+        {
+          "path": "images/c/0/0/0",
+          "kind": "shard",
+          "st_size": 567167345,
+          "st_blocks": 1107749,
+          "allocated_bytes": 567167488,
+          "final_padding_bytes": 1679,
+          "aligned_bytes": 567169024,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/0/0/1",
+          "kind": "shard",
+          "st_size": 206014306,
+          "st_blocks": 402372,
+          "allocated_bytes": 206014464,
+          "final_padding_bytes": 2206,
+          "aligned_bytes": 206016512,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/0/1/0",
+          "kind": "shard",
+          "st_size": 10649657,
+          "st_blocks": 20801,
+          "allocated_bytes": 10650112,
+          "final_padding_bytes": 4039,
+          "aligned_bytes": 10653696,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/0/1/1",
+          "kind": "shard",
+          "st_size": 4690161,
+          "st_blocks": 9161,
+          "allocated_bytes": 4690432,
+          "final_padding_bytes": 3855,
+          "aligned_bytes": 4694016,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/1/0/0",
+          "kind": "shard",
+          "st_size": 567167996,
+          "st_blocks": 1107750,
+          "allocated_bytes": 567168000,
+          "final_padding_bytes": 1028,
+          "aligned_bytes": 567169024,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/1/0/1",
+          "kind": "shard",
+          "st_size": 206016928,
+          "st_blocks": 402377,
+          "allocated_bytes": 206017024,
+          "final_padding_bytes": 3680,
+          "aligned_bytes": 206020608,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/1/1/0",
+          "kind": "shard",
+          "st_size": 10651294,
+          "st_blocks": 20804,
+          "allocated_bytes": 10651648,
+          "final_padding_bytes": 2402,
+          "aligned_bytes": 10653696,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/1/1/1",
+          "kind": "shard",
+          "st_size": 4691485,
+          "st_blocks": 9164,
+          "allocated_bytes": 4691968,
+          "final_padding_bytes": 2531,
+          "aligned_bytes": 4694016,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/10/0/0",
+          "kind": "shard",
+          "st_size": 567170340,
+          "st_blocks": 1107755,
+          "allocated_bytes": 567170560,
+          "final_padding_bytes": 2780,
+          "aligned_bytes": 567173120,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/10/0/1",
+          "kind": "shard",
+          "st_size": 206019250,
+          "st_blocks": 402382,
+          "allocated_bytes": 206019584,
+          "final_padding_bytes": 1358,
+          "aligned_bytes": 206020608,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/10/1/0",
+          "kind": "shard",
+          "st_size": 10651556,
+          "st_blocks": 20804,
+          "allocated_bytes": 10651648,
+          "final_padding_bytes": 2140,
+          "aligned_bytes": 10653696,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/10/1/1",
+          "kind": "shard",
+          "st_size": 4693306,
+          "st_blocks": 9167,
+          "allocated_bytes": 4693504,
+          "final_padding_bytes": 710,
+          "aligned_bytes": 4694016,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/11/0/0",
+          "kind": "shard",
+          "st_size": 567168374,
+          "st_blocks": 1107751,
+          "allocated_bytes": 567168512,
+          "final_padding_bytes": 650,
+          "aligned_bytes": 567169024,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/11/0/1",
+          "kind": "shard",
+          "st_size": 206016575,
+          "st_blocks": 402377,
+          "allocated_bytes": 206017024,
+          "final_padding_bytes": 4033,
+          "aligned_bytes": 206020608,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/11/1/0",
+          "kind": "shard",
+          "st_size": 10653615,
+          "st_blocks": 20808,
+          "allocated_bytes": 10653696,
+          "final_padding_bytes": 81,
+          "aligned_bytes": 10653696,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/11/1/1",
+          "kind": "shard",
+          "st_size": 4694297,
+          "st_blocks": 9169,
+          "allocated_bytes": 4694528,
+          "final_padding_bytes": 3815,
+          "aligned_bytes": 4698112,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/12/0/0",
+          "kind": "shard",
+          "st_size": 567167425,
+          "st_blocks": 1107749,
+          "allocated_bytes": 567167488,
+          "final_padding_bytes": 1599,
+          "aligned_bytes": 567169024,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/12/0/1",
+          "kind": "shard",
+          "st_size": 206016349,
+          "st_blocks": 402376,
+          "allocated_bytes": 206016512,
+          "final_padding_bytes": 163,
+          "aligned_bytes": 206016512,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/12/1/0",
+          "kind": "shard",
+          "st_size": 10650825,
+          "st_blocks": 20803,
+          "allocated_bytes": 10651136,
+          "final_padding_bytes": 2871,
+          "aligned_bytes": 10653696,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/12/1/1",
+          "kind": "shard",
+          "st_size": 4691232,
+          "st_blocks": 9163,
+          "allocated_bytes": 4691456,
+          "final_padding_bytes": 2784,
+          "aligned_bytes": 4694016,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/13/0/0",
+          "kind": "shard",
+          "st_size": 567168076,
+          "st_blocks": 1107751,
+          "allocated_bytes": 567168512,
+          "final_padding_bytes": 948,
+          "aligned_bytes": 567169024,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/13/0/1",
+          "kind": "shard",
+          "st_size": 206018971,
+          "st_blocks": 402381,
+          "allocated_bytes": 206019072,
+          "final_padding_bytes": 1637,
+          "aligned_bytes": 206020608,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/13/1/0",
+          "kind": "shard",
+          "st_size": 10652462,
+          "st_blocks": 20806,
+          "allocated_bytes": 10652672,
+          "final_padding_bytes": 1234,
+          "aligned_bytes": 10653696,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/13/1/1",
+          "kind": "shard",
+          "st_size": 4692556,
+          "st_blocks": 9166,
+          "allocated_bytes": 4692992,
+          "final_padding_bytes": 1460,
+          "aligned_bytes": 4694016,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/14/0/0",
+          "kind": "shard",
+          "st_size": 567167636,
+          "st_blocks": 1107750,
+          "allocated_bytes": 567168000,
+          "final_padding_bytes": 1388,
+          "aligned_bytes": 567169024,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/14/0/1",
+          "kind": "shard",
+          "st_size": 206019931,
+          "st_blocks": 402383,
+          "allocated_bytes": 206020096,
+          "final_padding_bytes": 677,
+          "aligned_bytes": 206020608,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/14/1/0",
+          "kind": "shard",
+          "st_size": 10650580,
+          "st_blocks": 20802,
+          "allocated_bytes": 10650624,
+          "final_padding_bytes": 3116,
+          "aligned_bytes": 10653696,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/14/1/1",
+          "kind": "shard",
+          "st_size": 4693663,
+          "st_blocks": 9168,
+          "allocated_bytes": 4694016,
+          "final_padding_bytes": 353,
+          "aligned_bytes": 4694016,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/15/0/0",
+          "kind": "shard",
+          "st_size": 567169766,
+          "st_blocks": 1107754,
+          "allocated_bytes": 567170048,
+          "final_padding_bytes": 3354,
+          "aligned_bytes": 567173120,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/15/0/1",
+          "kind": "shard",
+          "st_size": 206017256,
+          "st_blocks": 402378,
+          "allocated_bytes": 206017536,
+          "final_padding_bytes": 3352,
+          "aligned_bytes": 206020608,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/15/1/0",
+          "kind": "shard",
+          "st_size": 10652639,
+          "st_blocks": 20806,
+          "allocated_bytes": 10652672,
+          "final_padding_bytes": 1057,
+          "aligned_bytes": 10653696,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/15/1/1",
+          "kind": "shard",
+          "st_size": 4690558,
+          "st_blocks": 9162,
+          "allocated_bytes": 4690944,
+          "final_padding_bytes": 3458,
+          "aligned_bytes": 4694016,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/2/0/0",
+          "kind": "shard",
+          "st_size": 567167556,
+          "st_blocks": 1107750,
+          "allocated_bytes": 567168000,
+          "final_padding_bytes": 1468,
+          "aligned_bytes": 567169024,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/2/0/1",
+          "kind": "shard",
+          "st_size": 206017888,
+          "st_blocks": 402379,
+          "allocated_bytes": 206018048,
+          "final_padding_bytes": 2720,
+          "aligned_bytes": 206020608,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/2/1/0",
+          "kind": "shard",
+          "st_size": 10653508,
+          "st_blocks": 20808,
+          "allocated_bytes": 10653696,
+          "final_padding_bytes": 188,
+          "aligned_bytes": 10653696,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/2/1/1",
+          "kind": "shard",
+          "st_size": 4692592,
+          "st_blocks": 9166,
+          "allocated_bytes": 4692992,
+          "final_padding_bytes": 1424,
+          "aligned_bytes": 4694016,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/3/0/0",
+          "kind": "shard",
+          "st_size": 567169686,
+          "st_blocks": 1107754,
+          "allocated_bytes": 567170048,
+          "final_padding_bytes": 3434,
+          "aligned_bytes": 567173120,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/3/0/1",
+          "kind": "shard",
+          "st_size": 206019309,
+          "st_blocks": 402382,
+          "allocated_bytes": 206019584,
+          "final_padding_bytes": 1299,
+          "aligned_bytes": 206020608,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/3/1/0",
+          "kind": "shard",
+          "st_size": 10651471,
+          "st_blocks": 20804,
+          "allocated_bytes": 10651648,
+          "final_padding_bytes": 2225,
+          "aligned_bytes": 10653696,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/3/1/1",
+          "kind": "shard",
+          "st_size": 4693583,
+          "st_blocks": 9168,
+          "allocated_bytes": 4694016,
+          "final_padding_bytes": 433,
+          "aligned_bytes": 4694016,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/4/0/0",
+          "kind": "shard",
+          "st_size": 567168737,
+          "st_blocks": 1107752,
+          "allocated_bytes": 567169024,
+          "final_padding_bytes": 287,
+          "aligned_bytes": 567169024,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/4/0/1",
+          "kind": "shard",
+          "st_size": 206014987,
+          "st_blocks": 402374,
+          "allocated_bytes": 206015488,
+          "final_padding_bytes": 1525,
+          "aligned_bytes": 206016512,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/4/1/0",
+          "kind": "shard",
+          "st_size": 10652777,
+          "st_blocks": 20807,
+          "allocated_bytes": 10653184,
+          "final_padding_bytes": 919,
+          "aligned_bytes": 10653696,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/4/1/1",
+          "kind": "shard",
+          "st_size": 4690518,
+          "st_blocks": 9162,
+          "allocated_bytes": 4690944,
+          "final_padding_bytes": 3498,
+          "aligned_bytes": 4694016,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/5/0/0",
+          "kind": "shard",
+          "st_size": 567169388,
+          "st_blocks": 1107753,
+          "allocated_bytes": 567169536,
+          "final_padding_bytes": 3732,
+          "aligned_bytes": 567173120,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/5/0/1",
+          "kind": "shard",
+          "st_size": 206017609,
+          "st_blocks": 402379,
+          "allocated_bytes": 206018048,
+          "final_padding_bytes": 2999,
+          "aligned_bytes": 206020608,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/5/1/0",
+          "kind": "shard",
+          "st_size": 10650318,
+          "st_blocks": 20802,
+          "allocated_bytes": 10650624,
+          "final_padding_bytes": 3378,
+          "aligned_bytes": 10653696,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/5/1/1",
+          "kind": "shard",
+          "st_size": 4691842,
+          "st_blocks": 9164,
+          "allocated_bytes": 4691968,
+          "final_padding_bytes": 2174,
+          "aligned_bytes": 4694016,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/6/0/0",
+          "kind": "shard",
+          "st_size": 567168948,
+          "st_blocks": 1107752,
+          "allocated_bytes": 567169024,
+          "final_padding_bytes": 76,
+          "aligned_bytes": 567169024,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/6/0/1",
+          "kind": "shard",
+          "st_size": 206018569,
+          "st_blocks": 402381,
+          "allocated_bytes": 206019072,
+          "final_padding_bytes": 2039,
+          "aligned_bytes": 206020608,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/6/1/0",
+          "kind": "shard",
+          "st_size": 10652532,
+          "st_blocks": 20806,
+          "allocated_bytes": 10652672,
+          "final_padding_bytes": 1164,
+          "aligned_bytes": 10653696,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/6/1/1",
+          "kind": "shard",
+          "st_size": 4692949,
+          "st_blocks": 9166,
+          "allocated_bytes": 4692992,
+          "final_padding_bytes": 1067,
+          "aligned_bytes": 4694016,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/7/0/0",
+          "kind": "shard",
+          "st_size": 567171078,
+          "st_blocks": 1107757,
+          "allocated_bytes": 567171584,
+          "final_padding_bytes": 2042,
+          "aligned_bytes": 567173120,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/7/0/1",
+          "kind": "shard",
+          "st_size": 206015894,
+          "st_blocks": 402375,
+          "allocated_bytes": 206016000,
+          "final_padding_bytes": 618,
+          "aligned_bytes": 206016512,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/7/1/0",
+          "kind": "shard",
+          "st_size": 10654591,
+          "st_blocks": 20810,
+          "allocated_bytes": 10654720,
+          "final_padding_bytes": 3201,
+          "aligned_bytes": 10657792,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/7/1/1",
+          "kind": "shard",
+          "st_size": 4693940,
+          "st_blocks": 9168,
+          "allocated_bytes": 4694016,
+          "final_padding_bytes": 76,
+          "aligned_bytes": 4694016,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/8/0/0",
+          "kind": "shard",
+          "st_size": 567170129,
+          "st_blocks": 1107755,
+          "allocated_bytes": 567170560,
+          "final_padding_bytes": 2991,
+          "aligned_bytes": 567173120,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/8/0/1",
+          "kind": "shard",
+          "st_size": 206015668,
+          "st_blocks": 402375,
+          "allocated_bytes": 206016000,
+          "final_padding_bytes": 844,
+          "aligned_bytes": 206016512,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/8/1/0",
+          "kind": "shard",
+          "st_size": 10651801,
+          "st_blocks": 20805,
+          "allocated_bytes": 10652160,
+          "final_padding_bytes": 1895,
+          "aligned_bytes": 10653696,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/8/1/1",
+          "kind": "shard",
+          "st_size": 4690875,
+          "st_blocks": 9162,
+          "allocated_bytes": 4690944,
+          "final_padding_bytes": 3141,
+          "aligned_bytes": 4694016,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/9/0/0",
+          "kind": "shard",
+          "st_size": 567166684,
+          "st_blocks": 1107748,
+          "allocated_bytes": 567166976,
+          "final_padding_bytes": 2340,
+          "aligned_bytes": 567169024,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/9/0/1",
+          "kind": "shard",
+          "st_size": 206018290,
+          "st_blocks": 402380,
+          "allocated_bytes": 206018560,
+          "final_padding_bytes": 2318,
+          "aligned_bytes": 206020608,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/9/1/0",
+          "kind": "shard",
+          "st_size": 10649342,
+          "st_blocks": 20800,
+          "allocated_bytes": 10649600,
+          "final_padding_bytes": 258,
+          "aligned_bytes": 10649600,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/c/9/1/1",
+          "kind": "shard",
+          "st_size": 4692199,
+          "st_blocks": 9165,
+          "allocated_bytes": 4692480,
+          "final_padding_bytes": 1817,
+          "aligned_bytes": 4694016,
+          "index_bytes": 1048580
+        },
+        {
+          "path": "images/zarr.json",
+          "kind": "metadata",
+          "st_size": 715,
+          "st_blocks": 2,
+          "allocated_bytes": 1024
+        },
+        {
+          "path": "zarr.json",
+          "kind": "metadata",
+          "st_size": 82,
+          "st_blocks": 1,
+          "allocated_bytes": 512
+        }
+      ],
+      "other_entries": [],
+      "totals": {
+        "logical_bytes": 23718789120,
+        "metered_output_bytes": 12616605696,
+        "file_count": 66,
+        "shard_file_count": 64,
+        "metadata_file_count": 2,
+        "other_file_count": 0,
+        "final_file_bytes": 12616482465,
+        "shard_file_bytes": 12616481668,
+        "metadata_file_bytes": 797,
+        "allocated_file_bytes": 12616499712,
+        "st_blocks": 24641601,
+        "aligned_shard_file_bytes": 12616605696,
+        "final_padding_bytes": 124028,
+        "index_bytes_per_shard": 1048580,
+        "index_bytes": 67109120,
+        "logical_to_final_ratio": 1.8799843130444203
+      },
+      "checks": {
+        "writer_passed": true,
+        "fixed_volume": true,
+        "warmup_excluded": true,
+        "retained_path_matches": true,
+        "record_case_matches": true,
+        "geometry_matches": true,
+        "logical_bytes_match": true,
+        "metered_bytes_match": true,
+        "expected_shard_count": true,
+        "expected_metadata": true,
+        "only_expected_files": true,
+        "indexes_fit": true,
+        "metered_equals_aligned_shards": true,
+        "final_size_identity": true,
+        "writer_census_final_file_bytes": true,
+        "writer_census_allocated_file_bytes": true,
+        "writer_census_file_count": true,
+        "writer_census_shard_file_count": true,
+        "writer_census_index_bytes_per_shard": true
+      },
+      "status": "pass",
+      "failed_checks": []
+    },
+    {
+      "id": "c32",
+      "manifest_locator": "#/layouts/1",
+      "writer_record": {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/005-c32-r1-sample/result.json",
+        "sha256": "71d3e2135462cd5bcf54b58827d9bce3c27e6e1db3e353cb23594559d4f1467d",
+        "id": "005-c32-r1-sample",
+        "slurm_job_id": "3836189",
+        "status": "pass",
+        "returncode": 0,
+        "scope": "measurement",
+        "round": 1,
+        "role": "sample"
+      },
+      "writer_metrics": {
+        "logical_bytes": 23718789120,
+        "submitted_bytes": 32212254720,
+        "metered_output_bytes": 12576464896,
+        "elapsed_s": 9.394473475,
+        "logical_gibs": 2.3513658119089,
+        "drain_s": 0.15100099,
+        "drain_fraction": 0.016073385102617473
+      },
+      "native_measurement": {
+        "policy": "fixed-volume-after-discard-warmup-through-close-v1",
+        "fixed_volume": true,
+        "separate_warmup_s": 1.0803929300000001,
+        "input_mode": "direct",
+        "output_scope": "physical_sink_writes",
+        "coverage_status": "sufficient",
+        "attempt": 1,
+        "max_attempts": 1,
+        "target_duration_s": 0.25,
+        "discarded_attempts_s": 0.0,
+        "warmup_complete_batches": 0,
+        "complete_batches": 474,
+        "batch_reuses_lower_bound": 472,
+        "generation_transitions": 15,
+        "requested_frames": 32768,
+        "requested_warmup_s": 0.25,
+        "requested_duration_s": 0.25,
+        "warmup_input_bytes": 0,
+        "warmup_output_bytes": 0,
+        "warmup_drain_s": 0.0,
+        "append_s": 9.243472485,
+        "geometry": {
+          "epoch_bytes": 983040,
+          "epochs_per_batch": 69,
+          "staging_bytes": 134217728,
+          "memory_budget_bytes": 17179869184,
+          "target_batch_bytes": 67108864,
+          "dimensions": [
+            {
+              "name": "t",
+              "reference_size": 65536,
+              "chunk_size": 1,
+              "chunks_per_shard": 2048,
+              "downsample": false,
+              "storage_position": 0
+            },
+            {
+              "name": "y",
+              "reference_size": 520,
+              "chunk_size": 128,
+              "chunks_per_shard": 4,
+              "downsample": false,
+              "storage_position": 1
+            },
+            {
+              "name": "x",
+              "reference_size": 696,
+              "chunk_size": 128,
+              "chunks_per_shard": 4,
+              "downsample": false,
+              "storage_position": 2
+            }
+          ]
+        },
+        "boundary_timing": true,
+        "reference_frames": 65536,
+        "source_bytes": 15728640,
+        "append_bytes": 983040,
+        "prep_s": 0.00986918165030098,
+        "warmup_s": 0.0,
+        "elapsed_s": 9.394473475,
+        "drain_s": 0.15100099,
+        "drain_fraction": 0.016073385102617473,
+        "submitted_bytes": 32212254720,
+        "logical_input_bytes": 23718789120,
+        "input_bytes": 32212254720,
+        "output_bytes": 12576464896,
+        "throughput_in_gibs": 3.1933668320884796,
+        "throughput_out_gibs": 1.2467697841367216,
+        "boundaries": {
+          "batch": {
+            "bytes": 67829760,
+            "crossing": {
+              "calls": 474,
+              "over_100ms": 3,
+              "total_ms": 8469.955310000005,
+              "max_ms": 198.820966
+            },
+            "following": {
+              "calls": 7584,
+              "over_100ms": 0,
+              "total_ms": 201.99443000000002,
+              "max_ms": 3.091132
+            }
+          },
+          "generation": {
+            "bytes": 2013265920,
+            "crossing": {
+              "calls": 16,
+              "over_100ms": 0,
+              "total_ms": 0.4024949999999999,
+              "max_ms": 0.064793
+            },
+            "following": {
+              "calls": 240,
+              "over_100ms": 0,
+              "total_ms": 53.36224500000001,
+              "max_ms": 23.377938999999998
+            }
+          },
+          "staging_grid": {
+            "bytes": 65536,
+            "crossing": {
+              "calls": 32768,
+              "over_100ms": 3,
+              "total_ms": 9241.588564999991,
+              "max_ms": 198.820966
+            },
+            "following": {
+              "calls": 32767,
+              "over_100ms": 3,
+              "total_ms": 9241.537576999992,
+              "max_ms": 198.820966
+            }
+          }
+        }
+      },
+      "native_output_bytes": 12576464896,
+      "writer_store_check": {
+        "final_file_bytes": 12576335610,
+        "allocated_file_bytes": 12576351744,
+        "file_count": 66,
+        "shard_file_count": 64,
+        "index_bytes_per_shard": 524292,
+        "shape": [
+          32768,
+          520,
+          696
+        ]
+      },
+      "array_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c32/images",
+      "store_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c32",
+      "shape": [
+        32768,
+        520,
+        696
+      ],
+      "chunk_shape": [
+        1,
+        128,
+        128
+      ],
+      "shard_shape": [
+        2048,
+        512,
+        512
+      ],
+      "chunks_per_shard": [
+        2048,
+        4,
+        4
+      ],
+      "page_alignment": 4096,
+      "files": [
+        {
+          "path": "images/c/0/0/0",
+          "kind": "shard",
+          "st_size": 566120836,
+          "st_blocks": 1105705,
+          "allocated_bytes": 566120960,
+          "final_padding_bytes": 3708,
+          "aligned_bytes": 566124544,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/0/0/1",
+          "kind": "shard",
+          "st_size": 205226868,
+          "st_blocks": 400834,
+          "allocated_bytes": 205227008,
+          "final_padding_bytes": 3212,
+          "aligned_bytes": 205230080,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/0/1/0",
+          "kind": "shard",
+          "st_size": 10370830,
+          "st_blocks": 20256,
+          "allocated_bytes": 10371072,
+          "final_padding_bytes": 242,
+          "aligned_bytes": 10371072,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/0/1/1",
+          "kind": "shard",
+          "st_size": 4292170,
+          "st_blocks": 8384,
+          "allocated_bytes": 4292608,
+          "final_padding_bytes": 438,
+          "aligned_bytes": 4292608,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/1/0/0",
+          "kind": "shard",
+          "st_size": 566126455,
+          "st_blocks": 1105716,
+          "allocated_bytes": 566126592,
+          "final_padding_bytes": 2185,
+          "aligned_bytes": 566128640,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/1/0/1",
+          "kind": "shard",
+          "st_size": 205231206,
+          "st_blocks": 400843,
+          "allocated_bytes": 205231616,
+          "final_padding_bytes": 2970,
+          "aligned_bytes": 205234176,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/1/1/0",
+          "kind": "shard",
+          "st_size": 10371521,
+          "st_blocks": 20257,
+          "allocated_bytes": 10371584,
+          "final_padding_bytes": 3647,
+          "aligned_bytes": 10375168,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/1/1/1",
+          "kind": "shard",
+          "st_size": 4292850,
+          "st_blocks": 8385,
+          "allocated_bytes": 4293120,
+          "final_padding_bytes": 3854,
+          "aligned_bytes": 4296704,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/10/0/0",
+          "kind": "shard",
+          "st_size": 566126790,
+          "st_blocks": 1105717,
+          "allocated_bytes": 566127104,
+          "final_padding_bytes": 1850,
+          "aligned_bytes": 566128640,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/10/0/1",
+          "kind": "shard",
+          "st_size": 205233548,
+          "st_blocks": 400847,
+          "allocated_bytes": 205233664,
+          "final_padding_bytes": 628,
+          "aligned_bytes": 205234176,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/10/1/0",
+          "kind": "shard",
+          "st_size": 10373101,
+          "st_blocks": 20260,
+          "allocated_bytes": 10373120,
+          "final_padding_bytes": 2067,
+          "aligned_bytes": 10375168,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/10/1/1",
+          "kind": "shard",
+          "st_size": 4293062,
+          "st_blocks": 8385,
+          "allocated_bytes": 4293120,
+          "final_padding_bytes": 3642,
+          "aligned_bytes": 4296704,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/11/0/0",
+          "kind": "shard",
+          "st_size": 566130406,
+          "st_blocks": 1105724,
+          "allocated_bytes": 566130688,
+          "final_padding_bytes": 2330,
+          "aligned_bytes": 566132736,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/11/0/1",
+          "kind": "shard",
+          "st_size": 205237480,
+          "st_blocks": 400855,
+          "allocated_bytes": 205237760,
+          "final_padding_bytes": 792,
+          "aligned_bytes": 205238272,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/11/1/0",
+          "kind": "shard",
+          "st_size": 10371311,
+          "st_blocks": 20257,
+          "allocated_bytes": 10371584,
+          "final_padding_bytes": 3857,
+          "aligned_bytes": 10375168,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/11/1/1",
+          "kind": "shard",
+          "st_size": 4293894,
+          "st_blocks": 8387,
+          "allocated_bytes": 4294144,
+          "final_padding_bytes": 2810,
+          "aligned_bytes": 4296704,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/12/0/0",
+          "kind": "shard",
+          "st_size": 566123384,
+          "st_blocks": 1105710,
+          "allocated_bytes": 566123520,
+          "final_padding_bytes": 1160,
+          "aligned_bytes": 566124544,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/12/0/1",
+          "kind": "shard",
+          "st_size": 205230989,
+          "st_blocks": 400842,
+          "allocated_bytes": 205231104,
+          "final_padding_bytes": 3187,
+          "aligned_bytes": 205234176,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/12/1/0",
+          "kind": "shard",
+          "st_size": 10370319,
+          "st_blocks": 20255,
+          "allocated_bytes": 10370560,
+          "final_padding_bytes": 753,
+          "aligned_bytes": 10371072,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/12/1/1",
+          "kind": "shard",
+          "st_size": 4293519,
+          "st_blocks": 8386,
+          "allocated_bytes": 4293632,
+          "final_padding_bytes": 3185,
+          "aligned_bytes": 4296704,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/13/0/0",
+          "kind": "shard",
+          "st_size": 566123827,
+          "st_blocks": 1105711,
+          "allocated_bytes": 566124032,
+          "final_padding_bytes": 717,
+          "aligned_bytes": 566124544,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/13/0/1",
+          "kind": "shard",
+          "st_size": 205232105,
+          "st_blocks": 400844,
+          "allocated_bytes": 205232128,
+          "final_padding_bytes": 2071,
+          "aligned_bytes": 205234176,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/13/1/0",
+          "kind": "shard",
+          "st_size": 10371368,
+          "st_blocks": 20257,
+          "allocated_bytes": 10371584,
+          "final_padding_bytes": 3800,
+          "aligned_bytes": 10375168,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/13/1/1",
+          "kind": "shard",
+          "st_size": 4294501,
+          "st_blocks": 8388,
+          "allocated_bytes": 4294656,
+          "final_padding_bytes": 2203,
+          "aligned_bytes": 4296704,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/14/0/0",
+          "kind": "shard",
+          "st_size": 566123620,
+          "st_blocks": 1105711,
+          "allocated_bytes": 566124032,
+          "final_padding_bytes": 924,
+          "aligned_bytes": 566124544,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/14/0/1",
+          "kind": "shard",
+          "st_size": 205228230,
+          "st_blocks": 400837,
+          "allocated_bytes": 205228544,
+          "final_padding_bytes": 1850,
+          "aligned_bytes": 205230080,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/14/1/0",
+          "kind": "shard",
+          "st_size": 10373614,
+          "st_blocks": 20261,
+          "allocated_bytes": 10373632,
+          "final_padding_bytes": 1554,
+          "aligned_bytes": 10375168,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/14/1/1",
+          "kind": "shard",
+          "st_size": 4295252,
+          "st_blocks": 8390,
+          "allocated_bytes": 4295680,
+          "final_padding_bytes": 1452,
+          "aligned_bytes": 4296704,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/15/0/0",
+          "kind": "shard",
+          "st_size": 566122842,
+          "st_blocks": 1105709,
+          "allocated_bytes": 566123008,
+          "final_padding_bytes": 1702,
+          "aligned_bytes": 566124544,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/15/0/1",
+          "kind": "shard",
+          "st_size": 205229496,
+          "st_blocks": 400839,
+          "allocated_bytes": 205229568,
+          "final_padding_bytes": 584,
+          "aligned_bytes": 205230080,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/15/1/0",
+          "kind": "shard",
+          "st_size": 10368856,
+          "st_blocks": 20252,
+          "allocated_bytes": 10369024,
+          "final_padding_bytes": 2216,
+          "aligned_bytes": 10371072,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/15/1/1",
+          "kind": "shard",
+          "st_size": 4294968,
+          "st_blocks": 8389,
+          "allocated_bytes": 4295168,
+          "final_padding_bytes": 1736,
+          "aligned_bytes": 4296704,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/2/0/0",
+          "kind": "shard",
+          "st_size": 566125903,
+          "st_blocks": 1105715,
+          "allocated_bytes": 566126080,
+          "final_padding_bytes": 2737,
+          "aligned_bytes": 566128640,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/2/0/1",
+          "kind": "shard",
+          "st_size": 205232572,
+          "st_blocks": 400845,
+          "allocated_bytes": 205232640,
+          "final_padding_bytes": 1604,
+          "aligned_bytes": 205234176,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/2/1/0",
+          "kind": "shard",
+          "st_size": 10372277,
+          "st_blocks": 20259,
+          "allocated_bytes": 10372608,
+          "final_padding_bytes": 2891,
+          "aligned_bytes": 10375168,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/2/1/1",
+          "kind": "shard",
+          "st_size": 4293991,
+          "st_blocks": 8387,
+          "allocated_bytes": 4294144,
+          "final_padding_bytes": 2713,
+          "aligned_bytes": 4296704,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/3/0/0",
+          "kind": "shard",
+          "st_size": 566121302,
+          "st_blocks": 1105706,
+          "allocated_bytes": 566121472,
+          "final_padding_bytes": 3242,
+          "aligned_bytes": 566124544,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/3/0/1",
+          "kind": "shard",
+          "st_size": 205230819,
+          "st_blocks": 400842,
+          "allocated_bytes": 205231104,
+          "final_padding_bytes": 3357,
+          "aligned_bytes": 205234176,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/3/1/0",
+          "kind": "shard",
+          "st_size": 10367613,
+          "st_blocks": 20250,
+          "allocated_bytes": 10368000,
+          "final_padding_bytes": 3459,
+          "aligned_bytes": 10371072,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/3/1/1",
+          "kind": "shard",
+          "st_size": 4293569,
+          "st_blocks": 8386,
+          "allocated_bytes": 4293632,
+          "final_padding_bytes": 3135,
+          "aligned_bytes": 4296704,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/4/0/0",
+          "kind": "shard",
+          "st_size": 566129014,
+          "st_blocks": 1105721,
+          "allocated_bytes": 566129152,
+          "final_padding_bytes": 3722,
+          "aligned_bytes": 566132736,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/4/0/1",
+          "kind": "shard",
+          "st_size": 205234751,
+          "st_blocks": 400850,
+          "allocated_bytes": 205235200,
+          "final_padding_bytes": 3521,
+          "aligned_bytes": 205238272,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/4/1/0",
+          "kind": "shard",
+          "st_size": 10374015,
+          "st_blocks": 20262,
+          "allocated_bytes": 10374144,
+          "final_padding_bytes": 1153,
+          "aligned_bytes": 10375168,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/4/1/1",
+          "kind": "shard",
+          "st_size": 4294401,
+          "st_blocks": 8388,
+          "allocated_bytes": 4294656,
+          "final_padding_bytes": 2303,
+          "aligned_bytes": 4296704,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/5/0/0",
+          "kind": "shard",
+          "st_size": 566125387,
+          "st_blocks": 1105714,
+          "allocated_bytes": 566125568,
+          "final_padding_bytes": 3253,
+          "aligned_bytes": 566128640,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/5/0/1",
+          "kind": "shard",
+          "st_size": 205232704,
+          "st_blocks": 400846,
+          "allocated_bytes": 205233152,
+          "final_padding_bytes": 1472,
+          "aligned_bytes": 205234176,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/5/1/0",
+          "kind": "shard",
+          "st_size": 10370596,
+          "st_blocks": 20256,
+          "allocated_bytes": 10371072,
+          "final_padding_bytes": 476,
+          "aligned_bytes": 10371072,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/5/1/1",
+          "kind": "shard",
+          "st_size": 4295206,
+          "st_blocks": 8390,
+          "allocated_bytes": 4295680,
+          "final_padding_bytes": 1498,
+          "aligned_bytes": 4296704,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/6/0/0",
+          "kind": "shard",
+          "st_size": 566118339,
+          "st_blocks": 1105700,
+          "allocated_bytes": 566118400,
+          "final_padding_bytes": 2109,
+          "aligned_bytes": 566120448,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/6/0/1",
+          "kind": "shard",
+          "st_size": 205229376,
+          "st_blocks": 400839,
+          "allocated_bytes": 205229568,
+          "final_padding_bytes": 704,
+          "aligned_bytes": 205230080,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/6/1/0",
+          "kind": "shard",
+          "st_size": 10369976,
+          "st_blocks": 20254,
+          "allocated_bytes": 10370048,
+          "final_padding_bytes": 1096,
+          "aligned_bytes": 10371072,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/6/1/1",
+          "kind": "shard",
+          "st_size": 4295008,
+          "st_blocks": 8389,
+          "allocated_bytes": 4295168,
+          "final_padding_bytes": 1696,
+          "aligned_bytes": 4296704,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/7/0/0",
+          "kind": "shard",
+          "st_size": 566122228,
+          "st_blocks": 1105708,
+          "allocated_bytes": 566122496,
+          "final_padding_bytes": 2316,
+          "aligned_bytes": 566124544,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/7/0/1",
+          "kind": "shard",
+          "st_size": 205229597,
+          "st_blocks": 400840,
+          "allocated_bytes": 205230080,
+          "final_padding_bytes": 483,
+          "aligned_bytes": 205230080,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/7/1/0",
+          "kind": "shard",
+          "st_size": 10372222,
+          "st_blocks": 20259,
+          "allocated_bytes": 10372608,
+          "final_padding_bytes": 2946,
+          "aligned_bytes": 10375168,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/7/1/1",
+          "kind": "shard",
+          "st_size": 4295759,
+          "st_blocks": 8391,
+          "allocated_bytes": 4296192,
+          "final_padding_bytes": 945,
+          "aligned_bytes": 4296704,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/8/0/0",
+          "kind": "shard",
+          "st_size": 566123751,
+          "st_blocks": 1105711,
+          "allocated_bytes": 566124032,
+          "final_padding_bytes": 793,
+          "aligned_bytes": 566124544,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/8/0/1",
+          "kind": "shard",
+          "st_size": 205233935,
+          "st_blocks": 400848,
+          "allocated_bytes": 205234176,
+          "final_padding_bytes": 241,
+          "aligned_bytes": 205234176,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/8/1/0",
+          "kind": "shard",
+          "st_size": 10372913,
+          "st_blocks": 20260,
+          "allocated_bytes": 10373120,
+          "final_padding_bytes": 2255,
+          "aligned_bytes": 10375168,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/8/1/1",
+          "kind": "shard",
+          "st_size": 4292343,
+          "st_blocks": 8384,
+          "allocated_bytes": 4292608,
+          "final_padding_bytes": 265,
+          "aligned_bytes": 4292608,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/9/0/0",
+          "kind": "shard",
+          "st_size": 566122209,
+          "st_blocks": 1105708,
+          "allocated_bytes": 566122496,
+          "final_padding_bytes": 2335,
+          "aligned_bytes": 566124544,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/9/0/1",
+          "kind": "shard",
+          "st_size": 205229579,
+          "st_blocks": 400840,
+          "allocated_bytes": 205230080,
+          "final_padding_bytes": 501,
+          "aligned_bytes": 205230080,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/9/1/0",
+          "kind": "shard",
+          "st_size": 10372105,
+          "st_blocks": 20259,
+          "allocated_bytes": 10372608,
+          "final_padding_bytes": 3063,
+          "aligned_bytes": 10375168,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/c/9/1/1",
+          "kind": "shard",
+          "st_size": 4292134,
+          "st_blocks": 8384,
+          "allocated_bytes": 4292608,
+          "final_padding_bytes": 474,
+          "aligned_bytes": 4292608,
+          "index_bytes": 524292
+        },
+        {
+          "path": "images/zarr.json",
+          "kind": "metadata",
+          "st_size": 716,
+          "st_blocks": 2,
+          "allocated_bytes": 1024
+        },
+        {
+          "path": "zarr.json",
+          "kind": "metadata",
+          "st_size": 82,
+          "st_blocks": 1,
+          "allocated_bytes": 512
+        }
+      ],
+      "other_entries": [],
+      "totals": {
+        "logical_bytes": 23718789120,
+        "metered_output_bytes": 12576464896,
+        "file_count": 66,
+        "shard_file_count": 64,
+        "metadata_file_count": 2,
+        "other_file_count": 0,
+        "final_file_bytes": 12576335610,
+        "shard_file_bytes": 12576334812,
+        "metadata_file_bytes": 798,
+        "allocated_file_bytes": 12576351744,
+        "st_blocks": 24563187,
+        "aligned_shard_file_bytes": 12576464896,
+        "final_padding_bytes": 130084,
+        "index_bytes_per_shard": 524292,
+        "index_bytes": 33554688,
+        "logical_to_final_ratio": 1.8859857000905846
+      },
+      "checks": {
+        "writer_passed": true,
+        "fixed_volume": true,
+        "warmup_excluded": true,
+        "retained_path_matches": true,
+        "record_case_matches": true,
+        "geometry_matches": true,
+        "logical_bytes_match": true,
+        "metered_bytes_match": true,
+        "expected_shard_count": true,
+        "expected_metadata": true,
+        "only_expected_files": true,
+        "indexes_fit": true,
+        "metered_equals_aligned_shards": true,
+        "final_size_identity": true,
+        "writer_census_final_file_bytes": true,
+        "writer_census_allocated_file_bytes": true,
+        "writer_census_file_count": true,
+        "writer_census_shard_file_count": true,
+        "writer_census_index_bytes_per_shard": true
+      },
+      "status": "pass",
+      "failed_checks": []
+    },
+    {
+      "id": "c64",
+      "manifest_locator": "#/layouts/2",
+      "writer_record": {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/006-c64-r1-sample/result.json",
+        "sha256": "eab94e0e2c3c37d6fe45217218d317bf25d68ff6458c6e61f92b811e99578beb",
+        "id": "006-c64-r1-sample",
+        "slurm_job_id": "3836189",
+        "status": "pass",
+        "returncode": 0,
+        "scope": "measurement",
+        "round": 1,
+        "role": "sample"
+      },
+      "writer_metrics": {
+        "logical_bytes": 23718789120,
+        "submitted_bytes": 32212254720,
+        "metered_output_bytes": 12677275648,
+        "elapsed_s": 9.663425667,
+        "logical_gibs": 2.2859226646131763,
+        "drain_s": 0.137743166,
+        "drain_fraction": 0.014254072080295953
+      },
+      "native_measurement": {
+        "policy": "fixed-volume-after-discard-warmup-through-close-v1",
+        "fixed_volume": true,
+        "separate_warmup_s": 1.078657039,
+        "input_mode": "direct",
+        "output_scope": "physical_sink_writes",
+        "coverage_status": "sufficient",
+        "attempt": 1,
+        "max_attempts": 1,
+        "target_duration_s": 0.25,
+        "discarded_attempts_s": 0.0,
+        "warmup_complete_batches": 0,
+        "complete_batches": 474,
+        "batch_reuses_lower_bound": 472,
+        "generation_transitions": 15,
+        "requested_frames": 32768,
+        "requested_warmup_s": 0.25,
+        "requested_duration_s": 0.25,
+        "warmup_input_bytes": 0,
+        "warmup_output_bytes": 0,
+        "warmup_drain_s": 0.0,
+        "append_s": 9.525682501,
+        "geometry": {
+          "epoch_bytes": 983040,
+          "epochs_per_batch": 69,
+          "staging_bytes": 134217728,
+          "memory_budget_bytes": 17179869184,
+          "target_batch_bytes": 67108864,
+          "dimensions": [
+            {
+              "name": "t",
+              "reference_size": 65536,
+              "chunk_size": 1,
+              "chunks_per_shard": 2048,
+              "downsample": false,
+              "storage_position": 0
+            },
+            {
+              "name": "y",
+              "reference_size": 520,
+              "chunk_size": 128,
+              "chunks_per_shard": 4,
+              "downsample": false,
+              "storage_position": 1
+            },
+            {
+              "name": "x",
+              "reference_size": 696,
+              "chunk_size": 256,
+              "chunks_per_shard": 2,
+              "downsample": false,
+              "storage_position": 2
+            }
+          ]
+        },
+        "boundary_timing": true,
+        "reference_frames": 65536,
+        "source_bytes": 15728640,
+        "append_bytes": 983040,
+        "prep_s": 0.00864406793055439,
+        "warmup_s": 0.0,
+        "elapsed_s": 9.663425667,
+        "drain_s": 0.137743166,
+        "drain_fraction": 0.014254072080295953,
+        "submitted_bytes": 32212254720,
+        "logical_input_bytes": 23718789120,
+        "input_bytes": 32212254720,
+        "output_bytes": 12677275648,
+        "throughput_in_gibs": 3.1044891360263827,
+        "throughput_out_gibs": 1.2217854622635933,
+        "boundaries": {
+          "batch": {
+            "bytes": 67829760,
+            "crossing": {
+              "calls": 474,
+              "over_100ms": 4,
+              "total_ms": 8764.043621999997,
+              "max_ms": 129.875816
+            },
+            "following": {
+              "calls": 7584,
+              "over_100ms": 0,
+              "total_ms": 194.46412499999954,
+              "max_ms": 0.7669039999999999
+            }
+          },
+          "generation": {
+            "bytes": 2013265920,
+            "crossing": {
+              "calls": 16,
+              "over_100ms": 0,
+              "total_ms": 0.3519570000000001,
+              "max_ms": 0.026768
+            },
+            "following": {
+              "calls": 240,
+              "over_100ms": 0,
+              "total_ms": 80.16394400000003,
+              "max_ms": 34.277904
+            }
+          },
+          "staging_grid": {
+            "bytes": 65536,
+            "crossing": {
+              "calls": 32768,
+              "over_100ms": 4,
+              "total_ms": 9523.822789000007,
+              "max_ms": 129.875816
+            },
+            "following": {
+              "calls": 32767,
+              "over_100ms": 4,
+              "total_ms": 9523.772587000009,
+              "max_ms": 129.875816
+            }
+          }
+        }
+      },
+      "native_output_bytes": 12677275648,
+      "writer_store_check": {
+        "final_file_bytes": 12677130185,
+        "allocated_file_bytes": 12677147136,
+        "file_count": 66,
+        "shard_file_count": 64,
+        "index_bytes_per_shard": 262148,
+        "shape": [
+          32768,
+          520,
+          696
+        ]
+      },
+      "array_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c64/images",
+      "store_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c64",
+      "shape": [
+        32768,
+        520,
+        696
+      ],
+      "chunk_shape": [
+        1,
+        128,
+        256
+      ],
+      "shard_shape": [
+        2048,
+        512,
+        512
+      ],
+      "chunks_per_shard": [
+        2048,
+        4,
+        2
+      ],
+      "page_alignment": 4096,
+      "files": [
+        {
+          "path": "images/c/0/0/0",
+          "kind": "shard",
+          "st_size": 568784773,
+          "st_blocks": 1110908,
+          "allocated_bytes": 568784896,
+          "final_padding_bytes": 2171,
+          "aligned_bytes": 568786944,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/0/0/1",
+          "kind": "shard",
+          "st_size": 209814531,
+          "st_blocks": 409795,
+          "allocated_bytes": 209815040,
+          "final_padding_bytes": 3069,
+          "aligned_bytes": 209817600,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/0/1/0",
+          "kind": "shard",
+          "st_size": 9753103,
+          "st_blocks": 19050,
+          "allocated_bytes": 9753600,
+          "final_padding_bytes": 3569,
+          "aligned_bytes": 9756672,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/0/1/1",
+          "kind": "shard",
+          "st_size": 3962458,
+          "st_blocks": 7740,
+          "allocated_bytes": 3962880,
+          "final_padding_bytes": 2470,
+          "aligned_bytes": 3964928,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/1/0/0",
+          "kind": "shard",
+          "st_size": 568787314,
+          "st_blocks": 1110913,
+          "allocated_bytes": 568787456,
+          "final_padding_bytes": 3726,
+          "aligned_bytes": 568791040,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/1/0/1",
+          "kind": "shard",
+          "st_size": 209815828,
+          "st_blocks": 409797,
+          "allocated_bytes": 209816064,
+          "final_padding_bytes": 1772,
+          "aligned_bytes": 209817600,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/1/1/0",
+          "kind": "shard",
+          "st_size": 9753185,
+          "st_blocks": 19050,
+          "allocated_bytes": 9753600,
+          "final_padding_bytes": 3487,
+          "aligned_bytes": 9756672,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/1/1/1",
+          "kind": "shard",
+          "st_size": 3960013,
+          "st_blocks": 7735,
+          "allocated_bytes": 3960320,
+          "final_padding_bytes": 819,
+          "aligned_bytes": 3960832,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/10/0/0",
+          "kind": "shard",
+          "st_size": 568788535,
+          "st_blocks": 1110916,
+          "allocated_bytes": 568788992,
+          "final_padding_bytes": 2505,
+          "aligned_bytes": 568791040,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/10/0/1",
+          "kind": "shard",
+          "st_size": 209819456,
+          "st_blocks": 409804,
+          "allocated_bytes": 209819648,
+          "final_padding_bytes": 2240,
+          "aligned_bytes": 209821696,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/10/1/0",
+          "kind": "shard",
+          "st_size": 9753381,
+          "st_blocks": 19050,
+          "allocated_bytes": 9753600,
+          "final_padding_bytes": 3291,
+          "aligned_bytes": 9756672,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/10/1/1",
+          "kind": "shard",
+          "st_size": 3963863,
+          "st_blocks": 7742,
+          "allocated_bytes": 3963904,
+          "final_padding_bytes": 1065,
+          "aligned_bytes": 3964928,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/11/0/0",
+          "kind": "shard",
+          "st_size": 568789487,
+          "st_blocks": 1110917,
+          "allocated_bytes": 568789504,
+          "final_padding_bytes": 1553,
+          "aligned_bytes": 568791040,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/11/0/1",
+          "kind": "shard",
+          "st_size": 209819913,
+          "st_blocks": 409805,
+          "allocated_bytes": 209820160,
+          "final_padding_bytes": 1783,
+          "aligned_bytes": 209821696,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/11/1/0",
+          "kind": "shard",
+          "st_size": 9755014,
+          "st_blocks": 19053,
+          "allocated_bytes": 9755136,
+          "final_padding_bytes": 1658,
+          "aligned_bytes": 9756672,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/11/1/1",
+          "kind": "shard",
+          "st_size": 3965692,
+          "st_blocks": 7746,
+          "allocated_bytes": 3965952,
+          "final_padding_bytes": 3332,
+          "aligned_bytes": 3969024,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/12/0/0",
+          "kind": "shard",
+          "st_size": 568783950,
+          "st_blocks": 1110907,
+          "allocated_bytes": 568784384,
+          "final_padding_bytes": 2994,
+          "aligned_bytes": 568786944,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/12/0/1",
+          "kind": "shard",
+          "st_size": 209818310,
+          "st_blocks": 409802,
+          "allocated_bytes": 209818624,
+          "final_padding_bytes": 3386,
+          "aligned_bytes": 209821696,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/12/1/0",
+          "kind": "shard",
+          "st_size": 9754882,
+          "st_blocks": 19053,
+          "allocated_bytes": 9755136,
+          "final_padding_bytes": 1790,
+          "aligned_bytes": 9756672,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/12/1/1",
+          "kind": "shard",
+          "st_size": 3963281,
+          "st_blocks": 7741,
+          "allocated_bytes": 3963392,
+          "final_padding_bytes": 1647,
+          "aligned_bytes": 3964928,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/13/0/0",
+          "kind": "shard",
+          "st_size": 568785571,
+          "st_blocks": 1110910,
+          "allocated_bytes": 568785920,
+          "final_padding_bytes": 1373,
+          "aligned_bytes": 568786944,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/13/0/1",
+          "kind": "shard",
+          "st_size": 209821040,
+          "st_blocks": 409807,
+          "allocated_bytes": 209821184,
+          "final_padding_bytes": 656,
+          "aligned_bytes": 209821696,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/13/1/0",
+          "kind": "shard",
+          "st_size": 9755244,
+          "st_blocks": 19054,
+          "allocated_bytes": 9755648,
+          "final_padding_bytes": 1428,
+          "aligned_bytes": 9756672,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/13/1/1",
+          "kind": "shard",
+          "st_size": 3965172,
+          "st_blocks": 7745,
+          "allocated_bytes": 3965440,
+          "final_padding_bytes": 3852,
+          "aligned_bytes": 3969024,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/14/0/0",
+          "kind": "shard",
+          "st_size": 568786829,
+          "st_blocks": 1110912,
+          "allocated_bytes": 568786944,
+          "final_padding_bytes": 115,
+          "aligned_bytes": 568786944,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/14/0/1",
+          "kind": "shard",
+          "st_size": 209817995,
+          "st_blocks": 409801,
+          "allocated_bytes": 209818112,
+          "final_padding_bytes": 3701,
+          "aligned_bytes": 209821696,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/14/1/0",
+          "kind": "shard",
+          "st_size": 9756827,
+          "st_blocks": 19057,
+          "allocated_bytes": 9757184,
+          "final_padding_bytes": 3941,
+          "aligned_bytes": 9760768,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/14/1/1",
+          "kind": "shard",
+          "st_size": 3962840,
+          "st_blocks": 7740,
+          "allocated_bytes": 3962880,
+          "final_padding_bytes": 2088,
+          "aligned_bytes": 3964928,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/15/0/0",
+          "kind": "shard",
+          "st_size": 568787748,
+          "st_blocks": 1110914,
+          "allocated_bytes": 568787968,
+          "final_padding_bytes": 3292,
+          "aligned_bytes": 568791040,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/15/0/1",
+          "kind": "shard",
+          "st_size": 209811125,
+          "st_blocks": 409788,
+          "allocated_bytes": 209811456,
+          "final_padding_bytes": 2379,
+          "aligned_bytes": 209813504,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/15/1/0",
+          "kind": "shard",
+          "st_size": 9748740,
+          "st_blocks": 19041,
+          "allocated_bytes": 9748992,
+          "final_padding_bytes": 3836,
+          "aligned_bytes": 9752576,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/15/1/1",
+          "kind": "shard",
+          "st_size": 3956413,
+          "st_blocks": 7728,
+          "allocated_bytes": 3956736,
+          "final_padding_bytes": 323,
+          "aligned_bytes": 3956736,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/2/0/0",
+          "kind": "shard",
+          "st_size": 568788766,
+          "st_blocks": 1110916,
+          "allocated_bytes": 568788992,
+          "final_padding_bytes": 2274,
+          "aligned_bytes": 568791040,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/2/0/1",
+          "kind": "shard",
+          "st_size": 209814498,
+          "st_blocks": 409794,
+          "allocated_bytes": 209814528,
+          "final_padding_bytes": 3102,
+          "aligned_bytes": 209817600,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/2/1/0",
+          "kind": "shard",
+          "st_size": 9749266,
+          "st_blocks": 19042,
+          "allocated_bytes": 9749504,
+          "final_padding_bytes": 3310,
+          "aligned_bytes": 9752576,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/2/1/1",
+          "kind": "shard",
+          "st_size": 3962041,
+          "st_blocks": 7739,
+          "allocated_bytes": 3962368,
+          "final_padding_bytes": 2887,
+          "aligned_bytes": 3964928,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/3/0/0",
+          "kind": "shard",
+          "st_size": 568785459,
+          "st_blocks": 1110910,
+          "allocated_bytes": 568785920,
+          "final_padding_bytes": 1485,
+          "aligned_bytes": 568786944,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/3/0/1",
+          "kind": "shard",
+          "st_size": 209817724,
+          "st_blocks": 409801,
+          "allocated_bytes": 209818112,
+          "final_padding_bytes": 3972,
+          "aligned_bytes": 209821696,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/3/1/0",
+          "kind": "shard",
+          "st_size": 9753567,
+          "st_blocks": 19050,
+          "allocated_bytes": 9753600,
+          "final_padding_bytes": 3105,
+          "aligned_bytes": 9756672,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/3/1/1",
+          "kind": "shard",
+          "st_size": 3959576,
+          "st_blocks": 7734,
+          "allocated_bytes": 3959808,
+          "final_padding_bytes": 1256,
+          "aligned_bytes": 3960832,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/4/0/0",
+          "kind": "shard",
+          "st_size": 568790507,
+          "st_blocks": 1110919,
+          "allocated_bytes": 568790528,
+          "final_padding_bytes": 533,
+          "aligned_bytes": 568791040,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/4/0/1",
+          "kind": "shard",
+          "st_size": 209818181,
+          "st_blocks": 409802,
+          "allocated_bytes": 209818624,
+          "final_padding_bytes": 3515,
+          "aligned_bytes": 209821696,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/4/1/0",
+          "kind": "shard",
+          "st_size": 9755200,
+          "st_blocks": 19054,
+          "allocated_bytes": 9755648,
+          "final_padding_bytes": 1472,
+          "aligned_bytes": 9756672,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/4/1/1",
+          "kind": "shard",
+          "st_size": 3965501,
+          "st_blocks": 7746,
+          "allocated_bytes": 3965952,
+          "final_padding_bytes": 3523,
+          "aligned_bytes": 3969024,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/5/0/0",
+          "kind": "shard",
+          "st_size": 568787980,
+          "st_blocks": 1110915,
+          "allocated_bytes": 568788480,
+          "final_padding_bytes": 3060,
+          "aligned_bytes": 568791040,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/5/0/1",
+          "kind": "shard",
+          "st_size": 209821649,
+          "st_blocks": 409808,
+          "allocated_bytes": 209821696,
+          "final_padding_bytes": 47,
+          "aligned_bytes": 209821696,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/5/1/0",
+          "kind": "shard",
+          "st_size": 9755313,
+          "st_blocks": 19054,
+          "allocated_bytes": 9755648,
+          "final_padding_bytes": 1359,
+          "aligned_bytes": 9756672,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/5/1/1",
+          "kind": "shard",
+          "st_size": 3963173,
+          "st_blocks": 7741,
+          "allocated_bytes": 3963392,
+          "final_padding_bytes": 1755,
+          "aligned_bytes": 3964928,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/6/0/0",
+          "kind": "shard",
+          "st_size": 568782495,
+          "st_blocks": 1110904,
+          "allocated_bytes": 568782848,
+          "final_padding_bytes": 353,
+          "aligned_bytes": 568782848,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/6/0/1",
+          "kind": "shard",
+          "st_size": 209819308,
+          "st_blocks": 409804,
+          "allocated_bytes": 209819648,
+          "final_padding_bytes": 2388,
+          "aligned_bytes": 209821696,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/6/1/0",
+          "kind": "shard",
+          "st_size": 9755430,
+          "st_blocks": 19054,
+          "allocated_bytes": 9755648,
+          "final_padding_bytes": 1242,
+          "aligned_bytes": 9756672,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/6/1/1",
+          "kind": "shard",
+          "st_size": 3964981,
+          "st_blocks": 7745,
+          "allocated_bytes": 3965440,
+          "final_padding_bytes": 4043,
+          "aligned_bytes": 3969024,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/7/0/0",
+          "kind": "shard",
+          "st_size": 568787849,
+          "st_blocks": 1110914,
+          "allocated_bytes": 568787968,
+          "final_padding_bytes": 3191,
+          "aligned_bytes": 568791040,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/7/0/1",
+          "kind": "shard",
+          "st_size": 209816263,
+          "st_blocks": 409798,
+          "allocated_bytes": 209816576,
+          "final_padding_bytes": 1337,
+          "aligned_bytes": 209817600,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/7/1/0",
+          "kind": "shard",
+          "st_size": 9757013,
+          "st_blocks": 19057,
+          "allocated_bytes": 9757184,
+          "final_padding_bytes": 3755,
+          "aligned_bytes": 9760768,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/7/1/1",
+          "kind": "shard",
+          "st_size": 3962649,
+          "st_blocks": 7740,
+          "allocated_bytes": 3962880,
+          "final_padding_bytes": 2279,
+          "aligned_bytes": 3964928,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/8/0/0",
+          "kind": "shard",
+          "st_size": 568790390,
+          "st_blocks": 1110919,
+          "allocated_bytes": 568790528,
+          "final_padding_bytes": 650,
+          "aligned_bytes": 568791040,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/8/0/1",
+          "kind": "shard",
+          "st_size": 209817560,
+          "st_blocks": 409800,
+          "allocated_bytes": 209817600,
+          "final_padding_bytes": 40,
+          "aligned_bytes": 209817600,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/8/1/0",
+          "kind": "shard",
+          "st_size": 9752999,
+          "st_blocks": 19049,
+          "allocated_bytes": 9753088,
+          "final_padding_bytes": 3673,
+          "aligned_bytes": 9756672,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/8/1/1",
+          "kind": "shard",
+          "st_size": 3960204,
+          "st_blocks": 7735,
+          "allocated_bytes": 3960320,
+          "final_padding_bytes": 628,
+          "aligned_bytes": 3960832,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/9/0/0",
+          "kind": "shard",
+          "st_size": 568786438,
+          "st_blocks": 1110912,
+          "allocated_bytes": 568786944,
+          "final_padding_bytes": 506,
+          "aligned_bytes": 568786944,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/9/0/1",
+          "kind": "shard",
+          "st_size": 209813970,
+          "st_blocks": 409793,
+          "allocated_bytes": 209814016,
+          "final_padding_bytes": 3630,
+          "aligned_bytes": 209817600,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/9/1/0",
+          "kind": "shard",
+          "st_size": 9748895,
+          "st_blocks": 19041,
+          "allocated_bytes": 9748992,
+          "final_padding_bytes": 3681,
+          "aligned_bytes": 9752576,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/c/9/1/1",
+          "kind": "shard",
+          "st_size": 3962029,
+          "st_blocks": 7739,
+          "allocated_bytes": 3962368,
+          "final_padding_bytes": 2899,
+          "aligned_bytes": 3964928,
+          "index_bytes": 262148
+        },
+        {
+          "path": "images/zarr.json",
+          "kind": "metadata",
+          "st_size": 716,
+          "st_blocks": 2,
+          "allocated_bytes": 1024
+        },
+        {
+          "path": "zarr.json",
+          "kind": "metadata",
+          "st_size": 82,
+          "st_blocks": 1,
+          "allocated_bytes": 512
+        }
+      ],
+      "other_entries": [],
+      "totals": {
+        "logical_bytes": 23718789120,
+        "metered_output_bytes": 12677275648,
+        "file_count": 66,
+        "shard_file_count": 64,
+        "metadata_file_count": 2,
+        "other_file_count": 0,
+        "final_file_bytes": 12677130185,
+        "shard_file_bytes": 12677129387,
+        "metadata_file_bytes": 798,
+        "allocated_file_bytes": 12677147136,
+        "st_blocks": 24760053,
+        "aligned_shard_file_bytes": 12677275648,
+        "final_padding_bytes": 146261,
+        "index_bytes_per_shard": 262148,
+        "index_bytes": 16777472,
+        "logical_to_final_ratio": 1.8709904192720885
+      },
+      "checks": {
+        "writer_passed": true,
+        "fixed_volume": true,
+        "warmup_excluded": true,
+        "retained_path_matches": true,
+        "record_case_matches": true,
+        "geometry_matches": true,
+        "logical_bytes_match": true,
+        "metered_bytes_match": true,
+        "expected_shard_count": true,
+        "expected_metadata": true,
+        "only_expected_files": true,
+        "indexes_fit": true,
+        "metered_equals_aligned_shards": true,
+        "final_size_identity": true,
+        "writer_census_final_file_bytes": true,
+        "writer_census_allocated_file_bytes": true,
+        "writer_census_file_count": true,
+        "writer_census_shard_file_count": true,
+        "writer_census_index_bytes_per_shard": true
+      },
+      "status": "pass",
+      "failed_checks": []
+    },
+    {
+      "id": "c128",
+      "manifest_locator": "#/layouts/3",
+      "writer_record": {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/002-c128-r1-sample/result.json",
+        "sha256": "07d5fd671fadf50c75f4a3d136170fffb9ab03237b8fe70a28d1760c2c7a392f",
+        "id": "002-c128-r1-sample",
+        "slurm_job_id": "3836189",
+        "status": "pass",
+        "returncode": 0,
+        "scope": "measurement",
+        "round": 1,
+        "role": "sample"
+      },
+      "writer_metrics": {
+        "logical_bytes": 23718789120,
+        "submitted_bytes": 38654705664,
+        "metered_output_bytes": 12678668288,
+        "elapsed_s": 8.075789455,
+        "logical_gibs": 2.7353169461746445,
+        "drain_s": 0.088554643,
+        "drain_fraction": 0.010965447216454208
+      },
+      "native_measurement": {
+        "policy": "fixed-volume-after-discard-warmup-through-close-v1",
+        "fixed_volume": true,
+        "separate_warmup_s": 1.120476182,
+        "input_mode": "direct",
+        "output_scope": "physical_sink_writes",
+        "coverage_status": "sufficient",
+        "attempt": 1,
+        "max_attempts": 1,
+        "target_duration_s": 0.25,
+        "discarded_attempts_s": 0.0,
+        "warmup_complete_batches": 0,
+        "complete_batches": 574,
+        "batch_reuses_lower_bound": 572,
+        "generation_transitions": 15,
+        "requested_frames": 32768,
+        "requested_warmup_s": 0.25,
+        "requested_duration_s": 0.25,
+        "warmup_input_bytes": 0,
+        "warmup_output_bytes": 0,
+        "warmup_drain_s": 0.0,
+        "append_s": 7.9872348120000005,
+        "geometry": {
+          "epoch_bytes": 1179648,
+          "epochs_per_batch": 57,
+          "staging_bytes": 134217728,
+          "memory_budget_bytes": 17179869184,
+          "target_batch_bytes": 67108864,
+          "dimensions": [
+            {
+              "name": "t",
+              "reference_size": 65536,
+              "chunk_size": 1,
+              "chunks_per_shard": 2048,
+              "downsample": false,
+              "storage_position": 0
+            },
+            {
+              "name": "y",
+              "reference_size": 520,
+              "chunk_size": 256,
+              "chunks_per_shard": 2,
+              "downsample": false,
+              "storage_position": 1
+            },
+            {
+              "name": "x",
+              "reference_size": 696,
+              "chunk_size": 256,
+              "chunks_per_shard": 2,
+              "downsample": false,
+              "storage_position": 2
+            }
+          ]
+        },
+        "boundary_timing": true,
+        "reference_frames": 65536,
+        "source_bytes": 18874368,
+        "append_bytes": 1179648,
+        "prep_s": 0.010108113145432949,
+        "warmup_s": 0.0,
+        "elapsed_s": 8.075789455,
+        "drain_s": 0.088554643,
+        "drain_fraction": 0.010965447216454208,
+        "submitted_bytes": 38654705664,
+        "logical_input_bytes": 23718789120,
+        "input_bytes": 38654705664,
+        "output_bytes": 12678668288,
+        "throughput_in_gibs": 4.457768519176928,
+        "throughput_out_gibs": 1.462139405499865,
+        "boundaries": {
+          "batch": {
+            "bytes": 67239936,
+            "crossing": {
+              "calls": 574,
+              "over_100ms": 0,
+              "total_ms": 7072.190891999994,
+              "max_ms": 95.446331
+            },
+            "following": {
+              "calls": 9184,
+              "over_100ms": 0,
+              "total_ms": 283.79011600000024,
+              "max_ms": 3.662559
+            }
+          },
+          "generation": {
+            "bytes": 2415919104,
+            "crossing": {
+              "calls": 16,
+              "over_100ms": 0,
+              "total_ms": 0.45859300000000003,
+              "max_ms": 0.039202
+            },
+            "following": {
+              "calls": 240,
+              "over_100ms": 0,
+              "total_ms": 64.86295099999998,
+              "max_ms": 17.272615
+            }
+          },
+          "staging_grid": {
+            "bytes": 131072,
+            "crossing": {
+              "calls": 32768,
+              "over_100ms": 0,
+              "total_ms": 7985.376087999975,
+              "max_ms": 95.446331
+            },
+            "following": {
+              "calls": 32767,
+              "over_100ms": 0,
+              "total_ms": 7985.321508999976,
+              "max_ms": 95.446331
+            }
+          }
+        }
+      },
+      "native_output_bytes": 12678668288,
+      "writer_store_check": {
+        "final_file_bytes": 12678537665,
+        "allocated_file_bytes": 12678552576,
+        "file_count": 66,
+        "shard_file_count": 64,
+        "index_bytes_per_shard": 131076,
+        "shape": [
+          32768,
+          520,
+          696
+        ]
+      },
+      "array_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c128/images",
+      "store_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c128",
+      "shape": [
+        32768,
+        520,
+        696
+      ],
+      "chunk_shape": [
+        1,
+        256,
+        256
+      ],
+      "shard_shape": [
+        2048,
+        512,
+        512
+      ],
+      "chunks_per_shard": [
+        2048,
+        2,
+        2
+      ],
+      "page_alignment": 4096,
+      "files": [
+        {
+          "path": "images/c/0/0/0",
+          "kind": "shard",
+          "st_size": 568533343,
+          "st_blocks": 1110417,
+          "allocated_bytes": 568533504,
+          "final_padding_bytes": 3745,
+          "aligned_bytes": 568537088,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/0/0/1",
+          "kind": "shard",
+          "st_size": 209633292,
+          "st_blocks": 409441,
+          "allocated_bytes": 209633792,
+          "final_padding_bytes": 4084,
+          "aligned_bytes": 209637376,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/0/1/0",
+          "kind": "shard",
+          "st_size": 10135518,
+          "st_blocks": 19796,
+          "allocated_bytes": 10135552,
+          "final_padding_bytes": 2082,
+          "aligned_bytes": 10137600,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/0/1/1",
+          "kind": "shard",
+          "st_size": 4101777,
+          "st_blocks": 8012,
+          "allocated_bytes": 4102144,
+          "final_padding_bytes": 2415,
+          "aligned_bytes": 4104192,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/1/0/0",
+          "kind": "shard",
+          "st_size": 568532929,
+          "st_blocks": 1110416,
+          "allocated_bytes": 568532992,
+          "final_padding_bytes": 63,
+          "aligned_bytes": 568532992,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/1/0/1",
+          "kind": "shard",
+          "st_size": 209632266,
+          "st_blocks": 409439,
+          "allocated_bytes": 209632768,
+          "final_padding_bytes": 1014,
+          "aligned_bytes": 209633280,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/1/1/0",
+          "kind": "shard",
+          "st_size": 10136828,
+          "st_blocks": 19799,
+          "allocated_bytes": 10137088,
+          "final_padding_bytes": 772,
+          "aligned_bytes": 10137600,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/1/1/1",
+          "kind": "shard",
+          "st_size": 4102425,
+          "st_blocks": 8013,
+          "allocated_bytes": 4102656,
+          "final_padding_bytes": 1767,
+          "aligned_bytes": 4104192,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/10/0/0",
+          "kind": "shard",
+          "st_size": 568529829,
+          "st_blocks": 1110410,
+          "allocated_bytes": 568529920,
+          "final_padding_bytes": 3163,
+          "aligned_bytes": 568532992,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/10/0/1",
+          "kind": "shard",
+          "st_size": 209638163,
+          "st_blocks": 409450,
+          "allocated_bytes": 209638400,
+          "final_padding_bytes": 3309,
+          "aligned_bytes": 209641472,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/10/1/0",
+          "kind": "shard",
+          "st_size": 10139485,
+          "st_blocks": 19804,
+          "allocated_bytes": 10139648,
+          "final_padding_bytes": 2211,
+          "aligned_bytes": 10141696,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/10/1/1",
+          "kind": "shard",
+          "st_size": 4104111,
+          "st_blocks": 8016,
+          "allocated_bytes": 4104192,
+          "final_padding_bytes": 81,
+          "aligned_bytes": 4104192,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/11/0/0",
+          "kind": "shard",
+          "st_size": 568531766,
+          "st_blocks": 1110414,
+          "allocated_bytes": 568531968,
+          "final_padding_bytes": 1226,
+          "aligned_bytes": 568532992,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/11/0/1",
+          "kind": "shard",
+          "st_size": 209637048,
+          "st_blocks": 409448,
+          "allocated_bytes": 209637376,
+          "final_padding_bytes": 328,
+          "aligned_bytes": 209637376,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/11/1/0",
+          "kind": "shard",
+          "st_size": 10139967,
+          "st_blocks": 19805,
+          "allocated_bytes": 10140160,
+          "final_padding_bytes": 1729,
+          "aligned_bytes": 10141696,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/11/1/1",
+          "kind": "shard",
+          "st_size": 4104536,
+          "st_blocks": 8017,
+          "allocated_bytes": 4104704,
+          "final_padding_bytes": 3752,
+          "aligned_bytes": 4108288,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/12/0/0",
+          "kind": "shard",
+          "st_size": 568533355,
+          "st_blocks": 1110417,
+          "allocated_bytes": 568533504,
+          "final_padding_bytes": 3733,
+          "aligned_bytes": 568537088,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/12/0/1",
+          "kind": "shard",
+          "st_size": 209635928,
+          "st_blocks": 409446,
+          "allocated_bytes": 209636352,
+          "final_padding_bytes": 1448,
+          "aligned_bytes": 209637376,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/12/1/0",
+          "kind": "shard",
+          "st_size": 10136880,
+          "st_blocks": 19799,
+          "allocated_bytes": 10137088,
+          "final_padding_bytes": 720,
+          "aligned_bytes": 10137600,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/12/1/1",
+          "kind": "shard",
+          "st_size": 4105358,
+          "st_blocks": 8019,
+          "allocated_bytes": 4105728,
+          "final_padding_bytes": 2930,
+          "aligned_bytes": 4108288,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/13/0/0",
+          "kind": "shard",
+          "st_size": 568532941,
+          "st_blocks": 1110416,
+          "allocated_bytes": 568532992,
+          "final_padding_bytes": 51,
+          "aligned_bytes": 568532992,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/13/0/1",
+          "kind": "shard",
+          "st_size": 209634902,
+          "st_blocks": 409444,
+          "allocated_bytes": 209635328,
+          "final_padding_bytes": 2474,
+          "aligned_bytes": 209637376,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/13/1/0",
+          "kind": "shard",
+          "st_size": 10138190,
+          "st_blocks": 19802,
+          "allocated_bytes": 10138624,
+          "final_padding_bytes": 3506,
+          "aligned_bytes": 10141696,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/13/1/1",
+          "kind": "shard",
+          "st_size": 4101910,
+          "st_blocks": 8012,
+          "allocated_bytes": 4102144,
+          "final_padding_bytes": 2282,
+          "aligned_bytes": 4104192,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/14/0/0",
+          "kind": "shard",
+          "st_size": 568529536,
+          "st_blocks": 1110410,
+          "allocated_bytes": 568529920,
+          "final_padding_bytes": 3456,
+          "aligned_bytes": 568532992,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/14/0/1",
+          "kind": "shard",
+          "st_size": 209634501,
+          "st_blocks": 409443,
+          "allocated_bytes": 209634816,
+          "final_padding_bytes": 2875,
+          "aligned_bytes": 209637376,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/14/1/0",
+          "kind": "shard",
+          "st_size": 10136175,
+          "st_blocks": 19798,
+          "allocated_bytes": 10136576,
+          "final_padding_bytes": 1425,
+          "aligned_bytes": 10137600,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/14/1/1",
+          "kind": "shard",
+          "st_size": 4099504,
+          "st_blocks": 8007,
+          "allocated_bytes": 4099584,
+          "final_padding_bytes": 592,
+          "aligned_bytes": 4100096,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/15/0/0",
+          "kind": "shard",
+          "st_size": 568532403,
+          "st_blocks": 1110415,
+          "allocated_bytes": 568532480,
+          "final_padding_bytes": 589,
+          "aligned_bytes": 568532992,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/15/0/1",
+          "kind": "shard",
+          "st_size": 209635900,
+          "st_blocks": 409446,
+          "allocated_bytes": 209636352,
+          "final_padding_bytes": 1476,
+          "aligned_bytes": 209637376,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/15/1/0",
+          "kind": "shard",
+          "st_size": 10137103,
+          "st_blocks": 19800,
+          "allocated_bytes": 10137600,
+          "final_padding_bytes": 497,
+          "aligned_bytes": 10137600,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/15/1/1",
+          "kind": "shard",
+          "st_size": 4104240,
+          "st_blocks": 8017,
+          "allocated_bytes": 4104704,
+          "final_padding_bytes": 4048,
+          "aligned_bytes": 4108288,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/2/0/0",
+          "kind": "shard",
+          "st_size": 568529821,
+          "st_blocks": 1110410,
+          "allocated_bytes": 568529920,
+          "final_padding_bytes": 3171,
+          "aligned_bytes": 568532992,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/2/0/1",
+          "kind": "shard",
+          "st_size": 209637771,
+          "st_blocks": 409449,
+          "allocated_bytes": 209637888,
+          "final_padding_bytes": 3701,
+          "aligned_bytes": 209641472,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/2/1/0",
+          "kind": "shard",
+          "st_size": 10138577,
+          "st_blocks": 19802,
+          "allocated_bytes": 10138624,
+          "final_padding_bytes": 3119,
+          "aligned_bytes": 10141696,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/2/1/1",
+          "kind": "shard",
+          "st_size": 4103089,
+          "st_blocks": 8014,
+          "allocated_bytes": 4103168,
+          "final_padding_bytes": 1103,
+          "aligned_bytes": 4104192,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/3/0/0",
+          "kind": "shard",
+          "st_size": 568531758,
+          "st_blocks": 1110414,
+          "allocated_bytes": 568531968,
+          "final_padding_bytes": 1234,
+          "aligned_bytes": 568532992,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/3/0/1",
+          "kind": "shard",
+          "st_size": 209636656,
+          "st_blocks": 409447,
+          "allocated_bytes": 209636864,
+          "final_padding_bytes": 720,
+          "aligned_bytes": 209637376,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/3/1/0",
+          "kind": "shard",
+          "st_size": 10139059,
+          "st_blocks": 19803,
+          "allocated_bytes": 10139136,
+          "final_padding_bytes": 2637,
+          "aligned_bytes": 10141696,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/3/1/1",
+          "kind": "shard",
+          "st_size": 4103514,
+          "st_blocks": 8015,
+          "allocated_bytes": 4103680,
+          "final_padding_bytes": 678,
+          "aligned_bytes": 4104192,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/4/0/0",
+          "kind": "shard",
+          "st_size": 568533347,
+          "st_blocks": 1110417,
+          "allocated_bytes": 568533504,
+          "final_padding_bytes": 3741,
+          "aligned_bytes": 568537088,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/4/0/1",
+          "kind": "shard",
+          "st_size": 209635536,
+          "st_blocks": 409445,
+          "allocated_bytes": 209635840,
+          "final_padding_bytes": 1840,
+          "aligned_bytes": 209637376,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/4/1/0",
+          "kind": "shard",
+          "st_size": 10135972,
+          "st_blocks": 19797,
+          "allocated_bytes": 10136064,
+          "final_padding_bytes": 1628,
+          "aligned_bytes": 10137600,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/4/1/1",
+          "kind": "shard",
+          "st_size": 4104336,
+          "st_blocks": 8017,
+          "allocated_bytes": 4104704,
+          "final_padding_bytes": 3952,
+          "aligned_bytes": 4108288,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/5/0/0",
+          "kind": "shard",
+          "st_size": 568532933,
+          "st_blocks": 1110416,
+          "allocated_bytes": 568532992,
+          "final_padding_bytes": 59,
+          "aligned_bytes": 568532992,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/5/0/1",
+          "kind": "shard",
+          "st_size": 209634510,
+          "st_blocks": 409443,
+          "allocated_bytes": 209634816,
+          "final_padding_bytes": 2866,
+          "aligned_bytes": 209637376,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/5/1/0",
+          "kind": "shard",
+          "st_size": 10137282,
+          "st_blocks": 19800,
+          "allocated_bytes": 10137600,
+          "final_padding_bytes": 318,
+          "aligned_bytes": 10137600,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/5/1/1",
+          "kind": "shard",
+          "st_size": 4104984,
+          "st_blocks": 8018,
+          "allocated_bytes": 4105216,
+          "final_padding_bytes": 3304,
+          "aligned_bytes": 4108288,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/6/0/0",
+          "kind": "shard",
+          "st_size": 568529825,
+          "st_blocks": 1110410,
+          "allocated_bytes": 568529920,
+          "final_padding_bytes": 3167,
+          "aligned_bytes": 568532992,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/6/0/1",
+          "kind": "shard",
+          "st_size": 209635919,
+          "st_blocks": 409446,
+          "allocated_bytes": 209636352,
+          "final_padding_bytes": 1457,
+          "aligned_bytes": 209637376,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/6/1/0",
+          "kind": "shard",
+          "st_size": 10139031,
+          "st_blocks": 19803,
+          "allocated_bytes": 10139136,
+          "final_padding_bytes": 2665,
+          "aligned_bytes": 10141696,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/6/1/1",
+          "kind": "shard",
+          "st_size": 4105648,
+          "st_blocks": 8019,
+          "allocated_bytes": 4105728,
+          "final_padding_bytes": 2640,
+          "aligned_bytes": 4108288,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/7/0/0",
+          "kind": "shard",
+          "st_size": 568531762,
+          "st_blocks": 1110414,
+          "allocated_bytes": 568531968,
+          "final_padding_bytes": 1230,
+          "aligned_bytes": 568532992,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/7/0/1",
+          "kind": "shard",
+          "st_size": 209638900,
+          "st_blocks": 409451,
+          "allocated_bytes": 209638912,
+          "final_padding_bytes": 2572,
+          "aligned_bytes": 209641472,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/7/1/0",
+          "kind": "shard",
+          "st_size": 10139513,
+          "st_blocks": 19804,
+          "allocated_bytes": 10139648,
+          "final_padding_bytes": 2183,
+          "aligned_bytes": 10141696,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/7/1/1",
+          "kind": "shard",
+          "st_size": 4101977,
+          "st_blocks": 8012,
+          "allocated_bytes": 4102144,
+          "final_padding_bytes": 2215,
+          "aligned_bytes": 4104192,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/8/0/0",
+          "kind": "shard",
+          "st_size": 568533351,
+          "st_blocks": 1110417,
+          "allocated_bytes": 568533504,
+          "final_padding_bytes": 3737,
+          "aligned_bytes": 568537088,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/8/0/1",
+          "kind": "shard",
+          "st_size": 209633684,
+          "st_blocks": 409441,
+          "allocated_bytes": 209633792,
+          "final_padding_bytes": 3692,
+          "aligned_bytes": 209637376,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/8/1/0",
+          "kind": "shard",
+          "st_size": 10136426,
+          "st_blocks": 19798,
+          "allocated_bytes": 10136576,
+          "final_padding_bytes": 1174,
+          "aligned_bytes": 10137600,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/8/1/1",
+          "kind": "shard",
+          "st_size": 4102799,
+          "st_blocks": 8014,
+          "allocated_bytes": 4103168,
+          "final_padding_bytes": 1393,
+          "aligned_bytes": 4104192,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/9/0/0",
+          "kind": "shard",
+          "st_size": 568532937,
+          "st_blocks": 1110416,
+          "allocated_bytes": 568532992,
+          "final_padding_bytes": 55,
+          "aligned_bytes": 568532992,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/9/0/1",
+          "kind": "shard",
+          "st_size": 209632658,
+          "st_blocks": 409439,
+          "allocated_bytes": 209632768,
+          "final_padding_bytes": 622,
+          "aligned_bytes": 209633280,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/9/1/0",
+          "kind": "shard",
+          "st_size": 10137736,
+          "st_blocks": 19801,
+          "allocated_bytes": 10138112,
+          "final_padding_bytes": 3960,
+          "aligned_bytes": 10141696,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/c/9/1/1",
+          "kind": "shard",
+          "st_size": 4103447,
+          "st_blocks": 8015,
+          "allocated_bytes": 4103680,
+          "final_padding_bytes": 745,
+          "aligned_bytes": 4104192,
+          "index_bytes": 131076
+        },
+        {
+          "path": "images/zarr.json",
+          "kind": "metadata",
+          "st_size": 716,
+          "st_blocks": 2,
+          "allocated_bytes": 1024
+        },
+        {
+          "path": "zarr.json",
+          "kind": "metadata",
+          "st_size": 82,
+          "st_blocks": 1,
+          "allocated_bytes": 512
+        }
+      ],
+      "other_entries": [],
+      "totals": {
+        "logical_bytes": 23718789120,
+        "metered_output_bytes": 12678668288,
+        "file_count": 66,
+        "shard_file_count": 64,
+        "metadata_file_count": 2,
+        "other_file_count": 0,
+        "final_file_bytes": 12678537665,
+        "shard_file_bytes": 12678536867,
+        "metadata_file_bytes": 798,
+        "allocated_file_bytes": 12678552576,
+        "st_blocks": 24762798,
+        "aligned_shard_file_bytes": 12678668288,
+        "final_padding_bytes": 131421,
+        "index_bytes_per_shard": 131076,
+        "index_bytes": 8388864,
+        "logical_to_final_ratio": 1.870782715381869
+      },
+      "checks": {
+        "writer_passed": true,
+        "fixed_volume": true,
+        "warmup_excluded": true,
+        "retained_path_matches": true,
+        "record_case_matches": true,
+        "geometry_matches": true,
+        "logical_bytes_match": true,
+        "metered_bytes_match": true,
+        "expected_shard_count": true,
+        "expected_metadata": true,
+        "only_expected_files": true,
+        "indexes_fit": true,
+        "metered_equals_aligned_shards": true,
+        "final_size_identity": true,
+        "writer_census_final_file_bytes": true,
+        "writer_census_allocated_file_bytes": true,
+        "writer_census_file_count": true,
+        "writer_census_shard_file_count": true,
+        "writer_census_index_bytes_per_shard": true
+      },
+      "status": "pass",
+      "failed_checks": []
+    },
+    {
+      "id": "c256",
+      "manifest_locator": "#/layouts/4",
+      "writer_record": {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/003-c256-r1-sample/result.json",
+        "sha256": "e75e743bb35454f0ff7fa7ae6cd1c9b62fb03c356399b352913ccccf8c993815",
+        "id": "003-c256-r1-sample",
+        "slurm_job_id": "3836189",
+        "status": "pass",
+        "returncode": 0,
+        "scope": "measurement",
+        "round": 1,
+        "role": "sample"
+      },
+      "writer_metrics": {
+        "logical_bytes": 23718789120,
+        "submitted_bytes": 51539607552,
+        "metered_output_bytes": 12789723136,
+        "elapsed_s": 9.126548685,
+        "logical_gibs": 2.4203940079020136,
+        "drain_s": 0.08004093300000001,
+        "drain_fraction": 0.008770120640626376
+      },
+      "native_measurement": {
+        "policy": "fixed-volume-after-discard-warmup-through-close-v1",
+        "fixed_volume": true,
+        "separate_warmup_s": 1.16086163,
+        "input_mode": "direct",
+        "output_scope": "physical_sink_writes",
+        "coverage_status": "sufficient",
+        "attempt": 1,
+        "max_attempts": 1,
+        "target_duration_s": 0.25,
+        "discarded_attempts_s": 0.0,
+        "warmup_complete_batches": 0,
+        "complete_batches": 762,
+        "batch_reuses_lower_bound": 760,
+        "generation_transitions": 15,
+        "requested_frames": 32768,
+        "requested_warmup_s": 0.25,
+        "requested_duration_s": 0.25,
+        "warmup_input_bytes": 0,
+        "warmup_output_bytes": 0,
+        "warmup_drain_s": 0.0,
+        "append_s": 9.046507752,
+        "geometry": {
+          "epoch_bytes": 1572864,
+          "epochs_per_batch": 43,
+          "staging_bytes": 134217728,
+          "memory_budget_bytes": 17179869184,
+          "target_batch_bytes": 67108864,
+          "dimensions": [
+            {
+              "name": "t",
+              "reference_size": 65536,
+              "chunk_size": 1,
+              "chunks_per_shard": 2048,
+              "downsample": false,
+              "storage_position": 0
+            },
+            {
+              "name": "y",
+              "reference_size": 520,
+              "chunk_size": 256,
+              "chunks_per_shard": 2,
+              "downsample": false,
+              "storage_position": 1
+            },
+            {
+              "name": "x",
+              "reference_size": 696,
+              "chunk_size": 512,
+              "chunks_per_shard": 1,
+              "downsample": false,
+              "storage_position": 2
+            }
+          ]
+        },
+        "boundary_timing": true,
+        "reference_frames": 65536,
+        "source_bytes": 25165824,
+        "append_bytes": 1572864,
+        "prep_s": 0.02552122314373684,
+        "warmup_s": 0.0,
+        "elapsed_s": 9.126548685,
+        "drain_s": 0.08004093300000001,
+        "drain_fraction": 0.008770120640626376,
+        "submitted_bytes": 51539607552,
+        "logical_input_bytes": 23718789120,
+        "input_bytes": 51539607552,
+        "output_bytes": 12789723136,
+        "throughput_in_gibs": 5.259381356162677,
+        "throughput_out_gibs": 1.3051327824740215,
+        "boundaries": {
+          "batch": {
+            "bytes": 67633152,
+            "crossing": {
+              "calls": 762,
+              "over_100ms": 1,
+              "total_ms": 7848.856943000001,
+              "max_ms": 112.643638
+            },
+            "following": {
+              "calls": 12178,
+              "over_100ms": 0,
+              "total_ms": 481.76156599999996,
+              "max_ms": 3.852502
+            }
+          },
+          "generation": {
+            "bytes": 3221225472,
+            "crossing": {
+              "calls": 16,
+              "over_100ms": 0,
+              "total_ms": 0.595606,
+              "max_ms": 0.061786
+            },
+            "following": {
+              "calls": 240,
+              "over_100ms": 0,
+              "total_ms": 52.60937599999999,
+              "max_ms": 10.602495
+            }
+          },
+          "staging_grid": {
+            "bytes": 524288,
+            "crossing": {
+              "calls": 32768,
+              "over_100ms": 1,
+              "total_ms": 9044.439995000064,
+              "max_ms": 112.643638
+            },
+            "following": {
+              "calls": 32767,
+              "over_100ms": 1,
+              "total_ms": 9044.350178000064,
+              "max_ms": 112.643638
+            }
+          }
+        }
+      },
+      "native_output_bytes": 12789723136,
+      "writer_store_check": {
+        "final_file_bytes": 12789588770,
+        "allocated_file_bytes": 12789606400,
+        "file_count": 66,
+        "shard_file_count": 64,
+        "index_bytes_per_shard": 65540,
+        "shape": [
+          32768,
+          520,
+          696
+        ]
+      },
+      "array_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c256/images",
+      "store_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c256",
+      "shape": [
+        32768,
+        520,
+        696
+      ],
+      "chunk_shape": [
+        1,
+        256,
+        512
+      ],
+      "shard_shape": [
+        2048,
+        512,
+        512
+      ],
+      "chunks_per_shard": [
+        2048,
+        2,
+        1
+      ],
+      "page_alignment": 4096,
+      "files": [
+        {
+          "path": "images/c/0/0/0",
+          "kind": "shard",
+          "st_size": 570220217,
+          "st_blocks": 1113712,
+          "allocated_bytes": 570220544,
+          "final_padding_bytes": 327,
+          "aligned_bytes": 570220544,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/0/0/1",
+          "kind": "shard",
+          "st_size": 214754864,
+          "st_blocks": 419444,
+          "allocated_bytes": 214755328,
+          "final_padding_bytes": 2512,
+          "aligned_bytes": 214757376,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/0/1/0",
+          "kind": "shard",
+          "st_size": 9818723,
+          "st_blocks": 19178,
+          "allocated_bytes": 9819136,
+          "final_padding_bytes": 3485,
+          "aligned_bytes": 9822208,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/0/1/1",
+          "kind": "shard",
+          "st_size": 4550266,
+          "st_blocks": 8888,
+          "allocated_bytes": 4550656,
+          "final_padding_bytes": 390,
+          "aligned_bytes": 4550656,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/1/0/0",
+          "kind": "shard",
+          "st_size": 570223159,
+          "st_blocks": 1113718,
+          "allocated_bytes": 570223616,
+          "final_padding_bytes": 1481,
+          "aligned_bytes": 570224640,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/1/0/1",
+          "kind": "shard",
+          "st_size": 214757850,
+          "st_blocks": 419449,
+          "allocated_bytes": 214757888,
+          "final_padding_bytes": 3622,
+          "aligned_bytes": 214761472,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/1/1/0",
+          "kind": "shard",
+          "st_size": 9820977,
+          "st_blocks": 19182,
+          "allocated_bytes": 9821184,
+          "final_padding_bytes": 1231,
+          "aligned_bytes": 9822208,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/1/1/1",
+          "kind": "shard",
+          "st_size": 4553267,
+          "st_blocks": 8894,
+          "allocated_bytes": 4553728,
+          "final_padding_bytes": 1485,
+          "aligned_bytes": 4554752,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/10/0/0",
+          "kind": "shard",
+          "st_size": 570222654,
+          "st_blocks": 1113717,
+          "allocated_bytes": 570223104,
+          "final_padding_bytes": 1986,
+          "aligned_bytes": 570224640,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/10/0/1",
+          "kind": "shard",
+          "st_size": 214755009,
+          "st_blocks": 419444,
+          "allocated_bytes": 214755328,
+          "final_padding_bytes": 2367,
+          "aligned_bytes": 214757376,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/10/1/0",
+          "kind": "shard",
+          "st_size": 9817749,
+          "st_blocks": 19176,
+          "allocated_bytes": 9818112,
+          "final_padding_bytes": 363,
+          "aligned_bytes": 9818112,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/10/1/1",
+          "kind": "shard",
+          "st_size": 4551011,
+          "st_blocks": 8889,
+          "allocated_bytes": 4551168,
+          "final_padding_bytes": 3741,
+          "aligned_bytes": 4554752,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/11/0/0",
+          "kind": "shard",
+          "st_size": 570225596,
+          "st_blocks": 1113722,
+          "allocated_bytes": 570225664,
+          "final_padding_bytes": 3140,
+          "aligned_bytes": 570228736,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/11/0/1",
+          "kind": "shard",
+          "st_size": 214757995,
+          "st_blocks": 419450,
+          "allocated_bytes": 214758400,
+          "final_padding_bytes": 3477,
+          "aligned_bytes": 214761472,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/11/1/0",
+          "kind": "shard",
+          "st_size": 9820003,
+          "st_blocks": 19180,
+          "allocated_bytes": 9820160,
+          "final_padding_bytes": 2205,
+          "aligned_bytes": 9822208,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/11/1/1",
+          "kind": "shard",
+          "st_size": 4554012,
+          "st_blocks": 8895,
+          "allocated_bytes": 4554240,
+          "final_padding_bytes": 740,
+          "aligned_bytes": 4554752,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/12/0/0",
+          "kind": "shard",
+          "st_size": 570224442,
+          "st_blocks": 1113720,
+          "allocated_bytes": 570224640,
+          "final_padding_bytes": 198,
+          "aligned_bytes": 570224640,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/12/0/1",
+          "kind": "shard",
+          "st_size": 214756885,
+          "st_blocks": 419448,
+          "allocated_bytes": 214757376,
+          "final_padding_bytes": 491,
+          "aligned_bytes": 214757376,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/12/1/0",
+          "kind": "shard",
+          "st_size": 9822257,
+          "st_blocks": 19185,
+          "allocated_bytes": 9822720,
+          "final_padding_bytes": 4047,
+          "aligned_bytes": 9826304,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/12/1/1",
+          "kind": "shard",
+          "st_size": 4552917,
+          "st_blocks": 8893,
+          "allocated_bytes": 4553216,
+          "final_padding_bytes": 1835,
+          "aligned_bytes": 4554752,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/13/0/0",
+          "kind": "shard",
+          "st_size": 570219922,
+          "st_blocks": 1113711,
+          "allocated_bytes": 570220032,
+          "final_padding_bytes": 622,
+          "aligned_bytes": 570220544,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/13/0/1",
+          "kind": "shard",
+          "st_size": 214753111,
+          "st_blocks": 419440,
+          "allocated_bytes": 214753280,
+          "final_padding_bytes": 169,
+          "aligned_bytes": 214753280,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/13/1/0",
+          "kind": "shard",
+          "st_size": 9818377,
+          "st_blocks": 19177,
+          "allocated_bytes": 9818624,
+          "final_padding_bytes": 3831,
+          "aligned_bytes": 9822208,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/13/1/1",
+          "kind": "shard",
+          "st_size": 4548747,
+          "st_blocks": 8885,
+          "allocated_bytes": 4549120,
+          "final_padding_bytes": 1909,
+          "aligned_bytes": 4550656,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/14/0/0",
+          "kind": "shard",
+          "st_size": 570222864,
+          "st_blocks": 1113717,
+          "allocated_bytes": 570223104,
+          "final_padding_bytes": 1776,
+          "aligned_bytes": 570224640,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/14/0/1",
+          "kind": "shard",
+          "st_size": 214756097,
+          "st_blocks": 419446,
+          "allocated_bytes": 214756352,
+          "final_padding_bytes": 1279,
+          "aligned_bytes": 214757376,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/14/1/0",
+          "kind": "shard",
+          "st_size": 9820631,
+          "st_blocks": 19181,
+          "allocated_bytes": 9820672,
+          "final_padding_bytes": 1577,
+          "aligned_bytes": 9822208,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/14/1/1",
+          "kind": "shard",
+          "st_size": 4551748,
+          "st_blocks": 8891,
+          "allocated_bytes": 4552192,
+          "final_padding_bytes": 3004,
+          "aligned_bytes": 4554752,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/15/0/0",
+          "kind": "shard",
+          "st_size": 570221710,
+          "st_blocks": 1113715,
+          "allocated_bytes": 570222080,
+          "final_padding_bytes": 2930,
+          "aligned_bytes": 570224640,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/15/0/1",
+          "kind": "shard",
+          "st_size": 214754987,
+          "st_blocks": 419444,
+          "allocated_bytes": 214755328,
+          "final_padding_bytes": 2389,
+          "aligned_bytes": 214757376,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/15/1/0",
+          "kind": "shard",
+          "st_size": 9818789,
+          "st_blocks": 19178,
+          "allocated_bytes": 9819136,
+          "final_padding_bytes": 3419,
+          "aligned_bytes": 9822208,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/15/1/1",
+          "kind": "shard",
+          "st_size": 4550653,
+          "st_blocks": 8888,
+          "allocated_bytes": 4550656,
+          "final_padding_bytes": 3,
+          "aligned_bytes": 4550656,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/2/0/0",
+          "kind": "shard",
+          "st_size": 570220559,
+          "st_blocks": 1113713,
+          "allocated_bytes": 570221056,
+          "final_padding_bytes": 4081,
+          "aligned_bytes": 570224640,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/2/0/1",
+          "kind": "shard",
+          "st_size": 214753689,
+          "st_blocks": 419441,
+          "allocated_bytes": 214753792,
+          "final_padding_bytes": 3687,
+          "aligned_bytes": 214757376,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/2/1/0",
+          "kind": "shard",
+          "st_size": 9817015,
+          "st_blocks": 19174,
+          "allocated_bytes": 9817088,
+          "final_padding_bytes": 1097,
+          "aligned_bytes": 9818112,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/2/1/1",
+          "kind": "shard",
+          "st_size": 4548996,
+          "st_blocks": 8885,
+          "allocated_bytes": 4549120,
+          "final_padding_bytes": 1660,
+          "aligned_bytes": 4550656,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/3/0/0",
+          "kind": "shard",
+          "st_size": 570223501,
+          "st_blocks": 1113718,
+          "allocated_bytes": 570223616,
+          "final_padding_bytes": 1139,
+          "aligned_bytes": 570224640,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/3/0/1",
+          "kind": "shard",
+          "st_size": 214756675,
+          "st_blocks": 419447,
+          "allocated_bytes": 214756864,
+          "final_padding_bytes": 701,
+          "aligned_bytes": 214757376,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/3/1/0",
+          "kind": "shard",
+          "st_size": 9819269,
+          "st_blocks": 19179,
+          "allocated_bytes": 9819648,
+          "final_padding_bytes": 2939,
+          "aligned_bytes": 9822208,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/3/1/1",
+          "kind": "shard",
+          "st_size": 4551997,
+          "st_blocks": 8891,
+          "allocated_bytes": 4552192,
+          "final_padding_bytes": 2755,
+          "aligned_bytes": 4554752,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/4/0/0",
+          "kind": "shard",
+          "st_size": 570222347,
+          "st_blocks": 1113716,
+          "allocated_bytes": 570222592,
+          "final_padding_bytes": 2293,
+          "aligned_bytes": 570224640,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/4/0/1",
+          "kind": "shard",
+          "st_size": 214755565,
+          "st_blocks": 419445,
+          "allocated_bytes": 214755840,
+          "final_padding_bytes": 1811,
+          "aligned_bytes": 214757376,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/4/1/0",
+          "kind": "shard",
+          "st_size": 9821523,
+          "st_blocks": 19183,
+          "allocated_bytes": 9821696,
+          "final_padding_bytes": 685,
+          "aligned_bytes": 9822208,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/4/1/1",
+          "kind": "shard",
+          "st_size": 4550902,
+          "st_blocks": 8889,
+          "allocated_bytes": 4551168,
+          "final_padding_bytes": 3850,
+          "aligned_bytes": 4554752,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/5/0/0",
+          "kind": "shard",
+          "st_size": 570223921,
+          "st_blocks": 1113719,
+          "allocated_bytes": 570224128,
+          "final_padding_bytes": 719,
+          "aligned_bytes": 570224640,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/5/0/1",
+          "kind": "shard",
+          "st_size": 214751660,
+          "st_blocks": 419437,
+          "allocated_bytes": 214751744,
+          "final_padding_bytes": 1620,
+          "aligned_bytes": 214753280,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/5/1/0",
+          "kind": "shard",
+          "st_size": 9818190,
+          "st_blocks": 19177,
+          "allocated_bytes": 9818624,
+          "final_padding_bytes": 4018,
+          "aligned_bytes": 9822208,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/5/1/1",
+          "kind": "shard",
+          "st_size": 4550786,
+          "st_blocks": 8889,
+          "allocated_bytes": 4551168,
+          "final_padding_bytes": 3966,
+          "aligned_bytes": 4554752,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/6/0/0",
+          "kind": "shard",
+          "st_size": 570222767,
+          "st_blocks": 1113717,
+          "allocated_bytes": 570223104,
+          "final_padding_bytes": 1873,
+          "aligned_bytes": 570224640,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/6/0/1",
+          "kind": "shard",
+          "st_size": 214754646,
+          "st_blocks": 419443,
+          "allocated_bytes": 214754816,
+          "final_padding_bytes": 2730,
+          "aligned_bytes": 214757376,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/6/1/0",
+          "kind": "shard",
+          "st_size": 9820444,
+          "st_blocks": 19181,
+          "allocated_bytes": 9820672,
+          "final_padding_bytes": 1764,
+          "aligned_bytes": 9822208,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/6/1/1",
+          "kind": "shard",
+          "st_size": 4553787,
+          "st_blocks": 8895,
+          "allocated_bytes": 4554240,
+          "final_padding_bytes": 965,
+          "aligned_bytes": 4554752,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/7/0/0",
+          "kind": "shard",
+          "st_size": 570225709,
+          "st_blocks": 1113723,
+          "allocated_bytes": 570226176,
+          "final_padding_bytes": 3027,
+          "aligned_bytes": 570228736,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/7/0/1",
+          "kind": "shard",
+          "st_size": 214753536,
+          "st_blocks": 419441,
+          "allocated_bytes": 214753792,
+          "final_padding_bytes": 3840,
+          "aligned_bytes": 214757376,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/7/1/0",
+          "kind": "shard",
+          "st_size": 9822698,
+          "st_blocks": 19185,
+          "allocated_bytes": 9822720,
+          "final_padding_bytes": 3606,
+          "aligned_bytes": 9826304,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/7/1/1",
+          "kind": "shard",
+          "st_size": 4552692,
+          "st_blocks": 8892,
+          "allocated_bytes": 4552704,
+          "final_padding_bytes": 2060,
+          "aligned_bytes": 4554752,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/8/0/0",
+          "kind": "shard",
+          "st_size": 570221535,
+          "st_blocks": 1113714,
+          "allocated_bytes": 570221568,
+          "final_padding_bytes": 3105,
+          "aligned_bytes": 570224640,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/8/0/1",
+          "kind": "shard",
+          "st_size": 214753804,
+          "st_blocks": 419442,
+          "allocated_bytes": 214754304,
+          "final_padding_bytes": 3572,
+          "aligned_bytes": 214757376,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/8/1/0",
+          "kind": "shard",
+          "st_size": 9819532,
+          "st_blocks": 19179,
+          "allocated_bytes": 9819648,
+          "final_padding_bytes": 2676,
+          "aligned_bytes": 9822208,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/8/1/1",
+          "kind": "shard",
+          "st_size": 4548342,
+          "st_blocks": 8884,
+          "allocated_bytes": 4548608,
+          "final_padding_bytes": 2314,
+          "aligned_bytes": 4550656,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/9/0/0",
+          "kind": "shard",
+          "st_size": 570224477,
+          "st_blocks": 1113720,
+          "allocated_bytes": 570224640,
+          "final_padding_bytes": 163,
+          "aligned_bytes": 570224640,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/9/0/1",
+          "kind": "shard",
+          "st_size": 214756790,
+          "st_blocks": 419447,
+          "allocated_bytes": 214756864,
+          "final_padding_bytes": 586,
+          "aligned_bytes": 214757376,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/9/1/0",
+          "kind": "shard",
+          "st_size": 9821786,
+          "st_blocks": 19184,
+          "allocated_bytes": 9822208,
+          "final_padding_bytes": 422,
+          "aligned_bytes": 9822208,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/c/9/1/1",
+          "kind": "shard",
+          "st_size": 4551343,
+          "st_blocks": 8890,
+          "allocated_bytes": 4551680,
+          "final_padding_bytes": 3409,
+          "aligned_bytes": 4554752,
+          "index_bytes": 65540
+        },
+        {
+          "path": "images/zarr.json",
+          "kind": "metadata",
+          "st_size": 716,
+          "st_blocks": 2,
+          "allocated_bytes": 1024
+        },
+        {
+          "path": "zarr.json",
+          "kind": "metadata",
+          "st_size": 82,
+          "st_blocks": 1,
+          "allocated_bytes": 512
+        }
+      ],
+      "other_entries": [],
+      "totals": {
+        "logical_bytes": 23718789120,
+        "metered_output_bytes": 12789723136,
+        "file_count": 66,
+        "shard_file_count": 64,
+        "metadata_file_count": 2,
+        "other_file_count": 0,
+        "final_file_bytes": 12789588770,
+        "shard_file_bytes": 12789587972,
+        "metadata_file_bytes": 798,
+        "allocated_file_bytes": 12789606400,
+        "st_blocks": 24979700,
+        "aligned_shard_file_bytes": 12789723136,
+        "final_padding_bytes": 135164,
+        "index_bytes_per_shard": 65540,
+        "index_bytes": 4194560,
+        "logical_to_final_ratio": 1.8545388398754592
+      },
+      "checks": {
+        "writer_passed": true,
+        "fixed_volume": true,
+        "warmup_excluded": true,
+        "retained_path_matches": true,
+        "record_case_matches": true,
+        "geometry_matches": true,
+        "logical_bytes_match": true,
+        "metered_bytes_match": true,
+        "expected_shard_count": true,
+        "expected_metadata": true,
+        "only_expected_files": true,
+        "indexes_fit": true,
+        "metered_equals_aligned_shards": true,
+        "final_size_identity": true,
+        "writer_census_final_file_bytes": true,
+        "writer_census_allocated_file_bytes": true,
+        "writer_census_file_count": true,
+        "writer_census_shard_file_count": true,
+        "writer_census_index_bytes_per_shard": true
+      },
+      "status": "pass",
+      "failed_checks": []
+    },
+    {
+      "id": "c512",
+      "manifest_locator": "#/layouts/5",
+      "writer_record": {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189/measurements/001-c512-r1-sample/result.json",
+        "sha256": "561b88d06e19d68c3814e1ace817ee9b9471ce46f758e964c9829c854d79a00b",
+        "id": "001-c512-r1-sample",
+        "slurm_job_id": "3836189",
+        "status": "pass",
+        "returncode": 0,
+        "scope": "measurement",
+        "round": 1,
+        "role": "sample"
+      },
+      "writer_metrics": {
+        "logical_bytes": 23718789120,
+        "submitted_bytes": 68719476736,
+        "metered_output_bytes": 12815695872,
+        "elapsed_s": 9.299816713,
+        "logical_gibs": 2.37529882918242,
+        "drain_s": 0.049561162000000006,
+        "drain_fraction": 0.005329262234891103
+      },
+      "native_measurement": {
+        "policy": "fixed-volume-after-discard-warmup-through-close-v1",
+        "fixed_volume": true,
+        "separate_warmup_s": 1.186722408,
+        "input_mode": "direct",
+        "output_scope": "physical_sink_writes",
+        "coverage_status": "sufficient",
+        "attempt": 1,
+        "max_attempts": 1,
+        "target_duration_s": 0.25,
+        "discarded_attempts_s": 0.0,
+        "warmup_complete_batches": 0,
+        "complete_batches": 1024,
+        "batch_reuses_lower_bound": 1022,
+        "generation_transitions": 15,
+        "requested_frames": 32768,
+        "requested_warmup_s": 0.25,
+        "requested_duration_s": 0.25,
+        "warmup_input_bytes": 0,
+        "warmup_output_bytes": 0,
+        "warmup_drain_s": 0.0,
+        "append_s": 9.250255551,
+        "geometry": {
+          "epoch_bytes": 2097152,
+          "epochs_per_batch": 32,
+          "staging_bytes": 134217728,
+          "memory_budget_bytes": 17179869184,
+          "target_batch_bytes": 67108864,
+          "dimensions": [
+            {
+              "name": "t",
+              "reference_size": 65536,
+              "chunk_size": 1,
+              "chunks_per_shard": 2048,
+              "downsample": false,
+              "storage_position": 0
+            },
+            {
+              "name": "y",
+              "reference_size": 520,
+              "chunk_size": 512,
+              "chunks_per_shard": 1,
+              "downsample": false,
+              "storage_position": 1
+            },
+            {
+              "name": "x",
+              "reference_size": 696,
+              "chunk_size": 512,
+              "chunks_per_shard": 1,
+              "downsample": false,
+              "storage_position": 2
+            }
+          ]
+        },
+        "boundary_timing": true,
+        "reference_frames": 65536,
+        "source_bytes": 33554432,
+        "append_bytes": 2097152,
+        "prep_s": 0.009991316011088849,
+        "warmup_s": 0.0,
+        "elapsed_s": 9.299816713,
+        "drain_s": 0.049561162000000006,
+        "drain_fraction": 0.005329262234891103,
+        "submitted_bytes": 68719476736,
+        "logical_input_bytes": 23718789120,
+        "input_bytes": 68719476736,
+        "output_bytes": 12815695872,
+        "throughput_in_gibs": 6.88185605965071,
+        "throughput_out_gibs": 1.28341743104631,
+        "boundaries": {
+          "batch": {
+            "bytes": 67108864,
+            "crossing": {
+              "calls": 1024,
+              "over_100ms": 0,
+              "total_ms": 7628.8755519999995,
+              "max_ms": 76.542487
+            },
+            "following": {
+              "calls": 16368,
+              "over_100ms": 0,
+              "total_ms": 852.153814999996,
+              "max_ms": 3.8441129999999997
+            }
+          },
+          "generation": {
+            "bytes": 4294967296,
+            "crossing": {
+              "calls": 16,
+              "over_100ms": 0,
+              "total_ms": 93.64947699999999,
+              "max_ms": 15.134483999999999
+            },
+            "following": {
+              "calls": 240,
+              "over_100ms": 0,
+              "total_ms": 13.374977999999995,
+              "max_ms": 1.320058
+            }
+          },
+          "staging_grid": {
+            "bytes": 67108864,
+            "crossing": {
+              "calls": 1024,
+              "over_100ms": 0,
+              "total_ms": 7628.8755519999995,
+              "max_ms": 76.542487
+            },
+            "following": {
+              "calls": 16368,
+              "over_100ms": 0,
+              "total_ms": 852.153814999996,
+              "max_ms": 3.8441129999999997
+            }
+          }
+        }
+      },
+      "native_output_bytes": 12815695872,
+      "writer_store_check": {
+        "final_file_bytes": 12815568446,
+        "allocated_file_bytes": 12815590912,
+        "file_count": 66,
+        "shard_file_count": 64,
+        "index_bytes_per_shard": 32772,
+        "shape": [
+          32768,
+          520,
+          696
+        ]
+      },
+      "array_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c512/images",
+      "store_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c512",
+      "shape": [
+        32768,
+        520,
+        696
+      ],
+      "chunk_shape": [
+        1,
+        512,
+        512
+      ],
+      "shard_shape": [
+        2048,
+        512,
+        512
+      ],
+      "chunks_per_shard": [
+        2048,
+        1,
+        1
+      ],
+      "page_alignment": 4096,
+      "files": [
+        {
+          "path": "images/c/0/0/0",
+          "kind": "shard",
+          "st_size": 570193672,
+          "st_blocks": 1113660,
+          "allocated_bytes": 570193920,
+          "final_padding_bytes": 2296,
+          "aligned_bytes": 570195968,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/0/0/1",
+          "kind": "shard",
+          "st_size": 214726320,
+          "st_blocks": 419388,
+          "allocated_bytes": 214726656,
+          "final_padding_bytes": 2384,
+          "aligned_bytes": 214728704,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/0/1/0",
+          "kind": "shard",
+          "st_size": 10777704,
+          "st_blocks": 21051,
+          "allocated_bytes": 10778112,
+          "final_padding_bytes": 2968,
+          "aligned_bytes": 10780672,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/0/1/1",
+          "kind": "shard",
+          "st_size": 5275282,
+          "st_blocks": 10304,
+          "allocated_bytes": 5275648,
+          "final_padding_bytes": 366,
+          "aligned_bytes": 5275648,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/1/0/0",
+          "kind": "shard",
+          "st_size": 570193672,
+          "st_blocks": 1113660,
+          "allocated_bytes": 570193920,
+          "final_padding_bytes": 2296,
+          "aligned_bytes": 570195968,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/1/0/1",
+          "kind": "shard",
+          "st_size": 214726320,
+          "st_blocks": 419388,
+          "allocated_bytes": 214726656,
+          "final_padding_bytes": 2384,
+          "aligned_bytes": 214728704,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/1/1/0",
+          "kind": "shard",
+          "st_size": 10777704,
+          "st_blocks": 21051,
+          "allocated_bytes": 10778112,
+          "final_padding_bytes": 2968,
+          "aligned_bytes": 10780672,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/1/1/1",
+          "kind": "shard",
+          "st_size": 5275282,
+          "st_blocks": 10304,
+          "allocated_bytes": 5275648,
+          "final_padding_bytes": 366,
+          "aligned_bytes": 5275648,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/10/0/0",
+          "kind": "shard",
+          "st_size": 570193672,
+          "st_blocks": 1113660,
+          "allocated_bytes": 570193920,
+          "final_padding_bytes": 2296,
+          "aligned_bytes": 570195968,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/10/0/1",
+          "kind": "shard",
+          "st_size": 214726320,
+          "st_blocks": 419388,
+          "allocated_bytes": 214726656,
+          "final_padding_bytes": 2384,
+          "aligned_bytes": 214728704,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/10/1/0",
+          "kind": "shard",
+          "st_size": 10777704,
+          "st_blocks": 21051,
+          "allocated_bytes": 10778112,
+          "final_padding_bytes": 2968,
+          "aligned_bytes": 10780672,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/10/1/1",
+          "kind": "shard",
+          "st_size": 5275282,
+          "st_blocks": 10304,
+          "allocated_bytes": 5275648,
+          "final_padding_bytes": 366,
+          "aligned_bytes": 5275648,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/11/0/0",
+          "kind": "shard",
+          "st_size": 570193672,
+          "st_blocks": 1113660,
+          "allocated_bytes": 570193920,
+          "final_padding_bytes": 2296,
+          "aligned_bytes": 570195968,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/11/0/1",
+          "kind": "shard",
+          "st_size": 214726320,
+          "st_blocks": 419388,
+          "allocated_bytes": 214726656,
+          "final_padding_bytes": 2384,
+          "aligned_bytes": 214728704,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/11/1/0",
+          "kind": "shard",
+          "st_size": 10777704,
+          "st_blocks": 21051,
+          "allocated_bytes": 10778112,
+          "final_padding_bytes": 2968,
+          "aligned_bytes": 10780672,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/11/1/1",
+          "kind": "shard",
+          "st_size": 5275282,
+          "st_blocks": 10304,
+          "allocated_bytes": 5275648,
+          "final_padding_bytes": 366,
+          "aligned_bytes": 5275648,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/12/0/0",
+          "kind": "shard",
+          "st_size": 570193672,
+          "st_blocks": 1113660,
+          "allocated_bytes": 570193920,
+          "final_padding_bytes": 2296,
+          "aligned_bytes": 570195968,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/12/0/1",
+          "kind": "shard",
+          "st_size": 214726320,
+          "st_blocks": 419388,
+          "allocated_bytes": 214726656,
+          "final_padding_bytes": 2384,
+          "aligned_bytes": 214728704,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/12/1/0",
+          "kind": "shard",
+          "st_size": 10777704,
+          "st_blocks": 21051,
+          "allocated_bytes": 10778112,
+          "final_padding_bytes": 2968,
+          "aligned_bytes": 10780672,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/12/1/1",
+          "kind": "shard",
+          "st_size": 5275282,
+          "st_blocks": 10304,
+          "allocated_bytes": 5275648,
+          "final_padding_bytes": 366,
+          "aligned_bytes": 5275648,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/13/0/0",
+          "kind": "shard",
+          "st_size": 570193672,
+          "st_blocks": 1113660,
+          "allocated_bytes": 570193920,
+          "final_padding_bytes": 2296,
+          "aligned_bytes": 570195968,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/13/0/1",
+          "kind": "shard",
+          "st_size": 214726320,
+          "st_blocks": 419388,
+          "allocated_bytes": 214726656,
+          "final_padding_bytes": 2384,
+          "aligned_bytes": 214728704,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/13/1/0",
+          "kind": "shard",
+          "st_size": 10777704,
+          "st_blocks": 21051,
+          "allocated_bytes": 10778112,
+          "final_padding_bytes": 2968,
+          "aligned_bytes": 10780672,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/13/1/1",
+          "kind": "shard",
+          "st_size": 5275282,
+          "st_blocks": 10304,
+          "allocated_bytes": 5275648,
+          "final_padding_bytes": 366,
+          "aligned_bytes": 5275648,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/14/0/0",
+          "kind": "shard",
+          "st_size": 570193672,
+          "st_blocks": 1113660,
+          "allocated_bytes": 570193920,
+          "final_padding_bytes": 2296,
+          "aligned_bytes": 570195968,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/14/0/1",
+          "kind": "shard",
+          "st_size": 214726320,
+          "st_blocks": 419388,
+          "allocated_bytes": 214726656,
+          "final_padding_bytes": 2384,
+          "aligned_bytes": 214728704,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/14/1/0",
+          "kind": "shard",
+          "st_size": 10777704,
+          "st_blocks": 21051,
+          "allocated_bytes": 10778112,
+          "final_padding_bytes": 2968,
+          "aligned_bytes": 10780672,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/14/1/1",
+          "kind": "shard",
+          "st_size": 5275282,
+          "st_blocks": 10304,
+          "allocated_bytes": 5275648,
+          "final_padding_bytes": 366,
+          "aligned_bytes": 5275648,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/15/0/0",
+          "kind": "shard",
+          "st_size": 570193672,
+          "st_blocks": 1113660,
+          "allocated_bytes": 570193920,
+          "final_padding_bytes": 2296,
+          "aligned_bytes": 570195968,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/15/0/1",
+          "kind": "shard",
+          "st_size": 214726320,
+          "st_blocks": 419388,
+          "allocated_bytes": 214726656,
+          "final_padding_bytes": 2384,
+          "aligned_bytes": 214728704,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/15/1/0",
+          "kind": "shard",
+          "st_size": 10777704,
+          "st_blocks": 21051,
+          "allocated_bytes": 10778112,
+          "final_padding_bytes": 2968,
+          "aligned_bytes": 10780672,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/15/1/1",
+          "kind": "shard",
+          "st_size": 5275282,
+          "st_blocks": 10304,
+          "allocated_bytes": 5275648,
+          "final_padding_bytes": 366,
+          "aligned_bytes": 5275648,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/2/0/0",
+          "kind": "shard",
+          "st_size": 570193672,
+          "st_blocks": 1113660,
+          "allocated_bytes": 570193920,
+          "final_padding_bytes": 2296,
+          "aligned_bytes": 570195968,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/2/0/1",
+          "kind": "shard",
+          "st_size": 214726320,
+          "st_blocks": 419388,
+          "allocated_bytes": 214726656,
+          "final_padding_bytes": 2384,
+          "aligned_bytes": 214728704,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/2/1/0",
+          "kind": "shard",
+          "st_size": 10777704,
+          "st_blocks": 21051,
+          "allocated_bytes": 10778112,
+          "final_padding_bytes": 2968,
+          "aligned_bytes": 10780672,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/2/1/1",
+          "kind": "shard",
+          "st_size": 5275282,
+          "st_blocks": 10304,
+          "allocated_bytes": 5275648,
+          "final_padding_bytes": 366,
+          "aligned_bytes": 5275648,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/3/0/0",
+          "kind": "shard",
+          "st_size": 570193672,
+          "st_blocks": 1113660,
+          "allocated_bytes": 570193920,
+          "final_padding_bytes": 2296,
+          "aligned_bytes": 570195968,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/3/0/1",
+          "kind": "shard",
+          "st_size": 214726320,
+          "st_blocks": 419388,
+          "allocated_bytes": 214726656,
+          "final_padding_bytes": 2384,
+          "aligned_bytes": 214728704,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/3/1/0",
+          "kind": "shard",
+          "st_size": 10777704,
+          "st_blocks": 21051,
+          "allocated_bytes": 10778112,
+          "final_padding_bytes": 2968,
+          "aligned_bytes": 10780672,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/3/1/1",
+          "kind": "shard",
+          "st_size": 5275282,
+          "st_blocks": 10304,
+          "allocated_bytes": 5275648,
+          "final_padding_bytes": 366,
+          "aligned_bytes": 5275648,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/4/0/0",
+          "kind": "shard",
+          "st_size": 570193672,
+          "st_blocks": 1113660,
+          "allocated_bytes": 570193920,
+          "final_padding_bytes": 2296,
+          "aligned_bytes": 570195968,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/4/0/1",
+          "kind": "shard",
+          "st_size": 214726320,
+          "st_blocks": 419388,
+          "allocated_bytes": 214726656,
+          "final_padding_bytes": 2384,
+          "aligned_bytes": 214728704,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/4/1/0",
+          "kind": "shard",
+          "st_size": 10777704,
+          "st_blocks": 21051,
+          "allocated_bytes": 10778112,
+          "final_padding_bytes": 2968,
+          "aligned_bytes": 10780672,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/4/1/1",
+          "kind": "shard",
+          "st_size": 5275282,
+          "st_blocks": 10304,
+          "allocated_bytes": 5275648,
+          "final_padding_bytes": 366,
+          "aligned_bytes": 5275648,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/5/0/0",
+          "kind": "shard",
+          "st_size": 570193672,
+          "st_blocks": 1113660,
+          "allocated_bytes": 570193920,
+          "final_padding_bytes": 2296,
+          "aligned_bytes": 570195968,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/5/0/1",
+          "kind": "shard",
+          "st_size": 214726320,
+          "st_blocks": 419388,
+          "allocated_bytes": 214726656,
+          "final_padding_bytes": 2384,
+          "aligned_bytes": 214728704,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/5/1/0",
+          "kind": "shard",
+          "st_size": 10777704,
+          "st_blocks": 21051,
+          "allocated_bytes": 10778112,
+          "final_padding_bytes": 2968,
+          "aligned_bytes": 10780672,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/5/1/1",
+          "kind": "shard",
+          "st_size": 5275282,
+          "st_blocks": 10304,
+          "allocated_bytes": 5275648,
+          "final_padding_bytes": 366,
+          "aligned_bytes": 5275648,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/6/0/0",
+          "kind": "shard",
+          "st_size": 570193672,
+          "st_blocks": 1113660,
+          "allocated_bytes": 570193920,
+          "final_padding_bytes": 2296,
+          "aligned_bytes": 570195968,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/6/0/1",
+          "kind": "shard",
+          "st_size": 214726320,
+          "st_blocks": 419388,
+          "allocated_bytes": 214726656,
+          "final_padding_bytes": 2384,
+          "aligned_bytes": 214728704,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/6/1/0",
+          "kind": "shard",
+          "st_size": 10777704,
+          "st_blocks": 21051,
+          "allocated_bytes": 10778112,
+          "final_padding_bytes": 2968,
+          "aligned_bytes": 10780672,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/6/1/1",
+          "kind": "shard",
+          "st_size": 5275282,
+          "st_blocks": 10304,
+          "allocated_bytes": 5275648,
+          "final_padding_bytes": 366,
+          "aligned_bytes": 5275648,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/7/0/0",
+          "kind": "shard",
+          "st_size": 570193672,
+          "st_blocks": 1113660,
+          "allocated_bytes": 570193920,
+          "final_padding_bytes": 2296,
+          "aligned_bytes": 570195968,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/7/0/1",
+          "kind": "shard",
+          "st_size": 214726320,
+          "st_blocks": 419388,
+          "allocated_bytes": 214726656,
+          "final_padding_bytes": 2384,
+          "aligned_bytes": 214728704,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/7/1/0",
+          "kind": "shard",
+          "st_size": 10777704,
+          "st_blocks": 21051,
+          "allocated_bytes": 10778112,
+          "final_padding_bytes": 2968,
+          "aligned_bytes": 10780672,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/7/1/1",
+          "kind": "shard",
+          "st_size": 5275282,
+          "st_blocks": 10304,
+          "allocated_bytes": 5275648,
+          "final_padding_bytes": 366,
+          "aligned_bytes": 5275648,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/8/0/0",
+          "kind": "shard",
+          "st_size": 570193672,
+          "st_blocks": 1113660,
+          "allocated_bytes": 570193920,
+          "final_padding_bytes": 2296,
+          "aligned_bytes": 570195968,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/8/0/1",
+          "kind": "shard",
+          "st_size": 214726320,
+          "st_blocks": 419388,
+          "allocated_bytes": 214726656,
+          "final_padding_bytes": 2384,
+          "aligned_bytes": 214728704,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/8/1/0",
+          "kind": "shard",
+          "st_size": 10777704,
+          "st_blocks": 21051,
+          "allocated_bytes": 10778112,
+          "final_padding_bytes": 2968,
+          "aligned_bytes": 10780672,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/8/1/1",
+          "kind": "shard",
+          "st_size": 5275282,
+          "st_blocks": 10304,
+          "allocated_bytes": 5275648,
+          "final_padding_bytes": 366,
+          "aligned_bytes": 5275648,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/9/0/0",
+          "kind": "shard",
+          "st_size": 570193672,
+          "st_blocks": 1113660,
+          "allocated_bytes": 570193920,
+          "final_padding_bytes": 2296,
+          "aligned_bytes": 570195968,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/9/0/1",
+          "kind": "shard",
+          "st_size": 214726320,
+          "st_blocks": 419388,
+          "allocated_bytes": 214726656,
+          "final_padding_bytes": 2384,
+          "aligned_bytes": 214728704,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/9/1/0",
+          "kind": "shard",
+          "st_size": 10777704,
+          "st_blocks": 21051,
+          "allocated_bytes": 10778112,
+          "final_padding_bytes": 2968,
+          "aligned_bytes": 10780672,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/c/9/1/1",
+          "kind": "shard",
+          "st_size": 5275282,
+          "st_blocks": 10304,
+          "allocated_bytes": 5275648,
+          "final_padding_bytes": 366,
+          "aligned_bytes": 5275648,
+          "index_bytes": 32772
+        },
+        {
+          "path": "images/zarr.json",
+          "kind": "metadata",
+          "st_size": 716,
+          "st_blocks": 2,
+          "allocated_bytes": 1024
+        },
+        {
+          "path": "zarr.json",
+          "kind": "metadata",
+          "st_size": 82,
+          "st_blocks": 1,
+          "allocated_bytes": 512
+        }
+      ],
+      "other_entries": [],
+      "totals": {
+        "logical_bytes": 23718789120,
+        "metered_output_bytes": 12815695872,
+        "file_count": 66,
+        "shard_file_count": 64,
+        "metadata_file_count": 2,
+        "other_file_count": 0,
+        "final_file_bytes": 12815568446,
+        "shard_file_bytes": 12815567648,
+        "metadata_file_bytes": 798,
+        "allocated_file_bytes": 12815590912,
+        "st_blocks": 25030451,
+        "aligned_shard_file_bytes": 12815695872,
+        "final_padding_bytes": 128224,
+        "index_bytes_per_shard": 32772,
+        "index_bytes": 2097408,
+        "logical_to_final_ratio": 1.850779325157685
+      },
+      "checks": {
+        "writer_passed": true,
+        "fixed_volume": true,
+        "warmup_excluded": true,
+        "retained_path_matches": true,
+        "record_case_matches": true,
+        "geometry_matches": true,
+        "logical_bytes_match": true,
+        "metered_bytes_match": true,
+        "expected_shard_count": true,
+        "expected_metadata": true,
+        "only_expected_files": true,
+        "indexes_fit": true,
+        "metered_equals_aligned_shards": true,
+        "final_size_identity": true,
+        "writer_census_final_file_bytes": true,
+        "writer_census_allocated_file_bytes": true,
+        "writer_census_file_count": true,
+        "writer_census_shard_file_count": true,
+        "writer_census_index_bytes_per_shard": true
+      },
+      "status": "pass",
+      "failed_checks": []
+    }
+  ],
+  "summary": {
+    "layout_count": 6,
+    "passed_layout_count": 6,
+    "failed_layout_count": 0
+  },
+  "status": "pass"
+}

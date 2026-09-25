@@ -1,0 +1,2 @@
+group_id,phase,protocol_sha256,job_id,policy,minimum_logical_bytes,comparison,numerator_shards,denominator_shards,codec,chunk_bytes,blosc_block_bytes,shuffle,level_hint,n,rate_ratio_n,rate_ratio_median,rate_ratio_min,rate_ratio_max
+18300cde72d94aa489e57fb86c5c74391191ca7a442dd63fd5c30796fd0d8a01,shard-count-extension,07d5e822e8d2526c5a07ee2f653c2c145ee77bba7abf82046d6548af2b7b5caa,3837212,coverage-qualified-through-final-close-v2,103079215104,54/30,54,30,blosc-lz4,65536,16384,bit,3,3,3,0.8660810202061123,0.8470803618901889,0.8896888178547113

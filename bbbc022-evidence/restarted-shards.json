@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "old_attempt": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189",
+  "failed_id": "046-fast-target54-r4-sample",
+  "reason": "The benchmark metering wrapper had 32 slots and rejected the 54-shard startup. Raise its capacity to 64 and restart the entire shard experiment with one binary, preserving the completed shared-layout experiment.",
+  "selection": "All 18 successful shared-layout observations remain primary; all old shard observations remain supplementary. This decision uses the wrapper failure, not measured rate.",
+  "old_writer_identity": {
+    "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+    "sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+    "slurm_build_job": "3836168",
+    "zero_integer_fill_fix": {
+      "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it",
+      "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+      "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+      "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+      "source_file": "writer/src/zarr/zarr_metadata.c",
+      "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+      "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+      "original_failure_job": "3836086"
+    },
+    "page_alignment": 4096
+  },
+  "new_shard_rounds": 6,
+  "geometry_worker_and_codec_settings": "unchanged"
+}

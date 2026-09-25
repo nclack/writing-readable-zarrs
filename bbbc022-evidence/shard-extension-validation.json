@@ -1,0 +1,67 @@
+{
+  "accepted_references": 6,
+  "accepted_samples": 6,
+  "attempt": "jobs/gpu-extension-3837212",
+  "complete": true,
+  "completion_document": {
+    "elapsed_seconds": 277.322694003582,
+    "family": "shard-count-extension",
+    "median_54_over_30": 0.8660810202061123,
+    "minimum_logical_bytes": 103079215104,
+    "observations": 12,
+    "pairs": [
+      {
+        "logical_gibs_30": 5.099806798453769,
+        "logical_gibs_54": 4.4168458748589075,
+        "ratio_54_over_30": 0.8660810202061123,
+        "round": 1
+      },
+      {
+        "logical_gibs_30": 5.257892722024267,
+        "logical_gibs_54": 4.67788836026466,
+        "ratio_54_over_30": 0.8896888178547113,
+        "round": 2
+      },
+      {
+        "logical_gibs_30": 5.691233490229062,
+        "logical_gibs_54": 4.820932124504797,
+        "ratio_54_over_30": 0.8470803618901889,
+        "round": 3
+      }
+    ],
+    "planned_observations": 12,
+    "primary_artifacts_unchanged": true,
+    "protocol_sha256": "07d5e822e8d2526c5a07ee2f653c2c145ee77bba7abf82046d6548af2b7b5caa",
+    "rounds": 3,
+    "slurm_job_id": "3837212",
+    "status": "pass"
+  },
+  "duplicate_conditions": [],
+  "expected_references": 6,
+  "expected_rows": 12,
+  "expected_samples": 6,
+  "marker_present": true,
+  "minimum_logical_bytes": 103079215104,
+  "missing_conditions": [],
+  "paired_54_over_30_rounds": 3,
+  "phase": "shard-count-extension",
+  "primary_extension_decision": {
+    "include_actual54": false,
+    "median_ratio": 0.9955277398456148,
+    "paired_30_over_15_ratios": [
+      0.9955277398456148,
+      1.224116736444527,
+      0.8588602548555773
+    ],
+    "remaining_s": 2703.4827121477574,
+    "rule": "median gain above5% and more than1200s remaining after round3"
+  },
+  "primary_pooling": false,
+  "protocol_sha256": "07d5e822e8d2526c5a07ee2f653c2c145ee77bba7abf82046d6548af2b7b5caa",
+  "reference_pairs": 3,
+  "rows": 12,
+  "status_counts": {
+    "pass": 12
+  },
+  "unexpected_conditions": []
+}

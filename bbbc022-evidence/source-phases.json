@@ -1,0 +1,112 @@
+{
+  "shared_layouts": {
+    "attempt": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189",
+    "job_id": "3836189",
+    "writer_identity": {
+      "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+      "sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+      "slurm_build_job": "3836168",
+      "zero_integer_fill_fix": {
+        "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it",
+        "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+        "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+        "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+        "source_file": "writer/src/zarr/zarr_metadata.c",
+        "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+        "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+        "original_failure_job": "3836086"
+      },
+      "page_alignment": 4096
+    },
+    "selection": "All 18 completed shared-layout samples carried unchanged"
+  },
+  "shard_count": {
+    "attempt": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836375",
+    "job_id": "3836375",
+    "writer_identity": {
+      "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+      "sha256": "9702c7bb6089c69449553fa4a42e9ff96af7c4a5461acbb86bccbf8a32288ed9",
+      "slurm_build_job": "3836369",
+      "zero_integer_fill_fix": {
+        "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it",
+        "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+        "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+        "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+        "source_file": "writer/src/zarr/zarr_metadata.c",
+        "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+        "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+        "original_failure_job": "3836086"
+      },
+      "page_alignment": 4096,
+      "metering_limit_fix": {
+        "source_file": "writer/bench/sink_metering.h",
+        "before_sha256": "3fe30f2377bdf8ce602a931570c5c52a6ee542c5bbd75486353228a8a79b84c1",
+        "after_sha256": "140df2d3624db8b7376f2519ea569352bebd22022b22cad8adbca087650a4c8d",
+        "old_capacity": 32,
+        "new_capacity": 64,
+        "patch_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/writer-metering.patch",
+        "patch_sha256": "2fa9e8fab52092d9b6323db2403682eae36280a5abb2565e4f5d33871e2143ab",
+        "previous_binary_sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+        "original_failure_job": "3836189",
+        "original_failure_record": "046-fast-target54-r4-sample",
+        "scope": "Study benchmark metering wrapper capacity only",
+        "direct_metering_tests": [],
+        "build_targets": [
+          "bench_stream_microscopy",
+          "test_bench_coverage",
+          "test_bench_report",
+          "test_bench_reset",
+          "test_json_writer",
+          "test_zarr_array"
+        ],
+        "build_jobs": 8,
+        "gpu_tests_run": false
+      },
+      "previous_identity": {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+        "sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+        "slurm_build_job": "3836168",
+        "zero_integer_fill_fix": {
+          "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it",
+          "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+          "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+          "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+          "source_file": "writer/src/zarr/zarr_metadata.c",
+          "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+          "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+          "original_failure_job": "3836086"
+        },
+        "page_alignment": 4096
+      },
+      "previous_identity_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/meter-fix-3836369/writer-identity.before.json",
+      "previous_identity_sha256": "d68d1c774954934dbfe6f1e4f0c55d8164169433d59bb2564fdf89e199eb29bb",
+      "source_hashes_sha256": "6637762998108c5749365e7f7a3372ce8d50241c633bc84a830e5a6ee07dd3da"
+    },
+    "selection": "Entire shard sweep restarted after raising the benchmark metering capacity"
+  },
+  "restart": {
+    "schema_version": 1,
+    "old_attempt": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836189",
+    "failed_id": "046-fast-target54-r4-sample",
+    "reason": "The benchmark metering wrapper had 32 slots and rejected the 54-shard startup. Raise its capacity to 64 and restart the entire shard experiment with one binary, preserving the completed shared-layout experiment.",
+    "selection": "All 18 successful shared-layout observations remain primary; all old shard observations remain supplementary. This decision uses the wrapper failure, not measured rate.",
+    "old_writer_identity": {
+      "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+      "sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+      "slurm_build_job": "3836168",
+      "zero_integer_fill_fix": {
+        "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it",
+        "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+        "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+        "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+        "source_file": "writer/src/zarr/zarr_metadata.c",
+        "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+        "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+        "original_failure_job": "3836086"
+      },
+      "page_alignment": 4096
+    },
+    "new_shard_rounds": 6,
+    "geometry_worker_and_codec_settings": "unchanged"
+  }
+}

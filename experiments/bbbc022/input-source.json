@@ -1,0 +1,290 @@
+{
+  "manifest_source": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/bench/data/microscopy/manifest.json",
+  "manifest_sha256": "8acabd8ba3f3d090aef4cd78c2c34bd5a35a04e6c5febdbb863fea395b7e7aff",
+  "json_pointer": "#/datasets/5",
+  "format": {
+    "name": "chucky-image-corpus",
+    "version": 2,
+    "encoding": "raw",
+    "byte_order": "little",
+    "axes": [
+      "plane",
+      "y",
+      "x"
+    ],
+    "order": "C"
+  },
+  "dataset": {
+    "id": "bbbc022-mito",
+    "version": 1,
+    "name": "BBBC022 MitoTracker compression sample",
+    "modality": "fluorescence",
+    "source": {
+      "collection": "Broad Bioimage Benchmark Collection: BBBC022v1",
+      "url": "https://bbbc.broadinstitute.org/BBBC022",
+      "attribution": "Sigrun M. Gustafsdottir and colleagues, Multiplex Cytological Profiling Assay to Measure Diverse Cellular States, PLOS ONE 8(12): e80999 (2013), https://doi.org/10.1371/journal.pone.0080999; Broad Bioimage Benchmark Collection, Ljosa and colleagues, Nature Methods (2012).",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "accessed": "2026-09-13",
+      "changes": "Selected 16 mock-control wells from plate 20585, one per plate row A-P, site 1, MitoTracker Deep Red channel w5. Repacked complete decoded TIFF fields as headerless little-endian uint16 without rescaling, cropping, filtering, averaging, or denoising. Each output plane is a separate field, not a Z slice or timepoint.",
+      "metadata": {
+        "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_image.csv",
+        "bytes": 37119471,
+        "sha256": "2666ae70ab8c076f34cc81d22ddd67a92969a097c058dd19d6be345f14ad5cda"
+      },
+      "acquisition": {
+        "modality": "widefield epifluorescence",
+        "microscope": "Molecular Devices ImageXpress Micro",
+        "objective_magnification": 20,
+        "pixel_size_um_yx": [
+          0.656,
+          0.656
+        ],
+        "channel": "MitoTracker Deep Red (Cy5)",
+        "excitation_emission_nm": [
+          628,
+          692
+        ],
+        "exposure_ms": 300,
+        "camera_manufacturer": "Photometrics",
+        "binning_yx": [
+          2,
+          2
+        ],
+        "camera_gain": "Gain 2 (4x)",
+        "frames_averaged": 1,
+        "background_subtraction": false,
+        "shading_correction": false,
+        "source_tiff_compression": "none",
+        "methods_url": "https://doi.org/10.1371/journal.pone.0080999",
+        "first_image_datetime": "2010:03:02 09:57:12",
+        "last_image_datetime": "2010:03:02 14:06:31"
+      }
+    },
+    "reference_images": "No matched higher-SNR images or repeated exposures were identified for this sample.",
+    "assets": [
+      {
+        "id": "bbbc022-mito",
+        "name": "BBBC022 MitoTracker",
+        "path": "data/bbbc022-v1/bbbc022-mito.raw",
+        "dtype": "uint16",
+        "shape": [
+          16,
+          520,
+          696
+        ],
+        "sha256": "1eff677d3f7d6785bdc8e65079613d6ba2c801a19f33503517a12b8df54affc7",
+        "thumbnail": "thumbnails/bbbc022-mito.png",
+        "selection": {
+          "axes": [
+            "field",
+            "y",
+            "x"
+          ],
+          "plate": "20585",
+          "well_role": "mock",
+          "wells": [
+            "A14",
+            "B14",
+            "C12",
+            "D12",
+            "E18",
+            "F02",
+            "G04",
+            "H04",
+            "I06",
+            "J05",
+            "K23",
+            "L08",
+            "M13",
+            "N09",
+            "O12",
+            "P11"
+          ],
+          "sites": [
+            1
+          ],
+          "channel": "w5",
+          "seed": 13,
+          "method": "Visit plate rows A-P in order. For each row, sort its mock-control well IDs and choose one with a single Python random.Random(13) instance. Select site 1 and store fields in plate-row order. No selection depends on pixel values or measured compression results."
+        },
+        "preview": {
+          "plane": 0,
+          "percentiles": [
+            1,
+            99.5
+          ],
+          "intensity_range": [
+            246.0,
+            1018.4049999999697
+          ],
+          "resize": "area average to 128x96, centered on a black 128x128 canvas"
+        },
+        "provenance": {
+          "files": [
+            {
+              "plane": 0,
+              "well": "A14",
+              "site": 1,
+              "image_number": 118,
+              "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+              "member": "BBBC022_v1_images_20585w5/IXMtest_A14_s1_w55CDEE132-D6E4-45CD-86A7-171CAC606739.tif",
+              "bytes": 726352,
+              "sha256": "8df2d6c3ddd6684aff99b52731944640ff4be4237b0342dd3a23006c264f8e90"
+            },
+            {
+              "plane": 1,
+              "well": "B14",
+              "site": 1,
+              "image_number": 334,
+              "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+              "member": "BBBC022_v1_images_20585w5/IXMtest_B14_s1_w5617AB146-5C1F-4189-888C-433D6A3274D5.tif",
+              "bytes": 726352,
+              "sha256": "f66fcac99827021615ab9da9bb79a79f2c4f79b4ca081fe73ebfee46c839df19"
+            },
+            {
+              "plane": 2,
+              "well": "C12",
+              "site": 1,
+              "image_number": 532,
+              "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+              "member": "BBBC022_v1_images_20585w5/IXMtest_C12_s1_w5D9C58A15-A24B-492D-84C0-AF21B7A6D6C6.tif",
+              "bytes": 726352,
+              "sha256": "e6353fe2967ba20a01eeebe2e46751d809390d96575144a9a9cc7b5bb08826a8"
+            },
+            {
+              "plane": 3,
+              "well": "D12",
+              "site": 1,
+              "image_number": 748,
+              "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+              "member": "BBBC022_v1_images_20585w5/IXMtest_D12_s1_w53AE122D0-8E5A-4BF5-82BA-54A49BAAD3CD.tif",
+              "bytes": 726352,
+              "sha256": "0a6fa42d6643f41be1c46b01e22847a021a3765aee3327bb093aee0925faac53"
+            },
+            {
+              "plane": 4,
+              "well": "E18",
+              "site": 1,
+              "image_number": 1018,
+              "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+              "member": "BBBC022_v1_images_20585w5/IXMtest_E18_s1_w58A0FFD87-E3A1-431F-AEEC-580BE2E58932.tif",
+              "bytes": 726352,
+              "sha256": "a9352cb3c5f8d08cd5b9b14dcae601cbab87bccad818bb481faf60af939946df"
+            },
+            {
+              "plane": 5,
+              "well": "F02",
+              "site": 1,
+              "image_number": 1090,
+              "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+              "member": "BBBC022_v1_images_20585w5/IXMtest_F02_s1_w5501D90F1-C267-4BEF-9C93-613BAEE41AF7.tif",
+              "bytes": 726352,
+              "sha256": "8f8d0b17e8f9d1112b126edc0704c19a8ff528350790ff5d05f13bd33eedfc27"
+            },
+            {
+              "plane": 6,
+              "well": "G04",
+              "site": 1,
+              "image_number": 1324,
+              "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+              "member": "BBBC022_v1_images_20585w5/IXMtest_G04_s1_w5F837D0C3-022A-4734-95A3-B43BA5BEE73E.tif",
+              "bytes": 726352,
+              "sha256": "22ad7e5947a56a25234119292ba49ea8e3471264fb8be2908da16300dbc2a8c4"
+            },
+            {
+              "plane": 7,
+              "well": "H04",
+              "site": 1,
+              "image_number": 1540,
+              "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+              "member": "BBBC022_v1_images_20585w5/IXMtest_H04_s1_w56997761E-0D27-42AC-AE51-3AF990D6929A.tif",
+              "bytes": 726352,
+              "sha256": "2eea004bc138079416e87cc2f537b1b1ade4c52039fe013b50d5935abf68eddc"
+            },
+            {
+              "plane": 8,
+              "well": "I06",
+              "site": 1,
+              "image_number": 1774,
+              "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+              "member": "BBBC022_v1_images_20585w5/IXMtest_I06_s1_w53131FEAD-CF92-4F59-883A-374268DA3D20.tif",
+              "bytes": 726352,
+              "sha256": "5b8076b3f0c10e0586c1f2254515391ecd638b26fef83c167ea2430a859534ad"
+            },
+            {
+              "plane": 9,
+              "well": "J05",
+              "site": 1,
+              "image_number": 1981,
+              "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+              "member": "BBBC022_v1_images_20585w5/IXMtest_J05_s1_w502E64050-920A-49DA-BF8A-348D50254AFD.tif",
+              "bytes": 726352,
+              "sha256": "4954249a9110faa0c8787eefc424d6ae3d146d5129962724b8c25179d309fb74"
+            },
+            {
+              "plane": 10,
+              "well": "K23",
+              "site": 1,
+              "image_number": 2359,
+              "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+              "member": "BBBC022_v1_images_20585w5/IXMtest_K23_s1_w50FA98FAA-F690-4844-8C25-12592AC4C119.tif",
+              "bytes": 726352,
+              "sha256": "42242f94c53c54b619f1612ddf14dc575ea3f1b7fe668de019466c1a8adb8e9b"
+            },
+            {
+              "plane": 11,
+              "well": "L08",
+              "site": 1,
+              "image_number": 2440,
+              "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+              "member": "BBBC022_v1_images_20585w5/IXMtest_L08_s1_w51A38043A-2B2C-4299-94E0-36584E2D4521.tif",
+              "bytes": 726352,
+              "sha256": "ab0576fc33de45f67860a44059734ca7c4956c9963ba0d020388a8c610c5520c"
+            },
+            {
+              "plane": 12,
+              "well": "M13",
+              "site": 1,
+              "image_number": 2701,
+              "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+              "member": "BBBC022_v1_images_20585w5/IXMtest_M13_s1_w5F857F7F9-73F9-4661-B498-338B28095E15.tif",
+              "bytes": 726352,
+              "sha256": "170f2ec95e3549d00ddd7cc15f78df02ccf64991b0064b633bb3b26e65c44486"
+            },
+            {
+              "plane": 13,
+              "well": "N09",
+              "site": 1,
+              "image_number": 2881,
+              "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+              "member": "BBBC022_v1_images_20585w5/IXMtest_N09_s1_w5287A9955-0F7E-42E6-B7D9-E402699F9D1A.tif",
+              "bytes": 726352,
+              "sha256": "838c6289598d1d55e50ad0fbfd1fe40f5ec6c498cae63350544c7fdb7f9680f6"
+            },
+            {
+              "plane": 14,
+              "well": "O12",
+              "site": 1,
+              "image_number": 3124,
+              "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+              "member": "BBBC022_v1_images_20585w5/IXMtest_O12_s1_w55137C1B4-8E93-4881-8D7D-7725EA50794C.tif",
+              "bytes": 726352,
+              "sha256": "2d38cd4f5946e9c930c6cf4ef696a7454ba552278cd236ea1d533eb118e1475d"
+            },
+            {
+              "plane": 15,
+              "well": "P11",
+              "site": 1,
+              "image_number": 3331,
+              "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+              "member": "BBBC022_v1_images_20585w5/IXMtest_P11_s1_w59A8F7EF2-331C-4FA0-ACCC-AA9EB46E1E3D.tif",
+              "bytes": 726352,
+              "sha256": "92f1004cd8da7c0bb245327fc5f7ff6068a89d624314f5b6ffdbbec39461e7f7"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

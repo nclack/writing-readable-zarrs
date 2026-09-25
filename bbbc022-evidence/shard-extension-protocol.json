@@ -1,0 +1,544 @@
+{
+  "amendment_reason": "The predeclared first-three-round rule did not select 54 shards. The completed six-round median gain of 30 over 15 exceeds 5%; a separate follow-up asks whether gains continue beyond 30. It does not change the primary selection or combine the new 96 GiB series with the primary 32 GiB series.",
+  "automatic_retries": 0,
+  "cases": {
+    "16": {
+      "actual_layer_shards": 15,
+      "blosc_block_bytes": 16384,
+      "chunk_bytes": 65536,
+      "chunk_depth": 4,
+      "chunk_shape": [
+        4,
+        64,
+        128
+      ],
+      "chunks_per_shard": [
+        4096,
+        2,
+        2
+      ],
+      "codec": "blosc-lz4",
+      "experiment": "shard-count",
+      "id": "fast-target16",
+      "level": 3,
+      "raw_shard_bytes": 1073741824,
+      "series": "fast",
+      "shard_shape": [
+        16384,
+        128,
+        256
+      ],
+      "shuffle": "bit",
+      "target_shards": 16
+    },
+    "48": {
+      "actual_layer_shards": 30,
+      "blosc_block_bytes": 16384,
+      "chunk_bytes": 65536,
+      "chunk_depth": 4,
+      "chunk_shape": [
+        4,
+        64,
+        128
+      ],
+      "chunks_per_shard": [
+        8192,
+        2,
+        1
+      ],
+      "codec": "blosc-lz4",
+      "experiment": "shard-count",
+      "id": "fast-target48",
+      "level": 3,
+      "raw_shard_bytes": 1073741824,
+      "series": "fast",
+      "shard_shape": [
+        32768,
+        128,
+        128
+      ],
+      "shuffle": "bit",
+      "target_shards": 48
+    },
+    "54": {
+      "actual_layer_shards": 54,
+      "blosc_block_bytes": 16384,
+      "chunk_bytes": 65536,
+      "chunk_depth": 4,
+      "chunk_shape": [
+        4,
+        64,
+        128
+      ],
+      "chunks_per_shard": [
+        16384,
+        1,
+        1
+      ],
+      "codec": "blosc-lz4",
+      "experiment": "shard-count",
+      "id": "fast-target54",
+      "level": 3,
+      "raw_shard_bytes": 1073741824,
+      "series": "fast",
+      "shard_shape": [
+        65536,
+        64,
+        128
+      ],
+      "shuffle": "bit",
+      "target_shards": 54
+    }
+  },
+  "completed_reads": {
+    "job_finished_utc": "2026-09-25T20:11:02Z",
+    "measurements": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/reads-3836384/measurements",
+    "summary": {
+      "complete": true,
+      "elapsed_seconds": 2211.777312738821,
+      "finished_utc": "2026-09-25T20:10:52.201638+00:00",
+      "phase": "measurement",
+      "planned_observations": 144,
+      "status_counts": {
+        "accepted": 144
+      }
+    },
+    "summary_sha256": "b5b36a737ee7c78f3f7efd1dce4c9ba52c80b4541dda0802ddb66f2f93de4f7d"
+  },
+  "deadline_seconds": 1000.0,
+  "duration_s": 3.0,
+  "environment": {
+    "cpu_affinity": [
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "cuda_visible_devices": "0",
+    "filesystem": {
+      "fstype": "nfs",
+      "options": "rw,noatime,vers=3,rsize=1048576,wsize=1048576,namlen=255,hard,noacl,forcerdirplus,proto=tcp,nconnect=16,timeo=600,retrans=2,sec=sys,mountaddr=172.31.226.124,mountvers=3,mountport=20048,mountproto=udp,lookupcache=pos,local_lock=none,remoteports=172.31.226.1-172.31.226.255,addr=172.31.226.228",
+      "source": "172.31.226.124:/k8s/pvc-431261f2-0ea3-4150-9fbd-80092f1f6106",
+      "target": "/mnt/main0"
+    },
+    "gpu": "NVIDIA L40, GPU-df79a5e9-c910-4bbd-f607-bb6808d519c9",
+    "harness_sha256": {
+      "extend_shards.py": "3416174f975a362957e6b2cf1e2414aa677a0331d836d1c094771a5785e2b0db",
+      "run_gpu_extension.sh": "107eeefda3ae1d3ec339e19b7362c16c53b6b1a72bb86f816e5330a4a57ac365",
+      "write_benchmark.py": "644b15ce6d62999bb27d04764f89a96e72c92abe8d9ffc8b76f27da61703a59b"
+    },
+    "memory_mib": 65536,
+    "node": "cw-us-e4a2-l40-202-211",
+    "numpy": "2.3.3",
+    "page_alignment": 4096,
+    "physical_cpu_count": 8,
+    "python": "3.11.15 (main, Jun  2 2026, 22:26:03) [Clang 22.1.3 ]",
+    "slurm_job_gpus": "3",
+    "slurm_job_id": "3837212",
+    "tensorstore": "0.1.85",
+    "writer": {
+      "metering_limit_fix": {
+        "after_sha256": "140df2d3624db8b7376f2519ea569352bebd22022b22cad8adbca087650a4c8d",
+        "before_sha256": "3fe30f2377bdf8ce602a931570c5c52a6ee542c5bbd75486353228a8a79b84c1",
+        "build_jobs": 8,
+        "build_targets": [
+          "bench_stream_microscopy",
+          "test_bench_coverage",
+          "test_bench_report",
+          "test_bench_reset",
+          "test_json_writer",
+          "test_zarr_array"
+        ],
+        "direct_metering_tests": [],
+        "gpu_tests_run": false,
+        "new_capacity": 64,
+        "old_capacity": 32,
+        "original_failure_job": "3836189",
+        "original_failure_record": "046-fast-target54-r4-sample",
+        "patch_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/writer-metering.patch",
+        "patch_sha256": "2fa9e8fab52092d9b6323db2403682eae36280a5abb2565e4f5d33871e2143ab",
+        "previous_binary_sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+        "scope": "Study benchmark metering wrapper capacity only",
+        "source_file": "writer/bench/sink_metering.h"
+      },
+      "page_alignment": 4096,
+      "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+      "previous_identity": {
+        "page_alignment": 4096,
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+        "sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+        "slurm_build_job": "3836168",
+        "zero_integer_fill_fix": {
+          "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+          "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+          "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+          "original_failure_job": "3836086",
+          "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+          "source_file": "writer/src/zarr/zarr_metadata.c",
+          "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+          "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it"
+        }
+      },
+      "previous_identity_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/meter-fix-3836369/writer-identity.before.json",
+      "previous_identity_sha256": "d68d1c774954934dbfe6f1e4f0c55d8164169433d59bb2564fdf89e199eb29bb",
+      "sha256": "9702c7bb6089c69449553fa4a42e9ff96af7c4a5461acbb86bccbf8a32288ed9",
+      "slurm_build_job": "3836369",
+      "source_hashes_sha256": "6637762998108c5749365e7f7a3372ce8d50241c633bc84a830e5a6ee07dd3da",
+      "zero_integer_fill_fix": {
+        "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+        "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+        "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+        "original_failure_job": "3836086",
+        "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+        "source_file": "writer/src/zarr/zarr_metadata.c",
+        "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+        "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it"
+      }
+    }
+  },
+  "family": "shard-count-extension",
+  "geometry_frames": 65536,
+  "harness_sha256": {
+    "extend_shards.py": "3416174f975a362957e6b2cf1e2414aa677a0331d836d1c094771a5785e2b0db",
+    "write_benchmark.py": "644b15ce6d62999bb27d04764f89a96e72c92abe8d9ffc8b76f27da61703a59b"
+  },
+  "local_plan_override": {
+    "shard_count.minimum_logical_bytes": {
+      "after": 103079215104,
+      "before": 34359738368
+    }
+  },
+  "measurement_policy": "coverage-qualified-through-final-close-v2",
+  "minimum_frame_rounded_logical_bytes": 103079882880,
+  "minimum_logical_bytes": 103079215104,
+  "minimum_requested_frames": 142407,
+  "native_case_timeout_seconds": 420,
+  "order_policy": "Seeded starting order for 30/54, reversed on the next round; 15-shard references before and after every pair",
+  "phase": "post-primary-supplementary",
+  "planned_observations": 12,
+  "primary": {
+    "attempt": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836375",
+    "completion": {
+      "max54_extension": false,
+      "observations": 66,
+      "retained_layouts": 6,
+      "status": "pass"
+    },
+    "first_three_decision": {
+      "include_actual54": false,
+      "median_ratio": 0.9955277398456148,
+      "paired_30_over_15_ratios": [
+        0.9955277398456148,
+        1.224116736444527,
+        0.8588602548555773
+      ],
+      "remaining_s": 2703.4827121477574,
+      "rule": "median gain above5% and more than1200s remaining after round3"
+    },
+    "first_three_decision_sha256": "38685de29252608abe308b5b6e9823c98b52cf2aa592ead7e9aad7d374395b39",
+    "job_id": "3836375",
+    "observations_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836375/measurements/observations.jsonl",
+    "observations_sha256": "0314aadeefd5347e76585aa8a270e689ff1f5de9789aff95d08a6a97c8420f83",
+    "six_round_median_ratio": 1.1014457508885038,
+    "six_round_pairs": [
+      {
+        "logical_gibs_15": 5.721187018510967,
+        "logical_gibs_30": 5.695600381772294,
+        "ratio_30_over_15": 0.9955277398456148,
+        "record_15": "020-fast-target16-r1-sample",
+        "record_30": "022-fast-target48-r1-sample",
+        "references": {
+          "reference-after": {
+            "logical_gibs": 5.114226974924817,
+            "record_id": "026-fast-target16-r1-reference-after"
+          },
+          "reference-before": {
+            "logical_gibs": 5.405417642308503,
+            "record_id": "019-fast-target16-r1-reference-before"
+          }
+        },
+        "round": 1
+      },
+      {
+        "logical_gibs_15": 5.242813095778262,
+        "logical_gibs_30": 6.4178152565927125,
+        "ratio_30_over_15": 1.224116736444527,
+        "record_15": "031-fast-target16-r2-sample",
+        "record_30": "030-fast-target48-r2-sample",
+        "references": {
+          "reference-after": {
+            "logical_gibs": 2.897756036291972,
+            "record_id": "034-fast-target16-r2-reference-after"
+          },
+          "reference-before": {
+            "logical_gibs": 5.621374816560345,
+            "record_id": "027-fast-target16-r2-reference-before"
+          }
+        },
+        "round": 2
+      },
+      {
+        "logical_gibs_15": 6.005006579395065,
+        "logical_gibs_30": 5.157461481188664,
+        "ratio_30_over_15": 0.8588602548555773,
+        "record_15": "041-fast-target16-r3-sample",
+        "record_30": "037-fast-target48-r3-sample",
+        "references": {
+          "reference-after": {
+            "logical_gibs": 4.967493246788047,
+            "record_id": "042-fast-target16-r3-reference-after"
+          },
+          "reference-before": {
+            "logical_gibs": 3.846117191034766,
+            "record_id": "035-fast-target16-r3-reference-before"
+          }
+        },
+        "round": 3
+      },
+      {
+        "logical_gibs_15": 5.042199670913506,
+        "logical_gibs_30": 6.028619733349165,
+        "ratio_30_over_15": 1.1956328838236878,
+        "record_15": "045-fast-target16-r4-sample",
+        "record_30": "049-fast-target48-r4-sample",
+        "references": {
+          "reference-after": {
+            "logical_gibs": 4.888559328633736,
+            "record_id": "050-fast-target16-r4-reference-after"
+          },
+          "reference-before": {
+            "logical_gibs": 5.915005444079639,
+            "record_id": "043-fast-target16-r4-reference-before"
+          }
+        },
+        "round": 4
+      },
+      {
+        "logical_gibs_15": 5.51067148577921,
+        "logical_gibs_30": 6.637386789344012,
+        "ratio_30_over_15": 1.2044606190865113,
+        "record_15": "057-fast-target16-r5-sample",
+        "record_30": "056-fast-target48-r5-sample",
+        "references": {
+          "reference-after": {
+            "logical_gibs": 5.746971085431878,
+            "record_id": "058-fast-target16-r5-reference-after"
+          },
+          "reference-before": {
+            "logical_gibs": 4.569439584789029,
+            "record_id": "051-fast-target16-r5-reference-before"
+          }
+        },
+        "round": 5
+      },
+      {
+        "logical_gibs_15": 6.165746066878571,
+        "logical_gibs_30": 6.210500861975227,
+        "ratio_30_over_15": 1.0072586179533198,
+        "record_15": "060-fast-target16-r6-sample",
+        "record_30": "064-fast-target48-r6-sample",
+        "references": {
+          "reference-after": {
+            "logical_gibs": 5.584802391133275,
+            "record_id": "066-fast-target16-r6-reference-after"
+          },
+          "reference-before": {
+            "logical_gibs": 5.567320371297469,
+            "record_id": "059-fast-target16-r6-reference-before"
+          }
+        },
+        "round": 6
+      }
+    ],
+    "supplementary_decision": {
+      "eligible": true,
+      "threshold": 1.05,
+      "uses_all_six_completed_rounds": true
+    },
+    "writer_identity": {
+      "metering_limit_fix": {
+        "after_sha256": "140df2d3624db8b7376f2519ea569352bebd22022b22cad8adbca087650a4c8d",
+        "before_sha256": "3fe30f2377bdf8ce602a931570c5c52a6ee542c5bbd75486353228a8a79b84c1",
+        "build_jobs": 8,
+        "build_targets": [
+          "bench_stream_microscopy",
+          "test_bench_coverage",
+          "test_bench_report",
+          "test_bench_reset",
+          "test_json_writer",
+          "test_zarr_array"
+        ],
+        "direct_metering_tests": [],
+        "gpu_tests_run": false,
+        "new_capacity": 64,
+        "old_capacity": 32,
+        "original_failure_job": "3836189",
+        "original_failure_record": "046-fast-target54-r4-sample",
+        "patch_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/writer-metering.patch",
+        "patch_sha256": "2fa9e8fab52092d9b6323db2403682eae36280a5abb2565e4f5d33871e2143ab",
+        "previous_binary_sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+        "scope": "Study benchmark metering wrapper capacity only",
+        "source_file": "writer/bench/sink_metering.h"
+      },
+      "page_alignment": 4096,
+      "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+      "previous_identity": {
+        "page_alignment": 4096,
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/build/writer/bench/bench_stream_microscopy",
+        "sha256": "5f3c23b481f6d9279d547b828554873042cd92698defb7570dfe05cc2ae8d881",
+        "slurm_build_job": "3836168",
+        "zero_integer_fill_fix": {
+          "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+          "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+          "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+          "original_failure_job": "3836086",
+          "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+          "source_file": "writer/src/zarr/zarr_metadata.c",
+          "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+          "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it"
+        }
+      },
+      "previous_identity_path": "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/meter-fix-3836369/writer-identity.before.json",
+      "previous_identity_sha256": "d68d1c774954934dbfe6f1e4f0c55d8164169433d59bb2564fdf89e199eb29bb",
+      "sha256": "9702c7bb6089c69449553fa4a42e9ff96af7c4a5461acbb86bccbf8a32288ed9",
+      "slurm_build_job": "3836369",
+      "source_hashes_sha256": "6637762998108c5749365e7f7a3372ce8d50241c633bc84a830e5a6ee07dd3da",
+      "zero_integer_fill_fix": {
+        "after_sha256": "c644b27014bf118ccbd9399cd48bb0f1a060bcb85f24a88d624e5b8bb6f2f370",
+        "before_sha256": "b38ca51f791567da71b4cebc6a6c2191eaa924bc40e5bc7b8e5d04eab4d7c3fd",
+        "change": "Serialize zero fill with integer spelling for integer dtypes; pixel data and codec code unchanged",
+        "original_failure_job": "3836086",
+        "scope": "Study uses zero fill only; nonzero integer-fill handling is outside this patch",
+        "source_file": "writer/src/zarr/zarr_metadata.c",
+        "specification": "https://zarr-specs.readthedocs.io/en/latest/v3/data-types/index.html#permitted-fill-values",
+        "symptom": "Integer uint16 array fill_value serialized as0.0 is rejected by Damacy metadata parser; TensorStore accepts it"
+      }
+    }
+  },
+  "protected_file_hashes": {
+    "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c128/images/zarr.json": "edfc8fe2774311dd8a2dd50e5d20e1c292ab3a15af12990143f193e438cb4725",
+    "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c16/images/zarr.json": "007af913ba8c2044cb8b151a2b2731577d175598a4aa67ec548e18f3fa94356b",
+    "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c256/images/zarr.json": "f77cc4e6044baf283bb7042a30377577f17ee1b7d32604c7c0bef31b58096038",
+    "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c32/images/zarr.json": "82233b4e1d5b16eeda97f2d4fd915cafb7ea0f52ecf39f48486cfb66ecec40ef",
+    "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c512/images/zarr.json": "125e8cbe9395c2f2fb4754619f5e19432d0ec6ebfa6261cac9ae3f2fdd768470",
+    "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/data/c64/images/zarr.json": "a6bf80ef828976c1b242a3cb87b267d36bf7e1f63a397678404d5841a85b2eb4",
+    "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836375/measurements/complete.json": "dab9f74278a3d2e4485f96f6de85a5df8a27c9ee01d4c105bdd29a6b91ee7069",
+    "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836375/measurements/extension-decision.json": "38685de29252608abe308b5b6e9823c98b52cf2aa592ead7e9aad7d374395b39",
+    "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/gpu-3836375/measurements/observations.jsonl": "0314aadeefd5347e76585aa8a270e689ff1f5de9789aff95d08a6a97c8420f83",
+    "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/jobs/reads-3836384/measurements/summary.json": "b5b36a737ee7c78f3f7efd1dce4c9ba52c80b4541dda0802ddb66f2f93de4f7d",
+    "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/plan.json": "efaeec001eaee3225b5b894f25aa3b4a64dc75bce8d2c79d25793de3609e7702",
+    "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/read-manifest.json": "5cfd667555c348f39b16e4a8ad2e57206f65c8fb97ea911c5d0ec2405e60d012",
+    "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/reads-complete.txt": "352543706d2883ef0f2422e67b00f2bec2566ba52f48efd9e389d9a583ea4238",
+    "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/source-hashes.json": "6637762998108c5749365e7f7a3372ce8d50241c633bc84a830e5a6ee07dd3da",
+    "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/source-phases.json": "2bd136ab408aea1ec51e451356c2f306e55cced0ec0fea7ab6f515c894ee3f2f",
+    "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/writer-identity.json": "cbee1ca932cb18691fb5151d8fd22fb99c90bf1968a2f2bac45ce65b5074bb8c",
+    "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/writer-run-hashes.json": "0b709cf5e5444059dc588cbd4c6c8fa958c79f8871f51f28f79f7fab80912c88",
+    "/mnt/main0/home/nclack/tmp/2026-09-25-bbbc022-read-write/writes-complete.txt": "3d6f59732b542efceee6c0e8317d5040674a6f2e2e9959fc7a39f6f4cbe719a2"
+  },
+  "protocol_hash_scope": "canonical JSON excluding protocol_sha256",
+  "protocol_sha256": "07d5e822e8d2526c5a07ee2f653c2c145ee77bba7abf82046d6548af2b7b5caa",
+  "retention": "Native records and logs retained; successful temporary extension stores removed by the existing Study runner; failed stores retained; primary retained arrays untouched",
+  "rounds": 3,
+  "schedule": [
+    {
+      "actual_layer_shards": 15,
+      "order": 1,
+      "role": "reference-before",
+      "round": 1,
+      "target_shards": 16
+    },
+    {
+      "actual_layer_shards": 30,
+      "order": 2,
+      "role": "sample",
+      "round": 1,
+      "target_shards": 48
+    },
+    {
+      "actual_layer_shards": 54,
+      "order": 3,
+      "role": "sample",
+      "round": 1,
+      "target_shards": 54
+    },
+    {
+      "actual_layer_shards": 15,
+      "order": 4,
+      "role": "reference-after",
+      "round": 1,
+      "target_shards": 16
+    },
+    {
+      "actual_layer_shards": 15,
+      "order": 5,
+      "role": "reference-before",
+      "round": 2,
+      "target_shards": 16
+    },
+    {
+      "actual_layer_shards": 54,
+      "order": 6,
+      "role": "sample",
+      "round": 2,
+      "target_shards": 54
+    },
+    {
+      "actual_layer_shards": 30,
+      "order": 7,
+      "role": "sample",
+      "round": 2,
+      "target_shards": 48
+    },
+    {
+      "actual_layer_shards": 15,
+      "order": 8,
+      "role": "reference-after",
+      "round": 2,
+      "target_shards": 16
+    },
+    {
+      "actual_layer_shards": 15,
+      "order": 9,
+      "role": "reference-before",
+      "round": 3,
+      "target_shards": 16
+    },
+    {
+      "actual_layer_shards": 30,
+      "order": 10,
+      "role": "sample",
+      "round": 3,
+      "target_shards": 48
+    },
+    {
+      "actual_layer_shards": 54,
+      "order": 11,
+      "role": "sample",
+      "round": 3,
+      "target_shards": 54
+    },
+    {
+      "actual_layer_shards": 15,
+      "order": 12,
+      "role": "reference-after",
+      "round": 3,
+      "target_shards": 16
+    }
+  ],
+  "schema_version": 1,
+  "seed": 20260925,
+  "source_sha256": "1eff677d3f7d6785bdc8e65079613d6ba2c801a19f33503517a12b8df54affc7",
+  "warmup_s": 2.0,
+  "writer_binary_sha256": "9702c7bb6089c69449553fa4a42e9ff96af7c4a5461acbb86bccbf8a32288ed9",
+  "writer_resources": {
+    "batch_target_bytes": 67108864,
+    "cpu_workers": 4,
+    "io_workers": 32,
+    "output_buffers": 4,
+    "per_file_write_limit": 4
+  }
+}

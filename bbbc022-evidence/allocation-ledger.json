@@ -1,0 +1,322 @@
+{
+  "created_utc": "2026-09-25T20:47:08.225352+00:00",
+  "method": "Slurm allocation records only (-X), ElapsedRaw in seconds; steps are not added again. Queue time is excluded. Failed allocations count. Active jobs use their entire time limit for the conservative upper bound.",
+  "scope": "CPU and single-L40 allocated wall time, separately; not core-hours or billed cost",
+  "jobs": [
+    {
+      "job_id": "3835899",
+      "budget": "cpu",
+      "phase": "build writer and CPU reader",
+      "slurm": {
+        "JobIDRaw": "3835899",
+        "JobName": "bbbc022-build",
+        "Partition": "cpu",
+        "State": "COMPLETED",
+        "ElapsedRaw": "131",
+        "AllocCPUS": "16",
+        "AllocTRES": "billing=16,cpu=16,mem=64G,node=1",
+        "NodeList": "cpu-turin-gp-l-243-241",
+        "Start": "2026-09-25T18:24:24",
+        "End": "2026-09-25T18:26:35",
+        "TimelimitRaw": "20"
+      },
+      "allocated_seconds_at_capture": 131,
+      "allocated_seconds_upper_bound": 131
+    },
+    {
+      "job_id": "3836048",
+      "budget": "l40",
+      "phase": "writer preflight rejected generated-file hashes",
+      "slurm": {
+        "JobIDRaw": "3836048",
+        "JobName": "bbbc022-write",
+        "Partition": "l40-reserved",
+        "State": "FAILED",
+        "ElapsedRaw": "5",
+        "AllocCPUS": "8",
+        "AllocTRES": "billing=8,cpu=8,gres/gpu=1,mem=64G,node=1",
+        "NodeList": "cw-us-e4a2-l40-202-153",
+        "Start": "2026-09-25T18:28:47",
+        "End": "2026-09-25T18:28:52",
+        "TimelimitRaw": "60"
+      },
+      "allocated_seconds_at_capture": 5,
+      "allocated_seconds_upper_bound": 5
+    },
+    {
+      "job_id": "3836072",
+      "budget": "l40",
+      "phase": "writer roundtrip check failed TensorStore context construction",
+      "slurm": {
+        "JobIDRaw": "3836072",
+        "JobName": "bbbc022-write",
+        "Partition": "l40-reserved",
+        "State": "FAILED",
+        "ElapsedRaw": "30",
+        "AllocCPUS": "8",
+        "AllocTRES": "billing=8,cpu=8,gres/gpu=1,mem=64G,node=1",
+        "NodeList": "cw-us-e4a2-l40-202-153",
+        "Start": "2026-09-25T18:31:27",
+        "End": "2026-09-25T18:31:57",
+        "TimelimitRaw": "60"
+      },
+      "allocated_seconds_at_capture": 30,
+      "allocated_seconds_upper_bound": 30
+    },
+    {
+      "job_id": "3836086",
+      "budget": "cpu",
+      "phase": "reader preflight exposed integer fill metadata",
+      "slurm": {
+        "JobIDRaw": "3836086",
+        "JobName": "bbbc022-read-check",
+        "Partition": "cpu",
+        "State": "FAILED",
+        "ElapsedRaw": "11",
+        "AllocCPUS": "48",
+        "AllocTRES": "billing=48,cpu=48,mem=64G,node=1",
+        "NodeList": "cpu-turin-gp-l-243-195",
+        "Start": "2026-09-25T18:33:23",
+        "End": "2026-09-25T18:33:34",
+        "TimelimitRaw": "12"
+      },
+      "allocated_seconds_at_capture": 11,
+      "allocated_seconds_upper_bound": 11
+    },
+    {
+      "job_id": "3836153",
+      "budget": "cpu",
+      "phase": "cancelled pending resource request",
+      "slurm": {
+        "JobIDRaw": "3836153",
+        "JobName": "bbbc022-fill-fix",
+        "Partition": "cpu",
+        "State": "CANCELLED by 100152",
+        "ElapsedRaw": "0",
+        "AllocCPUS": "0",
+        "AllocTRES": "",
+        "NodeList": "None assigned",
+        "Start": "None",
+        "End": "2026-09-25T18:42:34",
+        "TimelimitRaw": "12"
+      },
+      "allocated_seconds_at_capture": 0,
+      "allocated_seconds_upper_bound": 0
+    },
+    {
+      "job_id": "3836161",
+      "budget": "cpu",
+      "phase": "step creation failed during resource setup",
+      "slurm": {
+        "JobIDRaw": "3836161",
+        "JobName": "bbbc022-fill-fix",
+        "Partition": "cpu",
+        "State": "FAILED",
+        "ElapsedRaw": "2",
+        "AllocCPUS": "8",
+        "AllocTRES": "billing=8,cpu=8,mem=64G,node=1",
+        "NodeList": "cpu-turin-gp-l-244-013",
+        "Start": "2026-09-25T18:43:04",
+        "End": "2026-09-25T18:43:06",
+        "TimelimitRaw": "12"
+      },
+      "allocated_seconds_at_capture": 2,
+      "allocated_seconds_upper_bound": 2
+    },
+    {
+      "job_id": "3836168",
+      "budget": "cpu",
+      "phase": "metadata diagnosis and corrected writer build",
+      "slurm": {
+        "JobIDRaw": "3836168",
+        "JobName": "bbbc022-fill-fix",
+        "Partition": "cpu",
+        "State": "COMPLETED",
+        "ElapsedRaw": "19",
+        "AllocCPUS": "8",
+        "AllocTRES": "billing=8,cpu=8,mem=64G,node=1",
+        "NodeList": "cpu-turin-gp-l-243-211",
+        "Start": "2026-09-25T18:44:35",
+        "End": "2026-09-25T18:44:54",
+        "TimelimitRaw": "12"
+      },
+      "allocated_seconds_at_capture": 19,
+      "allocated_seconds_upper_bound": 19
+    },
+    {
+      "job_id": "3836189",
+      "budget": "l40",
+      "phase": "shared layouts completed; shard sweep stopped at metering capacity",
+      "slurm": {
+        "JobIDRaw": "3836189",
+        "JobName": "bbbc022-write",
+        "Partition": "l40-reserved",
+        "State": "FAILED",
+        "ElapsedRaw": "556",
+        "AllocCPUS": "8",
+        "AllocTRES": "billing=8,cpu=8,gres/gpu=1,mem=64G,node=1",
+        "NodeList": "cw-us-e4a2-l40-234-019",
+        "Start": "2026-09-25T18:48:58",
+        "End": "2026-09-25T18:58:14",
+        "TimelimitRaw": "60"
+      },
+      "allocated_seconds_at_capture": 556,
+      "allocated_seconds_upper_bound": 556
+    },
+    {
+      "job_id": "3836369",
+      "budget": "cpu",
+      "phase": "rebuild with 64 metering slots",
+      "slurm": {
+        "JobIDRaw": "3836369",
+        "JobName": "bbbc022-meter-fix",
+        "Partition": "cpu",
+        "State": "COMPLETED",
+        "ElapsedRaw": "8",
+        "AllocCPUS": "8",
+        "AllocTRES": "billing=8,cpu=8,mem=64G,node=1",
+        "NodeList": "cpu-turin-gp-l-243-197",
+        "Start": "2026-09-25T19:10:04",
+        "End": "2026-09-25T19:10:12",
+        "TimelimitRaw": "10"
+      },
+      "allocated_seconds_at_capture": 8,
+      "allocated_seconds_upper_bound": 8
+    },
+    {
+      "job_id": "3836375",
+      "budget": "l40",
+      "phase": "complete restarted primary shard sweep",
+      "slurm": {
+        "JobIDRaw": "3836375",
+        "JobName": "bbbc022-shards",
+        "Partition": "l40-reserved",
+        "State": "COMPLETED",
+        "ElapsedRaw": "621",
+        "AllocCPUS": "8",
+        "AllocTRES": "billing=8,cpu=8,gres/gpu=1,mem=64G,node=1",
+        "NodeList": "cw-us-e4a2-l40-202-157",
+        "Start": "2026-09-25T19:18:40",
+        "End": "2026-09-25T19:29:01",
+        "TimelimitRaw": "60"
+      },
+      "allocated_seconds_at_capture": 621,
+      "allocated_seconds_upper_bound": 621
+    },
+    {
+      "job_id": "3836384",
+      "budget": "cpu",
+      "phase": "reader checks, 144 measurements and initial export",
+      "slurm": {
+        "JobIDRaw": "3836384",
+        "JobName": "bbbc022-read",
+        "Partition": "h100-reserved",
+        "State": "COMPLETED",
+        "ElapsedRaw": "2407",
+        "AllocCPUS": "48",
+        "AllocTRES": "billing=48,cpu=48,mem=64G,node=1",
+        "NodeList": "cw-us-e4a1-h100-221-159",
+        "Start": "2026-09-25T19:30:55",
+        "End": "2026-09-25T20:11:02",
+        "TimelimitRaw": "105"
+      },
+      "allocated_seconds_at_capture": 2407,
+      "allocated_seconds_upper_bound": 2407
+    },
+    {
+      "job_id": "3836692",
+      "budget": "l40",
+      "phase": "separate shard follow-up request cancelled before allocation",
+      "slurm": {
+        "JobIDRaw": "3836692",
+        "JobName": "bbbc022-extension",
+        "Partition": "l40-reserved",
+        "State": "CANCELLED by 100152",
+        "ElapsedRaw": "0",
+        "AllocCPUS": "0",
+        "AllocTRES": "",
+        "NodeList": "None assigned",
+        "Start": "None",
+        "End": "2026-09-25T20:12:02",
+        "TimelimitRaw": "20"
+      },
+      "allocated_seconds_at_capture": 0,
+      "allocated_seconds_upper_bound": 0
+    },
+    {
+      "job_id": "3836744",
+      "budget": "cpu",
+      "phase": "final export request cancelled before allocation",
+      "slurm": {
+        "JobIDRaw": "3836744",
+        "JobName": "bbbc022-export",
+        "Partition": "cpu,h100-reserved",
+        "State": "CANCELLED by 100152",
+        "ElapsedRaw": "0",
+        "AllocCPUS": "0",
+        "AllocTRES": "",
+        "NodeList": "None assigned",
+        "Start": "None",
+        "End": "2026-09-25T20:12:02",
+        "TimelimitRaw": "10"
+      },
+      "allocated_seconds_at_capture": 0,
+      "allocated_seconds_upper_bound": 0
+    },
+    {
+      "job_id": "3837212",
+      "budget": "l40",
+      "phase": "separate 96 GiB 30-versus-54 shard follow-up, batch resubmission",
+      "slurm": {
+        "JobIDRaw": "3837212",
+        "JobName": "bbbc022-extension",
+        "Partition": "l40-reserved",
+        "State": "COMPLETED",
+        "ElapsedRaw": "286",
+        "AllocCPUS": "8",
+        "AllocTRES": "billing=8,cpu=8,gres/gpu=1,mem=64G,node=1",
+        "NodeList": "cw-us-e4a2-l40-202-211",
+        "Start": "2026-09-25T20:42:17",
+        "End": "2026-09-25T20:47:03",
+        "TimelimitRaw": "20"
+      },
+      "allocated_seconds_at_capture": 286,
+      "allocated_seconds_upper_bound": 286
+    },
+    {
+      "job_id": "3837255",
+      "budget": "cpu",
+      "phase": "final evidence export",
+      "slurm": {
+        "JobIDRaw": "3837255",
+        "JobName": "bbbc022-export",
+        "Partition": "cpu",
+        "State": "RUNNING",
+        "ElapsedRaw": "1",
+        "AllocCPUS": "4",
+        "AllocTRES": "billing=4,cpu=4,mem=16G,node=1",
+        "NodeList": "cpu-turin-gp-l-243-197",
+        "Start": "2026-09-25T20:47:07",
+        "End": "Unknown",
+        "TimelimitRaw": "10"
+      },
+      "allocated_seconds_at_capture": 1,
+      "allocated_seconds_upper_bound": 600
+    }
+  ],
+  "totals": {
+    "cpu": {
+      "allocated_seconds_at_capture": 2579,
+      "upper_bound_seconds": 3178,
+      "budget_seconds": 7200,
+      "within_budget": true
+    },
+    "l40": {
+      "allocated_seconds_at_capture": 1498,
+      "upper_bound_seconds": 1498,
+      "budget_seconds": 7200,
+      "within_budget": true
+    }
+  },
+  "final_export_job_running_at_capture": "3837255"
+}
