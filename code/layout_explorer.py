@@ -88,9 +88,9 @@ def _chunk_figure(
                     for item in candidates
                 ],
                 hovertemplate=(
-                    "chunk %{customdata[0]}<br>"
-                    "raw %{x:.3s} B<br>"
-                    "p95 decode / limit %{y:.3f}<br>"
+                    "chunk shape %{customdata[0]}<br>"
+                    "raw chunk bytes %{x:.3s} B<br>"
+                    "p95 decode limit utilization %{y:.3f}<br>"
                     "encoded fraction %{customdata[2]:.3f}<br>"
                     "profiles %{customdata[1]}<br>"
                     "%{customdata[3]}<extra></extra>"
@@ -110,14 +110,14 @@ def _chunk_figure(
                     / workload.maximum_p95_decode_amplification
                 ],
                 mode="markers",
-                name="chosen pair",
+                name="selected layout",
                 marker={
                     "color": SELECTED_COLOR,
                     "size": 17,
                     "symbol": "star",
                     "line": {"color": "white", "width": 1},
                 },
-                hovertemplate=f"chosen chunk {_shape(candidate.shape)}<extra></extra>",
+                hovertemplate=f"selected chunk {_shape(candidate.shape)}<extra></extra>",
             )
         )
     figure.add_hline(
@@ -167,6 +167,11 @@ def _layout_figure(
                     [
                         index,
                         _shape(item.chunk_shape),
+                        _shape(
+                            planner.shard_shape(
+                                item.chunk_shape, item.shard_shape_in_chunks
+                            )
+                        ),
                         _shape(item.shard_shape_in_chunks),
                         planner.format_bytes(item.estimated_writer_memory_bytes),
                         item.rejection_reasons[0]
@@ -176,12 +181,13 @@ def _layout_figure(
                     for index, item in indexed
                 ],
                 hovertemplate=(
-                    "chunk %{customdata[1]}<br>"
-                    "shard %{customdata[2]} chunks<br>"
-                    "average shard %{x:.3s} B<br>"
-                    "%{y:,.0f} storage objects<br>"
-                    "writer memory %{customdata[3]}<br>"
-                    "%{customdata[4]}<extra></extra>"
+                    "chunk shape %{customdata[1]}<br>"
+                    "shard shape %{customdata[2]} array elements<br>"
+                    "chunks per shard %{customdata[3]}<br>"
+                    "average stored shard %{x:.3s} B<br>"
+                    "%{y:,.0f} shards<br>"
+                    "writer working memory %{customdata[4]}<br>"
+                    "%{customdata[5]}<extra></extra>"
                 ),
             )
         )
@@ -192,7 +198,7 @@ def _layout_figure(
                 x=[item.average_shard_bytes],
                 y=[item.total_shards],
                 mode="markers",
-                name="chosen pair",
+                name="selected layout",
                 marker={
                     "color": SELECTED_COLOR,
                     "size": 17,
@@ -200,8 +206,9 @@ def _layout_figure(
                     "line": {"color": "white", "width": 1},
                 },
                 hovertemplate=(
-                    f"chosen: chunk {_shape(item.chunk_shape)}<br>"
-                    f"shard {_shape(item.shard_shape_in_chunks)} chunks<extra></extra>"
+                    f"selected chunk shape {_shape(item.chunk_shape)}<br>"
+                    f"shard shape {_shape(planner.shard_shape(item.chunk_shape, item.shard_shape_in_chunks))} array elements<br>"
+                    f"chunks per shard {_shape(item.shard_shape_in_chunks)}<extra></extra>"
                 ),
             )
         )
@@ -210,24 +217,24 @@ def _layout_figure(
         y=storage.maximum_shards,
         line_dash="dash",
         line_color=REFERENCE_COLOR,
-        annotation_text="maximum objects",
+        annotation_text="maximum shard count",
     )
     figure.add_vline(
         x=storage.minimum_efficient_object_bytes,
         line_dash="dot",
         line_color=MUTED_COLOR,
-        annotation_text="minimum efficient average",
+        annotation_text="minimum efficient stored-value bytes",
     )
     figure.add_vline(
         x=storage.maximum_shard_bytes,
         line_dash="dash",
         line_color=REFERENCE_COLOR,
-        annotation_text="maximum shard",
+        annotation_text="maximum stored shard bytes",
     )
     figure.update_layout(
-        title="Shard size versus storage-object count",
-        xaxis={"title": "estimated average shard bytes", "type": "log"},
-        yaxis={"title": "storage objects", "type": "log"},
+        title="Stored shard bytes versus shard count",
+        xaxis={"title": "estimated average stored shard bytes", "type": "log"},
+        yaxis={"title": "shards", "type": "log"},
         legend={"orientation": "h", "y": 1.13},
         margin={"l": 65, "r": 20, "t": 85, "b": 55},
         hovermode="closest",
@@ -240,7 +247,7 @@ def _axis_figure(
 ) -> go.Figure:
     figure = go.Figure()
     if layout is None:
-        figure.update_layout(title="No chunk/shard pairs were generated")
+        figure.update_layout(title="No candidate layouts were generated")
         return figure
     array_shape = result.policy.array.shape
     chunk_fraction = [
@@ -254,7 +261,7 @@ def _axis_figure(
     ]
     figure.add_trace(
         go.Bar(
-            name="chunk / array",
+            name="chunk extent / array extent",
             x=result.policy.array.axes,
             y=chunk_fraction,
             marker_color=PASS_COLOR,
@@ -264,7 +271,7 @@ def _axis_figure(
     )
     figure.add_trace(
         go.Bar(
-            name="shard / array",
+            name="maximum in-bounds shard extent / array",
             x=result.policy.array.axes,
             y=shard_fraction,
             marker_color=SELECTED_COLOR,
@@ -278,7 +285,7 @@ def _axis_figure(
         )
     )
     figure.update_layout(
-        title="Chosen extents projected onto each axis",
+        title="Chunk and maximum in-bounds shard extents by axis",
         barmode="group",
         yaxis={"title": "fraction of array extent", "tickformat": ".0%"},
         legend={"orientation": "h", "y": 1.13},
@@ -338,9 +345,10 @@ class Explorer:
         for index, item in enumerate(self.result.layout_candidates):
             status = "PASS" if item.passes else "FAIL"
             options[str(index)] = (
-                f"{status} · chunk {_shape(item.chunk_shape)} · "
-                f"shard {_shape(item.shard_shape_in_chunks)} chunks · "
-                f"{item.total_shards:,} objects"
+                f"{status} · chunk shape {_shape(item.chunk_shape)} · "
+                f"shard shape {_shape(planner.shard_shape(item.chunk_shape, item.shard_shape_in_chunks))} · "
+                f"chunks per shard {_shape(item.shard_shape_in_chunks)} · "
+                f"{item.total_shards:,} shards"
             )
         return options
 
@@ -358,15 +366,15 @@ class Explorer:
                 ui.label("Zarr layout explorer").classes("text-h5 font-bold")
                 ui.label(result.policy_path).classes("text-caption opacity-75")
             if result.selected is not None:
-                ui.badge("feasible policy", color="positive")
+                ui.badge("passing layout available", color="positive")
             else:
-                ui.badge("no feasible pair", color="negative")
+                ui.badge("no passing layout", color="negative")
 
         with ui.column().classes("w-full max-w-screen-2xl mx-auto p-4 gap-4"):
             ui.markdown(
                 "This view uses linked two-dimensional projections instead of "
                 "trying to draw a five-dimensional array. Choose a required "
-                "workload and a chunk/shard pair; the plots and limits update together."
+                "workload and a candidate layout; the plots and limits update together."
             ).classes("max-w-4xl")
 
             with ui.row().classes("w-full items-end gap-4"):
@@ -396,14 +404,14 @@ class Explorer:
                 self.layout_select = ui.select(
                     options=options,
                     value=str(self.selected_index),
-                    label="Chosen chunk/shard pair",
+                    label="Selected candidate layout",
                     on_change=self.choose_layout,
                 ).classes("w-full")
             else:
                 self.layout_select = ui.select(
-                    options={"": "No chunk/shard pairs: every chunk was rejected"},
+                    options={"": "No candidate layouts: every chunk was rejected"},
                     value="",
-                    label="Chosen chunk/shard pair",
+                    label="Selected candidate layout",
                 ).classes("w-full")
                 self.layout_select.disable()
 
@@ -419,7 +427,7 @@ class Explorer:
                 with ui.card().classes("grow basis-[32rem]"):
                     self.axis_plot = ui.plotly(go.Figure()).classes("w-full h-[25rem]")
                 with ui.card().classes("grow basis-[32rem]"):
-                    ui.label("Chosen pair").classes("text-h6")
+                    ui.label("Selected layout").classes("text-h6")
                     self.summary = ui.markdown("")
                     self.reasons = ui.markdown("")
 
@@ -437,25 +445,25 @@ class Explorer:
                         },
                         {
                             "name": "decode",
-                            "label": "p95 decode",
+                            "label": "p95 decode amplification",
                             "field": "decode",
                             "align": "right",
                         },
                         {
                             "name": "requests",
-                            "label": "p95 requests",
+                            "label": "p95 storage read requests",
                             "field": "requests",
                             "align": "right",
                         },
                         {
                             "name": "transfer",
-                            "label": "p95 transfer",
+                            "label": "p95 transfer amplification",
                             "field": "transfer",
                             "align": "right",
                         },
                         {
                             "name": "shards",
-                            "label": "p05 shards / minimum",
+                            "label": "p05 distinct shards / target",
                             "field": "shards",
                             "align": "right",
                         },
@@ -510,28 +518,29 @@ class Explorer:
         self.workload_table.update()
 
         if layout is None:
-            self.summary.set_content("No pair is available. Inspect the chunk plot.")
+            self.summary.set_content("No candidate layout is available. Inspect the chunk plot.")
             self.reasons.set_content("")
             return
         recommendation = layout == self.result.selected
         badge = "**Planner recommendation.**  " if recommendation else ""
         self.summary.set_content(
             badge
-            + f"Chunk `{_shape(layout.chunk_shape)}` "
-            + f"({planner.format_bytes(layout.raw_chunk_bytes)} raw); "
-            + f"shard `{_shape(layout.shard_shape_in_chunks)}` chunks.  \n\n"
-            + f"Estimated average shard: **{planner.format_bytes(layout.average_shard_bytes)}**; "
-            + f"maximum: **{planner.format_bytes(layout.maximum_shard_bytes)}**; "
-            + f"objects: **{layout.total_shards:,}**.  \n\n"
-            + f"Estimated {html.escape(self.result.policy.writer.name)} memory: "
+            + f"Chunk shape `{_shape(layout.chunk_shape)}` "
+            + f"({planner.format_bytes(layout.raw_chunk_bytes)} raw chunk bytes); "
+            + f"shard shape `{_shape(planner.shard_shape(layout.chunk_shape, layout.shard_shape_in_chunks))}` array elements; "
+            + f"chunks per shard `{_shape(layout.shard_shape_in_chunks)}`.  \n\n"
+            + f"Estimated average stored shard bytes: **{planner.format_bytes(layout.average_shard_bytes)}**; "
+            + f"maximum stored shard bytes: **{planner.format_bytes(layout.maximum_shard_bytes)}**; "
+            + f"total shards: **{layout.total_shards:,}**.  \n\n"
+            + f"Estimated {html.escape(self.result.policy.writer.name)} writer working memory: "
             + f"**{planner.format_bytes(layout.estimated_writer_memory_bytes)}** "
             + f"({layout.writer_memory_provenance})."
         )
         if layout.passes:
-            self.reasons.set_content("✅ This pair satisfies every configured limit.")
+            self.reasons.set_content("This layout satisfies every configured limit.")
         else:
             self.reasons.set_content(
-                "**Why this pair is rejected**\n\n"
+                "**Why this layout is rejected**\n\n"
                 + "\n".join(f"- {reason}" for reason in layout.rejection_reasons)
             )
 

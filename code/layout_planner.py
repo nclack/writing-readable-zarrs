@@ -13,8 +13,9 @@
 The planner deliberately has two nested phases:
 
 1. generate aspect-guided chunks and reject those that fail chunk limits;
-2. generate shard packings for every surviving chunk and reject pair limits;
-3. order the feasible pairs with one documented lexicographic key.
+2. generate configurations of chunks per shard for every surviving chunk and
+   reject layout limits;
+3. order the passing layouts with one documented lexicographic key.
 
 Run ``uv run layout_planner.py --help`` for the command-line interface. The
 models and ``run_planner`` function are also imported by layout_explorer.py.
@@ -352,14 +353,15 @@ class ChunkState:
 LIMITATIONS = (
     "Selections are generated rectangles, not imported application traces.",
     "Compression is modeled globally unless an exact chunk-shape measurement overrides it.",
-    "Workload samples are independent; spatial and temporal query coherence is not represented.",
+    "Generated selection batches are independent; spatial and temporal locality across batches is not represented.",
     "Only all-cold or all-warm shard-index access is modeled; payload and decoded-chunk caches are absent.",
     "Latency, scheduling, and time to first displayed pixel are not modeled.",
     "Range requests are not coalesced.",
     "Each multiscale level must be planned as a separate array.",
     "Object-store multipart limits are not modeled.",
-    "End-to-end writer throughput must be measured after planning; only encoding throughput is gated here.",
-    "Writer memory follows a declared model; measured layout overrides are not implemented yet.",
+    "End-to-end conversion throughput must be measured after planning; only encoding throughput is gated here.",
+    "Writer working memory follows a declared model; measured layout overrides are not implemented yet.",
+    "Fill-value chunk omission is not modeled; every chunk-grid cell that intersects the array contributes an encoded payload estimate.",
 )
 
 
@@ -538,14 +540,14 @@ def _generated_workloads(
     return generated
 
 
-def _raw_chunk_bytes_at(
-    policy: PlannerPolicy, chunk_shape: Shape, coordinate: Coordinate
-) -> int:
-    extents = tuple(
-        min(chunk, available - index * chunk)
-        for available, chunk, index in zip(policy.array.shape, chunk_shape, coordinate)
-    )
-    return math.prod(extents) * policy.array.bytes_per_element
+def _raw_chunk_bytes(policy: PlannerPolicy, chunk_shape: Shape) -> int:
+    """Return bytes in one full decoded chunk representation.
+
+    Zarr edge chunks retain the declared chunk shape; array bounds only reduce
+    the in-bounds extent, not the decoded chunk representation.
+    """
+
+    return math.prod(chunk_shape) * policy.array.bytes_per_element
 
 
 def _chunk_coordinates(selection: Selection, chunk_shape: Shape) -> itertools.product:
@@ -621,10 +623,7 @@ def _evaluate_chunk(
                             "exceeds maximum_enumerated_chunks_per_sample"
                         )
             ordered_coordinates = tuple(sorted(coordinates))
-            decoded_bytes = sum(
-                _raw_chunk_bytes_at(policy, shape, coordinate)
-                for coordinate in ordered_coordinates
-            )
+            decoded_bytes = len(ordered_coordinates) * _raw_chunk_bytes(policy, shape)
             batch_geometries.append(
                 BatchGeometry(
                     chunk_coordinates=ordered_coordinates,
@@ -669,7 +668,7 @@ def _evaluate_chunk(
             shape=shape,
             origin_profiles=tuple(sorted(origin.profiles)),
             target_byte_budgets=tuple(sorted(origin.target_budgets)),
-            raw_chunk_bytes=math.prod(shape) * policy.array.bytes_per_element,
+            raw_chunk_bytes=_raw_chunk_bytes(policy, shape),
             encoded_fraction=encoded_fraction,
             encoding_throughput_bytes_per_second=throughput,
             compression_provenance=compression_provenance,
@@ -701,7 +700,7 @@ def _apply_compression_constraint(
     return best
 
 
-# Shard generation and chunk/shard scoring -----------------------------------
+# Shard generation and candidate-layout scoring ------------------------------
 
 
 def _chunk_grid(policy: PlannerPolicy, chunk_shape: Shape) -> Shape:
@@ -714,19 +713,19 @@ def _chunk_grid(policy: PlannerPolicy, chunk_shape: Shape) -> Shape:
 def _estimated_shard_bytes_at(
     policy: PlannerPolicy,
     chunk_shape: Shape,
-    shard_shape: Shape,
+    chunks_per_shard: Shape,
     shard_coordinate: Coordinate,
     encoded_fraction: float,
 ) -> int:
-    extents = []
-    for available, chunk, shard, coordinate in zip(
-        policy.array.shape, chunk_shape, shard_shape, shard_coordinate
+    chunk_counts = []
+    for available_chunks, shard_extent, coordinate in zip(
+        _chunk_grid(policy, chunk_shape), chunks_per_shard, shard_coordinate
     ):
-        start = coordinate * shard * chunk
-        stop = min(available, start + shard * chunk)
-        extents.append(max(0, stop - start))
-    raw_bytes = math.prod(extents) * policy.array.bytes_per_element
-    index_bytes = math.prod(shard_shape) * policy.storage.index_bytes_per_chunk
+        start = coordinate * shard_extent
+        stop = min(available_chunks, start + shard_extent)
+        chunk_counts.append(max(0, stop - start))
+    raw_bytes = math.prod(chunk_counts) * _raw_chunk_bytes(policy, chunk_shape)
+    index_bytes = math.prod(chunks_per_shard) * policy.storage.index_bytes_per_chunk
     return (
         math.ceil(raw_bytes * encoded_fraction)
         + index_bytes
@@ -740,8 +739,8 @@ def generate_shard_candidates(
 ) -> dict[Shape, CandidateOrigin]:
     candidates: dict[Shape, CandidateOrigin] = {}
     caps = _chunk_grid(policy, chunk.shape)
-    raw_dataset_bytes = math.prod(policy.array.shape) * policy.array.bytes_per_element
-    payload_bytes = math.ceil(raw_dataset_bytes * chunk.encoded_fraction)
+    decoded_dataset_bytes = math.prod(caps) * chunk.raw_chunk_bytes
+    payload_bytes = math.ceil(decoded_dataset_bytes * chunk.encoded_fraction)
     minimum_index_bytes = math.prod(caps) * policy.storage.index_bytes_per_chunk
     lower_bound = max(
         policy.storage.minimum_efficient_object_bytes,
@@ -753,14 +752,14 @@ def generate_shard_candidates(
         policy.storage.maximum_shard_bytes,
         policy.search.shard_budget_factor,
     )
-    nominal_stored_chunk_bytes = max(
+    estimated_stored_chunk_bytes = max(
         1.0,
         chunk.raw_chunk_bytes * chunk.encoded_fraction
         + policy.storage.index_bytes_per_chunk,
     )
     for profile in policy.shard_profiles:
         for budget in budgets:
-            target_chunks = budget / nominal_stored_chunk_bytes
+            target_chunks = budget / estimated_stored_chunk_bytes
             continuous = _continuous_aspect_shape(
                 target_chunks,
                 profile.base_shape,
@@ -785,35 +784,34 @@ def generate_shard_candidates(
 def _evaluate_layout(
     policy: PlannerPolicy,
     chunk_state: ChunkState,
-    shard_shape: Shape,
+    chunks_per_shard: Shape,
     origin: CandidateOrigin,
 ) -> LayoutCandidateResult:
     chunk = chunk_state.result
     chunk_grid = _chunk_grid(policy, chunk.shape)
     shard_grid = tuple(
-        math.ceil(chunks / shard) for chunks, shard in zip(chunk_grid, shard_shape)
+        math.ceil(available_chunks / chunk_count)
+        for available_chunks, chunk_count in zip(chunk_grid, chunks_per_shard)
     )
     total_chunks = math.prod(chunk_grid)
     total_shards = math.prod(shard_grid)
-    raw_dataset_bytes = math.prod(policy.array.shape) * policy.array.bytes_per_element
     index_bytes_per_shard = (
-        math.prod(shard_shape) * policy.storage.index_bytes_per_chunk
+        math.prod(chunks_per_shard) * policy.storage.index_bytes_per_chunk
         + policy.storage.checksum_bytes_per_shard
     )
     estimated_dataset_bytes = (
-        math.ceil(raw_dataset_bytes * chunk.encoded_fraction)
+        math.ceil(total_chunks * chunk.raw_chunk_bytes * chunk.encoded_fraction)
         + total_shards * index_bytes_per_shard
     )
     average_shard_bytes = math.ceil(estimated_dataset_bytes / total_shards)
+    maximum_chunks_in_shard = math.prod(
+        min(available_chunks, shard_extent)
+        for available_chunks, shard_extent in zip(chunk_grid, chunks_per_shard)
+    )
     maximum_shard_bytes = (
         math.ceil(
-            math.prod(
-                min(available, chunk_extent * shard_extent)
-                for available, chunk_extent, shard_extent in zip(
-                    policy.array.shape, chunk.shape, shard_shape
-                )
-            )
-            * policy.array.bytes_per_element
+            maximum_chunks_in_shard
+            * chunk.raw_chunk_bytes
             * chunk.encoded_fraction
         )
         + index_bytes_per_shard
@@ -838,17 +836,18 @@ def _evaluate_layout(
         )
     if average_shard_bytes < policy.storage.minimum_efficient_object_bytes:
         reasons.append(
-            f"average shard bytes {average_shard_bytes:,} < "
+            f"average stored shard bytes {average_shard_bytes:,} < "
             f"{policy.storage.minimum_efficient_object_bytes:,}"
         )
     if maximum_shard_bytes > policy.storage.maximum_shard_bytes:
         reasons.append(
-            f"maximum shard bytes {maximum_shard_bytes:,} > "
+            f"maximum stored shard bytes {maximum_shard_bytes:,} > "
             f"{policy.storage.maximum_shard_bytes:,}"
         )
     if writer_memory > policy.writer.maximum_memory_bytes:
         reasons.append(
-            f"writer memory {writer_memory:,} > {policy.writer.maximum_memory_bytes:,}"
+            "writer working memory "
+            f"{writer_memory:,} > {policy.writer.maximum_memory_bytes:,}"
         )
 
     workload_results: list[PairWorkloadResult] = []
@@ -861,19 +860,15 @@ def _evaluate_layout(
         for batch in geometry.batches:
             touched_shards = {
                 tuple(
-                    coordinate[dimension] // shard_shape[dimension]
-                    for dimension in range(len(shard_shape))
+                    coordinate[dimension] // chunks_per_shard[dimension]
+                    for dimension in range(len(chunks_per_shard))
                 )
                 for coordinate in batch.chunk_coordinates
             }
             if policy.storage.range_reads:
                 request_count = len(batch.chunk_coordinates)
-                transferred_bytes = sum(
-                    math.ceil(
-                        _raw_chunk_bytes_at(policy, chunk.shape, coordinate)
-                        * chunk.encoded_fraction
-                    )
-                    for coordinate in batch.chunk_coordinates
+                transferred_bytes = len(batch.chunk_coordinates) * math.ceil(
+                    chunk.raw_chunk_bytes * chunk.encoded_fraction
                 )
                 if policy.storage.index_cache == "cold":
                     request_count += len(touched_shards)
@@ -884,7 +879,7 @@ def _evaluate_layout(
                     _estimated_shard_bytes_at(
                         policy,
                         chunk.shape,
-                        shard_shape,
+                        chunks_per_shard,
                         coordinate,
                         chunk.encoded_fraction,
                     )
@@ -914,7 +909,8 @@ def _evaluate_layout(
         minimum_distinct_shards = min(minimum_distinct_shards, shard_distribution.p05)
         if request_utilization > 1.0:
             reasons.append(
-                f"{workload.name}: p95 requests {request_distribution.p95:.3g} > "
+                f"{workload.name}: p95 storage read requests "
+                f"{request_distribution.p95:.3g} > "
                 f"{workload.maximum_p95_requests:.3g}"
             )
         if transfer_distribution.p95 > workload.maximum_p95_transfer_amplification:
@@ -934,7 +930,7 @@ def _evaluate_layout(
 
     return LayoutCandidateResult(
         chunk_shape=chunk.shape,
-        shard_shape_in_chunks=shard_shape,
+        shard_shape_in_chunks=chunks_per_shard,
         shard_origin_profiles=tuple(sorted(origin.profiles)),
         target_shard_byte_budgets=tuple(sorted(origin.target_budgets)),
         raw_chunk_bytes=chunk.raw_chunk_bytes,
@@ -1037,6 +1033,15 @@ def shape_text(shape: Sequence[int]) -> str:
     return "x".join(str(value) for value in shape)
 
 
+def shard_shape(chunk_shape: Shape, chunks_per_shard: Shape) -> Shape:
+    """Return the shard shape in array elements."""
+
+    return tuple(
+        chunk_extent * shard_extent
+        for chunk_extent, shard_extent in zip(chunk_shape, chunks_per_shard)
+    )
+
+
 def _candidate_limit(
     items: Sequence[object], show_all: bool, default: int = 18
 ) -> Sequence[object]:
@@ -1061,7 +1066,7 @@ def render_console(
     if result.selected is None:
         console.print(
             Panel(
-                "No chunk/shard pair satisfies every policy limit. "
+                "No candidate layout satisfies every policy limit. "
                 "Inspect the rejection reasons below or write the JSON report.",
                 title="No feasible layout",
                 border_style="red",
@@ -1069,14 +1074,18 @@ def render_console(
         )
     else:
         selected = result.selected
+        selected_shard_shape = shard_shape(
+            selected.chunk_shape, selected.shard_shape_in_chunks
+        )
         console.print(
             Panel(
                 f"chunk [bold]{shape_text(selected.chunk_shape)}[/bold] "
-                f"({format_bytes(selected.raw_chunk_bytes)} raw)\n"
-                f"shard [bold]{shape_text(selected.shard_shape_in_chunks)}[/bold] chunks "
-                f"({format_bytes(selected.average_shard_bytes)} average; "
-                f"{selected.total_shards:,} storage objects)\n"
-                f"writer memory {format_bytes(selected.estimated_writer_memory_bytes)} "
+                f"({format_bytes(selected.raw_chunk_bytes)} raw chunk bytes)\n"
+                f"shard [bold]{shape_text(selected_shard_shape)}[/bold] array elements; "
+                f"chunks per shard [bold]{shape_text(selected.shard_shape_in_chunks)}[/bold]\n"
+                f"{format_bytes(selected.average_shard_bytes)} average stored shard; "
+                f"{selected.total_shards:,} shards\n"
+                f"writer working memory {format_bytes(selected.estimated_writer_memory_bytes)} "
                 f"[{selected.writer_memory_provenance}]",
                 title="Selected layout",
                 border_style="green",
@@ -1085,10 +1094,10 @@ def render_console(
 
     chunk_table = Table(title="Chunk candidates", show_lines=False)
     chunk_table.add_column("pass")
-    chunk_table.add_column("shape")
-    chunk_table.add_column("raw", justify="right")
-    chunk_table.add_column("worst decode / limit", justify="right")
-    chunk_table.add_column("encoded", justify="right")
+    chunk_table.add_column("chunk shape")
+    chunk_table.add_column("raw chunk bytes", justify="right")
+    chunk_table.add_column("worst decode limit utilization", justify="right")
+    chunk_table.add_column("encoded fraction", justify="right")
     chunk_table.add_column("profiles")
     chunk_table.add_column("reason")
     for candidate in _candidate_limit(result.chunk_candidates, show_all):
@@ -1104,13 +1113,14 @@ def render_console(
     console.print(chunk_table)
 
     if result.layout_candidates:
-        layout_table = Table(title="Chunk/shard pairs", show_lines=False)
+        layout_table = Table(title="Candidate layouts", show_lines=False)
         layout_table.add_column("pass")
-        layout_table.add_column("chunk")
-        layout_table.add_column("shard in chunks")
-        layout_table.add_column("objects", justify="right")
-        layout_table.add_column("average shard", justify="right")
-        layout_table.add_column("writer memory", justify="right")
+        layout_table.add_column("chunk shape")
+        layout_table.add_column("shard shape")
+        layout_table.add_column("chunks / shard")
+        layout_table.add_column("shards", justify="right")
+        layout_table.add_column("average stored shard", justify="right")
+        layout_table.add_column("writer working memory", justify="right")
         layout_table.add_column("reason")
         for candidate in _candidate_limit(result.layout_candidates, show_all):
             selected = result.selected == candidate
@@ -1119,6 +1129,11 @@ def render_console(
                 if selected
                 else ("[green]yes[/green]" if candidate.passes else "[red]no[/red]"),
                 shape_text(candidate.chunk_shape),
+                shape_text(
+                    shard_shape(
+                        candidate.chunk_shape, candidate.shard_shape_in_chunks
+                    )
+                ),
                 shape_text(candidate.shard_shape_in_chunks),
                 f"{candidate.total_shards:,}",
                 format_bytes(candidate.average_shard_bytes),
@@ -1136,10 +1151,10 @@ def render_console(
         by_workload = {item.workload: item for item in chunk.workloads}
         workload_table = Table(title="Selected layout by required workload")
         workload_table.add_column("workload")
-        workload_table.add_column("p95 decode", justify="right")
-        workload_table.add_column("p95 requests", justify="right")
-        workload_table.add_column("p95 transfer", justify="right")
-        workload_table.add_column("p05 shards", justify="right")
+        workload_table.add_column("p95 decode amplification", justify="right")
+        workload_table.add_column("p95 storage read requests", justify="right")
+        workload_table.add_column("p95 transfer amplification", justify="right")
+        workload_table.add_column("p05 distinct shards", justify="right")
         for pair_score in result.selected.workloads:
             decode = by_workload[pair_score.workload].decode_amplification.p95
             workload_table.add_row(
@@ -1169,25 +1184,29 @@ def render_markdown(result: PlanResult) -> str:
             [
                 "## Result",
                 "",
-                "No chunk/shard pair satisfies every policy limit.",
+                "No candidate layout satisfies every policy limit.",
                 "",
             ]
         )
     else:
         selected = result.selected
+        selected_shard_shape = shard_shape(
+            selected.chunk_shape, selected.shard_shape_in_chunks
+        )
         lines.extend(
             [
                 "## Recommendation",
                 "",
-                f"- Chunk shape: `{shape_text(selected.chunk_shape)}` ({format_bytes(selected.raw_chunk_bytes)} raw)",
-                f"- Shard shape in chunks: `{shape_text(selected.shard_shape_in_chunks)}`",
-                f"- Estimated average shard: {format_bytes(selected.average_shard_bytes)}",
-                f"- Storage objects: {selected.total_shards:,}",
-                f"- Estimated writer memory: {format_bytes(selected.estimated_writer_memory_bytes)} ({selected.writer_memory_provenance})",
+                f"- Chunk shape: `{shape_text(selected.chunk_shape)}` ({format_bytes(selected.raw_chunk_bytes)} raw chunk bytes)",
+                f"- Shard shape: `{shape_text(selected_shard_shape)}` array elements",
+                f"- Chunks per shard: `{shape_text(selected.shard_shape_in_chunks)}`",
+                f"- Estimated average stored shard bytes: {format_bytes(selected.average_shard_bytes)}",
+                f"- Total shards: {selected.total_shards:,}",
+                f"- Estimated writer working memory: {format_bytes(selected.estimated_writer_memory_bytes)} ({selected.writer_memory_provenance})",
                 "",
                 "### Required workloads",
                 "",
-                "| Workload | p95 decode | p95 requests | p95 transfer | p05 distinct shards |",
+                "| Workload | p95 decode amplification | p95 storage read requests | p95 transfer amplification | p05 distinct shards |",
                 "|---|---:|---:|---:|---:|",
             ]
         )
@@ -1212,7 +1231,7 @@ def render_markdown(result: PlanResult) -> str:
             "## Candidate summary",
             "",
             f"- Chunk candidates: {len(result.chunk_candidates)}; {sum(item.passes for item in result.chunk_candidates)} pass",
-            f"- Chunk/shard pairs: {len(result.layout_candidates)}; {sum(item.passes for item in result.layout_candidates)} pass",
+            f"- Candidate layouts: {len(result.layout_candidates)}; {sum(item.passes for item in result.layout_candidates)} pass",
             f"- Best candidate encoded fraction: {result.best_candidate_encoded_fraction:.4f}",
             "",
             "## Limitations",
