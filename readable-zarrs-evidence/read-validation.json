@@ -1,0 +1,33 @@
+{
+  "portable_reproduction": "passed",
+  "files": [
+    {
+      "file": "read-summary.csv",
+      "identical": true,
+      "sha256": "8b593470b84add047237a45c87bcf0be8bb3f67f649566ad54feb4ef4f25b590"
+    },
+    {
+      "file": "read-frontiers.csv",
+      "identical": true,
+      "sha256": "20c14e64235155e47703d26fd2cea1323cdb338b4bd0e9983ccf90a0deae9017"
+    },
+    {
+      "file": "read-plot-data.csv",
+      "identical": true,
+      "sha256": "7cf69f78a0d2cac5886d9ea92175c149827470aa8f3c90d3691e51b83b09d432"
+    },
+    {
+      "file": "read-workload-comparisons.csv",
+      "identical": true,
+      "sha256": "feadfee153adf0f5249e2c42d7b1c93f5e489fd6bc9bb88a06ffef3503420f17"
+    },
+    {
+      "file": "read-export-checks.json",
+      "identical": true,
+      "sha256": "f21fcab566a4bfba374b211eee60dff6828ba765c251ba948958dbb8ca9028fc"
+    }
+  ],
+  "original_source_rate_checks": 1698,
+  "no_benchmark_execution": true,
+  "missing_values": "empty CSV fields; null JSON values"
+}

@@ -1,0 +1,24 @@
+{
+  "summary_only_byte_identical": {
+    "conversion-summary.csv": true,
+    "conversion-plot-data.csv": true,
+    "conversion-findings.md": true
+  },
+  "from_cache_byte_identical": {
+    "conversion-runs.csv": true,
+    "conversion-array-layouts.csv": true,
+    "conversion-phase-timings.csv": true,
+    "conversion-coverage.csv": true,
+    "conversion-source-manifest.csv": true,
+    "conversion-summary.csv": true,
+    "conversion-plot-data.csv": true,
+    "conversion-findings.md": true
+  },
+  "recorded_conversion_executions": 11,
+  "array_layout_records": 4708,
+  "coverage_records": 15,
+  "unmeasured_peaks_and_throughput_remain_null": true,
+  "all_layouts_reference_a_run": true,
+  "all_completed_array_counts_match": true,
+  "scope": "Validation of derived text/CSV exports only; no builds, microscopy payload reads, conversion runs or cluster allocations."
+}

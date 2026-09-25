@@ -1,0 +1,464 @@
+[
+  {
+    "id": "reef-l40-microscopy-pilot-3667862",
+    "kind": "retained_study",
+    "status": "complete",
+    "disposition": "historical",
+    "created": "2026-09-13T03:23:56.934767+00:00",
+    "finished": "2026-09-13T03:28:57.763014+00:00",
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-study-20260913/pilot-3667862/study.json",
+    "source_sha256": "d36a6646043f932429d2d39b90293d613f720cf721b3a52ac87f09a9ed0dc936",
+    "source_aliases": [
+      {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-study-pilot-3667862/study.json",
+        "sha256": "d36a6646043f932429d2d39b90293d613f720cf721b3a52ac87f09a9ed0dc936",
+        "measurement_content_matches": true
+      }
+    ],
+    "report_selection": [],
+    "observations": 48,
+    "exported_observations": 48
+  },
+  {
+    "id": "reef-l40-microscopy-discovery-3667908",
+    "kind": "retained_study",
+    "status": "complete",
+    "disposition": "historical",
+    "created": "2026-09-13T03:41:23.576394+00:00",
+    "finished": "2026-09-13T04:12:34.156958+00:00",
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-study-20260913/discovery-3667908/study.json",
+    "source_sha256": "a0965f6233c9571c7ee253b04a9c065155a3ebf5fc39d00a9118c95441dacb9f",
+    "source_aliases": [
+      {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/bench/studies/microscopy/reef-l40-20260913/study.json",
+        "sha256": "a4d54c191e8b3e915730dad7a4d3ffd9c6f6344c62daf578d1734fc0605ca4af",
+        "measurement_content_matches": true
+      },
+      {
+        "path": "/mnt/main0/home/nclack/src/chucky/bench/studies/microscopy/reef-l40-20260913/study.json",
+        "sha256": "a0965f6233c9571c7ee253b04a9c065155a3ebf5fc39d00a9118c95441dacb9f",
+        "measurement_content_matches": true
+      },
+      {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-discovery-3667908/study.json",
+        "sha256": "a0965f6233c9571c7ee253b04a9c065155a3ebf5fc39d00a9118c95441dacb9f",
+        "measurement_content_matches": true
+      }
+    ],
+    "report_selection": [],
+    "observations": 400,
+    "exported_observations": 400
+  },
+  {
+    "id": "reef-l40-microscopy-sinks-3671242",
+    "kind": "retained_study",
+    "status": "complete",
+    "disposition": "historical",
+    "created": "2026-09-13T16:51:20.197915+00:00",
+    "finished": "2026-09-13T17:35:30.576061+00:00",
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-next-experiment-20260913/run-3671242/study.json",
+    "source_sha256": "fd13b4d0c73de4de7d5a4d553d5bbb311396db8a74fe543c45e2c3787d874eee",
+    "source_aliases": [
+      {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/bench/studies/microscopy/reef-l40-sinks-20260913/study.json",
+        "sha256": "2142e1f0cfa63fc255b8d9f0d29e4587057cbbefe6095dc939350c39e0341901",
+        "measurement_content_matches": true
+      },
+      {
+        "path": "/mnt/main0/home/nclack/src/chucky/bench/studies/microscopy/reef-l40-sinks-20260913/study.json",
+        "sha256": "fd13b4d0c73de4de7d5a4d553d5bbb311396db8a74fe543c45e2c3787d874eee",
+        "measurement_content_matches": true
+      }
+    ],
+    "report_selection": [],
+    "observations": 416,
+    "exported_observations": 416
+  },
+  {
+    "id": "reef-l40-filesystem-screen-3689339",
+    "kind": "retained_study",
+    "status": "complete",
+    "disposition": "historical",
+    "created": "2026-09-14T22:53:23.793685+00:00",
+    "finished": "2026-09-15T01:12:36.724178+00:00",
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-fs-pareto-20260914/run-3689339/study.json",
+    "source_sha256": "73cfd2eb0ed91c05c25f133ef03a4701ef05a983762137269239c34fe69b38e6",
+    "source_aliases": [
+      {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/bench/studies/microscopy/reef-l40-filesystem-screen-3689339/study.json",
+        "sha256": "7d19fed4cc2b16f25a86ba2f94d09c79657ed30d4529316eff6b7da8a1c03eb1",
+        "measurement_content_matches": true
+      }
+    ],
+    "report_selection": [],
+    "observations": 300,
+    "exported_observations": 300
+  },
+  {
+    "id": "reef-l40-final-discard-3702747",
+    "kind": "retained_study",
+    "status": "complete",
+    "disposition": "historical",
+    "created": "2026-09-16T00:31:08.059859+00:00",
+    "finished": "2026-09-16T01:46:36.365061+00:00",
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-final-20260916/run-3702747/discard/study.json",
+    "source_sha256": "623b8921094fe3b0e1847b7750351d4ec93548e656268e5532ce1062cfe03374",
+    "source_aliases": [
+      {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/bench/studies/microscopy/reef-l40-final-discard-3702747/study.json",
+        "sha256": "da8656d5fe9ceaf8369a1de22996f64e94cb485b825c90c0329095258dbc4ad1",
+        "measurement_content_matches": true
+      }
+    ],
+    "report_selection": [],
+    "observations": 200,
+    "exported_observations": 200
+  },
+  {
+    "id": "reef-l40-final-transfer-3702747",
+    "kind": "retained_study",
+    "status": "complete",
+    "disposition": "partially_selected_in_current_report",
+    "created": "2026-09-16T01:46:52.173520+00:00",
+    "finished": "2026-09-16T03:06:48.145162+00:00",
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-final-20260916/run-3702747/transfer/study.json",
+    "source_sha256": "8775559c7819a8b1aecb26fc6e9b0d5dd7221d432be6630b3cdb840dbcb3abfe",
+    "source_aliases": [
+      {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/bench/studies/microscopy/reef-l40-final-transfer-3702747/study.json",
+        "sha256": "531d958031c6604126a6a5928308ea2555d5a480704c8383ddc695c48fcf6d66",
+        "measurement_content_matches": true
+      }
+    ],
+    "report_selection": [
+      [
+        "reef-l40-final-transfer-3702747",
+        "bbbc010-brightfield",
+        "gpu"
+      ],
+      [
+        "reef-l40-final-transfer-3702747",
+        "jump-scope-fluorescence",
+        "gpu"
+      ],
+      [
+        "reef-l40-final-transfer-3702747",
+        "opencell-dna",
+        "gpu"
+      ],
+      [
+        "reef-l40-final-transfer-3702747",
+        "opencell-protein",
+        "gpu"
+      ]
+    ],
+    "observations": 240,
+    "exported_observations": 240
+  },
+  {
+    "id": "reef-l40-final-confirmation-3704091",
+    "kind": "retained_study",
+    "status": "complete",
+    "disposition": "partially_selected_in_current_report",
+    "created": "2026-09-16T04:17:02.305848+00:00",
+    "finished": "2026-09-16T05:49:07.904150+00:00",
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-confirmation-3rounds-20260916/run-3704091/confirmation/study.json",
+    "source_sha256": "2004bcf28688e883650bc75e1a43475eb041cd6a3962fc0dcc55c4de346c1e95",
+    "source_aliases": [
+      {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/bench/studies/microscopy/reef-l40-final-confirmation-3704091/study.json",
+        "sha256": "8bed21ce1d745c9a6d3a4b8134ab2ae3dfc7b0fdf26e055a0088b53a95957dd8",
+        "measurement_content_matches": true
+      }
+    ],
+    "report_selection": [
+      [
+        "reef-l40-final-confirmation-3704091",
+        "bbbc022-mito",
+        "gpu"
+      ],
+      [
+        "reef-l40-final-confirmation-3704091",
+        "cosem-cos7-em",
+        "gpu"
+      ]
+    ],
+    "observations": 268,
+    "exported_observations": 268
+  },
+  {
+    "id": "reef-l40-final-refinement-3704091",
+    "kind": "retained_study",
+    "status": "complete",
+    "disposition": "partially_selected_in_current_report",
+    "created": "2026-09-16T05:49:20.933161+00:00",
+    "finished": "2026-09-16T05:57:20.349392+00:00",
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-confirmation-3rounds-20260916/run-3704091/refinement/study.json",
+    "source_sha256": "7e53ead5b3dedbcfeb7c26ce98ee0344dc667d98f449f86809a07af51c4ecdb8",
+    "source_aliases": [
+      {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/bench/studies/microscopy/reef-l40-final-refinement-3704091/study.json",
+        "sha256": "56530bc6021b2dc995aa8b1696a6dce4d690d65ea3f45eb2fc0d757cf484a82c",
+        "measurement_content_matches": true
+      }
+    ],
+    "report_selection": [
+      [
+        "reef-l40-final-refinement-3704091",
+        "dynacell-a549-phase",
+        "gpu"
+      ]
+    ],
+    "observations": 52,
+    "exported_observations": 52
+  },
+  {
+    "id": "reef-turin-microscopy-workers-3708156",
+    "kind": "retained_study",
+    "status": "failed",
+    "disposition": "failed_partial_study",
+    "created": "2026-09-16T16:46:01.189720+00:00",
+    "finished": null,
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-cpu-scaling-20260916/turin-3708156/study.json",
+    "source_sha256": "cf31658cd03553eb95a72b15595188ac51515e4a05bde275011229987cacd044",
+    "source_aliases": [],
+    "report_selection": [],
+    "observations": 17,
+    "exported_observations": 17
+  },
+  {
+    "id": "reef-turin-microscopy-workers-3708278",
+    "kind": "retained_study",
+    "status": "complete",
+    "disposition": "historical_worker_comparison_with_withdrawn_repeated_plane_cases",
+    "created": "2026-09-16T16:59:25.623592+00:00",
+    "finished": "2026-09-16T17:13:35.406629+00:00",
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-cpu-scaling-20260916/turin-3708278/study.json",
+    "source_sha256": "e3e429b26a8b6f33ff786dc31f9af0801e4e572a15ba663cf7151ba40a8cf64a",
+    "source_aliases": [
+      {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/bench/studies/microscopy/reef-turin-microscopy-workers-3708278/study.json",
+        "sha256": "5c0b64a902ddfde36cd5ca9c295b00f94fe1f3ee8b692cba3307b19b443770ea",
+        "measurement_content_matches": true
+      }
+    ],
+    "report_selection": [],
+    "observations": 110,
+    "exported_observations": 110
+  },
+  {
+    "id": "reef-l40-microscopy-workers-3708541",
+    "kind": "retained_study",
+    "status": "complete",
+    "disposition": "historical_worker_comparison_with_withdrawn_repeated_plane_cases",
+    "created": "2026-09-16T17:19:15.411053+00:00",
+    "finished": "2026-09-16T17:37:14.111004+00:00",
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-cpu-scaling-20260916/l40-3708541/study.json",
+    "source_sha256": "4668250ae016bb4b53492dee3e067dc185b665d6a5e48959e3cbdd4d7f8982d7",
+    "source_aliases": [
+      {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/bench/studies/microscopy/reef-l40-microscopy-workers-3708541/study.json",
+        "sha256": "7bc09fe68d6bdab0399cf20fd49421c55b4bab88f134075793b3356268d65d74",
+        "measurement_content_matches": true
+      }
+    ],
+    "report_selection": [],
+    "observations": 110,
+    "exported_observations": 110
+  },
+  {
+    "id": "reef-turin-microscopy-pareto-3710801",
+    "kind": "retained_study",
+    "status": "running",
+    "disposition": "cancelled;checkpoint_status_running",
+    "created": "2026-09-16T19:17:08.925460+00:00",
+    "finished": null,
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-unified-20260916/turin-3710801/study.json",
+    "source_sha256": "a5965a73c107213e7410b2d1c3856167cba2d86962c0d2557aaed4b698fece8c",
+    "source_aliases": [],
+    "report_selection": [],
+    "observations": 8,
+    "exported_observations": 8
+  },
+  {
+    "id": "reef-turin-microscopy-pareto-core-3710982",
+    "kind": "retained_study",
+    "status": "complete",
+    "disposition": "partially_selected_in_current_report",
+    "created": "2026-09-16T19:25:53.019444+00:00",
+    "finished": "2026-09-16T19:47:54.012278+00:00",
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-unified-corrected-20260916/turin-3710982/core/study.json",
+    "source_sha256": "5a22d175bd021de935d5985d5c954e854003e3e9771a0216a05a9493aab406c2",
+    "source_aliases": [
+      {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/bench/studies/microscopy/reef-turin-microscopy-pareto-core-3710982/study.json",
+        "sha256": "d47552d9ea2018c214df89036fa667e156003821fd449c7c55ac45f9f004d92b",
+        "measurement_content_matches": true
+      }
+    ],
+    "report_selection": [
+      [
+        "reef-turin-microscopy-pareto-core-3710982",
+        "bbbc022-mito",
+        "cpu"
+      ],
+      [
+        "reef-turin-microscopy-pareto-core-3710982",
+        "cosem-cos7-em",
+        "cpu"
+      ]
+    ],
+    "observations": 158,
+    "exported_observations": 158
+  },
+  {
+    "id": "reef-turin-microscopy-pareto-transfer-3710982",
+    "kind": "retained_study",
+    "status": "complete",
+    "disposition": "partially_selected_in_current_report",
+    "created": "2026-09-16T19:48:06.401427+00:00",
+    "finished": "2026-09-16T20:30:07.513072+00:00",
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-unified-corrected-20260916/turin-3710982/transfer/study.json",
+    "source_sha256": "7b0dd96310fe35786a62ead26df4e2faecda6820c5c1b7fca8fa6106e8924d5a",
+    "source_aliases": [
+      {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/bench/studies/microscopy/reef-turin-microscopy-pareto-transfer-3710982/study.json",
+        "sha256": "96863523bf8b8e60a7f0b018b5ab25ef28cc0acdec6a13cc158ce86a82822ee5",
+        "measurement_content_matches": true
+      }
+    ],
+    "report_selection": [
+      [
+        "reef-turin-microscopy-pareto-transfer-3710982",
+        "bbbc010-brightfield",
+        "cpu"
+      ],
+      [
+        "reef-turin-microscopy-pareto-transfer-3710982",
+        "dynacell-a549-phase",
+        "cpu"
+      ],
+      [
+        "reef-turin-microscopy-pareto-transfer-3710982",
+        "jump-scope-fluorescence",
+        "cpu"
+      ],
+      [
+        "reef-turin-microscopy-pareto-transfer-3710982",
+        "opencell-dna",
+        "cpu"
+      ],
+      [
+        "reef-turin-microscopy-pareto-transfer-3710982",
+        "opencell-protein",
+        "cpu"
+      ]
+    ],
+    "observations": 272,
+    "exported_observations": 272
+  },
+  {
+    "id": "microscopy-calibration-3666599",
+    "kind": "calibration",
+    "status": "complete",
+    "disposition": "historical",
+    "created": "2026-09-13T01:40:02.892047+00:00",
+    "finished": null,
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-calibration-20260913/calibration.json",
+    "source_sha256": "f59790607bfbfb2f8cb4d0ca2d86bb7587b895d0044617b15c212df23f0cc395",
+    "source_aliases": [
+      {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-calibration-3666599/calibration.json",
+        "sha256": "f59790607bfbfb2f8cb4d0ca2d86bb7587b895d0044617b15c212df23f0cc395",
+        "identical_full_file": true,
+        "measurement_content_matches": true
+      }
+    ],
+    "report_selection": [],
+    "observations": 273,
+    "exported_observations": 273
+  },
+  {
+    "id": "microscopy-runtime-calibration-3666600",
+    "kind": "calibration",
+    "status": "complete",
+    "disposition": "historical",
+    "created": "2026-09-13T01:36:38.955323+00:00",
+    "finished": "2026-09-13T01:56:56.703385+00:00",
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-runtime/calibration/executions.jsonl",
+    "source_sha256": "ddf081c42b1d22415735ce13bbed13a65d15364d2fc4d9823e3a67b931dcc1c2",
+    "source_aliases": [],
+    "report_selection": [],
+    "observations": 108,
+    "exported_observations": 108
+  },
+  {
+    "id": "microscopy-runtime-cpu-control-repeat-3667399",
+    "kind": "calibration",
+    "status": "complete",
+    "disposition": "historical",
+    "created": "2026-09-13T02:30:51.409490+00:00",
+    "finished": "2026-09-13T02:32:12.625640+00:00",
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-runtime/cpu-control-repeat/executions.jsonl",
+    "source_sha256": "1b61fe350eae66fa1eaf18368aca84ede7442ad3cece5fc155b47de3338cb0bf",
+    "source_aliases": [],
+    "report_selection": [],
+    "observations": 24,
+    "exported_observations": 24
+  },
+  {
+    "id": "reef-l40-432380c-20260912-microscopy-256k",
+    "kind": "regular_sweep",
+    "status": "complete",
+    "disposition": "historical",
+    "created": "2026-09-12T01:22:34",
+    "finished": null,
+    "source_file": "/mnt/main0/home/nclack/src/chucky/bench/results/reef-l40-432380c-20260912-microscopy-256k.json",
+    "source_sha256": "58c9676d748c96d77894dc7bb96d5aa7149c4afc9164457f34ce76c7100fd010",
+    "source_aliases": [
+      {
+        "path": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/bench/results/reef-l40-432380c-20260912-microscopy-256k.json",
+        "sha256": "58c9676d748c96d77894dc7bb96d5aa7149c4afc9164457f34ce76c7100fd010",
+        "identical_full_file": true,
+        "measurement_content_matches": true
+      },
+      {
+        "path": "/mnt/main0/home/nclack/src/chucky-startup/bench/results/reef-l40-432380c-20260912-microscopy-256k.json",
+        "sha256": "58c9676d748c96d77894dc7bb96d5aa7149c4afc9164457f34ce76c7100fd010",
+        "identical_full_file": true,
+        "measurement_content_matches": true
+      }
+    ],
+    "report_selection": [],
+    "observations": 60,
+    "exported_observations": 180
+  },
+  {
+    "id": "microscopy-output-pool",
+    "kind": "output_control",
+    "status": "complete",
+    "disposition": "historical",
+    "created": "2026-09-13T19:14:57.704826+00:00",
+    "finished": "2026-09-13T19:29:14.764913+00:00",
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-output-pool-20260913/run-3671630/study.json",
+    "source_sha256": "f9f03a77d79e171d5bec6540f7b75c331868892d1cc1d7509ddbfe5191fa0f1d",
+    "source_aliases": [],
+    "report_selection": [],
+    "observations": 52,
+    "exported_observations": 70
+  },
+  {
+    "id": "cosem-v2-output-buffers-20260914",
+    "kind": "output_control",
+    "status": "complete",
+    "disposition": "historical",
+    "created": "2026-09-14T16:38:23.692637+00:00",
+    "finished": "2026-09-14T16:51:30.781289+00:00",
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-cosem-v2-20260914/run-3681071/study.json",
+    "source_sha256": "8aad1c32d8becd41b14e56336c3dd2f3db2429bbe11778d029bfb6e8c10346e8",
+    "source_aliases": [],
+    "report_selection": [],
+    "observations": 56,
+    "exported_observations": 72
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "rows": 3326,
+  "unique_row_ids": 3326,
+  "studies": 20,
+  "summary_rows": 1293,
+  "status_counts": {
+    "pass": 3325,
+    "error": 1
+  },
+  "role_counts": {
+    "reference-before": 142,
+    "sample": 2621,
+    "reference-after": 124,
+    "calibration_duration-one": 36,
+    "calibration_reference": 36,
+    "calibration_warmup-one": 36,
+    "calibration_work-eight": 33,
+    "calibration_duration-three": 36,
+    "calibration_warmup-quarter": 36,
+    "calibration_confirmation-reference": 24,
+    "calibration_combined": 36,
+    "runtime_calibration": 132,
+    "references": 10,
+    "recovery": 24
+  },
+  "current_report_samples": 674,
+  "current_report_configurations": 238,
+  "proxy_winners": 92,
+  "block_comparisons": 194,
+  "native_retry_observations": 1,
+  "source_file_bytes": 68324318
+}

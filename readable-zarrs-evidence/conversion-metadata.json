@@ -1,0 +1,33 @@
+{
+  "csv_null": "An empty cell is unknown/not measured. Numeric zero is retained only for actual zero counts, such as logged errors or measured-sample counts.",
+  "row_granularity": {
+    "conversion-runs.csv": "One recorded configuration execution, containing 512 CHAMMI arrays or 50 DynaCell windows. Arrays within an execution are not repetitions.",
+    "conversion-array-layouts.csv": "One scenario-listed array per configuration. Destination geometry may be modeled from the retained script; read destination_layout_basis.",
+    "conversion-phase-timings.csv": "A coarse job interval encompassing both DynaCell conversions. Never a per-configuration throughput observation.",
+    "conversion-summary.csv": "One configuration, derived only from conversion-runs.csv.",
+    "conversion-plot-data.csv": "Each recorded configuration remains present. Plot only valid measured quantities; all memory/throughput pairs are currently ineligible.",
+    "conversion-coverage.csv": "Near misses, exclusions, failures and scoped coverage gaps; none is treated as a conversion run."
+  },
+  "units": {
+    "shapes": "TCZYX, counts of elements",
+    "capacity_bytes": "Uncompressed dtype bytes multiplied by shape, including nominal chunk/shard capacity beyond logical array edges",
+    "processing_block_nominal_bytes": "Geometry of the array/window returned by the source read; a modeled data-array quantity, not measured process memory",
+    "logical_processed_bytes_from_current_metadata": "Sum of processing-window geometry across indexed arrays, not network or storage traffic",
+    "elapsed_s": "Seconds; absent for every per-configuration conversion",
+    "throughput_B_s": "Bytes per second; absent for every conversion",
+    "output_allocated_size_human": "Unconverted GNU du -sh observation, rounded allocated filesystem blocks; not exact file lengths or payload bytes",
+    "memory_bytes": "Separate process, device and pinned-host quantities; all conversion peak fields are null"
+  },
+  "evidence_dates": {
+    "logged_execution": "2026-06-15",
+    "source_metadata_collection": "2026-09-25",
+    "current_metadata_limit": "Hashes identify the metadata read during this collection, not the state or content at the historical conversion. No pixel or chunk payload was read."
+  },
+  "memory_limits": "No application or job conversion memory budget was captured. Damacy scenario max_gpu_memory_mb=8192 is a later reader setting. Replay cache/queue limits and GPU free-memory deltas in other experiments must not populate conversion peak fields.",
+  "output_retention": "All 100 DynaCell output metadata files were read at indexed paths. CHAMMI checked only the first indexed output metadata path per configuration, all absent; no output data trees were traversed.",
+  "source_cache": "conversion-source-records.json retains small text files and zarr.json metadata, with original paths and hashes. It contains no image payloads.",
+  "reproduce": [
+    "python3 scripts/conversion-analysis.py --output . --summarize-only",
+    "python3 scripts/conversion-analysis.py --output . --from-cache conversion-source-records.json"
+  ]
+}

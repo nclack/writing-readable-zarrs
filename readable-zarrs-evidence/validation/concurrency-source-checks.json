@@ -1,0 +1,25 @@
+{
+  "checked_on": "2026-09-25",
+  "scope": "Independent comparisons performed during collation against retained source summaries, logs and geometry; no experiment execution",
+  "paired_microscopy": {
+    "raw_source": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-shards-20260914/run-3684715/study.json",
+    "comparison_source": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-shards-20260914/run-3684715/analysis/summary.json",
+    "configuration_medians_checked": 24,
+    "relative_tolerance": 1e-12,
+    "result": "all matched"
+  },
+  "chammi_phase_assignment": {
+    "source_directory": "/mnt/main0/home/nclack/tmp/2026-06-15-chammi-reformat",
+    "source_logs": ["gpu_confirm.log", "gpu_curve.log"],
+    "sparse_observations": 15,
+    "dense_observations": 27,
+    "method": "Matched ordered scenario labels and displayed rounded rates against retained raw Damacy JSON records; phase-specific logged hostnames retained",
+    "result": "all 42 matched"
+  },
+  "orca_geometry": {
+    "source_directory": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split",
+    "observations_checked": 108,
+    "method": "Recovered append-axis shard count and non-append layer count from retained run geometry; checked total file counts separately",
+    "result": "all matched; layer count remains 12 across the append-axis splits"
+  }
+}

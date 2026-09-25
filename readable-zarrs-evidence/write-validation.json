@@ -1,0 +1,100 @@
+{
+  "unique_rows": 3326,
+  "original_normalized_report_comparisons": [
+    {
+      "study_id": "reef-l40-filesystem-screen-3689339",
+      "normalized_report_source": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-unified-corrected-20260916/site/data/microscopy/reef-l40-filesystem-screen-3689339.json",
+      "matched_configurations": 92,
+      "numeric_comparison": "throughput median/min/max, ratio-of-sums fold and repeat count agree within 1e-12 relative"
+    },
+    {
+      "study_id": "reef-l40-final-confirmation-3704091",
+      "normalized_report_source": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-unified-corrected-20260916/site/data/microscopy/reef-l40-final-confirmation-3704091.json",
+      "matched_configurations": 84,
+      "numeric_comparison": "throughput median/min/max, ratio-of-sums fold and repeat count agree within 1e-12 relative"
+    },
+    {
+      "study_id": "reef-l40-final-discard-3702747",
+      "normalized_report_source": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-unified-corrected-20260916/site/data/microscopy/reef-l40-final-discard-3702747.json",
+      "matched_configurations": 92,
+      "numeric_comparison": "throughput median/min/max, ratio-of-sums fold and repeat count agree within 1e-12 relative"
+    },
+    {
+      "study_id": "reef-l40-final-refinement-3704091",
+      "normalized_report_source": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-unified-corrected-20260916/site/data/microscopy/reef-l40-final-refinement-3704091.json",
+      "matched_configurations": 16,
+      "numeric_comparison": "throughput median/min/max, ratio-of-sums fold and repeat count agree within 1e-12 relative"
+    },
+    {
+      "study_id": "reef-l40-final-transfer-3702747",
+      "normalized_report_source": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-unified-corrected-20260916/site/data/microscopy/reef-l40-final-transfer-3702747.json",
+      "matched_configurations": 100,
+      "numeric_comparison": "throughput median/min/max, ratio-of-sums fold and repeat count agree within 1e-12 relative"
+    },
+    {
+      "study_id": "reef-l40-microscopy-discovery-3667908",
+      "normalized_report_source": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-unified-corrected-20260916/site/data/microscopy/reef-l40-microscopy-discovery-3667908.json",
+      "matched_configurations": 184,
+      "numeric_comparison": "throughput median/min/max, ratio-of-sums fold and repeat count agree within 1e-12 relative"
+    },
+    {
+      "study_id": "reef-l40-microscopy-sinks-3671242",
+      "normalized_report_source": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-unified-corrected-20260916/site/data/microscopy/reef-l40-microscopy-sinks-3671242.json",
+      "matched_configurations": 48,
+      "numeric_comparison": "throughput median/min/max, ratio-of-sums fold and repeat count agree within 1e-12 relative"
+    },
+    {
+      "study_id": "reef-l40-microscopy-workers-3708541",
+      "normalized_report_source": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-unified-corrected-20260916/site/data/microscopy/reef-l40-microscopy-workers-3708541.json",
+      "matched_configurations": 30,
+      "numeric_comparison": "throughput median/min/max, ratio-of-sums fold and repeat count agree within 1e-12 relative"
+    },
+    {
+      "study_id": "reef-turin-microscopy-pareto-core-3710982",
+      "normalized_report_source": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-unified-corrected-20260916/site/data/microscopy/reef-turin-microscopy-pareto-core-3710982.json",
+      "matched_configurations": 50,
+      "numeric_comparison": "throughput median/min/max, ratio-of-sums fold and repeat count agree within 1e-12 relative"
+    },
+    {
+      "study_id": "reef-turin-microscopy-pareto-transfer-3710982",
+      "normalized_report_source": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-unified-corrected-20260916/site/data/microscopy/reef-turin-microscopy-pareto-transfer-3710982.json",
+      "matched_configurations": 84,
+      "numeric_comparison": "throughput median/min/max, ratio-of-sums fold and repeat count agree within 1e-12 relative"
+    },
+    {
+      "study_id": "reef-turin-microscopy-workers-3708278",
+      "normalized_report_source": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-unified-corrected-20260916/site/data/microscopy/reef-turin-microscopy-workers-3708278.json",
+      "matched_configurations": 30,
+      "numeric_comparison": "throughput median/min/max, ratio-of-sums fold and repeat count agree within 1e-12 relative"
+    }
+  ],
+  "matched_configurations": 810,
+  "portable_regeneration_byte_identical": {
+    "write-summary.csv": true,
+    "write-frontier-data.csv": true,
+    "write-winners.csv": true,
+    "write-block-comparisons.csv": true,
+    "write-reference-drift.csv": true,
+    "write-findings.md": true
+  },
+  "geometry_and_logical_throughput_check": "all passing microscopy rows agree with exact logical/chunk byte geometry and timing counters",
+  "current_report_sample_rows": 674,
+  "strict_final_stored_size_fields": "all unknown; proxy explicitly named",
+  "source_byte_domain": "metered shard write-call bytes; no final stored-size census",
+  "failed_microscopy_scope_check": {
+    "row_id": "reef-turin-microscopy-workers-3708156/execution-0017",
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-cpu-scaling-20260916/turin-3708156/study.json",
+    "source_record": "#/records/16",
+    "configuration_id": "730d99687f468282",
+    "input_id": "bbbc022-mito",
+    "content": "microscopy",
+    "workload": "raw_pack_cyclic_streaming_replay",
+    "workload_scope_source": "retained_case_configuration",
+    "status": "error",
+    "study_status": "failed",
+    "frontier_candidate_record": "false",
+    "frontier_exclusions": "incomplete_study;status_not_pass;measurement_policy_missing_or_different;coverage_not_sufficient;warmup_complete_batches_below_required;complete_batches_below_required;generation_transitions_below_required;missing_elapsed;minimum_logical_work_not_reached;missing_logical_or_output_bytes",
+    "matched_retained_case_scenario": "microscopy",
+    "no_measurements_invented": true
+  }
+}

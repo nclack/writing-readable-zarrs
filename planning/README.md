@@ -18,17 +18,22 @@ Writing process: **audience → outline → target length → draft → edit**.
 
 This README and those four documents are the active writing plan.
 
+Collected measurements, findings, figures, source provenance, and reproduction
+scripts are in the [evidence guide](../readable-zarrs-evidence/README.md). The
+[evidence archive](../readable-zarrs-evidence.tar.gz) contains the same collection.
+
 ## Status: 2026-09-25
 
 - Audience and outline are established; the proposed length is 2,500 words.
-  Article prose and final figures have not been drafted.
-- Supporting measurements exist in Chucky's retained studies and on the
-  cluster. Assemble the records and check each claim, including variability
-  on the busy NFS filesystem. Conversion-memory evidence remains to be collected.
-- Verify the byte definitions behind the reported chunk and shard sizes.
+  Article prose has not been drafted; the evidence bundle includes overview figures.
+- Existing cluster measurements have been collated and checked, including
+  observed variation and counterexamples to the working claims. The located
+  conversion records do not measure peak memory or per-layout throughput.
+- The exports distinguish raw capacities, returned bytes, and storage counters.
+  Write-size rankings use measured shard-write bytes as a proxy for final size.
   Approximately 1 GiB shards are a test setting, not an established optimum.
-- The proposed relationship to `nconnect=16` and the Blosc block-size effect
-  need supporting comparisons or narrower wording.
+- No matched connection-count sweep establishes the proposed relationship to
+  `nconnect=16`. Blosc block-size effects depend on backend, codec, and storage.
 - Multiscale policy, general tool selection, and random subvolume writes are
   outside scope. The archived experiment program is not a prerequisite.
 

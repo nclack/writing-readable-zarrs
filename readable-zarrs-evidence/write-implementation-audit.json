@@ -1,0 +1,68 @@
+{
+  "gpu_block_model": "min(requested block bytes, uncompressed chunk bytes)",
+  "sources": [
+    {
+      "revision": "42e3e1878afd65ca623e883f97516578cb5623e6",
+      "file": "src/gpu/compress.cu",
+      "source_file_sha256": "a8c74818c13f965a5f4f8f98671f0aac48ab9bcbbd57b37002c007e55084cc9d",
+      "gpu_effective_block_function": "blosc_block_bytes(struct codec_config config, size_t chunk_bytes)\n{\n  return chunk_bytes < config.blosc_block_bytes ? chunk_bytes\n                                                : config.blosc_block_bytes;\n}",
+      "status": "verified"
+    },
+    {
+      "revision": "432380c41403ffb3ea6b6ffe50c4189033b4d2dd",
+      "file": "src/gpu/compress.cu",
+      "source_file_sha256": "a8c74818c13f965a5f4f8f98671f0aac48ab9bcbbd57b37002c007e55084cc9d",
+      "gpu_effective_block_function": "blosc_block_bytes(struct codec_config config, size_t chunk_bytes)\n{\n  return chunk_bytes < config.blosc_block_bytes ? chunk_bytes\n                                                : config.blosc_block_bytes;\n}",
+      "status": "verified"
+    },
+    {
+      "revision": "71edf9ecfe9f4f5fe53a13a7cbe0666945da58de",
+      "file": "src/gpu/compress.cu",
+      "source_file_sha256": "a8c74818c13f965a5f4f8f98671f0aac48ab9bcbbd57b37002c007e55084cc9d",
+      "gpu_effective_block_function": "blosc_block_bytes(struct codec_config config, size_t chunk_bytes)\n{\n  return chunk_bytes < config.blosc_block_bytes ? chunk_bytes\n                                                : config.blosc_block_bytes;\n}",
+      "status": "verified"
+    },
+    {
+      "revision": "9670f41b70e61c592f9fd5ea96e9402bc280426b",
+      "file": "src/gpu/compress.cu",
+      "source_file_sha256": "a8c74818c13f965a5f4f8f98671f0aac48ab9bcbbd57b37002c007e55084cc9d",
+      "gpu_effective_block_function": "blosc_block_bytes(struct codec_config config, size_t chunk_bytes)\n{\n  return chunk_bytes < config.blosc_block_bytes ? chunk_bytes\n                                                : config.blosc_block_bytes;\n}",
+      "status": "verified"
+    },
+    {
+      "revision": "a8bf68e58388c3bb8ec55340f62f82b2b757e1df",
+      "file": "src/gpu/compress.cu",
+      "source_file_sha256": "a8c74818c13f965a5f4f8f98671f0aac48ab9bcbbd57b37002c007e55084cc9d",
+      "gpu_effective_block_function": "blosc_block_bytes(struct codec_config config, size_t chunk_bytes)\n{\n  return chunk_bytes < config.blosc_block_bytes ? chunk_bytes\n                                                : config.blosc_block_bytes;\n}",
+      "status": "verified"
+    },
+    {
+      "revision": "b1ebae5b62f12c7d99d99ec15891bcbdb1e29867",
+      "file": "src/gpu/compress.cu",
+      "source_file_sha256": "a8c74818c13f965a5f4f8f98671f0aac48ab9bcbbd57b37002c007e55084cc9d",
+      "gpu_effective_block_function": "blosc_block_bytes(struct codec_config config, size_t chunk_bytes)\n{\n  return chunk_bytes < config.blosc_block_bytes ? chunk_bytes\n                                                : config.blosc_block_bytes;\n}",
+      "status": "verified"
+    },
+    {
+      "revision": "d26258b96b7750f7451e01ec8e0f333c6065f5c3",
+      "file": "src/gpu/compress.cu",
+      "source_file_sha256": "a8c74818c13f965a5f4f8f98671f0aac48ab9bcbbd57b37002c007e55084cc9d",
+      "gpu_effective_block_function": "blosc_block_bytes(struct codec_config config, size_t chunk_bytes)\n{\n  return chunk_bytes < config.blosc_block_bytes ? chunk_bytes\n                                                : config.blosc_block_bytes;\n}",
+      "status": "verified"
+    },
+    {
+      "revision": "ed084d68cf1af1916ca4551825a4f7b70caefddd",
+      "file": "src/gpu/compress.cu",
+      "source_file_sha256": "a8c74818c13f965a5f4f8f98671f0aac48ab9bcbbd57b37002c007e55084cc9d",
+      "gpu_effective_block_function": "blosc_block_bytes(struct codec_config config, size_t chunk_bytes)\n{\n  return chunk_bytes < config.blosc_block_bytes ? chunk_bytes\n                                                : config.blosc_block_bytes;\n}",
+      "status": "verified"
+    },
+    {
+      "revision": "ee1b50a2eb19732c171ecc71f83109e648f72968",
+      "file": "src/gpu/compress.cu",
+      "source_file_sha256": "a8c74818c13f965a5f4f8f98671f0aac48ab9bcbbd57b37002c007e55084cc9d",
+      "gpu_effective_block_function": "blosc_block_bytes(struct codec_config config, size_t chunk_bytes)\n{\n  return chunk_bytes < config.blosc_block_bytes ? chunk_bytes\n                                                : config.blosc_block_bytes;\n}",
+      "status": "verified"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "validated_utc": "2026-09-25T17:09:16.349180+00:00",
+  "scope": "Lightweight checks of exported records and portable summary regeneration; no benchmark, payload read, test suite or allocation",
+  "reads": {
+    "rows": 3182,
+    "statuses": {
+      "ok": 1927,
+      "duplicate_export": 551,
+      "trace_only": 228,
+      "preflight": 474,
+      "excluded_superseded_pilot": 2
+    },
+    "summaries_checked": 719,
+    "method": "independent median/range calculation from source_run_ids"
+  },
+  "writes": {
+    "rows": 3326,
+    "summaries_checked": 1293,
+    "proxy_comparison_groups": 92,
+    "proxy_winners_checked": 92,
+    "method": "independent row medians and exact Fraction(11,10) size threshold"
+  },
+  "conversions": {
+    "runs": 11,
+    "array_layout_records": 4708,
+    "unmeasured_metrics_preserved_as_null": true
+  },
+  "concurrency": {
+    "rows": 729,
+    "families": {
+      "microscopy_shard_targets": 257,
+      "chammi_shard_sweep": 47,
+      "sixteen_shard_read_overlap": 4,
+      "read_overlap_controls": 224,
+      "orca_append_shard_split": 109,
+      "filesystem_controls": 88
+    },
+    "pairs_checked": 96
+  },
+  "figures": {
+    "source_summary_rows_checked": 141,
+    "figures": [
+      "read-workloads",
+      "write-tradeoffs"
+    ]
+  },
+  "portable_regeneration": {
+    "reads": {
+      "files_byte_identical": {
+        "read-summary.csv": true,
+        "read-frontiers.csv": true,
+        "read-plot-data.csv": true,
+        "read-workload-comparisons.csv": true,
+        "read-export-checks.json": true
+      },
+      "command": [
+        "/usr/bin/python3",
+        "/mnt/main0/home/nclack/src/writing-readable-zarrs/readable-zarrs-evidence/scripts/aggregate_reads.py",
+        "--from-rows",
+        "/mnt/main0/home/nclack/src/writing-readable-zarrs/readable-zarrs-evidence/read-runs.csv",
+        "--output",
+        "/tmp/readable-zarrs-validate-93n7fnmf/reads"
+      ]
+    },
+    "writes": {
+      "files_byte_identical": {
+        "write-summary.csv": true,
+        "write-frontier-data.csv": true,
+        "write-winners.csv": true,
+        "write-block-comparisons.csv": true,
+        "write-reference-drift.csv": true,
+        "write-findings.md": true
+      },
+      "command": [
+        "/usr/bin/python3",
+        "/mnt/main0/home/nclack/src/writing-readable-zarrs/readable-zarrs-evidence/write-analysis.py",
+        "--from-rows",
+        "/mnt/main0/home/nclack/src/writing-readable-zarrs/readable-zarrs-evidence/write-runs.csv",
+        "--metadata",
+        "/mnt/main0/home/nclack/src/writing-readable-zarrs/readable-zarrs-evidence/write-metadata.json",
+        "--output",
+        "/tmp/readable-zarrs-validate-93n7fnmf/writes"
+      ]
+    },
+    "conversions": {
+      "files_byte_identical": {
+        "conversion-summary.csv": true,
+        "conversion-plot-data.csv": true,
+        "conversion-findings.md": true
+      },
+      "command": [
+        "/usr/bin/python3",
+        "/mnt/main0/home/nclack/src/writing-readable-zarrs/readable-zarrs-evidence/scripts/conversion-analysis.py",
+        "--summarize-only",
+        "--output",
+        "/tmp/readable-zarrs-validate-93n7fnmf/conversions"
+      ]
+    },
+    "concurrency": {
+      "files_byte_identical": {
+        "concurrency-runs.csv": true,
+        "concurrency-summary.csv": true,
+        "concurrency-paired.csv": true,
+        "concurrency-plot-data.csv": true,
+        "concurrency-read-overlap.csv": true,
+        "concurrency-storage-controls.csv": true,
+        "concurrency-findings.md": true
+      },
+      "command": [
+        "/usr/bin/python3",
+        "/mnt/main0/home/nclack/src/writing-readable-zarrs/readable-zarrs-evidence/scripts/aggregate_concurrency.py",
+        "--from-rows",
+        "--output",
+        "/tmp/readable-zarrs-validate-93n7fnmf/concurrency"
+      ]
+    }
+  },
+  "status": "passed"
+}

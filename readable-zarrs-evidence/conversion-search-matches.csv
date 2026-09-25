@@ -1,0 +1,152 @@
+source_file,source_locator,search,text
+/mnt/main0/home/nclack/tmp/2026-06-12-survey/spec-pr-body.md,L1,conversion,"Adds a draft data-reformatting plan under `dev/` (design/plan docs, outside the"
+/mnt/main0/home/nclack/tmp/2026-06-12-survey/spec-pr-body.md,L17,conversion,Draft — predictions are from geometry; confirm one reformatted dataset with a real
+/mnt/main0/home/nclack/tmp/2026-06-12-survey/ts-issue.md,L17,conversion,"reformatting/re-chunking is a separate, later effort."
+/mnt/main0/home/nclack/tmp/2026-06-12-survey/ts-issue.md,L55,conversion,- Do NOT reformat/recompress the data — chunking is held constant for this study.
+/mnt/main0/home/nclack/tmp/2026-06-15-chammi-reformat/confirm_parse.py,L7,conversion,"    (""chammi-before-idr0017-c120"", ""whole-plane (no rechunk)"", 1),"
+/mnt/main0/home/nclack/tmp/2026-06-15-chammi-reformat/gpu_job.log,L233,conversion,✓ 512 real array(s) present under /bio/projects/katamari/ivirshup/2026-05-28_rechunked/CHAMMI-75/train
+/mnt/main0/home/nclack/tmp/2026-06-15-chammi-reformat/gpu_job.log,L237,conversion,scenario: store_root=/bio/projects/katamari/ivirshup/2026-05-28_rechunked/CHAMMI-75/train n_arrays=512 rank=5 batches=50 (warmup=5)
+/mnt/main0/home/nclack/tmp/2026-06-15-chammi-reformat/gpu_job.log,L244,conversion,│ dataset  uris=512 real arrays  store_root=/bio/projects/katamari/ivirshup/2026-05-28_rechunked/CHAMMI-75/train                           │
+/mnt/main0/home/nclack/tmp/2026-06-15-chammi-reformat/sweep.py,L8,conversion,"    (""chammi-before-idr0017"", ""whole-plane (no rechunk)"", 1),"
+/mnt/main0/home/nclack/tmp/2026-06-15-compression-survey/report.md,L1,conversion,# Katamari compression-ratio survey at the recommended reformatting chunk
+/mnt/main0/home/nclack/tmp/2026-06-15-compression-survey/report.py,L23,conversion,"    L.append(""# Katamari compression-ratio survey at the recommended reformatting chunk\n"")"
+/mnt/main0/home/nclack/tmp/2026-06-15-compression-survey/survey.py,L7,conversion,recommended reformatting inner-chunk size.
+/mnt/main0/home/nclack/tmp/2026-06-15-compression-survey/survey.py,L130,conversion,"    """"""Recommended reformatting inner chunk (TCZYX) per archetype + dtype."
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/cpu_rechunk.sh,L4,conversion,"D=""$HOME/tmp/2026-06-15-dynacell-reformat"""
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/cpu_rechunk.sh,L6,conversion,"echo ""=== rechunk start $(date -Is) on $(hostname) ==="""
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/cpu_rechunk.sh,L8,conversion,"echo ""--- variant: reformat (inner 1,1,1,128,128) ---"""
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/cpu_rechunk.sh,L9,conversion,uv run reformat_dynacell.py \
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/cpu_rechunk.sh,L10,conversion,  --scenario src-dynacell.json --variant reformat \
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/cpu_rechunk.sh,L11,conversion,"  --out-root ""$D/store/reformat"" \"
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/cpu_rechunk.sh,L12,conversion,"  --out-scenario ""$D/cmp-reformat.json"" \"
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/cpu_rechunk.sh,L16,conversion,uv run reformat_dynacell.py \
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/cpu_rechunk.sh,L22,conversion,"echo ""=== rechunk done $(date -Is) ==="""
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/cpu_rechunk.sh,L23,conversion,"du -sh ""$D/store/reformat"" ""$D/store/current"" 2>/dev/null"
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/gpu_run.sh,L7,conversion,"OUT=""$HOME/tmp/2026-06-15-dynacell-reformat"""
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/gpu_run.sh,L26,conversion,# smoke: tiny run on reformat first to confirm it opens+reads
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/gpu_run.sh,L27,conversion,"echo ""######## SMOKE (reformat, 3 batches) ########"""
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/gpu_run.sh,L28,conversion,"python3 - ""$OUT/cmp-reformat.json"" ""$OUT/cmp-smoke.json"" <<'PY'"
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/gpu_run.sh,L31,conversion,"d[""name""]=""dynacell-reformat-smoke"""
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/gpu_run.sh,L38,conversion,"if [ -z ""$SMOKE_RES"" ]; then echo ""SMOKE FAILED — reformat store did not open/read""; exit 2; fi"
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/gpu_run.sh,L41,conversion,run_one reformat
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/reformat_dynacell.py,L6,conversion,"""""""Rechunk a bounded window of each dynacell array to a crop-matched inner chunk."
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/reformat_dynacell.py,L13,conversion,"  --variant reformat : inner (decode) chunk [1,1,1,128,128]  (matches the crop)"
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/reformat_dynacell.py,L41,conversion,"    ""reformat"": [1, 1, 1, 128, 128],"
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/reformat_dynacell.py,L46,conversion,"def reformat_one(rel: str, src_root: Path, out_root: Path, window: list[int],"
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/reformat_dynacell.py,L103,conversion,"    ap.add_argument(""--variant"", required=True, choices=[""reformat"", ""current""])"
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/reformat_dynacell.py,L125,conversion,"        futs = {ex.submit(reformat_one, u, src_root, out_root, window, inner,"
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/report-current.txt,L3,conversion,│ dataset  uris=50 real arrays  store_root=/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/store/current                           │
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/report-reformat.txt,L2,conversion,│ dynacell-reformat-128crop                                                                                                                │
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/report-reformat.txt,L3,conversion,│ dataset  uris=50 real arrays  store_root=/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/store/reformat                          │
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/gpu.log,L5,conversion,"######## SMOKE (reformat, 3 batches) ########"
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/gpu.log,L6,conversion,✓ 50 real array(s) present under /mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/store/reformat
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/gpu.log,L9,conversion,+ /mnt/main0/home/nclack/src/damacy/build/bench/damacy_bench /mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/cmp-smoke.json
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/gpu.log,L10,conversion,scenario: store_root=/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/store/reformat n_arrays=50 rank=5 batches=3 (warmup=1)
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/gpu.log,L14,conversion,results: /mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/runs-smoke/20260615-180456/results.json
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/gpu.log,L15,conversion,SMOKE OK: /mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/runs-smoke/20260615-180456/results.json
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/gpu.log,L16,conversion,######################## reformat 2026-06-15T18:04:56+00:00 ########################
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/gpu.log,L17,conversion,+ /mnt/main0/home/nclack/src/damacy/build/bench/damacy_bench /mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/cmp-reformat.json
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/gpu.log,L18,conversion,scenario: store_root=/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/store/reformat n_arrays=50 rank=5 batches=50 (warmup=5)
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/gpu.log,L22,conversion,results: /mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/runs-reformat/20260615-180507/results.json
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/gpu.log,L23,conversion,--- report (reformat) ---
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/gpu.log,L25,conversion,│ dynacell-reformat-128crop                                                                                                                │
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/gpu.log,L26,conversion,│ dataset  uris=50 real arrays  store_root=/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/store/reformat                          │
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/gpu.log,L86,conversion,+ /mnt/main0/home/nclack/src/damacy/build/bench/damacy_bench /mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/cmp-current.json
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/gpu.log,L87,conversion,scenario: store_root=/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/store/current n_arrays=50 rank=5 batches=50 (warmup=5)
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/gpu.log,L91,conversion,results: /mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/runs-current/20260615-180518/results.json
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/gpu.log,L95,conversion,│ dataset  uris=50 real arrays  store_root=/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/store/current                           │
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/rechunk.log,L3,conversion,=== rechunk start 2026-06-15T18:02:53+00:00 on cpu-turin-gp-l-243-191 ===
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/rechunk.log,L4,conversion,"--- variant: reformat (inner 1,1,1,128,128) ---"
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/rechunk.log,L10,conversion,variant=reformat wrote 50 arrays under /mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/store/reformat
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/rechunk.log,L18,conversion,variant=current wrote 50 arrays under /mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/store/current
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/rechunk.log,L21,conversion,=== rechunk done 2026-06-15T18:03:03+00:00 ===
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/rechunk.log,L22,conversion,5.3G	/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/store/reformat
+/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/logs/rechunk.log,L23,conversion,5.3G	/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat/store/current
+/mnt/main0/home/nclack/tmp/2026-06-15-size-impact/report.md,L1,conversion,# Katamari on-disk size impact of reformatting to 128x128 target chunks
+/mnt/main0/home/nclack/tmp/2026-06-15-size-impact/report.py,L23,conversion,"    L.append(""# Katamari on-disk size impact of reformatting to 128x128 target chunks\n"")"
+/mnt/main0/home/nclack/tmp/2026-06-15-size-impact/size_impact.py,L6,conversion,"""""""On-disk size impact of reformatting katamari training datasets to the"
+/mnt/main0/home/nclack/tmp/2026-06-15-size-impact/size_impact.py,L158,conversion,"    """"""Recommended reformatting inner chunk (TCZYX) per archetype + dtype."
+/mnt/main0/home/nclack/tmp/2026-08-08-pr177/fmtsize.sh,L2,conversion,"# How large would a full reformat of each file be, on base vs on this branch?"
+/mnt/main0/home/nclack/tmp/2026-09-06-chucky-bench/cpu-build.log,L21,tiff, + tifffile==2026.8.23
+/mnt/main0/home/nclack/tmp/2026-09-06-chucky-bench/extraction-versions.txt,L8,tiff,tifffile==2026.8.23
+/mnt/main0/home/nclack/tmp/2026-09-06-chucky-bench/fallback-metadata/allencell-README.md,L17,tiff,   └─447101df_raw.ome.tif
+/mnt/main0/home/nclack/tmp/2026-09-06-chucky-bench/fallback-metadata/allencell-README.md,L18,tiff,   └─c217c356_raw.ome.tif
+/mnt/main0/home/nclack/tmp/2026-09-06-chucky-bench/fallback-metadata/allencell-README.md,L21,tiff,   └─27a34691_segmentation.ome.tif
+/mnt/main0/home/nclack/tmp/2026-09-06-chucky-bench/fallback-metadata/allencell-README.md,L22,tiff,   └─b25ec91e_segmentation.ome.tif
+/mnt/main0/home/nclack/tmp/2026-09-06-chucky-bench/fallback-metadata/allencell-README.md,L25,tiff,   └─022e902b_3500000635_100X_20170227_F07_P23.ome.tiff
+/mnt/main0/home/nclack/tmp/2026-09-06-chucky-bench/fallback-metadata/allencell-README.md,L26,tiff,   └─10fbc8ee_3500000635_100X_20170227_E07_P07.ome.tiff
+/mnt/main0/home/nclack/tmp/2026-09-06-chucky-bench/fallback-metadata/allencell-README.md,L29,tiff,   └─0fa7a17f_3500000635_100X_20170227_F07_P23_CellNucSegCombined.ome.tiff
+/mnt/main0/home/nclack/tmp/2026-09-06-chucky-bench/fallback-metadata/allencell-README.md,L30,tiff,   └─15d8db4e_3500000635_100X_20170227_E07_P07_CellNucSegCombined.ome.tiff
+/mnt/main0/home/nclack/tmp/2026-09-06-chucky-bench/fallback-metadata/allencell-README.md,L32,tiff,   └─0ea40dcb_3500000635_100X_20170227_F07_P23_struct_segmentation.tiff
+/mnt/main0/home/nclack/tmp/2026-09-06-chucky-bench/fallback-metadata/allencell-README.md,L33,tiff,   └─1caaa3ae_3500000635_100X_20170227_E07_P07_struct_segmentation.tiff
+/mnt/main0/home/nclack/tmp/2026-09-08-microscopy-pr-finish/data-pr-body.md,L11,tiff,All selected pixels match their source TIFFs. Fresh-annex retrieval and the
+/mnt/main0/home/nclack/tmp/2026-09-08-opencell/check_pixels.py,L6,tiff,import tifffile
+/mnt/main0/home/nclack/tmp/2026-09-08-opencell/check_pixels.py,L20,tiff,        with tifffile.TiffFile(path) as tiff:
+/mnt/main0/home/nclack/tmp/2026-09-08-opencell/check_pixels.py,L21,tiff,            series = tiff.series[0]
+/mnt/main0/home/nclack/tmp/2026-09-08-opencell/check_pixels.py,L28,tiff,            page = tiff.pages[page_index]
+/mnt/main0/home/nclack/tmp/2026-09-08-opencell/check_pixels.py,L36,tiff,"            original = np.frombuffer(b''.join(strips), dtype=tiff.byteorder + 'u2').reshape(page.shape)"
+/mnt/main0/home/nclack/tmp/2026-09-08-opencell/check_pixels.py,L39,tiff,"                raise ValueError(f'Original TIFF strips differ from packed pixels: {plane[""id""]}')"
+/mnt/main0/home/nclack/tmp/2026-09-08-opencell/check_pixels.py,L40,tiff,"            checks.append({'plane': plane['id'], 'original_tiff_strips_match': True, 'sha256': hashlib.sha256(expected.tobytes()).hexdigest()})"
+/mnt/main0/home/nclack/tmp/2026-09-08-opencell/fetch.log,L42,tiff,"ValueError: Expected the documented two-channel uint16 CZYX stack: /mnt/main0/home/nclack/tmp/2026-09-08-opencell/source/images/OC-FOV_ANXA11_ENSG00000122359_CID001094_FID00026520_stack.tif: ZCYX (106, 2, 600, 600)"
+/mnt/main0/home/nclack/tmp/2026-09-08-opencell/pr-body.md,L17,tiff,OpenCell validation: 37 dataset tests; all 16 selected planes match original TIFF
+/mnt/main0/home/nclack/tmp/2026-09-08-opencell/record_build.py,L17,conversion,"    'packages': {name: importlib.metadata.version(name) for name in ['numpy', 'numcodecs', 'tifffile', 'imagecodecs', 'zarr']},"
+/mnt/main0/home/nclack/tmp/2026-09-08-opencell/record_build.py,L17,tiff,"    'packages': {name: importlib.metadata.version(name) for name in ['numpy', 'numcodecs', 'tifffile', 'imagecodecs', 'zarr']},"
+/mnt/main0/home/nclack/tmp/2026-09-08-opencell/record_build.py,L24,tiff,"        'original_tiff_strip_comparisons': 16,"
+/mnt/main0/home/nclack/tmp/2026-09-08-opencell/release-notes.md,L21,tiff,"All 16 planes match the original TIFF pixel bytes. Fresh annex retrieval,"
+/mnt/main0/home/nclack/tmp/2026-09-08-opencell/release-notes.md,L35,tiff,The source TIFF URLs and independent SHA256 checksums are recorded in
+/mnt/main0/home/nclack/tmp/2026-09-08-opencell/store.log,L21,tiff,"    ""tifffile"": ""2026.8.23"","
+/mnt/main0/home/nclack/tmp/2026-09-08-opencell/store.log,L33,tiff,"    ""original_tiff_strip_comparisons"": 16,"
+/mnt/main0/home/nclack/tmp/2026-09-08-opencell/clone/README.md,L75,tiff,"32 source TIFFs, object metadata, and independent full-file SHA256 checksums."
+/mnt/main0/home/nclack/tmp/2026-09-10-corpus-additions/license-additions.md,L12,tiff,"Changes: selected the brightfield image of well C05, decoded its TIFF pixels,"
+/mnt/main0/home/nclack/tmp/2026-09-10-corpus-additions/license-additions.md,L31,tiff,"channel, decoded its TIFF pixels, and repacked the complete 2000×2000 image"
+/mnt/main0/home/nclack/tmp/2026-09-10-corpus-additions/preview_cosem.py,L6,tiff,"#   ""tifffile==2025.6.11"","
+/mnt/main0/home/nclack/tmp/2026-09-12-chucky-release/anonymous-clone/DATA-LICENSES.md,L42,tiff,"Changes: selected the brightfield image of well C05, decoded its TIFF pixels,"
+/mnt/main0/home/nclack/tmp/2026-09-12-chucky-release/anonymous-clone/DATA-LICENSES.md,L61,tiff,"channel, decoded its TIFF pixels, and repacked the complete 2000×2000 image"
+/mnt/main0/home/nclack/tmp/2026-09-12-chucky-release/public-repository/DATA-LICENSES.md,L42,tiff,"Changes: selected the brightfield image of well C05, decoded its TIFF pixels,"
+/mnt/main0/home/nclack/tmp/2026-09-12-chucky-release/public-repository/DATA-LICENSES.md,L61,tiff,"channel, decoded its TIFF pixels, and repacked the complete 2000×2000 image"
+/mnt/main0/home/nclack/tmp/2026-09-13-bbbc022-small.71fnujj8/before/DATA-LICENSES.md,L42,tiff,"Changes: selected the brightfield image of well C05, decoded its TIFF pixels,"
+/mnt/main0/home/nclack/tmp/2026-09-13-bbbc022-small.71fnujj8/before/DATA-LICENSES.md,L58,tiff,"validation, and evaluation groups, and repacked the 576 complete TIFF"
+/mnt/main0/home/nclack/tmp/2026-09-13-bbbc022-small.71fnujj8/before/DATA-LICENSES.md,L80,tiff,"channel, decoded its TIFF pixels, and repacked the complete 2000×2000 image"
+/mnt/main0/home/nclack/tmp/2026-09-13-bbbc022-small.71fnujj8/before/README.md,L12,tiff,from its original TIFFs using the
+/mnt/main0/home/nclack/tmp/2026-09-13-bbbc022-small.71fnujj8/before/README.md,L85,tiff,source TIFF and checksum.
+/mnt/main0/home/nclack/tmp/2026-09-13-cosem-release-check.7s8t2wz3/annex-publish/DATA-LICENSES.md,L42,tiff,"Changes: selected the brightfield image of well C05, decoded its TIFF pixels,"
+/mnt/main0/home/nclack/tmp/2026-09-13-cosem-release-check.7s8t2wz3/annex-publish/DATA-LICENSES.md,L57,tiff,"20585, one well per plate row A-P. Repacked the 16 complete TIFF images as"
+/mnt/main0/home/nclack/tmp/2026-09-13-cosem-release-check.7s8t2wz3/annex-publish/DATA-LICENSES.md,L79,tiff,"channel, decoded its TIFF pixels, and repacked the complete 2000×2000 image"
+/mnt/main0/home/nclack/tmp/2026-09-13-cosem-release-check.7s8t2wz3/annex-publish/README.md,L90,tiff,The manifest maps every plane to its source TIFF and checksum.
+/mnt/main0/home/nclack/tmp/2026-09-13-cosem-release-check.7s8t2wz3/fresh-clone/DATA-LICENSES.md,L42,tiff,"Changes: selected the brightfield image of well C05, decoded its TIFF pixels,"
+/mnt/main0/home/nclack/tmp/2026-09-13-cosem-release-check.7s8t2wz3/fresh-clone/DATA-LICENSES.md,L57,tiff,"20585, one well per plate row A-P. Repacked the 16 complete TIFF images as"
+/mnt/main0/home/nclack/tmp/2026-09-13-cosem-release-check.7s8t2wz3/fresh-clone/DATA-LICENSES.md,L79,tiff,"channel, decoded its TIFF pixels, and repacked the complete 2000×2000 image"
+/mnt/main0/home/nclack/tmp/2026-09-13-cosem-release-check.7s8t2wz3/fresh-clone/README.md,L90,tiff,The manifest maps every plane to its source TIFF and checksum.
+/mnt/main0/home/nclack/tmp/2026-09-13-dataset-writing.gzxyyk2b/pr-body-draft.md,L8,tiff,"BBBC022 uses complete original TIFF fields from 16 control wells with matching 300 ms exposures. COSEM expands the previous single 512 × 512 crop using distinct depth slices from the provider's reconstructed FIB-SEM volume. The import preserves published pixel values, and neighboring depths retain natural spatial correlation."
+/mnt/main0/home/nclack/tmp/2026-09-13-dataset-writing.gzxyyk2b/pr-body-draft.md,L16,tiff,- BBBC022 pixels match source TIFFs; source hashes and ZIP CRCs passed.
+/mnt/main0/home/nclack/tmp/2026-09-13-dataset-writing.gzxyyk2b/pr-body.md,L8,tiff,"BBBC022 uses complete original TIFF fields from 16 control wells with matching 300 ms exposures. COSEM expands the previous single 512 × 512 crop using distinct depth slices from the provider's reconstructed FIB-SEM volume. The import preserves published pixel values, and neighboring depths retain natural spatial correlation."
+/mnt/main0/home/nclack/tmp/2026-09-13-dataset-writing.gzxyyk2b/pr-body.md,L16,tiff,- BBBC022 pixels match source TIFFs; source hashes and ZIP CRCs passed.
+/mnt/main0/home/nclack/tmp/2026-09-13-dataset-writing.gzxyyk2b/before/DATA-LICENSES.md,L42,tiff,"Changes: selected the brightfield image of well C05, decoded its TIFF pixels,"
+/mnt/main0/home/nclack/tmp/2026-09-13-dataset-writing.gzxyyk2b/before/DATA-LICENSES.md,L57,tiff,"20585, one well per plate row A-P. Repacked the 16 complete TIFF images as"
+/mnt/main0/home/nclack/tmp/2026-09-13-dataset-writing.gzxyyk2b/before/DATA-LICENSES.md,L79,tiff,"channel, decoded its TIFF pixels, and repacked the complete 2000×2000 image"
+/mnt/main0/home/nclack/tmp/2026-09-13-dataset-writing.gzxyyk2b/before/README.md,L90,tiff,The manifest maps every plane to its source TIFF and checksum.
+/mnt/main0/home/nclack/tmp/2026-09-13-dataset-writing.gzxyyk2b/draft/DATASETS.md,L34,tiff,assay. The sample preserves the source TIFF pixels and provides worm shapes
+/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-plot-review-d3d2f27/skill/SKILL.md,L157,tiff,"The exporter refuses implicit overwrite, writes atomically, keeps vector DPI for embedded rasters, uses TIFF LZW, and can use PDF/PS Type 42 fonts. It does not validate scientific content or publisher acceptance."
+/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-plot-review-d3d2f27/skill/SKILL.md,L202,tiff,  python scripts/image_metadata.py figure.tiff \
+/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-plot-review-d3d2f27/skill/SKILL.md,L203,tiff,  --format tiff --mode RGB --min-dpi 300 --target-width-mm 85 \
+/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-v2-rc1.q1h2j3ze/notes.md,L11,tiff,"Every BBBC022 output pixel was compared with its original TIFF, each source TIFF was checked against its recorded checksum and archive CRC, and all seven raw files passed git-annex checksum verification before upload. The manifest records each field's source filename, checksum, well, site, and image number. The repository includes a reproducible importer."
+/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-v2-rc1.q1h2j3ze/pr-body.md,L5,tiff,"Selection uses one mock-control well per row of [BBBC022 plate 20585](https://bbbc.broadinstitute.org/BBBC022), site 1, channel w5, with seed 13 and matching 300 ms exposures. Original pixel values are preserved without cropping, rescaling, filtering, or denoising. The manifest records each field's source TIFF, checksum, well, site, and acquisition metadata; a script reproduces the import. BBBC022 source credits and CC0 notices are included."
+/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-v2-rc1.q1h2j3ze/pr-body.md,L13,tiff,- Every selected output pixel matched its source TIFF; source checksums and archive CRCs passed.
+/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-v2-rc1.q1h2j3ze/fresh-clone/DATA-LICENSES.md,L42,tiff,"Changes: selected the brightfield image of well C05, decoded its TIFF pixels,"
+/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-v2-rc1.q1h2j3ze/fresh-clone/DATA-LICENSES.md,L57,tiff,"20585, one well per plate row A-P. Repacked the 16 complete TIFF images as"
+/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-v2-rc1.q1h2j3ze/fresh-clone/DATA-LICENSES.md,L79,tiff,"channel, decoded its TIFF pixels, and repacked the complete 2000×2000 image"
+/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-v2-rc1.q1h2j3ze/fresh-clone/README.md,L12,tiff,from its original TIFFs using the
+/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-v2-rc1.q1h2j3ze/fresh-clone/README.md,L86,tiff,The manifest maps every plane to its source TIFF and checksum.
+/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-v3-rc2.91q3ie4w/fresh-clone/DATA-LICENSES.md,L42,tiff,"Changes: selected the brightfield image of well C05, decoded its TIFF pixels,"
+/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-v3-rc2.91q3ie4w/fresh-clone/DATA-LICENSES.md,L57,tiff,"20585, one well per plate row A-P. Repacked the 16 complete TIFF images as"
+/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-v3-rc2.91q3ie4w/fresh-clone/DATA-LICENSES.md,L79,tiff,"channel, decoded its TIFF pixels, and repacked the complete 2000×2000 image"
+/mnt/main0/home/nclack/tmp/2026-09-13-microscopy-v3-rc2.91q3ie4w/fresh-clone/DATASETS.md,L34,tiff,assay. The sample preserves the source TIFF pixels and provides worm shapes
+/mnt/main0/home/nclack/tmp/2026-09-16-damacy-pr160-pareto/repo/README.md,L17,conversion,"Source URIs identify concrete Zarr v3 arrays, including arrays inside"
+/mnt/main0/home/nclack/tmp/2026-09-23-damacy-pr164-before-after/after/README.md,L17,conversion,"Source URIs identify concrete Zarr v3 arrays, including arrays inside"
+/mnt/main0/home/nclack/tmp/2026-09-23-damacy-pr164-before-after/before/README.md,L17,conversion,"Source URIs identify concrete Zarr v3 arrays, including arrays inside"
+/mnt/main0/home/nclack/tmp/2026-09-24-damacy-cold-blocks/repo/README.md,L17,conversion,"Source URIs identify concrete Zarr v3 arrays, including arrays inside"
+/mnt/main0/home/nclack/tmp/2026-09-24-damacy-cold-chunks/repo/README.md,L17,conversion,"Source URIs identify concrete Zarr v3 arrays, including arrays inside"
+/mnt/main0/home/nclack/tmp/2026-09-24-damacy-cold-readahead/repo/README.md,L17,conversion,"Source URIs identify concrete Zarr v3 arrays, including arrays inside"
+/mnt/main0/home/nclack/tmp/2026-09-24-damacy-cpu-read-buffers/repo/README.md,L17,conversion,"Source URIs identify concrete Zarr v3 arrays, including arrays inside"
+/mnt/main0/home/nclack/tmp/2026-09-25-damacy-l40-nfs/repo/README.md,L17,conversion,"Source URIs identify concrete Zarr v3 arrays, including arrays inside"
+/mnt/main0/home/nclack/tmp/2026-09-25-damacy-nfs-spot/repo/README.md,L17,conversion,"Source URIs identify concrete Zarr v3 arrays, including arrays inside"

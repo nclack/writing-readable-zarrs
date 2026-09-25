@@ -1,0 +1,89 @@
+{
+  "root": "/mnt/main0/home/nclack/tmp",
+  "maximum_directory_depth_below_job": 1,
+  "maximum_bytes_per_file": 1000000,
+  "suffixes": [
+    ".log",
+    ".md",
+    ".py",
+    ".sh",
+    ".txt"
+  ],
+  "skipped_directory_names": [
+    ".git",
+    ".venv",
+    "assets",
+    "build",
+    "build-cpu",
+    "build-gpu",
+    "build-release",
+    "data",
+    "datasets",
+    "node_modules",
+    "payloads",
+    "public-download",
+    "source",
+    "sources",
+    "src",
+    "store",
+    "stores",
+    "venv"
+  ],
+  "skipped_directory_patterns": [
+    "*.zarr*",
+    "build*"
+  ],
+  "symlinks_followed": false,
+  "payloads_read": false,
+  "patterns": {
+    "conversion": "(?:tiff.{0,24}zarr|tif.{0,24}zarr|zarr.{0,24}tiff|rechunk|reformat|bioformats2raw|bf2raw|v2.{0,8}to.{0,8}v3)",
+    "tiff": "(?:tiff|\\.tif\\b|bioformats)"
+  },
+  "files_examined": 6056,
+  "bytes_examined": 33757706,
+  "additional_targeted_sources": "conversion-source-manifest.csv",
+  "targeted_discovery": [
+    {
+      "roots": [
+        "/mnt/main0/home/nclack/.claude/projects/-mnt-main0-home-nclack-src-damacy/memory",
+        "/mnt/main0/home/nclack/.claude/projects/-mnt-main0-home-nclack-src-chucky/memory",
+        "/mnt/main0/home/nclack/.claude/projects/-mnt-main0-home-nclack-src-acquire-zarr/memory"
+      ],
+      "glob": "*.md",
+      "method": "rg -n -i",
+      "patterns": [
+        "convert|conversion|rechunk|reformat|tiff|memory|v2.to.v3|rss|peak"
+      ]
+    },
+    {
+      "roots": [
+        "/mnt/main0/home/nclack/.claude/projects/-mnt-main0-home-nclack/memory",
+        "/mnt/main0/home/nclack/.claude/projects/-mnt-main0-home-nclack-src-evolutionaryscale/memory"
+      ],
+      "glob": "*.md",
+      "method": "rg -n -i",
+      "patterns": [
+        "tiff.to.zarr|tif.*convert|rechunk|conversion|reformat|ome-zarr-py|bioformats2raw|bf2raw|maxrss|maximum resident|peak.*rss"
+      ]
+    },
+    {
+      "roots": [
+        "/mnt/main0/home/nclack/src/chucky/scripts/writers",
+        "/mnt/main0/home/nclack/src/chucky/scripts/sweep",
+        "/mnt/main0/home/nclack/src/acquire-zarr/benchmarks",
+        "/mnt/main0/home/nclack/src/acquire-zarr/examples"
+      ],
+      "method": "targeted rg and script reads",
+      "scope": "implementation/docs only; no execution"
+    },
+    {
+      "roots": [
+        "/mnt/main0/home/nclack/data/damacy/scenarios/chammi",
+        "/mnt/main0/home/nclack/tmp/2026-06-15-dynacell-reformat"
+      ],
+      "method": "scenario-indexed zarr.json reads",
+      "scope": "metadata paths taken directly from retained URI lists; no recursive payload traversal"
+    }
+  ],
+  "discovery_limit": "The saved broad manifest inventories the bounded text search, not every file searched by earlier targeted rg queries. Full content/hashes of records used in derived outputs are separately retained in conversion-source-manifest.csv and conversion-source-records.json. JSON-only studies outside identified families and arbitrary remote histories are not exhaustively searched."
+}

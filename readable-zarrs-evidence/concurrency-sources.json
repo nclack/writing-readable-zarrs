@@ -1,0 +1,1567 @@
+[
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-shards-20260914/run-3684715/study.json",
+    "bytes": 4481727,
+    "sha256": "0e79717942df2f29e14b7d768a579f8d021f9b9096c0ec04495bf24141010e79"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-shards-20260914/run-3684596/validation-failure.json",
+    "bytes": 3336,
+    "sha256": "9558288a5cdcf70aa93a7cc3cd5721af5a2c0e731c4a73432382392cc2eedf42"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-shards-20260914/plan.json",
+    "bytes": 114231,
+    "sha256": "136d99d8d0d05e61aa770143dda9646ca5bb525c09f5a532bde48c13efc41721"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-shards-20260914/run_shards.py",
+    "bytes": 40120,
+    "sha256": "242501b8e7c0b5fa1c0c33abcf3c294c439addedf5faaaca4ec6c632c80d1701"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-shards-20260914/source.patch",
+    "bytes": 6523,
+    "sha256": "69d01e5f365f5b476031a04695f63666f9abed46547b1e85683a321ba9dcd54a"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-shards-20260914/validation-correction.json",
+    "bytes": 1046,
+    "sha256": "567f143d65b0bc31e7b61a10b837c29a4c878875607ee66cba2cf689b617d3d8"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-07-chucky-microscopy-pr/worktree/build-microscopy-shards-20260914/validation-duration-correction.json",
+    "bytes": 651,
+    "sha256": "a6e875555b0465ad72b30a2ec5818386ac17e9428db0c7d8c35245e3b2ff4846"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-06-15-chammi-reformat/gpu_job.log",
+    "bytes": 41872,
+    "sha256": "3cbb3b5cdbcf19a4f8f039f71da387334b2ad084d70b0843b83be6755e07f8d6"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-06-15-chammi-reformat/gpu_job2.log",
+    "bytes": 16715,
+    "sha256": "7f81e38845f3c6b0dd2bfeddaa4f2a0bdda013c8f9ef90efbf0b27585558da26"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-06-15-chammi-reformat/gpu_confirm.log",
+    "bytes": 2339,
+    "sha256": "42fecb10e9460d97f9ff700f901da8d82112e8db53b75d5a8b123c5382bece0d"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-06-15-chammi-reformat/gpu_curve.log",
+    "bytes": 4399,
+    "sha256": "79c01d25c9e85c94377f3902082f6b8bd788c809d4630e8ce5d23e8bfcca5c3a"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-06-15-chammi-reformat/cpu_job.sh",
+    "bytes": 1239,
+    "sha256": "a120eafb39cd0c4f1900ae5371a4c42ef43b020258f592be8511f58a2c357c46"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-06-15-chammi-reformat/cpu_job2.sh",
+    "bytes": 1560,
+    "sha256": "bf966cec8df0cbc5fcebff3150d7d33fb67014d3a15332974bc4da84ced093dd"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-06-15-chammi-reformat/cpu_job3.sh",
+    "bytes": 1901,
+    "sha256": "8827181e910d48894f687622c66c84012089c41011bdc4e19f0b9d6d3889b89a"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-06-15-chammi-reformat/cpu_job.log",
+    "bytes": 2140,
+    "sha256": "3463e547e5964dc6fa0f5cb5ac7539000c61a6d3517142c305acbfba495f1b66"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-06-15-chammi-reformat/cpu_job2.log",
+    "bytes": 1593,
+    "sha256": "5d57b5905b3172097eb0f02b748b5de41738f191d2865067bd44ba38b938ba19"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-06-15-chammi-reformat/cpu_job3.log",
+    "bytes": 2201,
+    "sha256": "4855780c2f48855e7b223aa9ba2be986a85058c156134c7a384016a6f921cf7a"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/data/damacy/scenarios/make_sharded_chammi.py",
+    "bytes": 6294,
+    "sha256": "d6469e485449757451c96fcecebcfb99646a91393c7ee649a54bfaa287287e19"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017/20260615-005337/results.json",
+    "bytes": 40542,
+    "sha256": "c9fd1a52d03172f9a2eeb59a0562a739e190a68cefd06ee5c36c0af35198b46e"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-128shard-c120/20260615-040550/results.json",
+    "bytes": 40654,
+    "sha256": "f742e0b1dad14af87d8d313897263bbb3660be7041717abc67280df7871fca94"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-128shard-c120/20260615-040933/results.json",
+    "bytes": 40652,
+    "sha256": "2176a7122a0faac82f2b08b87d9e325a65f14d4c33a4367e3552017883f031a4"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-128shard-c120/20260615-041304/results.json",
+    "bytes": 40650,
+    "sha256": "e6738963a507588400089ebb30f1a13ea1ed8c68bf00f9c620b46f34494fb887"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-16shard-c120/20260615-040343/results.json",
+    "bytes": 40637,
+    "sha256": "239393b0dcd9ad14fdc4b38c7d3e437104ebff5a90f62017d2ba6dbbb2ece9da"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-16shard-c120/20260615-040755/results.json",
+    "bytes": 40625,
+    "sha256": "75c7392aedc5a242f438d2a8f6216fb0ee09f2031ef52150fc72f2a514e001ef"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-16shard-c120/20260615-041122/results.json",
+    "bytes": 40628,
+    "sha256": "81c1b0f077037ce22509614ba014753a12dfddd1c224025bc51d54d061b360bb"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-2shard-c120/20260615-040246/results.json",
+    "bytes": 40588,
+    "sha256": "27a532cf738c3755016fbf8df8ef862dbd5cfee8a962707ac5125c479b5aae50"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-2shard-c120/20260615-040716/results.json",
+    "bytes": 40590,
+    "sha256": "b46593cc2277c27ac87a1f873aeee6aa391dd4758352ff1993b83f2ca9db79da"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-2shard-c120/20260615-041044/results.json",
+    "bytes": 40581,
+    "sha256": "aae46de184645197663f46b6d19aaf9f41abcd89c8248da7f18df41cefe9e406"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-32shard-c120/20260615-040408/results.json",
+    "bytes": 40653,
+    "sha256": "8e5490351c705930a3a44859d1b0589e3ea508d47eae32ea58e6871b1afb885b"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-32shard-c120/20260615-040815/results.json",
+    "bytes": 40644,
+    "sha256": "af500ac09e955e52a8c58b65f22ba0d46b856786200ecd3a78710f85d36744a0"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-32shard-c120/20260615-041142/results.json",
+    "bytes": 40646,
+    "sha256": "3d7357bccb02a8cb06b596d28691cbdcc584ae473035d647b7244663328b7ec8"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-4shard/20260615-010723/results.json",
+    "bytes": 40580,
+    "sha256": "2953539da841dde420da54ec007e5dc64226bf1e017cde784a2238ea0c25ee4c"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-4shard-c120/20260615-012355/results.json",
+    "bytes": 40605,
+    "sha256": "579e364ddaa5a4eb66443ba3bc8949798e1bec938951ece0777882787e185674"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-4shard-c120/20260615-012610/results.json",
+    "bytes": 40602,
+    "sha256": "d72b13b4fa5aa001eabd1d1978c4a04acb5b4f0b335f68bdd1a3ab02cb30a703"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-4shard-c120/20260615-012800/results.json",
+    "bytes": 40607,
+    "sha256": "9e6888297bf35c40de1a2b77f2999c9e386ac051b8f8fd257e91c3b829755e4d"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-4shard-c120/20260615-040302/results.json",
+    "bytes": 40613,
+    "sha256": "4f2dfe307208345364dc4e718085c36a09370f8153f76d9637e0096cf43cc380"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-4shard-c120/20260615-040727/results.json",
+    "bytes": 40603,
+    "sha256": "d7257a78cf5b9f4157dc4182b84bb7fe9ca48fa7b80a7465183bc2fcc829ce8a"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-4shard-c120/20260615-041055/results.json",
+    "bytes": 40609,
+    "sha256": "80935d5852f4096d7d837a54717cd6ddf80327fc668efe54bc71933bd2ee4e17"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-64shard-c120/20260615-040446/results.json",
+    "bytes": 40655,
+    "sha256": "2e0ce3fe7f2f7012d85bd54f4a985d1b97cb3ed219417ce54c2b221003696c3f"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-64shard-c120/20260615-040843/results.json",
+    "bytes": 40647,
+    "sha256": "e94e537c3e24d2c63ae289ccffc12eabc6eb3b5aa3d3abbca472a882e91cbef5"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-64shard-c120/20260615-041211/results.json",
+    "bytes": 40649,
+    "sha256": "72fd316d393a93a02ed815d3a8cf216a0e9b02654665e0d105b5b3ec6e518441"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-8shard/20260615-010710/results.json",
+    "bytes": 40584,
+    "sha256": "0f8f6171288307162524f273a5fd90223012ef5b49f2fe068f1cf53fea434010"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-8shard-c120/20260615-012417/results.json",
+    "bytes": 40615,
+    "sha256": "3a6f655c8aad282fc2280ea27f8631c60bcb6aeb723421c5b82bf110a6674482"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-8shard-c120/20260615-012626/results.json",
+    "bytes": 40611,
+    "sha256": "786183df92542ad0f8052e624cded54b37364f9b7296fa1f98f0c333003415ed"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-8shard-c120/20260615-012815/results.json",
+    "bytes": 40618,
+    "sha256": "08dca954e4327be772686c5d793165fb6f87f6412cb588971e31e5f3ced40461"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-8shard-c120/20260615-040322/results.json",
+    "bytes": 40614,
+    "sha256": "cac4c43e7c100646a851b89f8a4f7d805db6e4ed3b7bb836816e037b60509c62"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-8shard-c120/20260615-040740/results.json",
+    "bytes": 40609,
+    "sha256": "ead0abbecc8d0cb885def4319dd34ca9df98cbd2e1cb0d23e586c9fc19a18993"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-8shard-c120/20260615-041108/results.json",
+    "bytes": 40614,
+    "sha256": "e69568f262d19935b3a92be94c1692b26f51f57667a3d80328583e1e325db514"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-c120/20260615-012337/results.json",
+    "bytes": 40560,
+    "sha256": "6151d588217e32cdf4e9d30ba1abd9fe8e2dfe31cc56aafe0b9b1a8ce02837c7"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-c120/20260615-012558/results.json",
+    "bytes": 40559,
+    "sha256": "f4bed733db866727156c1638d9911795881e8fedacaa78e8db12102a3f200a90"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-c120/20260615-012749/results.json",
+    "bytes": 40565,
+    "sha256": "b3416d65d3df965a66019dadf6b4c14781d46d6c0264a9716986066df2e77ae9"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-c120/20260615-040234/results.json",
+    "bytes": 40557,
+    "sha256": "abebf837b656813094b37769092248c43179a139899d8e00140bed106e6b4572"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-c120/20260615-040707/results.json",
+    "bytes": 40561,
+    "sha256": "a0c5639b6ee92fe0466f04318461cee9be162782aa5bd5978aeaacd2bf48aae2"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-after-idr0017-c120/20260615-041034/results.json",
+    "bytes": 40563,
+    "sha256": "7a9ff8717ea71f11fe904bbd27bce43e3294ca6d1ee90e11f67ad45f0d320ca1"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-before-idr0017/20260615-005218/results.json",
+    "bytes": 40525,
+    "sha256": "c4252a759f894ce73eeedf58fbd177aac4aed6daaab66bf7542b04242e5fa672"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-before-idr0017-c120/20260615-012323/results.json",
+    "bytes": 40547,
+    "sha256": "2e9af72dc448d3d1e7db5b6e534c79224feac4d688d0cdd0554378fcc1f640e8"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-before-idr0017-c120/20260615-012548/results.json",
+    "bytes": 40539,
+    "sha256": "45bd87df45b3bff64b8dfaea3a5d801f525fa995cec1dc97c05c21f2acc8a5d1"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-before-idr0017-c120/20260615-012740/results.json",
+    "bytes": 40539,
+    "sha256": "d4ea08522cd5a1b287833640ff5fb35a908d8dc378ecfff1b0432b27e0367f19"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-ivirshup-idr0017/20260615-005326/results.json",
+    "bytes": 40567,
+    "sha256": "69639c54edb235a73870f42592630f3d50fe50e6779e3d0f6f3ffe70160434d0"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-ivirshup-idr0017-c120/20260615-012529/results.json",
+    "bytes": 40591,
+    "sha256": "a35443305887f28465d07ca7a2bc56d7f00c8485121159f000b8bc0843df36e9"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-ivirshup-idr0017-c120/20260615-012722/results.json",
+    "bytes": 40582,
+    "sha256": "ba7883eb5e99b7a3a71a970f2fb8fa45c7dc9296dc946371f2c2e73c05928d27"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-ivirshup-idr0017-c120/20260615-012918/results.json",
+    "bytes": 40595,
+    "sha256": "f25fa10e28f1d681af754741a1c547086ed0f76d8e5646967c7d4bcb662e2843"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-ivirshup-idr0017-c120/20260615-040659/results.json",
+    "bytes": 40595,
+    "sha256": "4e0e0919bc720121c58ed3569024b04014e4922e22654f191fff71e79d69fba2"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-ivirshup-idr0017-c120/20260615-041025/results.json",
+    "bytes": 40587,
+    "sha256": "c2bddcb96427b5ff4bde2f2ec02f2dcbc2361199d5ccda999b3c733a458b7b78"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/src/damacy/bench/runs/chammi-ivirshup-idr0017-c120/20260615-041353/results.json",
+    "bytes": 40591,
+    "sha256": "3ee9c3d8dc2895d883648535b7271843cd3719caf6922a3c86388d895fa4e688"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-23-damacy-pr160-shard-grid/job-3804536/report/concurrency.json",
+    "bytes": 4267,
+    "sha256": "0637717923a580b99fd3bacb8ed952322c24466efe1d168b4fa71c19e6ec1847"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-23-damacy-pr160-shard-grid/job-3804241/filesystem.txt",
+    "bytes": 315,
+    "sha256": "1836f66d9c24e3eda1230ee159cca67e162482b911fc36f9b3efcd9b708107cd"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-23-damacy-pr164-before-after/job-3806589/report/concurrency.csv",
+    "bytes": 2535,
+    "sha256": "93a89baa96382b2bb11366f8c548a6e7198b91f71cd190431155c0defdef0aa9"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-23-damacy-pr164-before-after/job-3806589/filesystem.txt",
+    "bytes": 315,
+    "sha256": "1836f66d9c24e3eda1230ee159cca67e162482b911fc36f9b3efcd9b708107cd"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-23-damacy-pr164-before-after/job-3806589/slurm-job.txt",
+    "bytes": 1465,
+    "sha256": "57a7e607db23b540257f2a382658c67ce78d538bbb791d4a26c10e455fb7b56f"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-24-damacy-cold-readahead/job-3808884/report/concurrency.csv",
+    "bytes": 1128,
+    "sha256": "7f74b91a04208bd2b611fdd15617abb6087945b651b531202c26c93f5e2c0fc0"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-24-damacy-cold-readahead/job-3808884/filesystem.txt",
+    "bytes": 315,
+    "sha256": "1836f66d9c24e3eda1230ee159cca67e162482b911fc36f9b3efcd9b708107cd"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-24-damacy-cold-readahead/job-3808884/slurm-job.txt",
+    "bytes": 1457,
+    "sha256": "d758d010312ab3c49d544d4e6a644ae7b964a41c05c0400c8e532125f210e781"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-24-damacy-cpu-read-buffers/job-3810330/report/concurrency.csv",
+    "bytes": 5814,
+    "sha256": "9f8a3c00709351aeeab7703e798e34c01c0c976346231052a6ab93e8b31b849d"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-24-damacy-cpu-read-buffers/job-3810330/filesystem.txt",
+    "bytes": 315,
+    "sha256": "1836f66d9c24e3eda1230ee159cca67e162482b911fc36f9b3efcd9b708107cd"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-24-damacy-cpu-read-buffers/job-3810330/slurm-job.txt",
+    "bytes": 1457,
+    "sha256": "895070bb120ee730cc410e077ccacfaad748d070378dec1b1d788eaa24039ac6"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-24-damacy-cold-chunks/job-3811387/report/concurrency.csv",
+    "bytes": 9826,
+    "sha256": "38df297c7378e761d113697a263ddd395f45fc8288393b2260d13e4217fc1340"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-24-damacy-cold-chunks/job-3811387/filesystem.txt",
+    "bytes": 315,
+    "sha256": "1836f66d9c24e3eda1230ee159cca67e162482b911fc36f9b3efcd9b708107cd"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-24-damacy-cold-chunks/job-3811387/slurm-job.txt",
+    "bytes": 1432,
+    "sha256": "a203ca47b2d36b476d2bf329dc7e719e27a57c3efb26e88af771a4845c64a403"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-24-damacy-cold-blocks/job-3822266/report/concurrency.csv",
+    "bytes": 24669,
+    "sha256": "53882aeee9c4573cbc2e09192bb6ba5e40dbfbf7bf13af6a25c0c093c10862be"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-24-damacy-cold-blocks/job-3822266/filesystem.txt",
+    "bytes": 315,
+    "sha256": "1836f66d9c24e3eda1230ee159cca67e162482b911fc36f9b3efcd9b708107cd"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-24-damacy-cold-blocks/job-3822266/slurm-job.txt",
+    "bytes": 1428,
+    "sha256": "74791d2dff7101816fad57d834b3cdf07d78b3c2f10c302ed39755a407335e7e"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/pilot-results/environment.txt",
+    "bytes": 943,
+    "sha256": "4f9355670f3b5363b89647d4390145d42d2ac9518221ac75b926e5f96d8a07fa"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/pilot-results/runs.tsv",
+    "bytes": 108,
+    "sha256": "64a01ae5cde2f2d7f4340424b5bfa39251bb67c842ba676e8730e7cac0228b5d"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/environment.txt",
+    "bytes": 942,
+    "sha256": "dc1e132e981654b90f1f550c589e99bc8bf4b0fbf408b880ad90f8399b827aa8"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/runs.tsv",
+    "bytes": 11652,
+    "sha256": "ee58d3a3b5f74927fd8ae50feba06300f803906eb44a54a8a79122f35559e81f"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p01-m4-c64.json",
+    "bytes": 5519,
+    "sha256": "911c5b64b07e6b9a53db489fe630a4b4d6746d492a30949b71b941d8b5d6bb3f"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p01-m4-c64.log",
+    "bytes": 3212,
+    "sha256": "bc43feb89327712a7e3a174973691ee52c2db34757457f8c859cd4e2165ef60d"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p02-m2-c32.json",
+    "bytes": 5446,
+    "sha256": "dcc019f17693bb4158e8dbaa440c30339a7f56fb2dbb9c031843ca26df01d1fe"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p02-m2-c32.log",
+    "bytes": 3211,
+    "sha256": "815b631cb573b4957025aff5a7444174f50c3c874db594ebe1f99e693aebfcf9"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p03-m1-c128.json",
+    "bytes": 5363,
+    "sha256": "e4739996c0ca46b0f9c98ce4bb78732ba46e235db6e5519906f7ff103ad77e24"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p03-m1-c128.log",
+    "bytes": 3211,
+    "sha256": "bcdaa70b013adf3470e3d76a7c01f4a7824a1b4475eb6652d800b6a97fe93c8c"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p04-m4-c16.json",
+    "bytes": 5418,
+    "sha256": "1a0580f5bd5a8243546df75060fa77cd7e83d2ba078278c3b3a9f0cc1b963743"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p04-m4-c16.log",
+    "bytes": 3212,
+    "sha256": "ea80441e4cbb076f7a7c901fea0df62667f52fd9f471f231160b80ba37f0ff63"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p05-m2-c64.json",
+    "bytes": 5414,
+    "sha256": "3ea9d41c4b5bbff769623282e415ea89479bb2e6c94ccc3226431e5d23c236dc"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p05-m2-c64.log",
+    "bytes": 3211,
+    "sha256": "c11a2fc368bd180441775bffe8d0991b9301c2cc367a35e6144bbb0a250b114b"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p06-m1-c32.json",
+    "bytes": 5131,
+    "sha256": "49de23d0a82bf9f851f46061b001d154e5cef9c448e856fc9bc896fdf7026b55"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p06-m1-c32.log",
+    "bytes": 3211,
+    "sha256": "b790d62040fc541f4604c1e4180721514d3f85f40c2ac077f30351552c5c3ac6"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p07-m4-c128.json",
+    "bytes": 5523,
+    "sha256": "a964d0a731affb6e2c4e8ac0bbef3a4f848d8d1c994ee2d9dbb54d4e92aacf4b"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p07-m4-c128.log",
+    "bytes": 3212,
+    "sha256": "bc86e40c7ed492e298289579ff1c4d67302906aa26155cea638c53d65ea98c2c"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p08-m2-c16.json",
+    "bytes": 5312,
+    "sha256": "3f5df10f97845885f91d2846f33559d5f54937c220a991d69a1279c2d52c0e71"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p08-m2-c16.log",
+    "bytes": 3211,
+    "sha256": "03d0e0a0acd94b74af945f2cb6de4edf3ab3829b65a3614718c98b62b3455c8d"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p09-m1-c64.json",
+    "bytes": 5341,
+    "sha256": "3441eee91bbfc030ee4e29c1318a437b62c09670508342cf8e252315235d366e"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p09-m1-c64.log",
+    "bytes": 3211,
+    "sha256": "f254953f57b2b7272a9f125c44f9a69b2a3fb256208f21fc15f3e2479493d227"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p10-m4-c32.json",
+    "bytes": 5345,
+    "sha256": "05ae80f0c3f9a1fe985c573ab36d0d5d9139a2fc7c377fb5daf54e50550b0f41"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p10-m4-c32.log",
+    "bytes": 3212,
+    "sha256": "2c7fdc7abf57632a0a9bb97b82b749acf9d1a363e9ebd60e50d642841771764c"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p11-m2-c128.json",
+    "bytes": 5339,
+    "sha256": "489dcf12b37bc19f2f7bc40e9b26feb51b8858559d4750022e3210228dfaad58"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p11-m2-c128.log",
+    "bytes": 3211,
+    "sha256": "1409cee2146d4a54e1ce3093a24ad08a156e5bd829edea65ac7014233bef2e8a"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p12-m1-c16.json",
+    "bytes": 5205,
+    "sha256": "df88582d9cfc9a7fd57ae22e020b46c3753931716d400002461753b7ff3c0612"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b1-p12-m1-c16.log",
+    "bytes": 3211,
+    "sha256": "e128bab8ad6485c1825ce2b29e6927f2587068b6cced7d5e74e7a1812558dab0"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p01-m1-c16.json",
+    "bytes": 5104,
+    "sha256": "f5fb80865da92932053a4f07303bf4c55997568e864a0cc0aafd0f8331fabd10"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p01-m1-c16.log",
+    "bytes": 3211,
+    "sha256": "416b504c784641d3f83bdc67f5bc31987cb0deaef38f2f18cb5fc20ba050058c"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p02-m2-c128.json",
+    "bytes": 5450,
+    "sha256": "722ebf5c5b277dc0e9a7144c70b891d27ac768473420651edf440223583ae30f"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p02-m2-c128.log",
+    "bytes": 3212,
+    "sha256": "934dfa35d020674bf0cd91e8c7076d6cefb4dc7289862f818c7f1a588c16c4ed"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p03-m4-c32.json",
+    "bytes": 5480,
+    "sha256": "b164a96188389e8caca35c19eb11a08b1e0260d43fd3da428d85967daaab3912"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p03-m4-c32.log",
+    "bytes": 3212,
+    "sha256": "514c4223e726b384afa1ac53f05a3fb6d9fd065db905ebe83c0f2e011be34101"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p04-m1-c64.json",
+    "bytes": 5312,
+    "sha256": "7d52f2042a9098a6a4cd4baba5bc5683392b28974ad1e14083b51c270e3e640e"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p04-m1-c64.log",
+    "bytes": 3211,
+    "sha256": "d005a573bdf3e627e58626ad0255511554db8659d47b5f178c28f1f2c3b68664"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p05-m2-c16.json",
+    "bytes": 5293,
+    "sha256": "7058b050f2dc02ee9755b2727fcee1533aa641d3d6ce8d8a06733df1ba7ab748"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p05-m2-c16.log",
+    "bytes": 3211,
+    "sha256": "f4a799607cb0584d179e2a9e4c451326846414b0f3813e59192869638d80108a"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p06-m4-c128.json",
+    "bytes": 5546,
+    "sha256": "b2e3b5971869bdce9835057885f4624344b6a79d6337cf659556cae9f6073fce"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p06-m4-c128.log",
+    "bytes": 3212,
+    "sha256": "1487a76321aa4d5a69cf6243e83157ec2877c3eafc2e0ade8caa3a384ca76d78"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p07-m1-c32.json",
+    "bytes": 5236,
+    "sha256": "3437463b50f774d47872a271dfc830ed2d5a468bd216c2adb5a2ee2ea7b01c64"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p07-m1-c32.log",
+    "bytes": 3211,
+    "sha256": "22832181c8608034f17cec7a38fa5ac5dae7fc612f6086f2db7b5b4b773f31f8"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p08-m2-c64.json",
+    "bytes": 5394,
+    "sha256": "278ad3187f49990e480d4b02cec351e20d220d9bd8e0c39d6bbc65380f6aba0d"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p08-m2-c64.log",
+    "bytes": 3213,
+    "sha256": "ba85504679319cb54e0ea9b79e05a28e16a231cae2d81314b7572c74f405d389"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p09-m4-c16.json",
+    "bytes": 5424,
+    "sha256": "bd8a151d1e495c0e82b48ade1a0bd1b663ce428018fff39f35b1a2396905cd09"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p09-m4-c16.log",
+    "bytes": 3212,
+    "sha256": "0c42ed3ec85313871a7bb6cdf9c66c1b841a673861fbd89d7feb2fa720189062"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p10-m1-c128.json",
+    "bytes": 5242,
+    "sha256": "6ed0828b3849a6db2f5e2f88c243457bf57b16b6538e4078016cd4be544d3468"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p10-m1-c128.log",
+    "bytes": 3211,
+    "sha256": "78dfee88921255702a916592ff99203411c66955c16b7ce09813481394051b45"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p11-m2-c32.json",
+    "bytes": 5319,
+    "sha256": "302cb671ef1ec032158bebfaf04b4dd120f8257e8802e74a93631e47a89c2552"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p11-m2-c32.log",
+    "bytes": 3211,
+    "sha256": "6ed4450bf3e217948516dd40fe8982fda188bb759ef21f20406450dd8dee9be3"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p12-m4-c64.json",
+    "bytes": 5389,
+    "sha256": "ad8e475349fd0144974e48b8661ef462cdfb66322238a214c46313539629d772"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b2-p12-m4-c64.log",
+    "bytes": 3212,
+    "sha256": "75d5c98d6a82b459bff3f025076d431dfdb9284189e9f76bd5c878c20cd5587d"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p01-m4-c128.json",
+    "bytes": 5439,
+    "sha256": "894acfadb47563afce2f2c6c96f19ae4b092a811789872831a8a491cd7d53196"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p01-m4-c128.log",
+    "bytes": 3212,
+    "sha256": "429a288799f8884aad0bebfa085a72acd411caa23b17523321242044ede4456a"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p02-m2-c16.json",
+    "bytes": 5374,
+    "sha256": "696b3fc1680e6d39aafc326e9d3d4af7b9ce231e130d7c76bf97cd99a460d338"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p02-m2-c16.log",
+    "bytes": 3211,
+    "sha256": "6ed19a65ae9b2816277e2168521ac3df826f387c236131c3889223b1cda84d3d"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p03-m1-c64.json",
+    "bytes": 5315,
+    "sha256": "53698cab39155e92ed1a7365745d52ab946e275e4f8e497f6d80ca6d9213a524"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p03-m1-c64.log",
+    "bytes": 3211,
+    "sha256": "d2b2d25cdbc296b20843253055d91055dc2b216fa37362058d7f6225c3acff00"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p04-m4-c32.json",
+    "bytes": 5369,
+    "sha256": "c5a7d1d03263c9083de6f98ae1bf68d705c065482d9c0ea4b7b895a636e6bee9"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p04-m4-c32.log",
+    "bytes": 3212,
+    "sha256": "6da2799bde91049ca87a86d7c2f53dc007cb9005aad29057c5b4c67fc23ce33d"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p05-m2-c128.json",
+    "bytes": 5477,
+    "sha256": "c11bd80190af37c72a25d4222cd68cd3b84723b07accdc1bf6d0551ce7766569"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p05-m2-c128.log",
+    "bytes": 3211,
+    "sha256": "45b94e3250042c06630683adcc00e47b4c263e87c9c097d98ca22847bdbe6901"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p06-m1-c16.json",
+    "bytes": 5212,
+    "sha256": "5c0173ba16094cb0e6d1cc8795305fac474eac4663de7b8d5714bc7d2bc6a884"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p06-m1-c16.log",
+    "bytes": 3211,
+    "sha256": "70387872e0233c210fb64e88966017518028c5459eca3f5dd4b8b0d32ca642d3"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p07-m4-c64.json",
+    "bytes": 5463,
+    "sha256": "ef25bf9a92fa5082ea418b52cb60511b5f1be4520a35c5ba270c48ed33ce971c"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p07-m4-c64.log",
+    "bytes": 3212,
+    "sha256": "d0767c1876c00e1241fc438993b8171b1688dc46be977a4ba879d00dba62651c"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p08-m2-c32.json",
+    "bytes": 5416,
+    "sha256": "43416d64c592838b39cafb14ece74c444c349a46fa409192ba514795a9d3aa42"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p08-m2-c32.log",
+    "bytes": 3211,
+    "sha256": "ca00ba97d5f54e013ddb814cf995bea06b2692c39f3145edc0b11782b7e88f47"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p09-m1-c128.json",
+    "bytes": 5260,
+    "sha256": "c6db26af4b4fc10260f3c72b764f070ed89f551d1b33cf0b2d748e1f14f87c4e"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p09-m1-c128.log",
+    "bytes": 3211,
+    "sha256": "59ad6b7ab355ffd6ca9976e8f8cc8214a233cf30bf1fe8718fd54e01ff52f10c"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p10-m4-c16.json",
+    "bytes": 5421,
+    "sha256": "f6286adc4c55cec5cb192e0a2add4aa38e0e24d762a3dfa6f51f6fa44541695a"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p10-m4-c16.log",
+    "bytes": 3212,
+    "sha256": "202e5ada9945dd6943bbe3234a4c999ad4ade8d03b2821851d627ef7dbdc3227"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p11-m2-c64.json",
+    "bytes": 5419,
+    "sha256": "983b1db0a88d394db53d681fd808d4bb51be5cb500d02bd2e1c9966d4c09d360"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p11-m2-c64.log",
+    "bytes": 3211,
+    "sha256": "91dee09076a8e623c790497c11704ad2b296dcf3ad0552d484f0e6593561bc60"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p12-m1-c32.json",
+    "bytes": 5430,
+    "sha256": "cb6a7f2830df6163ad58e8c85b6a3720bd9e31162162a14eecca27cf0837f25d"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b3-p12-m1-c32.log",
+    "bytes": 3211,
+    "sha256": "8981422050de84beaa6150b9483db7e139f7a2168b265b068d8954cdd21c0b82"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p01-m1-c32.json",
+    "bytes": 5230,
+    "sha256": "0f14ecbc2f677cc04b0275ed50d04bb9a7ea4ec591f11eecd38742157bd3442b"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p01-m1-c32.log",
+    "bytes": 3212,
+    "sha256": "2d86dd2bfef143503a1f3e193342e2e529191468c5028f8b4b811ecf29091fde"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p02-m2-c64.json",
+    "bytes": 5370,
+    "sha256": "42f0e69702df632630d6c022fa38a343e50f015b0462938664ebed3c35a24559"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p02-m2-c64.log",
+    "bytes": 3211,
+    "sha256": "2205eed813f70db4677c281060db68cdf27f4aa837df465afdfa703cdca48506"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p03-m4-c16.json",
+    "bytes": 5388,
+    "sha256": "600208e10a4535ad584ed80d6fd393b5fd0f1692658e5ae065920ee40d6e0135"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p03-m4-c16.log",
+    "bytes": 3212,
+    "sha256": "b68d64cf7c4198373d385583bdc9d3a0c760d264110451a6e8bd2a2573e8cf4c"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p04-m1-c128.json",
+    "bytes": 5285,
+    "sha256": "51672635d35a37cb3d5532ea4f71058d580605234287f8ba80d3bf4bbf0f142a"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p04-m1-c128.log",
+    "bytes": 3211,
+    "sha256": "b053c1a9c5bd4b6d75f8b891838ea6cd9d65bbb15f872a08a690e002d98226e9"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p05-m2-c32.json",
+    "bytes": 5413,
+    "sha256": "3b5da3f77731b1f45f4f66c351ce71d597031d7abd10139a6650c0d97486ddc2"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p05-m2-c32.log",
+    "bytes": 3211,
+    "sha256": "4a70705869c03b2fc9aa7b5c5c076bd4dc0440e6a9e20c19e0c84709c01bc610"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p06-m4-c64.json",
+    "bytes": 5494,
+    "sha256": "1ed902dee6431e163b9284cbd18deaa8fc721f08e83722a2fab0bc06a141121f"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p06-m4-c64.log",
+    "bytes": 3215,
+    "sha256": "78d03bb5b8db5344fd016e3e0c676276369fc5b2d19c04c3687717ce3374302d"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p07-m1-c16.json",
+    "bytes": 5180,
+    "sha256": "20ed8d31ee7a1df07cb0419af07e23f285674cbd2ae3a862f4155b5aa5a710fa"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p07-m1-c16.log",
+    "bytes": 3211,
+    "sha256": "cdff316808e9c108a9e17d0915e9c719ba09e218485206e9c0547a3e02eea51f"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p08-m2-c128.json",
+    "bytes": 5401,
+    "sha256": "72cb3e9cd4412eb2be4e1928e0e1b8af7bb7a8cec6f879c25056affd0c212781"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p08-m2-c128.log",
+    "bytes": 3211,
+    "sha256": "55bdeee40f52b844d311fc8412c89d102b38b81d1baccc18101655148447bee0"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p09-m4-c32.json",
+    "bytes": 5529,
+    "sha256": "6e979b71da65f8138c9a69bf24af853bc4cb6c11b8924d0f10f4c564577dcde4"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p09-m4-c32.log",
+    "bytes": 3212,
+    "sha256": "d3bcd659c6bb5a423c0e0d93d3cf0affd6aeaed53794d75d15ea41860a8ba3b3"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p10-m1-c64.json",
+    "bytes": 5318,
+    "sha256": "e27b6c52e2b289d1f4a5044ed8add2cff092f3141e2433ee3a9f4553c7425b90"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p10-m1-c64.log",
+    "bytes": 3211,
+    "sha256": "ec0c641bfeb001cce30079b2b05fd91a28ba69e9d8ae3f18191f3ab3226ad0bb"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p11-m2-c16.json",
+    "bytes": 5375,
+    "sha256": "aafd17590983c866735c0d335c6c868df65a476f8ec5000155c9914e33df6699"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p11-m2-c16.log",
+    "bytes": 3212,
+    "sha256": "9db238a514d61f50390b03a1c1001fa70d6fed7bf41b9dae45ce462f2c6e1e11"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p12-m4-c128.json",
+    "bytes": 5452,
+    "sha256": "e40296ac60a87175df03d92f4b3ff56f59cd8c1b00a8bafdf09a20795b1ca3ee"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/raw/b4-p12-m4-c128.log",
+    "bytes": 3212,
+    "sha256": "3b5542f1224317a13f2dd2e5f69e42c24e88cf98ec26c372ff03c17263023e53"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/environment.txt",
+    "bytes": 937,
+    "sha256": "61dfaea941c09d303d0df84927acd81084f79c83b4c2f5162b077aec802cfb37"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/runs.tsv",
+    "bytes": 9184,
+    "sha256": "4fe92cabfd4ead4cf32c435113087c9b3fe02ba376aa6c6c54f097b28ed13d66"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b01-p1-A.json",
+    "bytes": 5391,
+    "sha256": "a2754f6edf69fe9e8848c214e61bc401dd21918d4c92fd140eaf7bbbe26ef166"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b01-p1-A.log",
+    "bytes": 3214,
+    "sha256": "a90b60613b02c0f133f8645b32c3ff52824bf610f02e6be5cca6169fd96f9758"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b01-p2-B.json",
+    "bytes": 5358,
+    "sha256": "d6cfcb5734228433025b7972663d2b186a189c3bb33d719635ae32482f3d330b"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b01-p2-B.log",
+    "bytes": 3211,
+    "sha256": "d098b662e8267ec932d77057455825ec9d51ece0c4403f6eca2e38f32c2679f4"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b01-p3-C.json",
+    "bytes": 5466,
+    "sha256": "eade5d0ba2776eced664937703818b1c7ece9b7290aa4bc6c7b5a925d905ba56"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b01-p3-C.log",
+    "bytes": 3215,
+    "sha256": "ce0e7d88ef750821d4ece0f2a0cc52d1291fb6260f40f64b4a6afd95b74ec653"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b02-p1-B.json",
+    "bytes": 5191,
+    "sha256": "40e5478ad6f03dc50abb6fd33b49dc57bf8818bb62076f37f02e6c0a9226ffa0"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b02-p1-B.log",
+    "bytes": 3211,
+    "sha256": "07abc915364a0dc4b29a18c40a184ba8b8a2e1d9691c2020c8d8e9590acaf3f2"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b02-p2-C.json",
+    "bytes": 5551,
+    "sha256": "8c9318dc00fe5d29ba9ae0cd53fc2076b7256a7c4a10544d3a9e8b0f37d5122c"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b02-p2-C.log",
+    "bytes": 3215,
+    "sha256": "657ebdd601aa85f0314e2e44c1ecc70149a19e319e682ce4244d6f04827387eb"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b02-p3-A.json",
+    "bytes": 5401,
+    "sha256": "261d1253f80d5b6e642196467f92d28a426eea68b93b2463269b60509b09ad30"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b02-p3-A.log",
+    "bytes": 3215,
+    "sha256": "fc369cb7681b769443f779e509eac981040166ff20fa45db31dd53f748f68cd3"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b03-p1-C.json",
+    "bytes": 5454,
+    "sha256": "e7d6dafc2d78a7bc51df5145f8e14861ba376665d6fcabdedc683e58bc82dc67"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b03-p1-C.log",
+    "bytes": 3214,
+    "sha256": "fea0dd8790a5ac256041df2a393107850574935844995668f57ef3980af8dd93"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b03-p2-A.json",
+    "bytes": 5520,
+    "sha256": "ea57459d06b0c6b634fe7293302958a9955dce601b0e857a61ee34809d106619"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b03-p2-A.log",
+    "bytes": 3214,
+    "sha256": "b31ebf84374d001f1ca1f4b07950158b657129d3f711de164ba81dd4b8d75e99"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b03-p3-B.json",
+    "bytes": 5357,
+    "sha256": "d2d8740298620eb072444b3dedd469fe866a691c8878879ac50983187f305d5d"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b03-p3-B.log",
+    "bytes": 3214,
+    "sha256": "eed654a3bbc7d844935dfbaa3cbd26f8672c3ebba88e3022b3172748853ce3ac"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b04-p1-C.json",
+    "bytes": 5394,
+    "sha256": "7762a5ccebecb472e378b436fe4d1fed5852b4c1ed9391ae527140fb12a12dff"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b04-p1-C.log",
+    "bytes": 3212,
+    "sha256": "172f729cd9e7ee536a649030036d5b8ce58a8f05f2f737eca845f2c6f3cc736a"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b04-p2-B.json",
+    "bytes": 5339,
+    "sha256": "b381e1f57d46f017bc913cc0ea2c072f34c8d79c65f0d9d078f1b169df47090c"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b04-p2-B.log",
+    "bytes": 3211,
+    "sha256": "003ecf0eff4086b73c8b541b0aa15d65a2788547201556e1ffa41fc1685e8336"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b04-p3-A.json",
+    "bytes": 5361,
+    "sha256": "ad8ed5cfc6c648c936a947de5760ce29d94dfb7d8a58c3caa2ab2464759b178f"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b04-p3-A.log",
+    "bytes": 3212,
+    "sha256": "1a662a35048f6d8749f559f579b4a943b94064972b2b3dcca6e609cd97235937"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b05-p1-A.json",
+    "bytes": 5466,
+    "sha256": "04243e568bee9ee561c1181d24a75547a94d11254dee79edced5fac0ba0f34e3"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b05-p1-A.log",
+    "bytes": 3212,
+    "sha256": "74eb19b771b2a062f8348b110c65e166c3360be9fe1ad5d0d1eaf2e6bb1e5429"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b05-p2-C.json",
+    "bytes": 5463,
+    "sha256": "7cf49c6b4d94cdfaf0a5f167def296468c3d29f53802f47477fdb452b31f912e"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b05-p2-C.log",
+    "bytes": 3215,
+    "sha256": "eb9e590d122f5ed17c066d8fcab68a2697181d3eaa57b2c88e155d40632eedf2"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b05-p3-B.json",
+    "bytes": 5274,
+    "sha256": "76cde1a43c11b7a4cb3459651dea02a4080e70f9947d883cf71e89b65bd3974f"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b05-p3-B.log",
+    "bytes": 3211,
+    "sha256": "f019f36bf8bfaffec2b7709bc5430319dc4ebb14e505af9503cde2041c29231a"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b06-p1-B.json",
+    "bytes": 5371,
+    "sha256": "f680a87b41c22df9ded74b026431678505ce578f8e711c6d5465e2fcd092dd9d"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b06-p1-B.log",
+    "bytes": 3211,
+    "sha256": "bee955044979a93c1ade837e87bca18271de9511e1e6b9269c054706fed77ee9"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b06-p2-A.json",
+    "bytes": 5339,
+    "sha256": "f032ba0d35528fd3355bb2cbd80d01344eeddba6e15861d79b75d59b88dc455d"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b06-p2-A.log",
+    "bytes": 3212,
+    "sha256": "9ccfd5dc90d723a2cd7af30055b4c403633743e8de2eb6292e7c1bdbe0f9e764"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b06-p3-C.json",
+    "bytes": 5462,
+    "sha256": "61e08b8ad2ec54b1f7bcd5e6fe17f8c368159721f1dd7411f351a80fca04b5f1"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b06-p3-C.log",
+    "bytes": 3212,
+    "sha256": "9060dc204b097127b891390bfe56a8f1c8226a38e46927671265432760447f3d"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b07-p1-A.json",
+    "bytes": 5493,
+    "sha256": "c9290345a6d9a62d0d3fb0bf635fbb60e98c16af3016ac33b4af31855fdf190e"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b07-p1-A.log",
+    "bytes": 3215,
+    "sha256": "5c0bc966cdb722aa3c2381ecb2d3c3a06397c880cdf25eb0e321d66c35cb75b5"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b07-p2-B.json",
+    "bytes": 5243,
+    "sha256": "03cda45af660acf2972bc7860c010026d10e1bb2193ccc8718e13b567928f073"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b07-p2-B.log",
+    "bytes": 3212,
+    "sha256": "6ba6c54b0c73cb8aa07cb1091784c8a3aa506546b87bee68033a07d3b18e5b32"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b07-p3-C.json",
+    "bytes": 5416,
+    "sha256": "30cabbb7b558afaec9b49b6e24dcc3b78c9425e3078a82262506b36fa82f46e7"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b07-p3-C.log",
+    "bytes": 3215,
+    "sha256": "37623c213eb71b73b7701080031414179bcf0c66f3353befa1141b2d920f7317"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b08-p1-B.json",
+    "bytes": 5246,
+    "sha256": "61b41ca8374c66b3822fe8a2db3e82f1971307d464bbd478c1b5267c29fb6ee8"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b08-p1-B.log",
+    "bytes": 3211,
+    "sha256": "0bd9ec4c1f8d25a7c92ae591358e750a2c62adb94a9034c9861c80d795d6053d"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b08-p2-C.json",
+    "bytes": 5471,
+    "sha256": "fe1e3430a7b491e0625b97fef575cc1e7bd486dc588af7fe12a08b2d1d7ff9ab"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b08-p2-C.log",
+    "bytes": 3215,
+    "sha256": "e8002ac83a4f842d8f354e04ff40dbbab3e3199d6be580d62b692631b5b45e6d"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b08-p3-A.json",
+    "bytes": 5430,
+    "sha256": "027cb0039658a3f84c81ad4c1de6135bc724e7bcf973b03059b4358a0da28bbd"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b08-p3-A.log",
+    "bytes": 3212,
+    "sha256": "6eb7eb408aeb6823c5f5b76a1874134de87ce83f60fe9c92592a84403f0491b3"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b09-p1-C.json",
+    "bytes": 5437,
+    "sha256": "95d097243a258ac73fcf0c5394826af8280d726b36166963da0521a4a1c419f9"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b09-p1-C.log",
+    "bytes": 3215,
+    "sha256": "479d6b4595f7802fb95541352750dcae008e8872a8af6b22a4cf63807880803e"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b09-p2-A.json",
+    "bytes": 5387,
+    "sha256": "59c7b9b01a54141d59cdf4b10320894d7d4ace9b82fd2ea4f2aee091bbe2b223"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b09-p2-A.log",
+    "bytes": 3212,
+    "sha256": "35a5908711b1634956aca31b11644bbbceb00853349665fd0dffb4daed926769"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b09-p3-B.json",
+    "bytes": 5316,
+    "sha256": "3b508fa3357e967780bd9f0ce5d43e93e33ca8c865b114f26fee0ef3773dc46f"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b09-p3-B.log",
+    "bytes": 3211,
+    "sha256": "453992d9446cc16f9abe987425058a96518ca8472d07b4c55e0cbf367afbc973"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b10-p1-C.json",
+    "bytes": 5449,
+    "sha256": "3f13d6f3e0e5e03ba135751463e8f335eeefa00b7ea82cd3d4d27396a98c24bd"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b10-p1-C.log",
+    "bytes": 3213,
+    "sha256": "44f7a2ee1b67dc8b6a59e8ab6edb3bf357d67c4e7b8e846b3643a0a1b3dbd91f"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b10-p2-B.json",
+    "bytes": 5270,
+    "sha256": "ee4fc5790593cc206e75f5c1f91203678f8886575ab1f8efe8c51973ba4a532b"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b10-p2-B.log",
+    "bytes": 3212,
+    "sha256": "9ff85a0185b66489c82cf97554836326a42d7d925fd7d17145790a991546e5bb"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b10-p3-A.json",
+    "bytes": 5501,
+    "sha256": "ddf0f6401586768f317615fed528d31cd41993bb22f016cf62145554d731bdf6"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b10-p3-A.log",
+    "bytes": 3212,
+    "sha256": "f0878a4384783ca1bd406c652eed85efe86bdccd55e9bc5a6123890a9e195916"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b11-p1-A.json",
+    "bytes": 5475,
+    "sha256": "b17aee40a01571179471ab8104035db07797353ff2e2d31e1531afe1d49f058b"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b11-p1-A.log",
+    "bytes": 3212,
+    "sha256": "ff3e069816d1ae5a75c31819184532249252f7372091aeb09088997f83aef715"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b11-p2-C.json",
+    "bytes": 5510,
+    "sha256": "2384b88c84feb6a13720afb8f7433e7dc8cf7b6364c8203cdedde2cf3bd160cc"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b11-p2-C.log",
+    "bytes": 3215,
+    "sha256": "0bd732e849ba7c70138e0644fdd4f173c7a4475d38a362088e578fdb1b21be7a"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b11-p3-B.json",
+    "bytes": 5186,
+    "sha256": "09a7e2fe2226d31fbfaf47e7211623c43c4cf4361df9f355f0073c1df1793ef0"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b11-p3-B.log",
+    "bytes": 3212,
+    "sha256": "1bd5828d8c576f3ce355ff0682f4d98fbc8a3819413a25c31d287ee2da3c32ce"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b12-p1-B.json",
+    "bytes": 5190,
+    "sha256": "9faa6286720651d5775b9a4a4d200ecabefaccfda10a4cacf8b008c2ee1ad841"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b12-p1-B.log",
+    "bytes": 3211,
+    "sha256": "29f8d0677026b3e8bffdb00e788bd095bd9b547da14591bc751b1ee7200d1bb7"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b12-p2-A.json",
+    "bytes": 5417,
+    "sha256": "9769bd454514cc623a358035eca2726f8bc868f4cf3f12526a97f8f5456c70ca"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b12-p2-A.log",
+    "bytes": 3212,
+    "sha256": "6ed4192233a196c146790096af5c52610677884ba5396ddec6cfcb4495ae75d7"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b12-p3-C.json",
+    "bytes": 5447,
+    "sha256": "4c866c02dcc798a2694be7698dadc4444451550d6b8fc2e332f1f3bf89c4a7de"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/confirm-results/raw/b12-p3-C.log",
+    "bytes": 3213,
+    "sha256": "922cf2692b22970cbb4372ae7d13bf404379c906e1d43b377f765b5ddb6772a9"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/environment.txt",
+    "bytes": 943,
+    "sha256": "89b756fceb577c5f57774b166b6587b45c3f6d71b7f1a8d52b2e481a3f0d9fe3"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/runs.tsv",
+    "bytes": 6184,
+    "sha256": "fb5a1320fdc7dc4cb43b8522467d26ecbc8e7f1b555704978f2b03965d03c7ae"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b01-p1-A.json",
+    "bytes": 5472,
+    "sha256": "94474ed9e613b2725ea9a6445a5e835d501bdff60620a200ce0c2da5c330c1dc"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b01-p1-A.log",
+    "bytes": 3214,
+    "sha256": "950257a0bfb5081d2b3c3ad9475dbb6a761c9ee8a7b84eeb5820240957f0bd3f"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b01-p2-D.json",
+    "bytes": 5469,
+    "sha256": "902c4c37518153f2535d429c777c37fdb13e5e4874ad4f7622e1a0b2f5496f33"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b01-p2-D.log",
+    "bytes": 3214,
+    "sha256": "443bf5346a4146dea9575e489f2fd925ceaac6ef5365f6889189ec5fba7f55e4"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b02-p1-D.json",
+    "bytes": 5442,
+    "sha256": "5d1045ca3aa056853cd852fe3c9add357af27851e81e426c244bb767e7cb70ae"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b02-p1-D.log",
+    "bytes": 3213,
+    "sha256": "e46fd577ff43328afe71048f1d0970ff78882a701b03a5683463d3f0facd7265"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b02-p2-A.json",
+    "bytes": 5478,
+    "sha256": "29a095c5dcb2bd501fa9327634ae0a0e0660243c72b5a68814e8d8d82702753b"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b02-p2-A.log",
+    "bytes": 3215,
+    "sha256": "5e5f9686d316a84ce5393e30d23e4ffad2ca490acc4439dd5dbd61831ab52e27"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b03-p1-A.json",
+    "bytes": 5411,
+    "sha256": "84266b491606b92c328f2350b379ea8874e37e7adafebec65d7e702b9d18d1c3"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b03-p1-A.log",
+    "bytes": 3215,
+    "sha256": "960829c9448179b945b6c1021f869e513e74b398aa191336c36890b7be004e22"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b03-p2-D.json",
+    "bytes": 5557,
+    "sha256": "26298d04b0b85d4290c368077e742325384d02ac037752025bfc96f8b1849c5d"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b03-p2-D.log",
+    "bytes": 3215,
+    "sha256": "b69405a826c052accbc99cf1db58c6678bf792a7e1fa6d2cdaf0f92fa6d2d9e1"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b04-p1-D.json",
+    "bytes": 5424,
+    "sha256": "e096aedc7eaa1227ae6e4c727c87944160fef9c71d3740523b26034c95b7ecba"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b04-p1-D.log",
+    "bytes": 3212,
+    "sha256": "ed06fbc9a4cbe724ad3257182375f5aa1c7f30facc545fe68486360420e7326b"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b04-p2-A.json",
+    "bytes": 5472,
+    "sha256": "0581b833d9e28584cd94e7b248da3111e2033d74b23ec3dc790b5bab719d1403"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b04-p2-A.log",
+    "bytes": 3214,
+    "sha256": "06ab1d57d27d6a43cec7c0e3ada61ff80cf6dadf692a40b474a5d9cc8ad00af3"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b05-p1-A.json",
+    "bytes": 5467,
+    "sha256": "2120fbf51e243bfb4ff566e5ffc5a769691b966db5ab12140d7add3772d9a576"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b05-p1-A.log",
+    "bytes": 3215,
+    "sha256": "08cb022fb005e5986714e3c4786086aed2082e42de844a5809c8344247919906"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b05-p2-D.json",
+    "bytes": 5390,
+    "sha256": "dcea63c5f11a045e350b2e34a11739357cf115fc5a2a59aad906698aaedbafaf"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b05-p2-D.log",
+    "bytes": 3212,
+    "sha256": "f56e498448a3758bfd0951e84f44448fe17b0a79561c4335aeb0e940710c9cb8"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b06-p1-D.json",
+    "bytes": 5524,
+    "sha256": "ff9c09f3efc4ae218fcbcb54c3c69dbf43320a973a32982b04a0023697dfd60e"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b06-p1-D.log",
+    "bytes": 3212,
+    "sha256": "47feab6a6d22bf8e0e8b45a9ea7486adcc79c644b2cb653310553eba4b44ae82"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b06-p2-A.json",
+    "bytes": 5445,
+    "sha256": "67d93ad7bd22883d2ac8e1f53caf26fda67a2f6e8c8329d112dc4c472c73d1c1"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b06-p2-A.log",
+    "bytes": 3212,
+    "sha256": "da8c962edfc5fff2f6e297eef1e33f38a19ffeebe6dd8a95659d6fd3637b07e1"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b07-p1-A.json",
+    "bytes": 5418,
+    "sha256": "351a7d1b839cf039f9cc258014cc7e639019de911c102f4f2497de6e5eaabebb"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b07-p1-A.log",
+    "bytes": 3215,
+    "sha256": "8d0f4b42af5c3c1f1d0235e45625b7894e769d5cfddffc971ae6de38b0a4d290"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b07-p2-D.json",
+    "bytes": 5499,
+    "sha256": "e712fc8bc879259c1e111421f1fb133e5959ef78da68eb199eee4a8c3a294305"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b07-p2-D.log",
+    "bytes": 3214,
+    "sha256": "15515263b27ce1065645256c9ba91213165e8a49151ba87cb9507e1e7574b3ab"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b08-p1-D.json",
+    "bytes": 5471,
+    "sha256": "c9ad7fa6c77521e280f90f5b5d5a0ab40aa13a64521797fe7960164c94e276d3"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b08-p1-D.log",
+    "bytes": 3215,
+    "sha256": "1a2d7e527e80e9c6049a76761beb27b1e7a03e760a28e4b75ba8c9d63eb8b1d7"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b08-p2-A.json",
+    "bytes": 5423,
+    "sha256": "71e9da72e5fe1b42533ce73ce8ce71623897c730de5dee83775e5f17e3b225d2"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b08-p2-A.log",
+    "bytes": 3214,
+    "sha256": "97813af044c10de4dae94b96797afc818e2fa1f7266244ff270d8d1f8cd29d67"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b09-p1-A.json",
+    "bytes": 5446,
+    "sha256": "6d29ca745b63e57762621569f8ab61affa3fcd5730ba37ba54c0e677febb4891"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b09-p1-A.log",
+    "bytes": 3212,
+    "sha256": "d353747b74e4a350d88c8922a5fd6bed08828ea03302c6ef19def94d31d6d8f1"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b09-p2-D.json",
+    "bytes": 5469,
+    "sha256": "213e457fce14bee4461c15625f7bf720eb415ac42c7bb1117f38a7630f2a234e"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b09-p2-D.log",
+    "bytes": 3215,
+    "sha256": "1d2c0966eac32c45a2bd97353ba4f0bcb890deae3b29f6b55bd260a2900293d5"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b10-p1-D.json",
+    "bytes": 5526,
+    "sha256": "0190fc6a1ba86706f88fc720a58967f04d5e4efde571cc84c3a0223c03b03949"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b10-p1-D.log",
+    "bytes": 3214,
+    "sha256": "9401efc0db3eaa3dfb6c3cfa89e1e34ae339faa8c760f5a7d65aac100eded1a4"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b10-p2-A.json",
+    "bytes": 5429,
+    "sha256": "b169e1b4b16edc9be5e3daf0dcb94c877da42fd6e34270fb5571ac6a003ad2b3"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b10-p2-A.log",
+    "bytes": 3214,
+    "sha256": "011ee3dfc495d99bead5258d1229f9067244485c4c030fffb826b06e1cde5618"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b11-p1-A.json",
+    "bytes": 5451,
+    "sha256": "4c86d41e0cf713edd581583c07949c39975b138945da5e9ed583e92bc5299674"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b11-p1-A.log",
+    "bytes": 3212,
+    "sha256": "6673955ccfecc2ddd6e4ea3096ff80a96fe939729e89de12779d9426ea2abc3b"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b11-p2-D.json",
+    "bytes": 5419,
+    "sha256": "87068b06e74834160a4a378d28e5e7e7e6d9cf55d7d0a9405288e6c533936892"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b11-p2-D.log",
+    "bytes": 3215,
+    "sha256": "3226d863ee8b397b7755c91b8bad970100bd5cdc4edeb648b4f9823c4ea725ae"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b12-p1-D.json",
+    "bytes": 5421,
+    "sha256": "e05317234051b940cef8783fc710d6870d1ee4927f575549ee6ef9e6e7d27320"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b12-p1-D.log",
+    "bytes": 3215,
+    "sha256": "cddc5bda7d25d87ff1c5a02ffaaee1dd811a52932b4c0ca8243f7544f27893cd"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b12-p2-A.json",
+    "bytes": 5514,
+    "sha256": "8b762d5430882243a8651926c95d887d76de64fc9e816c16717a64d9555d645b"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/large-split-results/raw/b12-p2-A.log",
+    "bytes": 3214,
+    "sha256": "668dee035452bac46cb00eec3f3b38a5edf466b91b2f1cf016453e31442b5fe7"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/results/experiment.patch",
+    "bytes": 3658,
+    "sha256": "d9f6fd1ec0863ff2bc70b7a4cc315b3727a97f91776ae4d13ba49af3f80c3751"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-09-04-orca-shard-split/repo/bench/bench_util.c",
+    "bytes": 39848,
+    "sha256": "072d68116b4756b21164e52eab8d6ff5c84334f9ed44f4484465e034554f29b6"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-08-24-nfs/probe-cpu.log",
+    "bytes": 11763,
+    "sha256": "1456bf12be5dc28dfaadcdce4a9016c822abe4301229d72743aeb3cae91fcc58"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-08-24-nfs/probe-l40.log",
+    "bytes": 11890,
+    "sha256": "9a72f772fea4abfe246ea67d49e4b6b8fd9b05b667d8902e5a6bdd7bbf070bec"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-08-24-nfs/probe.sh",
+    "bytes": 3508,
+    "sha256": "f59f2510d3c1fab1fa34372721c2e748127578e8e3614e5a7146bb9d2972f82c"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-08-24-nfs/streams.log",
+    "bytes": 527,
+    "sha256": "2a785f801cea6bc77082f08a73820177887e342284c19cb13cddf5c9d45a170b"
+  },
+  {
+    "source_file": "/mnt/main0/home/nclack/tmp/2026-08-24-nfs/streams.sh",
+    "bytes": 1803,
+    "sha256": "61b711411f23070db8ba2fdd09001676081fb1f2077b125161def7dcfc81eeee"
+  }
+]
