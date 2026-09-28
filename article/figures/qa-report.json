@@ -1,0 +1,138 @@
+{
+  "status": "Draft reviewed; article reading exports, not a journal or accessibility certification",
+  "review_date": "2026-09-28",
+  "word_count_method": "Rendered HTML text split on whitespace, excluding headings, image alt text and reference definitions; includes visible table text.",
+  "word_counts": {
+    "body": 2728,
+    "captions": 951,
+    "methods": 859
+  },
+  "figures": [
+    {
+      "file": "figure-1.pdf",
+      "width_mm": 183.0,
+      "height_mm": 230.0,
+      "fonts": [
+        {
+          "name": "/CUNWGA+Arial-BoldMT",
+          "type": "/CIDFontType2",
+          "embedded": true
+        },
+        {
+          "name": "/FGMKBG+ArialMT",
+          "type": "/CIDFontType2",
+          "embedded": true
+        }
+      ],
+      "minimum_text_pt": 9.0,
+      "maximum_text_pt": 12.0,
+      "svg_text_elements": 56,
+      "embedded_raster_images": 0,
+      "pdf_render_review": "Figure 1 rendered at 122 dpi (879 px wide) and visually inspected. Both vertical axes say Full-array read rate (useful GiB/s), and horizontal axes say Crop read rate (useful GiB/s). Longer labels fit at unchanged font sizes and figure dimensions with no overlap or clipping. A shared heading makes the two-workload comparison explicit; its placement and axis labels were also inspected in the refreshed article preview."
+    },
+    {
+      "file": "figure-2.pdf",
+      "width_mm": 183.0,
+      "height_mm": 245.0,
+      "fonts": [
+        {
+          "name": "/EYIZPP+Arial-BoldMT",
+          "type": "/CIDFontType2",
+          "embedded": true
+        },
+        {
+          "name": "/CMWQPZ+ArialMT",
+          "type": "/CIDFontType2",
+          "embedded": true
+        }
+      ],
+      "minimum_text_pt": 9.0,
+      "maximum_text_pt": 12.0,
+      "svg_text_elements": 45,
+      "embedded_raster_images": 0,
+      "pdf_render_review": "Final PDF rendered at 122 dpi (879 px wide), then visually inspected; no text overlap, clipping or annotation occlusion found."
+    },
+    {
+      "file": "figure-3.pdf",
+      "width_mm": 183.0,
+      "height_mm": 250.0,
+      "fonts": [
+        {
+          "name": "/BGWKRN+Arial-BoldMT",
+          "type": "/CIDFontType2",
+          "embedded": true
+        },
+        {
+          "name": "/BATRNQ+ArialMT",
+          "type": "/CIDFontType2",
+          "embedded": true
+        }
+      ],
+      "minimum_text_pt": 9.0,
+      "maximum_text_pt": 12.0,
+      "svg_text_elements": 88,
+      "embedded_raster_images": 1,
+      "pdf_render_review": "Figure 3 rendered at 122 dpi (879 px wide) and visually inspected. Compressor colors/shapes and the filled-symbol rule are consistent across b\u2013e. Added labels and shared legend explanation do not overlap data or text; 183 \u00d7 250 mm and 9\u201312 pt type retained.",
+      "raster_native_pixels": [
+        [
+          696,
+          520
+        ]
+      ],
+      "raster_effective_dpi": 368.3
+    },
+    {
+      "file": "figure-4.pdf",
+      "width_mm": 183.0,
+      "height_mm": 215.0,
+      "fonts": [
+        {
+          "name": "/FGKXSJ+Arial-BoldMT",
+          "type": "/CIDFontType2",
+          "embedded": true
+        },
+        {
+          "name": "/CHGXVS+ArialMT",
+          "type": "/CIDFontType2",
+          "embedded": true
+        }
+      ],
+      "minimum_text_pt": 9.0,
+      "maximum_text_pt": 12.0,
+      "svg_text_elements": 48,
+      "embedded_raster_images": 0,
+      "pdf_render_review": "Final PDF rendered at 122 dpi (879 px wide), then visually inspected; no text overlap, clipping or annotation occlusion found."
+    },
+    {
+      "file": "figure-s1.pdf",
+      "width_mm": 183.0,
+      "height_mm": 110.0,
+      "fonts": [
+        {
+          "name": "/MWOAYY+Arial-BoldMT",
+          "type": "/CIDFontType2",
+          "embedded": true
+        },
+        {
+          "name": "/DMRCRG+ArialMT",
+          "type": "/CIDFontType2",
+          "embedded": true
+        }
+      ],
+      "minimum_text_pt": 9.0,
+      "maximum_text_pt": 12.0,
+      "svg_text_elements": 29,
+      "embedded_raster_images": 0,
+      "pdf_render_review": "Final PDF rendered at 122 dpi (879 px wide), then visually inspected; no text overlap, clipping or annotation occlusion found."
+    }
+  ],
+  "local_links": "All article Markdown targets verified.",
+  "numerical_validation": "Measured plot medians/min-max independently recomputed against retained runs during build; historical write byte sums and exact-fraction threshold membership independently checked by write_sweeps.collect_sweeps().",
+  "layout_revision": "Figure 3 height reduced from 345 to 250 mm (27.5%) at unchanged 183 mm width. All panels, font sizes and data retained; single-row codec legend, tighter physical spacing and redundant figure notes removed. CPU/GPU headers now use measurements.",
+  "browser_review": "Refreshed article checked at its existing display size. Shared codec symbols, filled-symbol explanation and lower-panel labels are clear and consistent; figure height is unchanged.",
+  "article_links": "35 Markdown reference definitions; every rendered link/image local target exists. Historical sweep summaries and raw records linked.",
+  "image_validation": "Complete raw benchmark asset checksum verified; fixed first field extracted unchanged as uint16. Display contrast and clipped-pixel counts documented separately; 100 \u00b5m bar uses recorded 0.656 \u00b5m/pixel calibration.",
+  "compression_validation": "Historical CPU 14 and GPU 13 settings independently checked against all 81 sample runs, byte sums and exact-fraction thresholds: 10 settings below each allowance. Their proxy folds and study-specific thresholds remain separate from the six final-size layouts. All axes use positive folds on base-2 logarithmic scales.",
+  "encoding_revision": "One shared compressor mapping supplies b\u2013e. All fixed-block points are blue Blosc-Zstd squares; only the highest eligible median (64 KiB) is filled. The 64 and 128 KiB overview points are directly labelled, and 128 KiB remains the proposed compromise in text. All exported data tables and other figure exports are byte-identical.",
+  "read_label_revision": "Figure 1 axis labels, caption and alt text use full-array reads in place of scan shorthand. Data and unrelated figure exports are byte-identical. A shared heading identifies b\u2013c as the balance between two read workloads. Caption and alt text explain that each point pairs separate crop and full-array read measurements for one layout."
+}

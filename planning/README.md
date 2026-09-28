@@ -4,6 +4,9 @@ The article is for **engineers choosing Zarr layouts for microscopy acquisition,
 training, and visualization**. It moves from read workloads to layout choices,
 then streaming and rechunking. Compare writer layouts using drain capacity;
 explain conversion memory from processing order, layout and buffer lifetimes.
+Use local NVMe reads for layout recommendations and retain NFS write evidence.
+The author suspects an NFS read IOPS limit and has deferred that engineering
+work; NFS read rates remain diagnostic records outside the recommendation scope.
 
 Writing process: **audience → outline → target length → draft → edit**.
 
@@ -15,7 +18,7 @@ Writing process: **audience → outline → target length → draft → edit**.
 | [cluster-data-prompts.md](cluster-data-prompts.md) | Collect existing read, streaming, concurrency, and conversion-memory evidence |
 | [follow-up-experiments.md](follow-up-experiments.md) | Completed BBBC022 experiments, their limits, and analytical treatment of memory/output size |
 | [glossary.md](glossary.md) | Terms needed for the article |
-| [writing-guidelines.md](writing-guidelines.md) | Writing process and editing criteria |
+| [writing-guidelines.md](writing-guidelines.md) | Writing process, drafting skills, Nature figure standards and editing criteria |
 
 This README and those five documents are the active writing plan.
 
@@ -30,7 +33,10 @@ original snapshot. The [BBBC022 archive](../bbbc022-evidence.tar.gz) and its
 ## Status: 2026-09-25
 
 - Audience and outline are established; the proposed length is 2,500 words.
-  Article prose has not been drafted; the evidence bundle includes overview figures.
+  A [first article draft](../article/draft.md) now has about 2,500 body words,
+  four main figures, captions and methods. [Figure sources and reproduction](../article/figures/README.md)
+  include a separate supporting reference-drift figure. The draft has received
+  an initial evidence, rendering and fresh-reader review; author editing remains.
 - Existing cluster measurements have been collated and checked, including
   observed variation and counterexamples to the working claims. The located
   conversion records do not measure peak memory or per-layout throughput.
@@ -43,12 +49,20 @@ original snapshot. The [BBBC022 archive](../bbbc022-evidence.tar.gz) and its
   layouts, all 144 scheduled CPU read observations, and 36 shard-count samples
   with 12 separate references. The arrays cyclically replay 16 microscopy
   fields; they do not add independent biological images.
-- For translated 256 × 256 crops, both readers favor the 256–512 KiB candidates
-  in this NFS series. Full scans favor different candidates: 32 KiB for Damacy
-  and 128 KiB for TensorStore. The earlier 32 KiB crop preference is not general.
+- The [current compromise](reference/local-read-write-compromise.md) is
+  128 KiB raw chunks, using local NVMe read evidence and separate microscopy
+  write constraints. In a fixed-block local comparison, it retains 87% of
+  Damacy's 32 KiB crop rate while nearly doubling scan rate; TensorStore
+  improves on both. Keep 32 KiB as a crop-first Damacy alternative and larger
+  candidates where the reader/workload supports them.
+- Usually one persisted layout must serve crops and scans, with crops given
+  greater priority for visualization and modeling. The article uses a hypothetical vision transformer
+  with 224 × 224 inputs and 16 × 16 token patches, allowing variable Z/channel
+  extents. The local 256-square synthetic benchmark is not a model benchmark.
 - Shared-layout write medians span 2.27–2.64 logical GiB/s with overlapping
   observed ranges. All final file sizes are within 2% of the smallest, so the
-  10% size tolerance admits all six layouts. Read requirements remain decisive.
+  10% size tolerance admits all six layouts. Apply local read requirements
+  alongside these writes; the two studies use different inputs and machines.
 - The LZ4 primary series gains substantially from four to fifteen shards.
   Thirty versus fifteen gives a median paired gain of 10.1%, with individual
   gains from −14.1% to +22.4%; the Zstd control gains only about 2.8% from four

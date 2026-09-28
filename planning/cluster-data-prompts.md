@@ -5,11 +5,12 @@ shared context once, then prompt 1. Use its inventory to direct prompts 2–5;
 each analysis should also report missing evidence and contradictory results.
 
 The first collection is in [readable-zarrs-evidence](../readable-zarrs-evidence/README.md).
-The [follow-up plan](follow-up-experiments.md) records the revised priorities:
-use drain capacity for writer comparisons, reason through conversion memory
-and final-size accounting, and use BBBC022 for new read/write layout and
-streaming shard-count experiments. These collection prompts do
-not authorize launching experiments or make every missing measurement a prerequisite.
+The [follow-up results](follow-up-experiments.md) record the completed BBBC022
+studies. The current read recommendation uses local NVMe measurements;
+NFS read speeds are excluded because that path is suspected to be IOPS-limited
+and its engineering is deferred. Retain NFS writing evidence. These collection
+prompts do not authorize launching experiments or make every missing
+measurement a prerequisite.
 
 ## Shared context
 
@@ -19,6 +20,13 @@ acquisition, training, and visualization. Aggregate existing benchmark results;
 do not launch new benchmarks or change mounts, cache settings, or system tuning.
 Write derived summaries and exports in a new readable-zarrs-evidence directory,
 preserving the source records.
+
+Current selection scope: use local NVMe results for read recommendations and
+retain NFS results for writing. Keep NFS read results as separate diagnostics;
+exclude their rates and rankings from layout recommendations and article
+performance figures. The suspected NFS IOPS limit has not been isolated.
+Preserve all collected observations; this is a scope decision, not deletion
+or a declaration that the historical rate calculations were wrong.
 
 The article starts with read workloads, then proceeds to writing. The two
 write workloads are streaming (acquisition or TIFF-to-Zarr conversion) and

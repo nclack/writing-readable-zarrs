@@ -1,0 +1,59 @@
+{
+  "inputs": [
+    {
+      "path": "readable-zarrs-evidence/read-summary.csv",
+      "sha256": "8b593470b84add047237a45c87bcf0be8bb3f67f649566ad54feb4ef4f25b590"
+    },
+    {
+      "path": "bbbc022-evidence/shared-layout-summary.csv",
+      "sha256": "9584d2124680657e16b04411bb2ea994a27c7fbde5df45a935e834ad69e4af5d"
+    },
+    {
+      "path": "bbbc022-evidence/shard-summary.csv",
+      "sha256": "25c63932189210e20e179ba174d4f1d6244b7937d15c14375b99a480bffcdbb6"
+    },
+    {
+      "path": "bbbc022-evidence/shard-extension-summary.csv",
+      "sha256": "c06d2ab872e71148345e8689382aff079bbf6772a877afc5782cb3b9e5c29c41"
+    },
+    {
+      "path": "readable-zarrs-evidence/read-runs.csv",
+      "sha256": "98917ec93f13921c3e15b958375a5c097e3d76a6b1845dd339d635fd75fa3809"
+    },
+    {
+      "path": "bbbc022-evidence/write-runs.csv",
+      "sha256": "79d3c53108a8fe0b091346109c464e98649bbe1f69cec05ead47ebb435ee812d"
+    },
+    {
+      "path": "bbbc022-evidence/shard-extension-runs.csv",
+      "sha256": "bdc1c814a204aa7b6cfb1626022bdb3254abbd2c95c3802c9c143fab4d1c44cf"
+    },
+    {
+      "path": "bbbc022-evidence/shard-paired-summary.csv",
+      "sha256": "20652cef2ed82ab3a34cec9845f22ddd660c0703158325cb3ec867ec7ac39699"
+    },
+    {
+      "path": "bbbc022-evidence/shard-extension-paired-summary.csv",
+      "sha256": "5dbd276adb3cf7e329c4b27e90a6c603e436c621f037c12db47bbbbe2dc7db70"
+    },
+    {
+      "path": "bbbc022-evidence/write-reference-drift.csv",
+      "sha256": "f1bbffc04670e1fb247781b4599566796691b60d43f0ff9255dd704281761c7f"
+    },
+    {
+      "path": "bbbc022-evidence/shard-extension-reference-drift.csv",
+      "sha256": "766237007a4d501812f72ffc623ea191dde51cb2d094cdbd4e5a1d59f90564ba"
+    }
+  ],
+  "transformations": [
+    "Read selection: cpu-chunk-blocks, local block storage, Zstd, 16384-byte blocks, 32/128/512 KiB chunks; Damacy chunks256-random or TensorStore; full-scan and random-1x256x256.",
+    "Read rates: useful_active_gib_s, using source uint16 bytes; no NFS read records selected.",
+    "Write rates: logical uint16 bytes / 2**30 / (append seconds + final drain/close seconds).",
+    "Final-size ratio: median final_file_bytes / smallest median final_file_bytes among six shared-layout candidates; logical volume equal for every candidate.",
+    "Compression fold: unpadded logical input bytes / median final_file_bytes, including metadata and shard indexes. The 10% size allowance is compression fold >= best observed fold / 1.10. All values are positive; none excluded from the base-2 logarithmic axis, with limits 1.6 to 2.0 and ticks in fold units.",
+    "Medians and observed minima/maxima independently verified against retained run records.",
+    "Paired gain annotations: 100 * (median of per-round numerator/denominator rates - 1); not ratios of pooled medians.",
+    "Primary and later adaptive follow-up remain separate; reference observations are not pooled with samples."
+  ],
+  "uncertainty": "Observed min/max, never confidence intervals; read and write-layout n=3, primary shard n=6, follow-up n=3."
+}

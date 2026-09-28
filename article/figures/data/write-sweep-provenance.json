@@ -1,0 +1,17 @@
+{
+  "inputs": [
+    {
+      "path": "readable-zarrs-evidence/write-summary.csv",
+      "sha256": "3ff5af2be35d10c4eee79aec9389e1334eef37cde446589a0b533d66c62372c1"
+    },
+    {
+      "path": "readable-zarrs-evidence/write-runs.csv",
+      "sha256": "df6b9216ab927a10142662a7ff319da4b4ba308043d2897f36c50695ae6f60a2"
+    }
+  ],
+  "selection": "All current-report, frontier-eligible BBBC022-mito NFS sample configurations: CPU 14 and GPU 13, with 3 runs each. No further point selection.",
+  "compression_fold": "Sum of unpadded logical input bytes / sum of measured shard-write bytes across the three runs. This is a write-byte proxy, not a final-file census or a mean of run folds.",
+  "threshold": "Within each original comparison group: fold >= best fold / 1.10. Eligibility verified using exact integer fractions; 10 configurations fall below each group's threshold.",
+  "plot": "Base-2 logarithmic x axes with common 0.75\u20132.08 limits; common linear throughput axes 2.4\u20137.2 logical GiB/s. All values are positive. Points are medians; observed min/max ranges and all 81 contributing runs are in the exported tables. Hollow symbols distinguish other settings from the filled highest-median eligible setting. No jitter, interpolation or cross-study pooling.",
+  "validation": "Recomputed summary medians/minima/maxima and byte sums from the referenced raw row IDs. Rate/time arithmetic agrees within 1e-6 relative tolerance for independently rounded historical fields (observed maximum <9e-8)."
+}

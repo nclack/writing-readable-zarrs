@@ -1,0 +1,56 @@
+{
+  "dataset": "BBBC022v1",
+  "source_url": "https://bbbc.broadinstitute.org/BBBC022",
+  "attribution": "Sigrun M. Gustafsdottir and colleagues, Multiplex Cytological Profiling Assay to Measure Diverse Cellular States, PLOS ONE 8(12): e80999 (2013), https://doi.org/10.1371/journal.pone.0080999; Broad Bioimage Benchmark Collection, Ljosa and colleagues, Nature Methods (2012).",
+  "license": "CC0-1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "benchmark_input_provenance": "bbbc022-evidence/input-source.json",
+  "verified_raw_asset_sha256": "1eff677d3f7d6785bdc8e65079613d6ba2c801a19f33503517a12b8df54affc7",
+  "source_tiff_record": {
+    "plane": 0,
+    "well": "A14",
+    "site": 1,
+    "image_number": 118,
+    "url": "https://data.broadinstitute.org/bbbc/BBBC022/BBBC022_v1_images_20585w5.zip",
+    "member": "BBBC022_v1_images_20585w5/IXMtest_A14_s1_w55CDEE132-D6E4-45CD-86A7-171CAC606739.tif",
+    "bytes": 726352,
+    "sha256": "8df2d6c3ddd6684aff99b52731944640ff4be4237b0342dd3a23006c264f8e90"
+  },
+  "source_tiff_verification": "Recorded source TIFF checksum; figure extraction verifies the complete benchmark raw asset.",
+  "selection": "Fixed first field, matching the existing corpus thumbnail; no new image selection.",
+  "plate": "20585",
+  "well": "A14",
+  "site": 1,
+  "channel": "MitoTracker Deep Red (w5)",
+  "pixel_size_um_yx": [
+    0.656,
+    0.656
+  ],
+  "shape_yx": [
+    520,
+    696
+  ],
+  "dtype": "uint16",
+  "native_pixel_min_max": [
+    195,
+    4095
+  ],
+  "array_sha256": "92832c16103a77fe7dd37d0917cbbe6fe3027dde80c50f24c17d33029b52a11c",
+  "pixel_processing": "None. Complete native uint16 field extracted without cropping, filtering, rescaling or denoising.",
+  "display": {
+    "mapping": "Whole-field linear grayscale; values outside the limits saturate at black or white for display only.",
+    "percentiles": [
+      1,
+      99.5
+    ],
+    "intensity_limits": [
+      246.0,
+      1018.4049999999697
+    ],
+    "pixels_below_lower_limit": 3344,
+    "pixels_above_upper_limit": 1810,
+    "total_pixels": 361920,
+    "interpolation": "none in vector exports; native raster resolution retained",
+    "scale_bar_um": 100
+  }
+}

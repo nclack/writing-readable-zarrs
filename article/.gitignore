@@ -1,0 +1,5 @@
+.venv/
+.cache/
+figures/previews/
+figures/qa/
+__pycache__/

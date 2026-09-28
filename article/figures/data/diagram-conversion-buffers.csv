@@ -1,0 +1,9 @@
+step,source_y,source_x,source_kib,destinations_before_flush,raw_arrays_during_copy_kib,destinations_written,destinations_retained,retained_destination_kib
+1,0,0,64,2,192,0,2,128
+2,0,256,64,4,320,0,4,256
+3,128,0,64,4,320,2,2,128
+4,128,256,64,2,192,2,0,0
+5,256,0,64,2,192,0,2,128
+6,256,256,64,4,320,0,4,256
+7,384,0,64,4,320,2,2,128
+8,384,256,64,2,192,2,0,0

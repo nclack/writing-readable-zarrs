@@ -10,6 +10,13 @@ six references as a separate series. The
 Conversion memory and final-size accounting are addressed through reasoning;
 the broader experiment program is not required.
 
+**Current article scope:** use local NVMe read measurements for recommendations.
+The author suspects an IOPS limitation in the NFS read path and has deferred
+its engineering. The BBBC022 NFS read results below remain a historical record;
+exclude their speeds and rankings from layout selection and performance figures.
+NFS write rates, shard-count comparisons and size accounting remain in scope.
+See the [local-read/write compromise](reference/local-read-write-compromise.md).
+
 ## Use drain capacity to compare writers
 
 Measure how quickly a writer processes logical input when input is continuously
@@ -99,15 +106,16 @@ All six final sizes are within 2% of the smallest, so every layout satisfies
 the write-side 10% size tolerance. Applying that rule to write medians alone
 would choose 64 KiB. Its 2.286–2.725 GiB/s observed range overlaps every other
 layout's range, so the measurements do not establish a stable write ordering.
-The [joint table](../bbbc022-evidence/joint-layouts.csv) lets read requirements
-distinguish candidates with similar measured write cost. The 10% write-size
-tolerance is not a scalar read-selection rule.
+The [joint table](../bbbc022-evidence/joint-layouts.csv) preserves the original
+matched NFS experiment. Its read columns are excluded from the article's
+recommendations; use local NVMe reads as a separate study alongside these
+write costs. The 10% write-size tolerance is not a scalar read-selection rule.
 
-These conclusions concern the recorded CPU readers, repeated BBBC022 fields,
-codec and NFS conditions. They do not establish GPU-reader, training-loop or
-viewer performance. Keep older synthetic and other microscopy measurements
-separate, with their original machines, traces and timing policies. Further
-experiments are not required to state these scoped results.
+These historical read conclusions concern the recorded CPU readers, repeated
+BBBC022 fields, codec and NFS conditions. They do not govern the local-read
+recommendation or establish GPU-reader, training-loop or viewer performance.
+Keep the studies separate, with their original machines, traces and timing
+policies. Further NFS read experiments are outside the article's requirements.
 
 ## Experiment 2: extend the streaming shard-count sweep
 

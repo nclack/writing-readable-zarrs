@@ -13,6 +13,10 @@ multiscale vocabulary, tool inventory, policy terms, and planner schema mappings
   shape. A **batch** is a group of selections processed together.
 - **Translated XY crop:** a fixed-shape crop requested at varying XY origins.
   State the other-axis extents and the position distribution.
+- **Random, unaligned crops:** selections whose positions are sampled without
+  constraining them to chunk boundaries. Individual selections may happen to
+  align; the sampling distribution need not be globally uniform. These and
+  full-array scans are the two main read-workload patterns in the article.
 - **Chunk-aligned crop:** a selection whose origin and extent follow chunk
   boundaries. An aligned origin alone does not imply whole-chunk coverage.
 - **Chunk:** the independently encoded/decoded array block in this article's
