@@ -2,8 +2,8 @@
 
 `draft.md` has completed an argument and relevance review against the author's
 revision at `da81c5e`. Current rendered-text word counts, excluding headings,
-image alt text and reference definitions: 3,025 body; 606 figure
-captions; 814 methods.
+image alt text and reference definitions: 3,006 body; 605 figure
+captions; 813 methods.
 
 Checks completed:
 
@@ -195,3 +195,9 @@ Marked the TensorStore lookup/scheduling explanation as a hypothesis; the
 measurements do not isolate its cause. The IOPS range is explicitly illustrative,
 with no benchmark-derived threshold claimed. Rebuilt the article and standalone
 site; measurements and figure assets are unchanged.
+
+Emphasis review, 2026-09-29: Reserved definition bolding for 16 core layout,
+workload and measurement concepts that readers may need to refer back to.
+Removed 26 incidental or repeated emphasis spans, including the opening
+128 KiB recommendation. Figure titles, panel labels and Methods labels retain
+structural bolding. Compared rendered text before and after: prose is unchanged.

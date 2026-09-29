@@ -34,7 +34,7 @@ on disk can make one of these tasks fast and the other slow. Usually we want to
 keep one stored representation that serves both, while remaining practical to
 write during acquisition or conversion.</p>
 <p>Zarr divides an array into <strong>chunks</strong>: rectangular blocks stored and usually
-compressed together. <strong>Decoding</strong> reconstructs their array values during a read.
+compressed together. Decoding reconstructs their array values during a read.
 We can describe the main reads as <strong>random, unaligned crops</strong>, small regions
 whose positions are not constrained to the chunk grid, and <strong>full-array scans</strong>,
 which collectively read every value. Choosing chunk dimensions means balancing
@@ -48,18 +48,18 @@ throughput; writing faster may mean accepting larger stored files.
 We compare these tradeoffs, favor cropped reads for visualization and training,
 then check whether the resulting layout can be written fast enough and converted
 within a memory budget.</p>
-<p>The measurements below support testing <strong>128 KiB of uncompressed values per
-chunk</strong> as a starting compromise (1 KiB = 1,024 bytes). The case combines crop
+<p>The measurements below support testing 128 KiB of uncompressed values per
+chunk as a starting compromise (1 KiB = 1,024 bytes). The case combines crop
 and full-array read performance with writing capacity and stored size. It
 does not require one layout to be fastest for every reader or workload.</p>
 <h2 id="read-workloads">Read workloads</h2>
 <p>Consider a vision transformer accepting 224 × 224-pixel images. It divides
-each input into 16 × 16 patches, represented as <strong>tokens</strong>, the model's input
+each input into 16 × 16 patches, represented as tokens, the model's input
 units. Storage still needs to supply the whole image crop, potentially from
 any position. Random crops approximate these training requests and some
 visualization reads; their sizes will vary across applications.</p>
 <p>For either workload, performance also depends on which requests are processed
-together and whether a <strong>cache</strong> retains previously loaded data in memory.
+together and whether a cache retains previously loaded data in memory.
 Sharing work between requests can change performance even when crop dimensions
 stay the same.</p>
 <p>Here, the measured crops are 256 × 256 pixels in one image plane, placed
@@ -97,10 +97,10 @@ readers decode synthetic image data on the computer's main processor (CPU)
 and return float32 values, 32-bit floating-point numbers occupying four bytes
 each. I report useful uint16 input bytes per second; rates counting the larger
 output values would be twice as high.</p>
-<p>A <strong>codec</strong> converts values into their stored representation (<strong>encoding</strong>)
-and reconstructs them (<strong>decoding</strong>). These tests use Blosc with the
+<p>A codec converts values into their stored representation (encoding)
+and reconstructs them (decoding). These tests use Blosc with the
 Zstandard compressor, abbreviated Zstd, or LZ4. Blosc can divide a chunk
-into smaller compression <strong>blocks</strong>, a separate choice from storage chunk
+into smaller <strong>compression blocks</strong>, a separate choice from storage chunk
 dimensions. Figure 1b–c holds that block setting at 16 KiB. <a href="../readable-zarrs-evidence/read-findings.md">Read data and
 definitions</a>.</p>
 <p>Figure 1b–c compares the two read workloads for three chunk layouts, keeping
@@ -146,15 +146,15 @@ or less overlap could change the balance.
 <a href="../planning/reference/tensorstore-chunk-costs-2026-09-28.md">Read-cost audit</a>.</p>
 <p>The best chunk size also depends on storage. These local NVMe results are most
 relevant to systems that sustain many small reads. An illustrative capability
-range is 10,000–100,000 read <strong>IOPS</strong> (input/output operations per second) at the
+range is 10,000–100,000 read IOPS (input/output operations per second) at the
 relevant request sizes; these benchmarks do not establish an IOPS threshold.
 When that operation rate limits throughput, larger chunks can help: fewer
 requests can outweigh the extra bytes read and decoded.
 <a href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-io-characteristics.html">I/O size and throughput</a>.</p>
 <h2 id="shards">Shards</h2>
 <p>Small chunks need not mean millions of small files. A <strong>shard</strong> groups
-encoded chunks with an <strong>index</strong>, a table locating each chunk's bytes. On the
-filesystems discussed here, each shard is a file. A <strong>range read</strong> fetches a
+encoded chunks with an index, a table locating each chunk's bytes. On the
+filesystems discussed here, each shard is a file. A range read fetches a
 specified interval of file bytes, allowing selected chunks to be read without
 loading the whole shard.</p>
 <p>Chunk shape controls the unit of decoding; shard shape controls file
@@ -167,15 +167,15 @@ group more chunks into each file, reducing the number of files to list, copy
 or move. Choose a target file count that makes the complete dataset practical
 to manage while retaining enough files to keep the writer busy.</p>
 <p>Storage also imposes practical limits. Filesystems may limit the number of
-<strong>inodes</strong>, the records describing individual files and directories, so a
+inodes, the records describing individual files and directories, so a
 dataset can exhaust the available file count before filling the disk
 (<a href="https://man7.org/linux/man-pages/man8/mke2fs.8.html">inode allocation</a>). In Amazon S3, each shard is an
-<strong>object</strong>, a separately named stored item. Large objects can use <strong>multipart
-upload</strong>, which sends an object in parts before assembling it. Object size,
+object, a separately named stored item. Large objects can use multipart
+upload, which sends an object in parts before assembling it. Object size,
 part size and the number of parts must fit the <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/qfacts.html">service's limits</a>.
 Those size limits apply to stored bytes, after compression.</p>
 <p>Here, the read comparisons keep sixteen shards fixed, based on what looked
-like a good write configuration. Each has 1 GiB of <strong>raw capacity</strong>, its size
+like a good write configuration. Each has 1 GiB of raw capacity, its size
 before compression. Chunk size varies within this fixed shard layout.</p>
 <h2 id="write-workloads">Write workloads</h2>
 <p>Two writing workloads are considered here. <strong>Streaming</strong> accepts images arriving
@@ -204,28 +204,28 @@ the chunk layout.</p>
 </tbody>
 </table>
 <p>Acquisition imposes an arrival order and rate. A conversion can often revisit
-its source and choose its processing order, or <strong>traversal</strong>, to suit both
+its source and choose its processing order, or traversal, to suit both
 layouts. Throughput matters in both workloads, but the freedom to control
 that order changes the memory problem. Random subvolume updates are outside
 this discussion.</p>
 <h2 id="acquisition">Acquisition</h2>
-<p><a href="https://github.com/acquire-project/chucky">Chucky</a> is a next-generation <strong>backend</strong>—the component that performs the
+<p><a href="https://github.com/acquire-project/chucky">Chucky</a> is a next-generation backend—the component that performs the
 writes—for <a href="https://github.com/acquire-project/acquire-zarr">acquire-zarr</a>, a library for streaming arrays as Zarr.
 Streaming measurements were performed using Chucky to repeatedly write a
 preloaded sequence of example microscopy images from public data sets.
-Writes go to a shared cluster filesystem mounted over <strong>NFS</strong>, the Network
+Writes go to a shared cluster filesystem mounted over NFS, the Network
 File System protocol. Its <code>nconnect=16</code> setting requests sixteen network
 connections. These measurements characterize the writer and storage together.</p>
 <p><strong>Logical input bytes</strong> count their original pixels before compression,
-excluding <strong>padding</strong>, extra values added to fill chunk boundaries. After
+excluding padding, extra values added to fill chunk boundaries. After
 the last image is submitted, a <strong>final drain</strong> completes the pending work and
 closes the files. <strong>Drain capacity</strong> is logical input divided by the time spent
 submitting images plus final drain. Counting submission time alone would hide
 unfinished work.</p>
 <p>These rates exclude loading and decoding images but include compression on
 the CPU or a graphics processor (GPU), plus filesystem output.
-Acquisition needs <strong>headroom</strong>, spare writer capacity above its incoming rate,
-and <strong>buffers</strong>, allocated memory holding
+Acquisition needs headroom, spare writer capacity above its incoming rate,
+and buffers, allocated memory holding
 data awaiting processing. Buffering absorbs temporary slowdowns, not an indefinite
 overload. The margin needed depends on variation in the incoming and writing
 rates.</p>
@@ -238,7 +238,7 @@ counts are four, nine, fifteen and thirty.</p>
 <p>The shard-count tests replay <a href="https://bbbc.broadinstitute.org/BBBC022">BBBC022</a> microscopy images with GPU compression.
 This public collection of cultured human cells comes from the Broad Bioimage
 Benchmark Collection; Figure 3a shows one of the sixteen fields used here. One
-series uses LZ4, another lossless compressor. Rates are <strong>paired</strong> within each
+series uses LZ4, another lossless compressor. Rates are paired within each
 test round: divide one configuration's rate by the other's before summarizing
 the changes across rounds. Changing the layer count also changes shard shape
 and work per file, so these compare complete layouts. Moving from four to
@@ -250,8 +250,8 @@ settings differ, so the useful comparison is within each series. <a href="../bbb
 results</a>.</p>
 <p>A later comparison finds all three 54-shard samples slower than their paired
 30-shard samples, by a median 13.4%. That follow-up used a separate job and
-a 96 GiB minimum input, versus 32 GiB in the primary series. <strong>Reference
-measurements</strong>, repeated runs of a fixed configuration, show substantial
+a 96 GiB minimum input, versus 32 GiB in the primary series. Reference
+measurements, repeated runs of a fixed configuration, show substantial
 changes in performance during the tests. These results support spreading
 writes across several files, with diminishing gains that depend on the codec
 and workload; they do not identify one optimal shard count.
@@ -273,7 +273,7 @@ input. Sources:
 <p>The next choice is how much writing speed to trade for compression. I choose
 the highest median drain capacity within 10% of the smallest comparable output.
 Because the benchmarks can process different input volumes, size is measured
-as <strong>stored bytes per logical input byte</strong>. For this ratio <code>S</code> and median
+as stored bytes per logical input byte. For this ratio <code>S</code> and median
 drain capacity <code>T</code>, the rule is to maximize <code>T</code> subject to <code>S ≤ 1.10 × min(S)</code>.</p>
 <p>Figure 3 expresses stored size as <strong>compression fold</strong>: logical input bytes
 divided by stored bytes. A value of 2× means the stored output is half the input
@@ -326,7 +326,7 @@ different machines and resource budgets. <strong>d–e,</strong> A separate GPU 
 holds Blosc-Zstd, bitshuffle (rearranging bits before compression), 16 KiB
 blocks and four approximately 1 GiB raw shards per layer fixed. Each layout
 processes 22.09 GiB of logical input per run, with three repetitions. Final size includes shard
-indexes and <strong>metadata</strong>, the information describing the array.
+indexes and metadata, the information describing the array.
 Panel e shows rate medians and observed ranges. Throughout, colors and symbols
 identify compressors; filled symbols select the highest median within the
 10% size allowance. Compression axes are logarithmic; values right of each
@@ -337,7 +337,7 @@ and <a href="figures/data/bbbc022-a14-s1-w5.json">image provenance</a>.</p>
 <h2 id="memory">Memory</h2>
 <p>When streaming, writer memory is only part of the process. Raw images may wait
 in a queue while the writer retains unfinished chunks, indexes and pending
-output. A codec also needs a <strong>workspace</strong>, temporary memory for compression or
+output. A codec also needs a workspace, temporary memory for compression or
 decompression. Budget the buffers that coexist, counting shared buffers only
 once.</p>
 <p>Rechunking adds a geometric problem: source and destination chunks may overlap
@@ -410,7 +410,7 @@ replaces the lowest four bits with independent random values from 0–15. The
 for compression tests. Figure 1 uses a <code>[512,4096,4096]</code> uint16 array (16 GiB
 uncompressed), partitioned into sixteen <code>[512,1024,1024]</code> shards.</p>
 <p>Each crop pass requests 16,384 selections in
-<strong>batches</strong>, groups of 128 processed together: the sampler cycles through shard
+batches, groups of 128 processed together: the sampler cycles through shard
 start regions, draws valid XY origins
 within each region and random Z, and permits overlap and shard crossings. It is
 not a globally uniform sampler. Matched encodings and readers reuse the saved

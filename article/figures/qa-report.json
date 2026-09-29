@@ -3,9 +3,9 @@
   "review_date": "2026-09-28",
   "word_count_method": "Rendered HTML text split on whitespace, excluding headings, image alt text and reference definitions; includes visible table text.",
   "word_counts": {
-    "body": 3025,
-    "captions": 606,
-    "methods": 814
+    "body": 3006,
+    "captions": 605,
+    "methods": 813
   },
   "figures": [
     {
