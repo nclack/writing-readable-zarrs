@@ -67,6 +67,13 @@ combining different systems or phases.
 
 ## Workloads and byte definitions
 
+The author clarified the smooth4 generator on 2026-09-29: it blends two
+smooth random 3D fields at different spatial scales, rounds the result to
+12-bit intensities stored as uint16, then replaces the lowest four bits with
+independent random values from 0–15. The name denotes four noise bits per
+value, combining spatial structure with noise for compression tests. This
+description supplements the archived metadata; it is not a new measurement.
+
 The recent CPU studies use deterministic synthetic smooth4 input: one
 `[512,4096,4096]` uint16 array, 16 GiB logical size, partitioned into
 sixteen `[512,1024,1024]` shards in a `[1,4,4]` grid. Each shard has **1 GiB

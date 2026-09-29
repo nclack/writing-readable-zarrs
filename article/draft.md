@@ -15,11 +15,12 @@ whose positions are not constrained to the chunk grid, and **full-array scans**,
 which collectively read every value. Choosing chunk dimensions means balancing
 these two patterns.
 
-The approach used here is to measure read and write workloads and analyze
-**Pareto frontiers**. A frontier retains tested choices for which no
+The approach used here is to measure read and write **throughput**, useful
+array bytes processed per second, and analyze **Pareto frontiers**. A frontier
+retains tested choices for which no
 alternative is at least as good on every objective and better on at least
-one. For example, when the objectives are read throughput and compression,
-improving one may require sacrificing the other.
+one. For example, improving crop throughput may mean sacrificing full-array
+throughput; writing faster may mean accepting larger stored files.
 We compare these tradeoffs, favor cropped reads for visualization and training,
 then check whether the resulting layout can be written fast enough and converted
 within a memory budget.
@@ -31,25 +32,22 @@ does not require one layout to be fastest for every reader or workload.
 
 ## Read workloads
 
-Consider a typical vision transformer accepting 224 × 224-pixel images as samples.
-It divides each input into 16 × 16 patches and represents each patch as a
-**token**, one unit of model input. The resulting 14 × 14 token grid describes
-the model's context window. A reader must retrieve the whole crop, potentially
-from any position in the image. The sample size might change across model
-architectures, so we need to pick a chunk size that generally works well.
-Random crops approximate these training requests and some visualization reads.
+Consider a vision transformer accepting 224 × 224-pixel images. It divides
+each input into 16 × 16 patches, represented as **tokens**, the model's input
+units. Storage still needs to supply the whole image crop, potentially from
+any position. Random crops approximate these training requests and some
+visualization reads; their sizes will vary across applications.
 
-Full-array scans represent processing that needs every value. For either
-workload, I specify the selection's size along every axis and its starting
-positions. A **batch** is a group requested together; **concurrency** is the
-number of requests in progress at once. A **cache** retains previously loaded
-data in memory, so repeated requests may do less storage work. These details can
-change performance even when crop dimensions stay the same.
+For either workload, performance also depends on which requests are processed
+together and whether a **cache** retains previously loaded data in memory.
+Sharing work between requests can change performance even when crop dimensions
+stay the same.
 
-Here, the measured crops are 256 × 256 pixels in one image plane. Crop
-positions vary without being constrained to chunk boundaries. For comparison,
-**chunk-aligned crops** cover whole chunks: these reads have no boundary waste,
-and are suitable for analyzing full-array scans.
+Here, the measured crops are 256 × 256 pixels in one image plane, placed
+without regard to chunk boundaries. The full-array workload instead covers
+every value using a fixed grid of selections. Individual selections need not
+cover whole chunks, so sharing decoded chunks between requests can matter
+even when the workload eventually uses every pixel.
 
 ## Chunk size
 
@@ -66,25 +64,33 @@ uint16 chunks in one plane (Figure 1a). These cases require decoding 2.25 or
 **Decode amplification** is decoded chunk bytes divided by useful requested
 bytes.
 
-Transferred bytes can differ from decoded bytes because data are compressed,
-storage requests may be combined, and caches allow reuse. Smaller chunks
-reduce boundary waste but create more chunks to locate, schedule and decode. We
-therefore measure **throughput**, useful data delivered per second, rather than
-predicting speed from geometry alone.
+Keep chunks as low-dimensional as possible. For XY crops from one plane, time
+point and channel, keep those chunk dimensions at one unless the workload
+requires grouping them. The penalties multiply across axes: decoding a whole
+chunk spanning eight planes and four channels for one such crop causes 32×
+decode amplification, even before XY boundary waste.
+
+Sharing decoded chunks across requests can reduce that work. Compression,
+combined storage requests and file caching also change how much data must be
+transferred. Smaller chunks
+reduce boundary waste but create more chunks to locate, schedule and decode.
+Throughput measurements capture the combined effect of these costs.
 
 The Zarr readers [Damacy][] and [TensorStore][] were tested on a local
 solid-state drive using NVMe, a storage interface designed for these drives.
 Damacy is a reader I developed, optimized for loading data for model training.
-Tensorstore is a performant library that can read and write zarr. Here, they
-decode synthetic image data on the computer's main processor and return float32
-values. I report useful uint16 input bytes per second; rates counting the larger
+TensorStore is a popular library for reading and writing large arrays. Here, both
+readers decode synthetic image data on the computer's main processor (CPU)
+and return float32 values, 32-bit floating-point numbers occupying four bytes
+each. I report useful uint16 input bytes per second; rates counting the larger
 output values would be twice as high.
 
 A **codec** converts values into their stored representation (**encoding**)
-and reconstructs them (**decoding**). These tests use Blosc with the Zstandard
-compressor, abbreviated Zstd. Blosc can divide a chunk into smaller compression
-**blocks**, a separate choice from storage chunk dimensions. Figure 1b–c
-holds that block setting at 16 KiB [Read data and definitions][read-methods].
+and reconstructs them (**decoding**). These tests use Blosc with the
+Zstandard compressor, abbreviated Zstd, or LZ4. Blosc can divide a chunk
+into smaller compression **blocks**, a separate choice from storage chunk
+dimensions. Figure 1b–c holds that block setting at 16 KiB. [Read data and
+definitions][read-methods].
 
 Figure 1b–c compares the two read workloads for three chunk layouts, keeping
 the reader, compressor and compression block size fixed. Each point pairs a
@@ -92,6 +98,22 @@ layout's crop rate with its full-array read rate. The points show medians—the
 middle values of three repeated measurements—and the bars show their observed
 ranges. These panels help assess a balance between workloads; the broader
 [read frontiers][read-frontiers] also account for compression or read traffic.
+
+![A random-position crop intersects extra chunks; two local NVMe plots show the balance between crop and full-array reads for Damacy and TensorStore. Each point pairs rates for one chunk layout: crop reads horizontally and full-array reads vertically.][figure-1]
+
+**Figure 1. Chunk geometry and read performance.** **a,** A 256 × 256 crop
+at row 64, column 64 intersects nine 128 × 128 uint16 chunks or four
+256 × 256 uint16 chunks (32 or 128 KiB per chunk). This chosen position
+illustrates unused decoded pixels, not average amplification. **b–c,**
+Damacy and TensorStore read a 16 GiB synthetic uint16 array from local NVMe
+with CPU decoding, Blosc-Zstd and 16 KiB blocks. Each point pairs a layout's
+median crop and full-array read rates from separate workloads; bars show
+observed minima and maxima from three repetitions. Right means faster crops;
+up means faster full-array reads. Vertical scales differ. Chunk dimensions
+are Z × Y × X in uint16 pixels. Tables locating chunks are already loaded;
+file data start outside the operating system's memory cache, with reuse
+allowed during a pass. Rates count useful uint16 bytes over planning,
+reading, decoding, conversion and output assembly. [Read summaries][read-summary].
 
 For Damacy, 128 KiB captures much of the benefit of larger chunks for full-array
 reads while retaining most of the small-chunk crop performance. Relative to
@@ -110,62 +132,20 @@ Its crop result is clearer: 512 KiB reaches 1.614 GiB/s versus 1.394 at
 for testing larger chunks when TensorStore crop performance is the priority,
 not a reason to select them from full-array medians alone.
 
-Larger chunks can read more unused pixels yet finish sooner because they
-also reduce the number of chunks needed for each crop. Locating, requesting
-and scheduling each chunk takes work, in addition to transferring and
-decoding its bytes. In these TensorStore runs, moving from 128 to 512 KiB
-reduces the estimated number of chunks processed by almost half, while
-measured file bytes read increase from 4.33 to 9.17 GiB per pass. Fewer chunk operations are a plausible explanation for the speedup;
-the recordings do not separate time spent on those operations from decoding.
-The benchmark disables TensorStore's persistent data cache, but that does
-not remove every kind of reuse. The 16 GiB logical array fits in memory,
-and each pass requests 2 GiB of useful crops. File pages start cold but can
-be reused within the pass; concurrent requests may also share work. Actual
-TensorStore decoded bytes were not recorded, so its decoding amplification
-is a geometric estimate. A dataset that exceeds memory or a workload with
-less overlap could change the balance. [Read-cost audit][tensorstore-chunk-costs].
+In these TensorStore runs, moving from 128 to 512 KiB nearly halves the
+estimated number of chunks processed while more than doubling the measured
+file bytes read. Fewer chunk lookups and scheduling operations may explain
+the speedup, but the measurements do not isolate its cause. A larger dataset
+or less overlap could change the balance.
+[Read-cost audit][tensorstore-chunk-costs].
 
-The 128 KiB recommendation balances these reader-dependent results with the
-write measurements discussed below. The microscopy write comparison puts
-128 KiB within 0.81% of the smallest stored size, with writing rates that
-overlap those at 64 and 512 KiB. It does not establish 128 KiB as the fastest
-writer, or a reliable writing advantage for 512 KiB. Together, the results
-make 128 KiB a practical starting layout to check against the application's
-read mix and acquisition rate. The read and write studies use different
-inputs and machines, so this is a synthesis, not a measured joint optimum.
-[Read/write comparison][local-read-write-compromise].
-
-Chunk shape remains as important as bytes. Spreading a chunk across several
-planes changes the cost of a single-plane crop. The hypothetical 224-square
-uint16 input contains 98 KiB of useful pixels, but its position still determines
-which chunks must be decoded. Choose using time spent on representative
-requests: averaging two workload throughputs does not give the elapsed time for
-their mixture.
-
-![A random-position crop intersects extra chunks; two local NVMe plots show the balance between crop and full-array reads for Damacy and TensorStore. Each point pairs rates for one chunk layout: crop reads horizontally and full-array reads vertically.][figure-1]
-
-**Figure 1. Chunk geometry and read performance.** **a,** A 256 × 256 crop
-starting at row 64, column 64 intersects 128 × 128 uint16 chunks or 256 × 256
-uint16 chunks, corresponding to 32 or 128 KiB in one plane. Requested and unused
-decoded uint16 pixels are distinguished. The two drawings show one chosen crop
-position, not average amplification over the measured workload. The hypothetical
-model uses 224 × 224 inputs and 16 × 16 token patches; these do not specify
-storage chunks. **b–c,** The balance between two read workloads, measured
-separately with Damacy and TensorStore. Each point represents one chunk layout:
-its horizontal position shows the median rate for random, unaligned crop reads,
-and its vertical position shows the median rate for full-array reads. Moving
-right means faster crops; moving up means faster full-array reads. Bars show
-observed minimum–maximum ranges from three repetitions per layout and workload.
-Full-array read axes differ between panels. The 128 and 512 KiB TensorStore
-full-array ranges overlap substantially; their median ordering does not
-establish a reliable advantage. All chunk dimensions describe uint16 pixels in
-Z × Y × X order. Reads use a 16 GiB synthetic uint16 test array, stored on local
-NVMe and decoded on the main processor. Chunk-location lookup information is
-already loaded, but data-file contents are absent from the operating system's
-memory cache before each pass; reuse within a pass is allowed. Blosc-Zstd uses
-a fixed 16 KiB block setting. Rates count useful uint16 bytes over time spent
-planning, reading, decoding, converting values and assembling output. Source:
-[read summaries][read-summary], `cpu-chunk-blocks` phase.
+The best chunk size also depends on storage. These local NVMe results are most
+relevant to systems that sustain many small reads. An illustrative capability
+range is 10,000–100,000 read **IOPS** (input/output operations per second) at the
+relevant request sizes; these benchmarks do not establish an IOPS threshold.
+When that operation rate limits throughput, larger chunks can help: fewer
+requests can outweigh the extra bytes read and decoded.
+[I/O size and throughput][storage-iops].
 
 ## Shards
 
@@ -195,9 +175,9 @@ upload**, which sends an object in parts before assembling it. Object size,
 part size and the number of parts must fit the [service's limits][s3-upload-limits].
 Those size limits apply to stored bytes, after compression.
 
-Here, sixteen shards were used for the read comparisons based on what looked like
-a good write configuration. Each shard is sized to hold approximately 1 GiB of **raw
-capacity**, the size of a full shard before compression.
+Here, the read comparisons keep sixteen shards fixed, based on what looked
+like a good write configuration. Each has 1 GiB of **raw capacity**, its size
+before compression. Chunk size varies within this fixed shard layout.
 
 ## Write workloads
 
@@ -208,12 +188,12 @@ the chunk layout.
 
 | Write workload | Source | Main constraint here |
 |---|---|---|
-| Acquisition streaming | Images arriving from an instrument | Writer processing rate and temporary storage in memory |
+| Streaming | Instrument images or decoded TIFF files | Acquisition rate and buffering; conversion memory |
 | Rechunking | An existing Zarr | Source/destination overlap and memory use |
 
 Acquisition imposes an arrival order and rate. A conversion can often revisit
 its source and choose its processing order, or **traversal**, to suit both
-layouts. Throughput matters in all three settings, but the freedom to control
+layouts. Throughput matters in both workloads, but the freedom to control
 that order changes the memory problem. Random subvolume updates are outside
 this discussion.
 
@@ -223,6 +203,9 @@ this discussion.
 writes—for [acquire-zarr][], a library for streaming arrays as Zarr.
 Streaming measurements were performed using Chucky to repeatedly write a
 preloaded sequence of example microscopy images from public data sets.
+Writes go to a shared cluster filesystem mounted over **NFS**, the Network
+File System protocol. Its `nconnect=16` setting requests sixteen network
+connections. These measurements characterize the writer and storage together.
 
 **Logical input bytes** count their original pixels before compression,
 excluding **padding**, extra values added to fill chunk boundaries. After
@@ -231,12 +214,13 @@ closes the files. **Drain capacity** is logical input divided by the time spent
 submitting images plus final drain. Counting submission time alone would hide
 unfinished work.
 
-These rates exclude loading and decoding images but include compression (using
-CPU or GPU) and filesystem output. Acquisition needs **headroom**, spare writer
-capacity above its incoming rate, and **buffers**, allocated memory holding
+These rates exclude loading and decoding images but include compression on
+the CPU or a graphics processor (GPU), plus filesystem output.
+Acquisition needs **headroom**, spare writer capacity above its incoming rate,
+and **buffers**, allocated memory holding
 data awaiting processing. Buffering absorbs temporary slowdowns, not an indefinite
-overload. No universal headroom percentage is established, and closing files
-does not prove the data would survive a crash.
+overload. The margin needed depends on variation in the incoming and writing
+rates.
 
 For streaming, **concurrent shards** are the shard files in the active layer
 perpendicular to the direction in which data are appended. They are typically
@@ -250,8 +234,10 @@ This public collection of cultured human cells comes from the Broad Bioimage
 Benchmark Collection; Figure 3a shows one of the sixteen fields used here. One
 series uses LZ4, another lossless compressor. Rates are **paired** within each
 test round: divide one configuration's rate by the other's before summarizing
-the changes across rounds. Moving from four to fifteen actual shards improves
-LZ4 drain capacity by a median paired 76.1%. Moving from fifteen to thirty
+the changes across rounds. Changing the layer count also changes shard shape
+and work per file, so these compare complete layouts. Moving from four to
+fifteen actual shards improves LZ4 drain capacity by a median paired 76.1%.
+Moving from fifteen to thirty
 adds a median 10.1%, but individual paired changes range from −14.1% to +22.4%.
 The Zstd control gains only 2.8% from four to fifteen; its chunk and block
 settings differ, so the useful comparison is within each series. [Paired primary
@@ -261,42 +247,40 @@ A later comparison finds all three 54-shard samples slower than their paired
 30-shard samples, by a median 13.4%. That follow-up used a separate job and
 a 96 GiB minimum input, versus 32 GiB in the primary series. **Reference
 measurements**, repeated runs of a fixed configuration, show substantial
-changes in performance during the tests. A layer count is not a worker
-count, connection assignment or measurement of overlapping reads and writes.
+changes in performance during the tests. These results support spreading
+writes across several files, with diminishing gains that depend on the codec
+and workload; they do not identify one optimal shard count.
 [Follow-up][shard-extension-paired-summary].
 
 ![An illustrative sixteen-shard append layer sits beside separate primary and follow-up measurements of write drain capacity versus actual shard count.][figure-2]
 
-**Figure 2. File parallelism for streaming.** **a,** Chunk and shard boundaries
-in an illustrative Z/Y/X array appended along Z; the highlighted 4 × 4 layer
-contains sixteen shard files. The diagram describes geometry, not observed
-simultaneous reads and writes. **b,** Chucky GPU microscopy replay to shared NFS
-(`nconnect=16`, 9 GiB/s max write speed), using BBBC022 inputs and approximately
-1 GiB raw shard capacities. LZ4 uses 64 KiB `[4,64,128]` uint16 chunks and a 16
-KiB block setting; Zstd uses 256 KiB `[4,128,256]` uint16 chunks and a 256 KiB
-block setting. Primary points have six repetitions, a 32 GiB logical minimum
-and timing through final drain/close. Rates count unpadded logical input bytes;
-bars show observed ranges around medians. Shard counts form labelled groups;
-codec symbols are separated within shared groups for visibility. Paired gains
-are computed within rounds. Before/after references have a median ratio of
-0.975 and an observed range of 0.515–1.292; this drift is not divided out.
-[Figure S1][figure-s1] shows all reference pairs. **c,** The later LZ4 30/54
-comparison, selected after reviewing the primary results, uses a separate
-job, a 96 GiB minimum and three paired repetitions. It is not an extension
-of the primary curve. Sources: [primary summaries][shard-summary], [paired
-results][shard-paired-summary] and [follow-up][shard-extension-summary].
+**Figure 2. File parallelism for streaming.** **a,** An illustrative Z/Y/X
+array appended along Z, with sixteen shard files in its 4 × 4 active layer.
+**b,** Chucky writes BBBC022 microscopy data to shared NFS with GPU compression
+and `nconnect=16`. Shards hold approximately 1 GiB before compression. LZ4
+uses 64 KiB `[4,64,128]` uint16 chunks and 16 KiB blocks; Zstd uses 256 KiB
+`[4,128,256]` uint16 chunks and 256 KiB blocks. Points are medians from six
+repetitions; bars show observed ranges. Rates count logical input bytes over
+submission plus final drain and close, excluding source loading and decoding.
+Each run processes at least 32 GiB of logical input. Reference runs show variation
+([Figure S1][figure-s1]). **c,** A separate LZ4 follow-up compares thirty and
+54 shards in three paired rounds, each processing at least 96 GiB of logical
+input. Sources:
+[primary results][shard-summary] and [follow-up][shard-extension-summary].
 
-For writing, the Pareto objectives are speed and final stored size. To choose a
-"best" setting, I apply the following rule: choose the highest throughput within
-10% of the smallest comparable output. For size `S` and throughput `T`, that
-means maximizing `T` subject to `S ≤ 1.10 × min(S)`.
+The next choice is how much writing speed to trade for compression. I choose
+the highest median drain capacity within 10% of the smallest comparable output.
+Because the benchmarks can process different input volumes, size is measured
+as **stored bytes per logical input byte**. For this ratio `S` and median
+drain capacity `T`, the rule is to maximize `T` subject to `S ≤ 1.10 × min(S)`.
 
 Figure 3 expresses stored size as **compression fold**: logical input bytes
 divided by stored bytes. A value of 2× means the stored output is half the input
 size. The 10% size allowance requires a compression fold at least as large as
 the best tested fold divided by 1.10, calculated within each comparable group.
 
-The earlier BBBC022 comparisons in Figure 3b–c show why that allowance matters.
+The earlier BBBC022 comparisons in Figure 3b–c use bytes submitted to shard
+writes as a proxy for final stored bytes. They show why the allowance matters.
 Ten of fourteen CPU settings and ten of thirteen GPU settings fall below their
 group's compression threshold. The fastest GPU setting, Blosc-LZ4 with 16 KiB
 chunks and blocks, reaches 6.33 GiB/s but only 1.438× compression, below the
@@ -306,11 +290,9 @@ request vary together in these comparisons; they did not test 128 KiB. The CPU
 and GPU studies use different machines and resource budgets. [Measurements and
 observed ranges][write-comparison-summary].
 
-Across the broader microscopy archive, some inputs favor small chunks and
-others favor larger ones. The newer BBBC022 comparison in Figure 3d–e measures
-final file lengths directly and holds the writer configuration fixed while
-varying chunk shape. It provides the focused check on the read-derived choice.
-[Historical write findings][write-findings].
+To check the read-derived choice, the newer BBBC022 comparison in Figure
+3d–e measures final file lengths directly and varies chunk shape while keeping
+the other writer settings fixed.
 
 The six layouts all finish within 2% of the smallest file size, so every one
 meets this comparison's 1.715× compression threshold (Figure 3d–e). At 128 KiB,
@@ -321,11 +303,13 @@ median, 2.639 GiB/s, with a range of 2.286–2.725. Those overlapping ranges
 do not establish either a stable ordering or equivalent performance. [Write
 summaries][write-summary].
 
-The writing evidence leaves room for the read-derived 128 KiB choice. Its size
-is near the minimum; sufficient drain capacity depends on acquisition rate
-and buffering. Final size includes indexes and **metadata**, the information
-describing the array. An accounting audit reconciles submitted writes with final
-file lengths to a correction below 0.0012%.
+The writing evidence leaves room for the read-derived 128 KiB choice: its
+stored size is near the minimum, and the observed writing rates overlap those
+of the fastest median configuration. Together, the results support 128 KiB as
+a starting compromise to check against the application's read mix and incoming
+data rate. The read tests use synthetic data on local NVMe; the write tests
+use microscopy images on NFS. This combines evidence from separate studies,
+rather than establishing a single optimum. [Read/write comparison][local-read-write-compromise].
 
 ![A BBBC022 microscopy field with a 100 micrometre scale bar appears above
 separate CPU and GPU comparison plots. Ten settings in each comparison fall
@@ -335,48 +319,34 @@ rates within the allowance. Below, all six fixed-block Blosc-Zstd layouts use
 blue squares, with only 64 KiB filled, and exceed their final-size compression
 threshold; separate rows show their rate medians and ranges.][figure-3]
 
-**Figure 3. Microscopy input and writing capacity.** In b–e, colors and
-shapes identify compressors consistently; filled symbols mark the highest
-median within each comparison's 10% size allowance. **a,** One complete
-[BBBC022v1][bbbc022] field: human U2OS cells, MitoTracker Deep Red channel
-w5, plate 20585, well A14, site 1. Scale bar, 100 µm, using the recorded
-0.656 µm/pixel calibration. Grayscale maps the field's 1st–99.5th intensity
-percentiles (246–1018.405) linearly to black–white, clipping for display only;
+**Figure 3. Microscopy input and writing capacity.** **a,** A [BBBC022][bbbc022]
+field of human U2OS cells, MitoTracker Deep Red channel. Scale bar, 100 µm
+at 0.656 µm/pixel. Display contrast spans the 1st–99.5th intensity percentiles;
 benchmark pixels are unchanged. Image: Gustafsdottir and colleagues, Broad
-Bioimage Benchmark Collection, CC0. **b–c,** Complete retained BBBC022 CPU
-and GPU NFS comparisons: fourteen and thirteen configurations, respectively,
-each measured three times. Points are median drain capacities; observed ranges
-and all configurations are in the [source table][write-comparison-summary].
-Compression fold uses total logical input divided by total measured shard-write
-bytes across repetitions, a proxy for final size. Dashed lines mark each
-study's best fold / 1.10: 1.718× for CPU and 1.754× for GPU. Ten settings
-in each study fall below the threshold. Labels give chunk/block requests;
-compressor symbols are defined in the shared legend. CPU and GPU use different
-machines and resource budgets, with fifteen shards per append layer. **d–e,**
-A separate GPU comparison measures final stored bytes for six chunk sizes,
-16–512 KiB, with fixed Blosc-Zstd, bitshuffle (rearranging corresponding bits
-before compression), 16 KiB blocks and four approximately 1 GiB raw shards per
-layer. All points are blue squares for Blosc-Zstd; only the 64 KiB symbols are
-filled. Direct labels identify 64 KiB and the proposed 128 KiB compromise in
-d. Panel d shows medians and the 1.715× threshold; panel e shows each median
-and observed minimum–maximum over three runs, with compression fold below each
-chunk label. All six sizes are within 2% of the minimum. Each fixed-volume run
-processes 22.08984375 GiB of logical input. All compression axes are logarithmic
-(base 2); equal distances represent equal ratios, and values right of the
-dashed lines qualify. Rates count unpadded logical input over append plus final
-drain/close time; input loading and preparatory writing are excluded. Final
-sizes in d–e include metadata and shard indexes. The studies remain separate
-from each other and from Figure 1's synthetic local reads. Sources: [comparison
-summaries][write-comparison-summary], [fixed-layout summaries][write-summary]
-and [size accounting][size-accounting].
+Bioimage Benchmark Collection, CC0. **b–c,** Fourteen CPU and thirteen GPU
+configurations, each measured three times on shared NFS with fifteen shards
+per append layer. Compression fold uses summed logical input divided by
+summed shard-write bytes, a proxy for final size. CPU and GPU results use
+different machines and resource budgets. **d–e,** A separate GPU comparison
+holds Blosc-Zstd, bitshuffle (rearranging bits before compression), 16 KiB
+blocks and four approximately 1 GiB raw shards per layer fixed. Each layout
+processes 22.09 GiB of logical input per run, with three repetitions. Final size includes shard
+indexes and **metadata**, the information describing the array.
+Panel e shows rate medians and observed ranges. Throughout, colors and symbols
+identify compressors; filled symbols select the highest median within the
+10% size allowance. Compression axes are logarithmic; values right of each
+dashed threshold qualify. Rates count logical input over submission plus final
+drain and close, excluding input loading and preparatory writing. Sources:
+[earlier comparisons][write-comparison-summary], [fixed-layout results][write-summary]
+and [image provenance][bbbc022-thumbnail].
 
 ## Memory
 
 When streaming, writer memory is only part of the process. Raw images may wait
 in a queue while the writer retains unfinished chunks, indexes and pending
 output. A codec also needs a **workspace**, temporary memory for compression or
-decompression. Different readers and writers may have very different memory
-requirements depending on how they operate.
+decompression. Budget the buffers that coexist, counting shared buffers only
+once.
 
 Rechunking adds a geometric problem: source and destination chunks may overlap
 without matching. Processing order determines how long decoded source data and
@@ -398,51 +368,43 @@ live gives a 320 KiB raw-array allocation bound. Completing outputs reduces the
 retained set; after four source chunks it is empty. The pattern repeats for the
 lower half of the array.
 
-That 320 KiB is an analytical result for this schedule, not a measured process
-peak. It excludes encoded input, encoded output, codec workspaces, metadata and
-runtime allocations. It assumes one codec/write operation at a time, completed
-before the next begins. Overlapping these stages keeps additional buffers
-allocated; a different processing order can also change the bound.
+That 320 KiB counts only raw-array buffers for this schedule. Encoded data,
+codec workspaces, metadata and runtime allocations add to the total.
+Overlapping reads and writes keeps additional
+buffers allocated; a different processing order can also change the bound.
 
 ![Different source and destination grids lead to partial output buffers whose lifetimes depend on traversal; the stated serial example has a 320 KiB raw-array allocation bound.][figure-4]
 
-**Figure 4. Conversion memory follows buffer lifetimes.** Analytical example
-for one 512 × 512 uint16 array, rechunked from `[128,256]` uint16 chunks to
-`[256,128]` uint16 chunks; both chunk shapes contain 64 KiB. Eight source chunks
-are processed left to right, then top to bottom, one at a time, without reading
-ahead or retaining a source cache. Destination chunks receive full allocations
-on first touch. Completed outputs finish encoding and writing and are released
-before the next source. After steps 1–4, incomplete output counts are 2, 4,
-2 and 0; steps 5–8 repeat. The largest set of raw-array buffers allocated at
-once is one 64 KiB source plus four 64 KiB destinations, totaling 320 KiB. One
-codec/write operation runs at a time, no write remains pending between steps,
-and at most one encoded output is retained. The bound excludes codec workspaces,
-encoded input/output bytes, indexes, metadata, runtime allocations and caches.
-It is not a measured peak for the complete conversion process. TIFF decoder
-buffers apply to TIFF streaming, not to this Zarr-to-Zarr example; no whole
-output shard is assumed resident.
+**Figure 4. Conversion memory.** A 512 × 512 uint16 array changes from
+`[128,256]` to `[256,128]` uint16 chunks, both 64 KiB. Read source chunks
+left to right, top to bottom, without reading ahead or caching. Allocate each
+destination in full on first touch; finish writing completed outputs before
+reading the next source. The peak raw-array allocation is one 64 KiB source
+plus four incomplete destinations: 320 KiB. Only one codec/write operation
+runs at a time. Encoded input/output, codec workspaces, indexes, metadata and
+runtime allocations are excluded. This is an analytical bound for the stated
+schedule, not a measured process peak or a whole-shard buffering requirement.
 
-The same accounting scales to a real conversion: choose the regions processed
-together and their order, bound queues and caches, then sum the buffers that can
-coexist. Keep main-memory and GPU-memory estimates separate. Temporary storage
-can move work out of memory, but introduces more reading and writing; processing
-smaller regions at each step may likewise increase source rereads. A lower
-memory setting therefore needs an explicit account of where that work goes.
+For a real conversion, choose the processing order, bound queues and caches,
+and sum the buffers that can coexist. Keep main-memory and GPU-memory budgets
+separate. Check memory savings against any extra reading or writing they
+require.
 
 Sharding does not by itself require a whole output shard in memory. That depends
-on the writer's delivery strategy. The available conversion records do not
-supply measured process peaks, so this buffer analysis should remain separate
-from measurements of complete conversion memory or throughput. [Conversion
-evidence and limits][conversion-findings].
+on the writer's delivery strategy. The example explains how to budget memory;
+the available records do not measure complete conversion memory or throughput.
+[Conversion evidence and limits][conversion-findings].
 
 ## Layout recommendations
 
 Start with actual crops, full-array reads and the required writing rate. Try
-128 KiB `[1,256,256]` uint16 chunks as a balance across those demands. Move
-toward 32 KiB when using Damacy; test 512 KiB `[1,512,512]` uint16
-chunks when using TensorStore. Check the application's requested
-planes, image channels and positions, then confirm writer capacity and
-stored size on representative microscopy data.
+128 KiB `[1,256,256]` uint16 chunks as a balance across those demands. Test
+32 KiB `[1,128,128]` uint16 chunks when Damacy crop throughput dominates;
+test 512 KiB `[1,512,512]` uint16 chunks when TensorStore crop throughput
+dominates. Keep chunk extents at one along axes read one element at a time.
+On storage limited by its rate of read operations, also test larger chunks.
+Confirm the balance using the application's crops, storage system and
+representative microscopy data, then check writer capacity and stored size.
 
 Choose shard size and shape to balance filesystem concurrency with a manageable
 total file count, within the storage system's limits. The tested LZ4 writer
@@ -462,10 +424,18 @@ based on the buffers their processing order keeps allocated.
 `storage_type=local block storage`, `codec=zstd`, `block_bytes=16384`,
 Damacy `implementation=chunks256-random` or TensorStore, and workloads
 `random-1x256x256` and `full-scan` from [read-summary.csv][read-summary].
-Each point/workload has three repetitions. The generated test pattern, named
-smooth4, has array shape `[512,4096,4096]` uint16, partitioned into sixteen
-`[512,1024,1024]` shards. Each crop pass requests 16,384 selections in batches
-of 128: the sampler cycles through shard start regions, draws valid XY origins
+Each point/workload has three repetitions.
+
+The synthetic input, smooth4, blends two smooth random 3D fields at different
+spatial scales, rounds the result to 12-bit intensities stored as uint16, and
+replaces the lowest four bits with independent random values from 0–15. The
+“4” denotes four noise bits per value, combining spatial structure with noise
+for compression tests. Figure 1 uses a `[512,4096,4096]` uint16 array (16 GiB
+uncompressed), partitioned into sixteen `[512,1024,1024]` shards.
+
+Each crop pass requests 16,384 selections in
+**batches**, groups of 128 processed together: the sampler cycles through shard
+start regions, draws valid XY origins
 within each region and random Z, and permits overlap and shard crossings. It is
 not a globally uniform sampler. Matched encodings and readers reuse the saved
 query list. Full scans tile with `[8,256,256]` selections and cover all logical
@@ -520,8 +490,9 @@ All 81 sample runs and their observed rate ranges are retained; no references,
 failed runs or superseded studies are pooled into these panels. [Contributing
 runs][write-comparison-runs] and [measurement definitions][write-findings].
 
-The shared-layout chunk shapes are `[replay,Y,X]`; replay indexes repeated input
-frames. All values are uint16.
+The six-layout fixed-volume comparison in Figure 3d–e uses the following
+`[replay,Y,X]` chunk shapes; replay indexes repeated input frames. All values
+are uint16.
 
 | Raw chunk (KiB) | Chunk shape (uint16 pixels) |
 |---:|---|
@@ -532,11 +503,20 @@ frames. All values are uint16.
 | 256 | `[1,256,512]` |
 | 512 | `[1,512,512]` |
 
-The primary shard series uses six rounds, a 32 GiB logical minimum, two seconds of requested preparatory writing, three seconds of requested image submission, at least two transitions from one append layer of shard files to the next and timing through final close. Rate ratios are paired within rounds; references are reported separately. The later 30/54 follow-up uses three rounds and a 96 GiB minimum in a separate job. It was selected after reviewing the primary results. The primary shard series was restarted after increasing the benchmark metering wrapper's capacity; interrupted earlier shard observations are supplementary. Shared-layout runs remain from their original completed job. Chucky's recorded base revision is `e3cd3af6c669c99d2b15bbebf9e95a6132319f09`; [phase identities][source-phases] preserve the distinct patched binaries and jobs. See [findings][bbbc022-findings], [follow-up protocol][shard-extension-protocol] and [size accounting][size-accounting].
+**Shard-count comparison.** Figure 2's primary series uses six rounds,
+a 32 GiB logical minimum, two seconds of requested preparatory writing,
+three seconds of requested image submission, at least two transitions between
+shard layers and timing through final close. Rate ratios are paired within
+rounds. Before/after reference rates have a median ratio of 0.975 and an
+observed range of 0.515–1.292; the rates are not adjusted for this variation.
+The later 30/54 comparison uses three rounds and a 96 GiB minimum in a separate
+job, selected after the primary results. Chucky's revision and patched
+binaries are recorded in the [phase identities][source-phases]. See the
+[findings][bbbc022-findings] and [follow-up protocol][shard-extension-protocol].
 
-All plotted intervals show the observed minimum and maximum rates. They are not confidence intervals, which would estimate uncertainty about an underlying population quantity. Read and write studies use different inputs, hardware and shard geometry. Their data are not pooled. The conversion diagram is an explicitly bounded analytical example, not a measured memory result.
-
-**Draft and figure preparation.** AI assistance used the [Doc Coauthoring workflow][doc-coauthoring] and Scientific Visualization skill. The latter is described by Kassis, T., Agarwal, V., He, Y., Patel, D., and Brueckner, A. M. (2026), [*Scientific Agent Skills: A Library of Procedural Knowledge for Research Agents*][scientific-agent-skills]. Figure sources retain the data, transformations and software versions; the [Nature research figure guide][nature-figures], checked 25 September 2026, supplies the style baseline. These reading exports use larger type and thicker lines for the article's display width.
+All plotted intervals show observed minima and maxima, not confidence
+intervals. Read and write studies use different inputs, hardware and shard
+geometry; their measurements are not pooled.
 
 [damacy]: https://github.com/nclack/damacy
 [tensorstore]: https://google.github.io/tensorstore/
@@ -562,9 +542,6 @@ All plotted intervals show the observed minimum and maximum rates. They are not 
 [source-phases]: ../bbbc022-evidence/source-phases.json
 [bbbc022-findings]: ../bbbc022-evidence/findings.md
 [shard-extension-protocol]: ../bbbc022-evidence/shard-extension-protocol.json
-[doc-coauthoring]: https://github.com/anthropics/skills/blob/33375500bcea98d610eb30ce10ac4e59b89c390d/skills/doc-coauthoring/SKILL.md
-[scientific-agent-skills]: https://doi.org/10.48550/arXiv.2609.00065
-[nature-figures]: https://research-figure-guide.nature.com/figures/preparing-figures-our-specifications/
 [figure-1]: figures/figure-1.png
 [figure-2]: figures/figure-2.png
 [figure-3]: figures/figure-3.png
@@ -578,3 +555,6 @@ All plotted intervals show the observed minimum and maximum rates. They are not 
 [write-comparison-runs]: figures/data/write-sweep-runs.csv
 
 [tensorstore-chunk-costs]: ../planning/reference/tensorstore-chunk-costs-2026-09-28.md
+[storage-iops]: https://docs.aws.amazon.com/ebs/latest/userguide/ebs-io-characteristics.html
+
+[bbbc022-thumbnail]: figures/data/bbbc022-a14-s1-w5.json

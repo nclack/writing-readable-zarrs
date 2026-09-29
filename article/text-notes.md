@@ -1,8 +1,9 @@
 # Draft review notes
 
-`draft.md` is a complete first draft following the accepted audience, outline
-and length. Current rendered-text word counts, excluding headings, image alt text
-and reference definitions: 2,728 body; 867 figure captions; 859 methods.
+`draft.md` has completed an argument and relevance review against the author's
+revision at `da81c5e`. Current rendered-text word counts, excluding headings,
+image alt text and reference definitions: 3,025 body; 606 figure
+captions; 814 methods.
 
 Checks completed:
 
@@ -130,3 +131,67 @@ microscopy write results. A linked audit distinguishes TensorStore data
 cache configuration, within-pass file caching, measured traffic and modeled
 chunk/decode counts. PDFs and refreshed browser preview were inspected;
 source hashes, exported data and unrelated figure exports are unchanged.
+
+
+Argument and relevance review, 2026-09-28 (baseline `da81c5e`):
+
+- Independent reader, evidence and editorial reviews identified and resolved
+  the main consistency problems. Reader-specific chunk advice again depends
+  on crop priority; full scans are exhaustive selections without an assumption
+  that every selection covers whole chunks; the write-size allowance uses
+  stored bytes per logical input byte, with the historical write-byte proxy
+  identified at its introduction.
+- Removed the Figure 2 claim of a 9 GiB/s storage maximum. Its source is a
+  separate 1.68-second microbenchmark, not a ceiling measured for these
+  writer runs. Clarified that changing shard count also changes shard geometry.
+- Kept the read-derived candidate, then developed the writing evidence before
+  synthesizing the compromise. Moved Figure 1 next to its introduction.
+  Kept both shard-design goals and the write-based origin of the read layout.
+- Cut repeated recommendation previews, lengthy cache diagnostics, duplicate
+  caption interpretations, exact display-intensity bounds, and benchmark
+  restart history. Detailed data and provenance remain in linked evidence.
+- The final independent reader confirmed the argument order and resolution
+  of the substantive issues. Its final table-scope ambiguity was fixed by
+  explicitly assigning the six chunk shapes to Figure 3d–e.
+- Rebuilt the local preview and standalone publication output. Checked local
+  targets and reference rendering. Figure assets and measurements are unchanged.
+
+Synthetic input clarification, 2026-09-29: The author supplied the smooth4
+generator description: blend two smooth random 3D fields at different spatial
+scales, round to 12-bit intensities stored as uint16, then replace the lowest
+four bits with independent random values from 0–15. Methods and the read
+findings now explain the four-noise-bit name and distinguish the generator
+from the later studies' 16 GiB volume. This is an author-supplied description;
+the original generator source and its exact parameters remain outside the
+portable evidence bundle. The read measurements remain explicitly synthetic.
+
+
+Chunk geometry and storage applicability, 2026-09-29:
+
+- Explained low-dimensional chunks as extent one along independently selected
+  plane, time and channel axes, while retaining dimensions jointly consumed by
+  the workload. The point is to avoid decoding values outside the requested
+  selection, not to prescribe one-dimensional strips for XY crops.
+- Added operation-rate limits to the chunk-size tradeoff: fewer requests can
+  justify larger chunks even when they increase unused bytes. The author
+  confirmed that 10,000–100,000 IOPS is a general storage capability range,
+  not a measured device rating for these benchmark machines. The text uses
+  it to explain applicability and links primary documentation on I/O size
+  and throughput. NFS read timings remain excluded from recommendations.
+- Mirrored both qualifications in the final layout recommendations and rebuilt
+  the article preview. No figure assets or numerical observations changed.
+
+Paragraph tightening, 2026-09-29: Shortened the geometry and IOPS guidance.
+Moved geometry next to the decode-amplification definition; kept storage
+applicability after the TensorStore read-cost discussion, where it qualifies
+the chunk-size tradeoff. Removed the forward reference to writing results.
+Strengthened the geometry guidance with the multiplicative penalty: eight
+planes and four channels give 32-fold decode amplification for a crop reading
+one of each, before XY boundary waste.
+
+Accuracy qualifications, 2026-09-29: Scoped the 32-fold example to whole-chunk
+decoding for one crop and explained sharing decoded chunks across requests.
+Marked the TensorStore lookup/scheduling explanation as a hypothesis; the
+measurements do not isolate its cause. The IOPS range is explicitly illustrative,
+with no benchmark-derived threshold claimed. Rebuilt the article and standalone
+site; measurements and figure assets are unchanged.
