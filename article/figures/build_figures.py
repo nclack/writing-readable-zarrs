@@ -27,12 +27,12 @@ def build():
         writer.writerows(steps)
     outputs = []
     with style_context():
-        fig = plt.figure(figsize=(183 * MM, 230 * MM))
-        top = fig.add_gridspec(1, 1, left=.025, right=.98, bottom=.52, top=.985)
-        bottom = fig.add_gridspec(1, 2, left=.105, right=.98, bottom=.075,
-                                  top=.435, wspace=.38)
+        fig = plt.figure(figsize=(183 * MM, 210 * MM))
+        top = fig.add_gridspec(1, 1, left=.025, right=.98, bottom=122/210, top=207/210)
+        bottom = fig.add_gridspec(1, 2, left=.105, right=.98, bottom=17.25/210,
+                                  top=100.05/210, wspace=.38)
         draw_crop_geometry(fig, top[0])
-        fig.text(.105, .495, "Balance between two read workloads",
+        fig.text(.105, 113.85/210, "Balance between two read workloads",
                  fontsize=10, fontweight="bold", ha="left", va="baseline")
         draw_read_damacy(fig, bottom[0])
         draw_read_tensorstore(fig, bottom[1])

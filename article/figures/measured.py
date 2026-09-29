@@ -197,11 +197,11 @@ def _draw_read(fig, spec, reader, letter):
             # Anchor above the whole observed range so narrower composite
             # panels cannot push the two-line label across the vertical axis.
             ax.text(x + .025, float(scan["useful_active_gib_s_max"]) + .10,
-                    f"{kib} KiB\n{shape}", ha="left", va="bottom",
+                    f"{kib} KiB\n{shape} uint16", ha="left", va="bottom",
                     fontsize=9, fontweight="bold")
             continue
         dx, dy = offsets[kib]
-        ax.annotate(f"{kib} KiB\n{shape}", (x, y), xytext=(dx, dy),
+        ax.annotate(f"{kib} KiB\n{shape} uint16", (x, y), xytext=(dx, dy),
                     textcoords="offset points", ha="left" if dx > 0 else "right",
                     va="bottom" if dy > 0 else "top", fontsize=9,
                     fontweight="bold" if kib == 128 else "normal")

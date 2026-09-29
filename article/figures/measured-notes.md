@@ -67,7 +67,7 @@ plot; its component preview is 183 × 110 mm.
 ## Figure 1b–c: read tradeoffs
 
 **Caption contribution.** CPU read rates for Damacy (b) and TensorStore (c)
-on local NVMe, with synthetic smooth4 uint16 input. Each point combines the
+on local NVMe, with a 16 GiB synthetic uint16 test array (named smooth4 in the benchmark records). Each point combines the
 median translated-crop read rate (horizontal) and full-array read rate (vertical) for a
 chunk layout; whiskers show the observed min–max from three runs per workload.
 Shapes are Z × Y × X; chunk sizes are uncompressed uint16 capacities. Rates
@@ -75,7 +75,9 @@ use useful source bytes, not the twice-larger float32 host output. Both
 readers use Blosc-Zstd with bitshuffle and fixed 16 KiB blocks. Damacy's
 `chunks256-random` mode disables readahead for both workloads. The vertical
 scales differ. The highlighted 128 KiB layout is a proposed compromise;
-512 KiB has higher crop and scan medians for TensorStore. These are separate
+512 KiB has a higher crop median for TensorStore, but the full-array ranges
+at 128 and 512 KiB overlap substantially; no reliable full-array advantage
+is established by these three repeats. These are separate
 from Figure 3's microscopy/NFS write measurements.
 
 **Alt-text contribution.** Two scatter plots show the balance between two
@@ -84,8 +86,8 @@ read rate horizontally with its full-array read rate vertically. The
 workloads are measured separately; the point is not a combined throughput.
 Damacy trades reduced crop speed for faster scans as chunks grow from 32 to
 128 to 512 KiB. The 128 KiB point retains 87% of the 32 KiB crop rate and nearly
-doubles the full-array read rate. TensorStore's medians improve with larger chunks for
-both workloads, with overlapping full-scan ranges at 128 and 512 KiB.
+doubles the full-array read rate. TensorStore's crop rate improves with
+larger chunks, while its full-array ranges overlap at 128 and 512 KiB.
 
 **Sources and exact scope.** `readable-zarrs-evidence/read-summary.csv`, selected
 by `phase=cpu-chunk-blocks`, `storage_type=local block storage`, `codec=zstd`,

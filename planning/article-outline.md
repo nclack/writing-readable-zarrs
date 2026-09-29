@@ -88,7 +88,7 @@ experiments are not prerequisites. Random subvolume writes remain outside scope.
 transition after defining chunks. Overlay the same translated 256 × 256 crop
 on 128 × 128 and 256 × 256 chunk grids (32 and 128 KiB for one uint16 plane).
 Distinguish requested pixels, intersected chunks and unused decoded pixels.
-Include small whole-chunk-aligned and full-array controls. Label the measured
+Keep only the two translated-crop examples; label every chunk shape as uint16. Label the measured
 256-square workload separately from the hypothetical 224-square input;
 16 × 16 token patches are not the storage grid.
 
@@ -104,7 +104,8 @@ Include small whole-chunk-aligned and full-array controls. Label the measured
 - Recommend 128 KiB (`[1,256,256]` for uint16) as the initial mixed-workload
   compromise, with greater priority on cropped reads. In that same subset,
   moving to 512 KiB loses 27% of Damacy's crop rate for a 14% scan gain;
-  TensorStore improves on both. Keep 32 KiB as the crop-first Damacy
+  TensorStore's crop rate improves, while the 128/512 KiB full-array ranges
+  overlap substantially; do not select 512 KiB from median ordering alone. Keep 32 KiB as the crop-first Damacy
   alternative, and show reader-specific reasons to move larger.
 - Explain that less geometric over-reading does not alone predict speed.
   Use the local [read summaries](../readable-zarrs-evidence/read-summary.csv)
@@ -140,15 +141,20 @@ one figure. NFS reads are excluded.
 
 - Define a shard as a group of chunks in one stored file. With indexed range
   reads, small chunks do not require one small file per chunk.
-- Explain why distributing reader work across several files may expose more
-  parallelism. Distinguish files touched by a batch from files with active I/O;
-  balance of work matters as well as the count.
+- Organize shard size and shape around two goals: filesystem concurrency,
+  with incoming writes balanced across files, and a manageable total file
+  count for listing, copying and moving the dataset.
+- Explain that the sixteen-shard read layout was chosen from what looked
+  like a good write configuration. It was not selected by optimizing
+  read-side shard counts; no translation into a read-concurrency optimum is
+  needed.
+- Define practical storage constraints: inode availability limits file
+  counts on some filesystems; S3 limits object size, multipart-upload part
+  sizes and part counts. Distinguish stored-byte limits from raw capacity.
 - Introduce the measurement context alongside the results: local NVMe reads
   on synthetic input, and separate microscopy writes to a busy cluster
   filesystem mounted over NFS with `nconnect=16`.
-- Use read-side file-concurrency results only where their storage and workload
-  fit the local-read scope. Keep the measured NFS streaming count in section E;
-  it does not establish a local-read file-count optimum.
+- Keep the measured NFS streaming shard-count results in section E.
 - State that recent streaming and CPU read tests use shards near 1 GiB raw
   capacity. The older CHAMMI read comparison uses much smaller shards. These are
   test settings, not evidence that 1 GiB is optimal.

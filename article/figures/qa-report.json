@@ -3,15 +3,15 @@
   "review_date": "2026-09-28",
   "word_count_method": "Rendered HTML text split on whitespace, excluding headings, image alt text and reference definitions; includes visible table text.",
   "word_counts": {
-    "body": 2728,
-    "captions": 951,
-    "methods": 859
+    "body": 3091,
+    "captions": 1000,
+    "methods": 861
   },
   "figures": [
     {
       "file": "figure-1.pdf",
       "width_mm": 183.0,
-      "height_mm": 230.0,
+      "height_mm": 210.0,
       "fonts": [
         {
           "name": "/CUNWGA+Arial-BoldMT",
@@ -26,9 +26,9 @@
       ],
       "minimum_text_pt": 9.0,
       "maximum_text_pt": 12.0,
-      "svg_text_elements": 56,
+      "svg_text_elements": 52,
       "embedded_raster_images": 0,
-      "pdf_render_review": "Figure 1 rendered at 122 dpi (879 px wide) and visually inspected. Both vertical axes say Full-array read rate (useful GiB/s), and horizontal axes say Crop read rate (useful GiB/s). Longer labels fit at unchanged font sizes and figure dimensions with no overlap or clipping. A shared heading makes the two-workload comparison explicit; its placement and axis labels were also inspected in the refreshed article preview."
+      "pdf_render_review": "Rendered at 122 dpi and visually inspected. All chunk dimension labels include uint16. Text remains 9\u201312 pt, with no overlap, clipping or data occlusion. Aligned/full-array examples removed from panel a; full figure shortened from 230 to 210 mm. The refreshed article preview was also inspected."
     },
     {
       "file": "figure-2.pdf",
@@ -101,7 +101,7 @@
       "maximum_text_pt": 12.0,
       "svg_text_elements": 48,
       "embedded_raster_images": 0,
-      "pdf_render_review": "Final PDF rendered at 122 dpi (879 px wide), then visually inspected; no text overlap, clipping or annotation occlusion found."
+      "pdf_render_review": "Rendered at 122 dpi and visually inspected. All chunk dimension labels include uint16. Text remains 9\u201312 pt, with no overlap, clipping or data occlusion."
     },
     {
       "file": "figure-s1.pdf",
@@ -126,7 +126,7 @@
       "pdf_render_review": "Final PDF rendered at 122 dpi (879 px wide), then visually inspected; no text overlap, clipping or annotation occlusion found."
     }
   ],
-  "local_links": "All article Markdown targets verified.",
+  "local_links": "All rendered article link and image local targets verified, including the TensorStore read-cost audit.",
   "numerical_validation": "Measured plot medians/min-max independently recomputed against retained runs during build; historical write byte sums and exact-fraction threshold membership independently checked by write_sweeps.collect_sweeps().",
   "layout_revision": "Figure 3 height reduced from 345 to 250 mm (27.5%) at unchanged 183 mm width. All panels, font sizes and data retained; single-row codec legend, tighter physical spacing and redundant figure notes removed. CPU/GPU headers now use measurements.",
   "browser_review": "Refreshed article checked at its existing display size. Shared codec symbols, filled-symbol explanation and lower-panel labels are clear and consistent; figure height is unchanged.",
@@ -134,5 +134,6 @@
   "image_validation": "Complete raw benchmark asset checksum verified; fixed first field extracted unchanged as uint16. Display contrast and clipped-pixel counts documented separately; 100 \u00b5m bar uses recorded 0.656 \u00b5m/pixel calibration.",
   "compression_validation": "Historical CPU 14 and GPU 13 settings independently checked against all 81 sample runs, byte sums and exact-fraction thresholds: 10 settings below each allowance. Their proxy folds and study-specific thresholds remain separate from the six final-size layouts. All axes use positive folds on base-2 logarithmic scales.",
   "encoding_revision": "One shared compressor mapping supplies b\u2013e. All fixed-block points are blue Blosc-Zstd squares; only the highest eligible median (64 KiB) is filled. The 64 and 128 KiB overview points are directly labelled, and 128 KiB remains the proposed compromise in text. All exported data tables and other figure exports are byte-identical.",
-  "read_label_revision": "Figure 1 axis labels, caption and alt text use full-array reads in place of scan shorthand. Data and unrelated figure exports are byte-identical. A shared heading identifies b\u2013c as the balance between two read workloads. Caption and alt text explain that each point pairs separate crop and full-array read measurements for one layout."
+  "read_label_revision": "Figure 1 axis labels, caption and alt text use full-array reads in place of scan shorthand. Data and unrelated figure exports are byte-identical. A shared heading identifies b\u2013c as the balance between two read workloads. Caption and alt text explain that each point pairs separate crop and full-array read measurements for one layout.",
+  "read_argument_revision": "128 KiB is presented as a starting compromise across crop reads, full-array reads and the separate microscopy writing evidence. TensorStore 128/512 KiB full-array ranges overlap; its measured crop advantage at 512 KiB is retained. Geometric chunk counts, measured bytes and possible within-pass cache reuse remain distinct; no causal profile is claimed."
 }

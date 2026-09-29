@@ -85,8 +85,9 @@ def _crop_grid(ax, origin, size, chunk, crop):
 
 
 def draw_crop_geometry(fig, spec):
-    """Figure 1a: aligned title, geometry, metrics, legend and control rows."""
-    ax = _canvas(fig, spec, 105)
+    """Figure 1a: translated crops, geometry, metrics and a shared legend."""
+    ax = _canvas(fig, spec, 88)
+    ax.set_ylim(17, 105)
     _label(ax, "a", "A translated 256 × 256 crop (one uint16 plane)", 101)
     crop = (64, 64, 256, 256)
     # The main diagrams share one column grid and identical vertical anchors.
@@ -95,7 +96,7 @@ def draw_crop_geometry(fig, spec):
         (139, (256, 256), "128 KiB chunks"),
     ]:
         _text(ax, center, 92, title, ha="center", fontweight="bold")
-        _text(ax, center, 85.5, f"{shape[0]} × {shape[1]} pixels", ha="center", fontsize=9)
+        _text(ax, center, 85.5, f"{shape[0]} × {shape[1]} uint16 pixels", ha="center", fontsize=9)
         count = _crop_grid(ax, (center - 21, 39.5), 42, shape, crop)
         decoded_kib = count * shape[0] * shape[1] * 2 // 1024
         ratio = decoded_kib / 128
@@ -108,13 +109,6 @@ def draw_crop_geometry(fig, spec):
     _text(ax, 76, 21.5, "Decoded but unused", fontsize=9)
     ax.plot([137, 143], [21.5, 21.5], color=GRAY, lw=0.8)
     _text(ax, 146, 21.5, "Chunk edge", fontsize=9)
-    # Controls have the same scale and aligned explanatory text to their right.
-    _crop_grid(ax, (10, 1.5), 15.5, (256, 256), (0, 0, 256, 256))
-    _text(ax, 31, 12.5, "Aligned 256 × 256 crop", fontsize=9)
-    _text(ax, 31, 6, "1× decoded / useful", fontsize=9)
-    _crop_grid(ax, (104, 1.5), 15.5, (256, 256), (0, 0, 512, 512))
-    _text(ax, 125, 12.5, "Full 512 × 512 array", fontsize=9)
-    _text(ax, 125, 6, "1× decoded / useful", fontsize=9)
     return ax
 
 
@@ -218,8 +212,8 @@ def draw_conversion_memory(fig, spec):
         _text(ax, source[0] + size * (sx + 0.5) / 2,
               source[1] + size * (3.5 - sy) / 4, str(i + 1), ha="center")
     _destination_state(ax, destination, size, 1)
-    _text(ax, 44, 139, "[128, 256] · 64 KiB each", ha="center", fontsize=9)
-    _text(ax, 139, 139, "[256, 128] · 64 KiB each", ha="center", fontsize=9)
+    _text(ax, 44, 139, "[128, 256] uint16 · 64 KiB each", ha="center", fontsize=9)
+    _text(ax, 139, 139, "[256, 128] uint16 · 64 KiB each", ha="center", fontsize=9)
     ax.annotate("", (108, 166), (75, 166), arrowprops=dict(arrowstyle="->", lw=1.2))
     _text(ax, 91.5, 173, "Copy source 1", ha="center", fontsize=9)
     # Each processing statement occupies its own fixed-width column.
@@ -266,7 +260,7 @@ def main():
         writer.writerows(rows)
     with style_context():
         for name, draw, height in [
-            ("crop", draw_crop_geometry, 105),
+            ("crop", draw_crop_geometry, 88),
             ("shards", draw_shard_geometry, 75),
             ("conversion", draw_conversion_memory, 205),
         ]:

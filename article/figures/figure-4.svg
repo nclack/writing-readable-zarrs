@@ -640,10 +640,10 @@ L 489.415748 515.707087
     <text style="font-size: 10px; font-family: 'Arial'; text-anchor: middle" x="160.504724" y="176.525292" transform="rotate(-0 160.504724 176.525292)">8</text>
    </g>
    <g id="text_13">
-    <text style="font-size: 9px; font-family: 'Arial'; text-anchor: middle" x="132.080315" y="206.721228" transform="rotate(-0 132.080315 206.721228)">[128, 256] · 64 KiB each</text>
+    <text style="font-size: 9px; font-family: 'Arial'; text-anchor: middle" x="132.080315" y="206.721228" transform="rotate(-0 132.080315 206.721228)">[128, 256] uint16 · 64 KiB each</text>
    </g>
    <g id="text_14">
-    <text style="font-size: 9px; font-family: 'Arial'; text-anchor: middle" x="389.253543" y="206.721228" transform="rotate(-0 389.253543 206.721228)">[256, 128] · 64 KiB each</text>
+    <text style="font-size: 9px; font-family: 'Arial'; text-anchor: middle" x="389.253543" y="206.721228" transform="rotate(-0 389.253543 206.721228)">[256, 128] uint16 · 64 KiB each</text>
    </g>
    <g id="patch_42">
     <path d="M 217.998343 131.300787 

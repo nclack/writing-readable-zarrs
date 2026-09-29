@@ -1,6 +1,6 @@
 # Local reads and microscopy writes: the compromise
 
-Updated 2026-09-25. The author selected local NVMe as the intended read
+Updated 2026-09-28. The author selected local NVMe as the intended read
 deployment and excluded NFS read speeds from article recommendations. The
 suspected NFS IOPS limit is a hypothesis; diagnosing and engineering that
 path is deferred. Retain its records, but do not use its crop/scan rankings
@@ -9,7 +9,8 @@ to choose chunks. NFS writing remains relevant to acquisition.
 **Starting recommendation: 128 KiB raw chunks**, `[1,256,256]` for uint16,
 for one persisted layout balancing cropped reads and scans. Give cropped
 reads greater priority. Keep 32 KiB as a crop-first Damacy alternative;
-TensorStore can favor larger chunks. This is a reasoned compromise, not
+TensorStore crops can favor larger chunks; its 128/512 KiB full-array
+measurements do not resolve a reliable gain. This is a reasoned compromise, not
 the result of a measured combined-workload objective.
 
 ## Local read comparison
@@ -35,9 +36,19 @@ three repetitions in **useful uint16 GiB/s**, using
 Relative to 32 KiB, 128 KiB retains 87.1% of Damacy's crop rate and gives
 1.98 times its scan rate. TensorStore improves by 3.6% on crops and 15.9%
 on scans. Moving from 128 to 512 KiB loses 27.0% of Damacy's crop rate for
-a 13.5% scan gain, while TensorStore gains 15.8% on crops and 7.8% on scans.
-This supports 128 KiB as a balance across workloads and readers. A workload
-served only by TensorStore could reasonably favor larger chunks.
+a 13.5% scan gain, while TensorStore's crop median gains 15.8%. Its full-array median rises
+7.8%, but the observed ranges overlap: 4.541–5.634 GiB/s at 128 KiB and
+4.461–5.361 at 512 KiB. These three repeats do not establish a reliable
+full-array advantage. Crop ranges are 1.365–1.412 and 1.554–1.633 GiB/s,
+respectively. Treat that crop gain as a reason to test larger layouts when
+TensorStore crops dominate, while retaining 128 KiB as a candidate across
+read workloads and the separate microscopy writing results.
+
+The [read-cost audit][tensorstore-chunk-costs] distinguishes geometric
+amplification, file bytes, local storage bytes and cache configuration.
+TensorStore data caching is disabled; the array fits RAM and within-pass
+file-cache reuse remains possible. Fewer chunk operations are a plausible
+explanation for the crop speedup, not a measured attribution of time.
 
 The separate `cpu-small-chunks` fixed-block study also supports the direction
 of this compromise: 128 KiB keeps 89% of Damacy's 32 KiB crop rate with twice
@@ -84,3 +95,5 @@ across Z and channels, with 16 × 16 token patches. A uint16 XY plane is 98 KiB
 of useful pixels. Translation, Z/channel extents and reuse determine which
 storage chunks are needed; token dimensions do not determine storage chunks.
 The 256-square read benchmark is a nearby proxy, not a Katamari measurement.
+
+[tensorstore-chunk-costs]: tensorstore-chunk-costs-2026-09-28.md

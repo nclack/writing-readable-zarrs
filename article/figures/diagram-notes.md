@@ -24,7 +24,7 @@ article/.venv/bin/python article/figures/diagrams.py
 The three public drawing functions add artists to a supplied Matplotlib
 `SubplotSpec` and do not save or close the parent figure:
 
-- `draw_crop_geometry(fig, spec)`: Figure 1a, designed for 183 × 105 mm.
+- `draw_crop_geometry(fig, spec)`: Figure 1a, designed for 183 × 88 mm.
 - `draw_shard_geometry(fig, spec)`: Figure 2a, designed for 183 × 75 mm.
 - `draw_conversion_memory(fig, spec)`: Figure 4, designed for 183 × 205 mm.
 
@@ -36,13 +36,11 @@ review previews of wholly vector artwork, not source microscopy panels.
 
 **Chunk boundaries determine geometric decoding amplification.** The same
 256 × 256-pixel crop starts at `(Y, X) = (64, 64)` in a 512 × 512 uint16 plane.
-With 128 × 128 chunks (32 KiB), it intersects nine chunks: 288 KiB decoded for
-128 KiB requested, or 2.25×. With 256 × 256 chunks (128 KiB), it intersects four
+With 128 × 128 uint16 chunks (32 KiB), it intersects nine chunks: 288 KiB decoded for
+128 KiB requested, or 2.25×. With 256 × 256 uint16 chunks (128 KiB), it intersects four
 chunks: 512 KiB decoded, or 4×. Blue marks requested pixels and the crop boundary;
-the pale orange region is decoded but unused. Thin lines delimit chunks. The
-controls use the 256-square chunk grid: a whole-chunk-aligned 256-square crop and
-the complete 512-square array both have decoded/useful ratio 1. These are
-uncompressed geometric byte ratios, not measured storage traffic or speed.
+the pale orange region is decoded but unused. Thin lines delimit chunks. These are uncompressed geometric byte ratios, not measured storage traffic
+or speed. Only the two translated-crop examples are shown.
 Compression, cache reuse and coalesced reads can change bytes transferred. The
 measured random-crop example is 256-square; the hypothetical vision transformer
 accepts 224-square inputs with 16-square token patches. These do not specify
@@ -50,8 +48,8 @@ the storage chunk grid.
 
 **Alt text:** Two equal translated 256-square crops overlay different chunk
 grids. A 32 KiB layout decodes nine chunks, 2.25 times the requested bytes; a
-128 KiB layout decodes four chunks, four times the requested bytes. Whole-chunk
-alignment and full-array controls decode only the requested pixels.
+128 KiB layout decodes four chunks, four times the requested bytes. Each
+chunk dimension is labelled as uint16 pixels.
 
 **Long description / calculations:** The crop occupies half-open coordinates
 `[64, 320) × [64, 320)`. On the 128-square grid its containing decoded rectangle

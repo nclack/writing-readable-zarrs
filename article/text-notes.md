@@ -119,3 +119,14 @@ font sizes or figure dimensions; PDF rendering was checked.
 Panels b–c now share the heading Balance between two read workloads.
 The caption and alt text explain each point as one layout with separate
 crop and full-array read measurements. Refreshed browser preview checked.
+
+Read/write compromise revision, 2026-09-28: Removed aligned/full-array
+controls from Figure 1a and shortened the figure to 183 × 210 mm. All
+chunk dimensions in Figures 1 and 4 explicitly include uint16. The article
+now treats the TensorStore full-array 128/512 KiB difference as unresolved
+by these three repeats, while retaining the 512 KiB crop advantage. The
+128 KiB recommendation combines read priorities with the separate NFS
+microscopy write results. A linked audit distinguishes TensorStore data
+cache configuration, within-pass file caching, measured traffic and modeled
+chunk/decode counts. PDFs and refreshed browser preview were inspected;
+source hashes, exported data and unrelated figure exports are unchanged.
